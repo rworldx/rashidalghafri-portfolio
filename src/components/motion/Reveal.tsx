@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
@@ -18,7 +18,7 @@ interface RevealProps {
  * motion (via MotionProvider) the transform is dropped and only opacity fades.
  */
 export function Reveal({ children, className, delay = 0, as = 'div' }: RevealProps) {
-  const MotionTag = motion[as];
+  const MotionTag = m[as];
   return (
     <MotionTag
       className={cn(className)}

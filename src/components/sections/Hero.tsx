@@ -1,15 +1,14 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { site } from '@content/site';
-import { graph } from '@content/graph';
 import { pick } from '@/lib/localized';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
-import { GraphSignature } from '@/components/graph/GraphSignature';
+import { HeroBackground } from '@/components/three/HeroBackground';
 import { StatusDot } from '@/components/ui/StatusDot';
 import { buttonVariants } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
@@ -22,16 +21,17 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Ambient signature graph — non-interactive, low opacity. */}
+      {/* Signature 3D constellation — continuous motion + pointer-reactive.
+          Falls back to a static SVG under reduced-motion / no-WebGL. */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 mx-auto max-w-5xl opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
+        className="absolute inset-0 -z-10 mx-auto max-w-5xl opacity-80 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"
         aria-hidden
       >
-        <GraphSignature data={graph} ambient className="h-full w-full" />
+        <HeroBackground className="h-full w-full" />
       </div>
 
       <Container className="flex min-h-[78vh] flex-col justify-center py-24">
-        <motion.p
+        <m.p
           className="force-ltr mb-6 inline-flex w-fit items-center gap-2 rounded-sm border border-border bg-surface/60 px-3 py-1.5 font-mono text-xs text-text-muted backdrop-blur"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -39,7 +39,7 @@ export function Hero() {
         >
           <StatusDot />
           {pick(site.status, locale)}
-        </motion.p>
+        </m.p>
 
         <TextReveal
           as="h1"
@@ -47,25 +47,25 @@ export function Hero() {
           className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-text sm:text-6xl md:text-7xl"
         />
 
-        <motion.p
+        <m.p
           className="mt-4 max-w-2xl font-mono text-sm text-accent sm:text-base"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
           {pick(site.role, locale)}
-        </motion.p>
+        </m.p>
 
-        <motion.p
+        <m.p
           className="mt-6 max-w-xl text-lg text-text-muted"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
           {pick(site.tagline, locale)}
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           className="mt-10 flex flex-wrap items-center gap-3"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export function Hero() {
             <Download className="h-4 w-4" />
             {t('downloadCv')}
           </a>
-        </motion.div>
+        </m.div>
       </Container>
     </section>
   );

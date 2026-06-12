@@ -29,7 +29,18 @@ export const skills: SkillGroup[] = [
   },
   {
     id: 'tools',
-    label: { en: 'Tools & IDEs', ar: 'الأدوات وبيئات التطوير' },
-    items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Cursor', 'Claude Code', 'Figma'],
+    label: { en: 'IDEs & Tools', ar: 'بيئات التطوير والأدوات' },
+    items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Visual Studio', 'Android Studio', 'NetBeans'],
+  },
+  {
+    id: 'ai-dev-tools',
+    label: { en: 'AI Dev Tools', ar: 'أدوات التطوير بالذكاء الاصطناعي' },
+    items: ['Cursor', 'Claude Code', 'Codex'],
   },
 ];
+
+/** Sub-note for the Skills section footer. */
+export const exploring = {
+  en: 'Currently exploring: AI agents & agentic workflows (n8n) · Figma',
+  ar: 'أستكشف حاليًا: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي (n8n) · فيغما',
+};

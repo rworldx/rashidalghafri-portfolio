@@ -15,6 +15,12 @@ export const socials: SocialLink[] = [
     external: true,
   },
   {
+    id: 'instagram',
+    label: 'StudyNest',
+    href: 'https://instagram.com/studynest.om',
+    external: true,
+  },
+  {
     id: 'email',
     label: 'Email',
     href: 'mailto:rr.abadi44@gmail.com',

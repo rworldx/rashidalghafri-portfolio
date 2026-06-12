@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { site } from '@content/site';
 import { pick } from '@/lib/localized';
 import { Container } from '@/components/layout/Container';
@@ -10,7 +10,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ContactForm } from '@/components/ui/ContactForm';
 
-const iconFor = { github: Github, linkedin: Linkedin, email: Mail, instagram: Mail } as const;
+const iconFor = { github: Github, linkedin: Linkedin, email: Mail, instagram: Instagram } as const;
 
 /** Contact (PRD FR-7): email copy + socials + form. */
 export function ContactSection() {

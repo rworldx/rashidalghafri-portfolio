@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Project } from '@/types/project';
@@ -14,7 +14,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const locale = useLocale();
 
   return (
-    <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}>
+    <m.div whileHover={{ y: -3 }} transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}>
       <Link
         href={`/projects/${project.slug}`}
         className="group block h-full rounded-lg border border-border bg-surface p-6 shadow-card transition-colors hover:border-accent"
@@ -37,6 +37,6 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
       </Link>
-    </motion.div>
+    </m.div>
   );
 }

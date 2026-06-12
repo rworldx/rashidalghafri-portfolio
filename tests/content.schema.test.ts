@@ -6,6 +6,9 @@ import { awards } from '@content/awards';
 import { experience } from '@content/experience';
 import { graph } from '@content/graph';
 import { site } from '@content/site';
+import { certifications } from '@content/awards';
+import { timeline } from '@content/timeline';
+import { interests, aboutStory } from '@content/about';
 
 /**
  * Validates every content entry against a schema mirroring src/types (PRD §14).
@@ -88,6 +91,47 @@ describe('content/graph', () => {
       expect(ids.has(e.source)).toBe(true);
       expect(ids.has(e.target)).toBe(true);
     }
+  });
+});
+
+describe('content/timeline', () => {
+  const schema = z.object({
+    year: z.number().int(),
+    kind: z.enum(['education', 'project', 'award', 'hackathon', 'milestone', 'goal']),
+    title: localized,
+    detail: localized,
+    future: z.boolean().optional(),
+  });
+  it('matches the TimelineEntry schema', () => {
+    for (const e of timeline) expect(() => schema.parse(e)).not.toThrow();
+  });
+  it('is chronologically non-decreasing by year', () => {
+    const years = timeline.map((e) => e.year);
+    expect(years).toEqual([...years].sort((a, b) => a - b));
+  });
+});
+
+describe('content/certifications', () => {
+  const schema = z.object({
+    id: z.string(),
+    title: z.string().min(1),
+    issuer: z.string().min(1),
+    year: z.number().int(),
+    detail: localized.optional(),
+    credentialUrl: z.string().url().optional(),
+  });
+  it('matches the Certification schema', () => {
+    for (const c of certifications) expect(() => schema.parse(c)).not.toThrow();
+  });
+});
+
+describe('content/about', () => {
+  const interestSchema = z.object({ icon: z.string().min(1), label: localized });
+  it('interests match schema', () => {
+    for (const i of interests) expect(() => interestSchema.parse(i)).not.toThrow();
+  });
+  it('story has matching paragraph counts per locale', () => {
+    expect(aboutStory.en.length).toBe(aboutStory.ar.length);
   });
 });
 

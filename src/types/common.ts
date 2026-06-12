@@ -16,3 +16,28 @@ export interface Stat {
   label: Localized;
   value: string;
 }
+
+/** A personal interest shown in the "Beyond the code" grid. */
+export interface Interest {
+  /** lucide-react icon name. */
+  icon: string;
+  label: Localized;
+}
+
+export type TimelineKind =
+  | 'education'
+  | 'project'
+  | 'award'
+  | 'hackathon'
+  | 'milestone'
+  | 'goal';
+
+/** One entry on the visual timeline spine. */
+export interface TimelineEntry {
+  year: number;
+  kind: TimelineKind;
+  title: Localized;
+  detail: Localized;
+  /** Future/aspirational entry — rendered hollow/dashed. */
+  future?: boolean;
+}

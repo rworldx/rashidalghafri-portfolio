@@ -11,7 +11,7 @@ export const projects: Project[] = [
     featured: true,
     title: 'StudyNest',
     year: 2026,
-    role: 'Senior Capstone · Full-Stack',
+    role: 'Founder · Full-Stack Engineer',
     summary: {
       en: 'An AI-powered collaborative study platform that tackles student isolation in remote learning through partner matching and a real-time workspace.',
       ar: 'منصة دراسة تعاونية مدعومة بالذكاء الاصطناعي تعالج عزلة الطلاب في التعلّم عن بُعد عبر مطابقة شركاء الدراسة ومساحة عمل لحظية.',
@@ -42,10 +42,12 @@ export const projects: Project[] = [
       'Upstash Redis',
     ],
     stats: [
-      { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
+      { label: { en: 'AI match latency', ar: 'زمن المطابقة بالذكاء الاصطناعي' }, value: '< 1s' },
+      { label: { en: 'Concurrent sessions', ar: 'جلسات متزامنة' }, value: '50+' },
+      { label: { en: 'Registered users', ar: 'مستخدمون مسجّلون' }, value: '100+' },
+      { label: { en: 'Auth incidents', ar: 'حوادث المصادقة' }, value: '0' },
       { label: { en: 'Passing tests', ar: 'اختبارات ناجحة' }, value: '125' },
-      { label: { en: 'Overall satisfaction', ar: 'الرضا العام' }, value: '86.3%' },
-      { label: { en: 'Found AI assistant helpful', ar: 'وجدوا المساعد مفيدًا' }, value: '95.5%' },
+      { label: { en: 'Media load time', ar: 'زمن تحميل الوسائط' }, value: '−35%' },
     ],
     highlights: [
       {

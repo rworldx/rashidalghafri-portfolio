@@ -1,8 +1,11 @@
 import { setRequestLocale } from 'next-intl/server';
 import { About } from '@/components/sections/About';
-import { Skills } from '@/components/sections/Skills';
+import { Interests } from '@/components/sections/Interests';
+import { Education } from '@/components/sections/Education';
 import { Timeline } from '@/components/sections/Timeline';
+import { Skills } from '@/components/sections/Skills';
 import { Awards } from '@/components/sections/Awards';
+import { Certifications } from '@/components/sections/Certifications';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -16,9 +19,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <div className="pt-10">
       <About />
+      <Interests />
+      <Education />
       <Timeline />
       <Skills />
       <Awards />
+      <Certifications />
     </div>
   );
 }

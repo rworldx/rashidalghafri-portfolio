@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { cn } from '@/lib/cn';
 
 interface TextRevealProps {
@@ -18,7 +18,7 @@ interface TextRevealProps {
  * within the JS budget rather than shipping GSAP.
  */
 export function TextReveal({ text, className, delay = 0, as = 'h1' }: TextRevealProps) {
-  const MotionTag = motion[as];
+  const MotionTag = m[as];
   const words = text.split(' ');
 
   return (
@@ -35,7 +35,7 @@ export function TextReveal({ text, className, delay = 0, as = 'h1' }: TextReveal
           aria-hidden
           className="inline-block overflow-hidden align-bottom"
         >
-          <motion.span
+          <m.span
             className="inline-block"
             variants={{
               hidden: { y: '110%' },
@@ -45,7 +45,7 @@ export function TextReveal({ text, className, delay = 0, as = 'h1' }: TextReveal
           >
             {word}
             {i < words.length - 1 ? ' ' : ''}
-          </motion.span>
+          </m.span>
         </span>
       ))}
     </MotionTag>

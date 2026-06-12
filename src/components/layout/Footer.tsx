@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { site } from '@content/site';
 import { Container } from './Container';
 
@@ -9,7 +9,7 @@ const iconFor = {
   github: Github,
   linkedin: Linkedin,
   email: Mail,
-  instagram: Mail,
+  instagram: Instagram,
 } as const;
 
 /** Site footer: socials, email, attribution, back-to-top (PRD FR-1). */

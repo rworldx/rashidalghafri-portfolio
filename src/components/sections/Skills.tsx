@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { skills } from '@content/skills';
+import { skills, exploring } from '@content/skills';
 import { pick } from '@/lib/localized';
 import { Container } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
@@ -34,6 +34,9 @@ export function Skills() {
             </Reveal>
           ))}
         </div>
+        <Reveal delay={0.1}>
+          <p className="mt-8 font-mono text-sm text-text-muted">{pick(exploring, locale)}</p>
+        </Reveal>
       </Container>
     </section>
   );

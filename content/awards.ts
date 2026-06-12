@@ -1,4 +1,4 @@
-import type { Award } from '@/types/award';
+import type { Award, Certification } from '@/types/award';
 
 /** Honours & achievements (from the CV). Sorted by `order` desc in the UI. */
 export const awards: Award[] = [
@@ -53,6 +53,20 @@ export const awards: Award[] = [
     description: {
       en: 'Reached the national pre-finals with student startup “Techno Water”; exhibited at Al Arefan City, Muscat before industry leaders and investors.',
       ar: 'بلغ التصفيات شبه النهائية الوطنية بمشروع الطلاب الناشئ «تكنو ووتر»؛ وعُرض في مدينة العرفان، مسقط أمام قادة الصناعة والمستثمرين.',
+    },
+  },
+];
+
+/** Certifications (from the CV). The section renders only if this is non-empty. */
+export const certifications: Certification[] = [
+  {
+    id: 'ic3-gs5',
+    title: 'IC3 Digital Literacy — Global Standard 5 (GS5)',
+    issuer: 'Certiport',
+    year: 2023,
+    detail: {
+      en: 'Internationally recognised certification: computing fundamentals, key applications (Word, Excel, PowerPoint), and online collaboration & safety.',
+      ar: 'شهادة معترف بها دوليًا: أساسيات الحوسبة، والتطبيقات الرئيسية (Word، Excel، PowerPoint)، والتعاون والأمان عبر الإنترنت.',
     },
   },
 ];

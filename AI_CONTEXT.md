@@ -49,8 +49,24 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 - `src/lib/fonts.ts` — self-hosted via `next/font/google` (Space Grotesk /
   Inter / JetBrains Mono / IBM Plex Sans Arabic / Tajawal).
 - `src/lib/seo.ts` — `buildMetadata` (per-route) + `buildProjectMetadata`.
-- `src/components/graph/` — the signature connection graph. `GraphSignature`
-  picks interactive canvas vs. static SVG (reduced-motion / SSR).
+- `src/components/graph/` — the 2D connection graph (canvas/SVG). `GraphSignature`
+  picks interactive canvas vs. static SVG (reduced-motion / SSR). Used on the
+  About page and as the hero's reduced-motion/no-WebGL fallback.
+- `src/components/three/` — the hero's 3D constellation. **Deliberately vanilla
+  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`.** Next 15
+  runs React 19 internals in the client bundle, and R3F v8's `react-reconciler`
+  reads React 18's `ReactCurrentOwner` → `undefined` → crash. Do not reintroduce
+  R3F unless you also move to React 19 + R3F v9. `HeroConstellation` builds the
+  scene once and exposes a `setColors` API the theme effect calls; `HeroBackground`
+  gates it (reduced-motion / WebGL / viewport-pause) and wraps it in an
+  `ErrorBoundary` that falls back to the static graph.
+
+## Motion: LazyMotion + `m` (not `motion`)
+
+`MotionProvider` wraps the app in `<LazyMotion features={loadFeatures} strict>`,
+which **forbids the heavy `motion.*` import**. Every animated element must use
+`m.*` from `framer-motion` (hooks like `useScroll`/`useSpring`/`useInView` import
+normally). `strict` throws at runtime if a `motion.*` slips in.
 - `src/lib/contact-schema.ts` — Zod schema + response envelope, shared by the
   form and the API route.
 

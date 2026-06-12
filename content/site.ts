@@ -6,12 +6,12 @@ export const site: SiteContent = {
   name: 'Rashid Al Ghafri',
   monogram: 'RA',
   role: {
-    en: 'Software Engineer · Final-year SE student at BUC',
-    ar: 'مهندس برمجيات · طالب هندسة برمجيات في السنة النهائية بكلية البريمي الجامعية',
+    en: 'Software Engineer · Full-Stack Developer',
+    ar: 'مهندس برمجيات · مطوّر متكامل',
   },
   tagline: {
-    en: 'I build full-stack systems and AI-driven tools — from real-time collaboration to multimodal assistants — shipped end to end.',
-    ar: 'أبني أنظمة متكاملة وأدوات مدعومة بالذكاء الاصطناعي — من التعاون اللحظي إلى المساعدات متعددة الوسائط — من الفكرة حتى الإطلاق.',
+    en: 'Final-year Software Engineering student building AI-driven, real-time full-stack systems — from concept to launch.',
+    ar: 'طالب هندسة برمجيات في سنته الأخيرة، يبني أنظمة متكاملة فورية مدعومة بالذكاء الاصطناعي — من الفكرة إلى الإطلاق.',
   },
   status: {
     en: 'available for opportunities · Oman · 2026',
