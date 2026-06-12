@@ -39,6 +39,21 @@ export function ContactSection() {
               </div>
             </div>
 
+            <div>
+              <p className="font-mono text-xs uppercase tracking-wide text-text-muted">
+                {t('phoneLabel')}
+              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-3">
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, '')}`}
+                  className="force-ltr text-lg text-text hover:text-accent"
+                >
+                  {site.phone}
+                </a>
+                <CopyButton value={site.phone} copyLabel={t('copy')} copiedLabel={t('copied')} />
+              </div>
+            </div>
+
             <div className="flex items-center gap-2">
               {site.socials
                 .filter((s) => s.id !== 'email')

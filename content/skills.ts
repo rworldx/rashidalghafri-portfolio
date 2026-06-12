@@ -23,6 +23,21 @@ export const skills: SkillGroup[] = [
     items: ['Gemini API', 'Prompt Engineering', 'Multimodal AI', 'Agentic workflows (n8n)'],
   },
   {
+    id: 'ai-tools',
+    label: { en: 'AI Tools', ar: 'أدوات الذكاء الاصطناعي' },
+    items: [
+      'Claude',
+      'ChatGPT',
+      'Gemini',
+      'Claude Code',
+      'Cursor',
+      'Codex',
+      'Antigravity',
+      'Higgsfield',
+      'Nano Banana',
+    ],
+  },
+  {
     id: 'security',
     label: { en: 'Security', ar: 'الأمن' },
     items: ['JWT', 'Refresh-token Rotation', 'RBAC'],
@@ -33,14 +48,30 @@ export const skills: SkillGroup[] = [
     items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Visual Studio', 'Android Studio', 'NetBeans'],
   },
   {
-    id: 'ai-dev-tools',
-    label: { en: 'AI Dev Tools', ar: 'أدوات التطوير بالذكاء الاصطناعي' },
-    items: ['Cursor', 'Claude Code', 'Codex'],
+    id: 'design',
+    label: { en: 'Design & Creative', ar: 'التصميم والإبداع' },
+    items: ['Figma', 'Adobe Photoshop', 'Adobe Animate', 'Canva'],
+  },
+  {
+    id: 'productivity',
+    label: { en: 'Productivity', ar: 'الإنتاجية' },
+    items: ['Microsoft Word', 'Microsoft Excel', 'Microsoft PowerPoint'],
+  },
+  {
+    id: 'strengths',
+    label: { en: 'Strengths', ar: 'نقاط القوة' },
+    items: [
+      'Problem Solving',
+      'Critical Thinking',
+      'Teamwork',
+      'Presentation',
+      'Technical Leadership',
+    ],
   },
 ];
 
 /** Sub-note for the Skills section footer. */
 export const exploring = {
-  en: 'Currently exploring: AI agents & agentic workflows (n8n) · Figma',
-  ar: 'أستكشف حاليًا: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي (n8n) · فيغما',
+  en: 'Currently exploring: AI agents, agentic workflows & automation (n8n) · deepening design in Figma',
+  ar: 'أستكشف حاليًا: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي والأتمتة (n8n) · وتعميق التصميم في فيغما',
 };

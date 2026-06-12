@@ -22,6 +22,7 @@ export const site: SiteContent = {
     ar: 'عُمان',
   },
   email: 'rr.abadi44@gmail.com',
+  phone: '+968 9484 6461',
   cvPath: '/resume/Rashid_Al_Ghafri_CV.pdf',
   socials,
 };

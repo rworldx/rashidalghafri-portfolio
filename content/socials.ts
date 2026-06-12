@@ -16,8 +16,8 @@ export const socials: SocialLink[] = [
   },
   {
     id: 'instagram',
-    label: 'StudyNest',
-    href: 'https://instagram.com/studynest.om',
+    label: 'Instagram',
+    href: 'https://instagram.com/rsuniv',
     external: true,
   },
   {

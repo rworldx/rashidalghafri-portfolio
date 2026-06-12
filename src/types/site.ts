@@ -14,6 +14,8 @@ export interface SiteContent {
   status: Localized;
   location: Localized;
   email: string;
+  /** International format, e.g. "+968 9484 6461". */
+  phone: string;
   /** Path to the downloadable CV under /public. */
   cvPath: string;
   socials: SocialLink[];

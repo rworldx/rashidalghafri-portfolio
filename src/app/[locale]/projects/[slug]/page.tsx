@@ -139,6 +139,28 @@ export default async function CaseStudyPage({
                 ))}
               </div>
             </div>
+
+            {project.links && project.links.length > 0 && (
+              <div>
+                <h2 className="font-mono text-xs uppercase tracking-widest text-text-muted">
+                  {t('links')}
+                </h2>
+                <ul className="mt-3 space-y-2">
+                  {project.links.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        target={link.external ? '_blank' : undefined}
+                        rel={link.external ? 'noopener noreferrer' : undefined}
+                        className="inline-flex items-center gap-1.5 text-text-muted hover:text-accent"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </aside>
         </div>
       </Container>

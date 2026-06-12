@@ -76,6 +76,7 @@ export const projects: Project[] = [
     links: [
       { label: 'Live demo', href: 'https://studynest.dev', external: true },
       { label: 'Source', href: 'https://github.com/rworldx/StudyNest-Source', external: true },
+      { label: 'Instagram · @studynest.om', href: 'https://instagram.com/studynest.om', external: true },
     ],
   },
 ];
