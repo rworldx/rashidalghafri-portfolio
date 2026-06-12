@@ -1,0 +1,24 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error"
+  },
+  "overrides": [
+    {
+      "files": ["src/components/sections/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@/components/sections/*", "./*", "../sections/*"],
+                "message": "Sections must not import other sections. Compose from ui/, motion/, graph/, lib/, content/, types/ instead."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Design tokens (PRD §3). Components reference ONLY semantic Tailwind tokens
+ * (bg-bg, text-text-muted, border-border, etc.) which map to these variables.
+ * Never hardcode a colour in a component.
+ */
+@layer base {
+  :root {
+    /* Surfaces */
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --surface-2: #eeede7;
+    --border: #e2e0d8;
+
+    /* Text */
+    --text: #15171c;
+    --text-muted: #5b6270;
+
+    /* Accent + states */
+    --accent: #2f5bea;
+    --accent-soft: #e6ecff;
+    --success: #1fa97a;
+    --focus-ring: #2f5bea;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 22px;
+
+    /* Elevation */
+    --shadow-card: 0 1px 2px rgb(21 23 28 / 0.04), 0 8px 24px -12px rgb(21 23 28 / 0.12);
+  }
+
+  .dark {
+    --bg: #0a0e14;
+    --surface: #121823;
+    --surface-2: #1a2333;
+    --border: #222c3a;
+
+    --text: #eceff4;
+    --text-muted: #9aa5b8;
+
+    --accent: #5b82ff;
+    --accent-soft: #16213d;
+    --success: #7ce0c4;
+    --focus-ring: #7ca0ff;
+
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Locale-driven font families (PRD §3.2 — Arabic swap). */
+  html[lang='ar'] body {
+    @apply font-sans-ar;
+  }
+
+  /* Visible keyboard focus everywhere (WCAG 2.2 — PRD §12). */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Mono indices / code stay LTR even inside an RTL layout. */
+  [dir='rtl'] .force-ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--text);
+  }
+}
+
+@layer utilities {
+  .font-sans-ar {
+    font-family: var(--font-sans-ar), var(--font-sans), sans-serif;
+  }
+  .font-display-ar {
+    font-family: var(--font-display-ar), var(--font-display), sans-serif;
+  }
+
+  /* Skip-to-content link (PRD §12). */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] rounded bg-surface px-4 py-2 text-sm text-text shadow-card;
+  }
+}
+
+/* Honour reduced motion globally as a safety net (MotionProvider also gates). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

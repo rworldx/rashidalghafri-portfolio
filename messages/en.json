@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "home": {
+      "title": "Rashid Al Ghafri — Software Engineer",
+      "description": "Software engineer and final-year SE student building full-stack systems and AI-driven tools. Creator of StudyNest."
+    },
+    "projects": {
+      "title": "Work — Rashid Al Ghafri",
+      "description": "Selected projects, led by StudyNest — an AI-powered collaborative study platform."
+    },
+    "about": {
+      "title": "About — Rashid Al Ghafri",
+      "description": "Software engineering student, builder, and national STEM finalist from Oman."
+    },
+    "contact": {
+      "title": "Contact — Rashid Al Ghafri",
+      "description": "Get in touch with Rashid Al Ghafri."
+    }
+  },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "skipToContent": "Skip to content"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale": {
+    "switch": "Switch language",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "hero": {
+    "index": "01 / portfolio",
+    "viewWork": "View work",
+    "downloadCv": "Download CV"
+  },
+  "featured": {
+    "eyebrow": "Featured project",
+    "problem": "Problem",
+    "solution": "Solution",
+    "live": "Live",
+    "viewCaseStudy": "Read case study",
+    "viewSource": "Source",
+    "viewLive": "Live demo"
+  },
+  "projectsSection": {
+    "eyebrow": "Selected work",
+    "title": "Things I've built",
+    "viewAll": "All projects",
+    "year": "Year",
+    "role": "Role"
+  },
+  "skills": {
+    "eyebrow": "Capabilities",
+    "title": "Skills & tools"
+  },
+  "awards": {
+    "eyebrow": "Recognition",
+    "title": "Honours & achievements"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Systems-minded builder from Oman",
+    "graphTitle": "How it connects",
+    "graphHint": "Drag a node to explore.",
+    "educationTitle": "Education & leadership",
+    "intro": "I'm a final-year Software Engineering student at Al Buraimi University College with a 3.96/4.00 CGPA, more interested in shipping working systems than collecting frameworks. My capstone, StudyNest, took me from a problem statement to a deployed, AI-powered platform used by real students — and to the national STEM finals.",
+    "focus": "I focus on full-stack development, low-latency real-time applications, and practical AI integration. I like work that is precise, fast, and accountable to real users."
+  },
+  "caseStudy": {
+    "overview": "Overview",
+    "problem": "The problem",
+    "solution": "The solution",
+    "role": "My role",
+    "stack": "Tech stack",
+    "highlights": "Key features",
+    "outcomes": "Outcomes",
+    "links": "Links",
+    "back": "All projects"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's build something",
+    "subtitle": "Recruiting, collaboration, or a question about my work — I read every message.",
+    "emailLabel": "Email",
+    "copy": "Copy",
+    "copied": "Copied",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending…",
+      "success": "Thanks — your message is on its way. I'll reply soon.",
+      "errorValidation": "Please check the highlighted fields and try again.",
+      "errorRate": "That's a few too many messages. Try again in a minute.",
+      "errorProvider": "Something went wrong on my end. Email me directly instead.",
+      "mailtoFallback": "Email directly"
+    }
+  },
+  "footer": {
+    "builtWith": "Built with Next.js",
+    "backToTop": "Back to top",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "body": "That route doesn't exist. Let's get you back on track.",
+    "home": "Back home"
+  },
+  "error": {
+    "title": "Something broke",
+    "body": "An unexpected error occurred. Try again.",
+    "retry": "Try again"
+  }
+}

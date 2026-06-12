@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="StudyNest">
+  <rect width="1200" height="675" fill="#0a0e14"/>
+  <g stroke="#222c3a" stroke-width="1">
+    <line x1="600" y1="338" x2="320" y2="180"/>
+    <line x1="600" y1="338" x2="880" y2="180"/>
+    <line x1="600" y1="338" x2="300" y2="500"/>
+    <line x1="600" y1="338" x2="900" y2="500"/>
+  </g>
+  <circle cx="600" cy="338" r="14" fill="#5b82ff"/>
+  <circle cx="320" cy="180" r="8" fill="#7ce0c4"/>
+  <circle cx="880" cy="180" r="8" fill="#9aa5b8"/>
+  <circle cx="300" cy="500" r="8" fill="#9aa5b8"/>
+  <circle cx="900" cy="500" r="8" fill="#7ce0c4"/>
+  <text x="80" y="120" fill="#eceff4" font-family="monospace" font-size="40" font-weight="700">StudyNest</text>
+  <text x="80" y="600" fill="#9aa5b8" font-family="monospace" font-size="24">AI-powered collaborative study platform</text>
+</svg>
