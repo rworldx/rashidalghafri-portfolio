@@ -14,7 +14,7 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "15.1.11",
     "next-intl": "^3.26.3",
     "next-themes": "^0.4.4",
     "react": "^18.3.1",
