@@ -1,16 +1,14 @@
 import { ImageResponse } from 'next/og';
 
-// 96×96 (a multiple of 48) — Google's favicon guidance prefers 48px multiples.
-export const size = { width: 96, height: 96 };
+export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 
 /**
- * Generated favicon — the "RA." wordmark (matches the navbar): dark monogram
- * with the accent-blue dot, on the paper background. Colours are the brand
- * tokens' resolved hex (favicons can't read CSS variables). Next.js injects the
- * <link rel="icon"> for this automatically.
+ * Apple touch icon (home-screen / bookmarks). Same "RA." wordmark, larger and
+ * with padding so it reads well as a rounded app tile. Next.js injects the
+ * <link rel="apple-touch-icon"> automatically.
  */
-export default function Icon() {
+export default function AppleIcon() {
   return new ImageResponse(
     (
       <div
@@ -21,14 +19,13 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           background: '#f6f5f1',
-          borderRadius: 20,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'baseline' }}>
           <span
             style={{
               color: '#15171c',
-              fontSize: 52,
+              fontSize: 92,
               fontWeight: 700,
               letterSpacing: '-0.04em',
               fontFamily: 'sans-serif',
@@ -36,7 +33,7 @@ export default function Icon() {
           >
             RA
           </span>
-          <span style={{ color: '#2f5bea', fontSize: 52, fontWeight: 700 }}>.</span>
+          <span style={{ color: '#2f5bea', fontSize: 92, fontWeight: 700 }}>.</span>
         </div>
       </div>
     ),

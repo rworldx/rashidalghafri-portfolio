@@ -8,7 +8,13 @@ import { routing } from '@/i18n/routing';
 export default createMiddleware(routing);
 
 export const config = {
-  // Explicitly match the root, locale-prefixed paths, and everything else
-  // except API, Next internals, and files with an extension.
-  matcher: ['/', '/(ar|en)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
+  // Match the root, locale-prefixed paths, and everything else EXCEPT: API,
+  // Next internals, files with an extension, and the extension-less metadata
+  // routes (icon / apple-icon / opengraph-image). Without excluding the latter,
+  // the locale middleware swallows them and the favicon 404s.
+  matcher: [
+    '/',
+    '/(ar|en)/:path*',
+    '/((?!api|_next|_vercel|icon|apple-icon|opengraph-image|manifest|sitemap|robots|.*\\..*).*)',
+  ],
 };
