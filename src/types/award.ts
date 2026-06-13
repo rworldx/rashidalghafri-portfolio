@@ -21,4 +21,6 @@ export interface Award {
   description: Localized;
   /** Optional accent — e.g. "national", "finalist". */
   tag?: Localized;
+  /** Internal route to a detail/case-study page; makes the card clickable. */
+  href?: string;
 }

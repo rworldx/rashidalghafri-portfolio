@@ -63,7 +63,8 @@
   },
   "awards": {
     "eyebrow": "Recognition",
-    "title": "Honours & achievements"
+    "title": "Honours & achievements",
+    "viewDetails": "View details"
   },
   "about": {
     "eyebrow": "About",

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="EnerGrid">
+  <rect width="1200" height="675" fill="#0a0e14"/>
+  <g stroke="#222c3a" stroke-width="1">
+    <path d="M120 540 H1080" />
+    <path d="M120 420 H1080" />
+    <path d="M120 300 H1080" />
+  </g>
+  <polyline points="120,500 280,360 440,440 600,220 760,320 920,180 1080,260"
+    fill="none" stroke="#7ce0c4" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M150 250 l40 0 -28 70 56 0 -64 95 18 -78 -40 0 z" fill="#5b82ff"/>
+  <text x="80" y="140" fill="#eceff4" font-family="monospace" font-size="44" font-weight="700">EnerGrid</text>
+  <text x="80" y="620" fill="#9aa5b8" font-family="monospace" font-size="22">Smart per-device energy monitoring</text>
+</svg>

@@ -15,12 +15,6 @@ export const socials: SocialLink[] = [
     external: true,
   },
   {
-    id: 'instagram',
-    label: 'Instagram',
-    href: 'https://instagram.com/rsuniv',
-    external: true,
-  },
-  {
     id: 'email',
     label: 'Email',
     href: 'mailto:rr.abadi44@gmail.com',
