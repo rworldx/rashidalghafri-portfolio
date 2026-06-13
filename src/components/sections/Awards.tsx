@@ -31,6 +31,9 @@ export function Awards() {
                 <h3 className="mt-4 font-display text-xl font-semibold text-text">
                   {pick(award.title, locale)}
                 </h3>
+                {award.org && (
+                  <p className="mt-1 text-sm text-accent">{pick(award.org, locale)}</p>
+                )}
                 {award.tag && (
                   <div className="mt-2">
                     <Badge tone="accent">{pick(award.tag, locale)}</Badge>

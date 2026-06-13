@@ -45,12 +45,12 @@ export const timeline: TimelineEntry[] = [
     year: 2025,
     kind: 'award',
     title: {
-      en: '2nd Place — Student Entrepreneurship Camp',
-      ar: 'المركز الثاني — معسكر ريادة الأعمال الطلابي',
+      en: '2nd Place — Promising Student Projects Camp (EnerGrid)',
+      ar: 'المركز الثاني — مخيم مشاريع الطلاب الواعدة (EnerGrid)',
     },
     detail: {
-      en: 'Cash prize · recognised by Oman SME Authority',
-      ar: 'جائزة نقدية · تكريم من هيئة المؤسسات الصغيرة والمتوسطة',
+      en: 'Smart energy-monitoring concept · cash prize from Riyada',
+      ar: 'فكرة ذكية لمراقبة الطاقة · جائزة نقدية من ريادة',
     },
   },
   {

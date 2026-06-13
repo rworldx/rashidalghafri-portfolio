@@ -20,13 +20,18 @@ export const awards: Award[] = [
     id: 'entrepreneurship-2025',
     order: 3,
     title: {
-      en: '2nd Place — Student Entrepreneurship Camp',
-      ar: 'المركز الثاني — معسكر ريادة الأعمال الطلابي',
+      en: '2nd Place — Promising Student Projects Camp',
+      ar: 'المركز الثاني — مخيم مشاريع الطلاب الواعدة',
+    },
+    org: {
+      en: 'SME Development Authority (Riyada) · Oman Promising Startups Programme',
+      ar: 'هيئة تنمية المشاريع الصغيرة والمتوسطة (ريادة) · برنامج الشركات الناشئة الواعدة العُماني',
     },
     date: '2025',
+    tag: { en: 'EnerGrid', ar: 'EnerGrid' },
     description: {
-      en: 'Pitched a tech-based business concept to industry judges, outperforming 20+ teams; earned a cash prize and recognition from the Chairperson of Oman’s SME Authority.',
-      ar: 'قدّم فكرة عمل قائمة على التقنية أمام لجنة من خبراء الصناعة، متفوّقًا على أكثر من ٢٠ فريقًا؛ وحصل على جائزة مالية وتقدير من رئيس الهيئة العامة لتنمية المؤسسات الصغيرة والمتوسطة في عُمان.',
+      en: 'Pitched EnerGrid — a smart energy-monitoring concept that tracks real-time power consumption per device to cut waste and lower household bills — placing 2nd of 20+ teams and earning a cash prize and recognition from Riyada’s Chairperson.',
+      ar: 'قدّم EnerGrid — فكرة ذكية لمراقبة الطاقة تتتبّع استهلاك كل جهاز لحظيًا لتقليل الهدر وخفض فواتير المنزل — محقّقًا المركز الثاني بين أكثر من ٢٠ فريقًا، ونال جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
     },
   },
   {
