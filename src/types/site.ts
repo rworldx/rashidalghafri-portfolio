@@ -5,7 +5,10 @@ export interface SocialLink extends LinkItem {
 }
 
 export interface SiteContent {
+  /** Canonical English name — used for SEO, metadata, JSON-LD. */
   name: string;
+  /** Localized display name for the hero/footer (Arabic reads correctly in RTL). */
+  displayName: Localized;
   /** Monogram for the wordmark, e.g. "RA". */
   monogram: string;
   role: Localized;

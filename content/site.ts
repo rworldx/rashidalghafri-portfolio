@@ -4,6 +4,7 @@ import { socials } from './socials';
 /** Core identity. All facts here are confirmed from Rashid's 2026 CV. */
 export const site: SiteContent = {
   name: 'Rashid Al Ghafri',
+  displayName: { en: 'Rashid Al Ghafri', ar: 'راشد الغافري' },
   monogram: 'RA',
   role: {
     en: 'Software Engineer · Full-Stack Developer',

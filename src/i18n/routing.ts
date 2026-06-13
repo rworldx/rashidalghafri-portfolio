@@ -8,6 +8,9 @@ export const routing = defineRouting({
   locales: ['en', 'ar'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
+  // First visit always lands in English regardless of the browser's language;
+  // the user can switch to Arabic via the locale switcher (which prefixes /ar).
+  localeDetection: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

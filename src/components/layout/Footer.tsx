@@ -1,8 +1,9 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowUp, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { site } from '@content/site';
+import { pick } from '@/lib/localized';
 import { Container } from './Container';
 
 const iconFor = {
@@ -15,13 +16,16 @@ const iconFor = {
 /** Site footer: socials, email, attribution, back-to-top (PRD FR-1). */
 export function Footer() {
   const t = useTranslations('footer');
+  const locale = useLocale();
   const year = new Date().getFullYear();
 
   return (
     <footer className="mt-24 border-t border-border py-12">
       <Container className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
-          <p className="font-display text-base font-semibold text-text">{site.name}</p>
+          <p className="font-display text-base font-semibold text-text">
+            {pick(site.displayName, locale)}
+          </p>
           <p className="font-mono text-xs text-text-muted">
             © {year} · {t('rights')}
           </p>

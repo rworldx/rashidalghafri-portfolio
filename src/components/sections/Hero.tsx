@@ -43,7 +43,7 @@ export function Hero() {
 
         <TextReveal
           as="h1"
-          text={site.name}
+          text={pick(site.displayName, locale)}
           className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-text sm:text-6xl md:text-7xl"
         />
 
