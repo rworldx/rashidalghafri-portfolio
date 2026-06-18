@@ -41,8 +41,8 @@ export default async function ResumePage({ params }: { params: Promise<{ locale:
         </div>
       </Container>
 
-      <Timeline />
       <Education />
+      <Timeline />
       <Skills />
       <Awards />
       <Certifications />

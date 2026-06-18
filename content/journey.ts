@@ -1,9 +1,9 @@
 import type { TimelineEntry } from '@/types/common';
 
 /**
- * Professional journey (PRD §B.3) — the chronological path through education,
+ * Professional journey — chronological path through education, activities,
  * projects, recognition and leadership. Drives the scroll-draw timeline on the
- * Résumé page (the personal travel story lives on /about instead).
+ * Résumé page (under Education). The personal travel story lives on /about.
  */
 export const journey: TimelineEntry[] = [
   {
@@ -19,6 +19,30 @@ export const journey: TimelineEntry[] = [
     },
   },
   {
+    year: 2022,
+    kind: 'milestone',
+    title: {
+      en: 'IT Club — Member & Event Organizer',
+      ar: 'نادي تقنية المعلومات — عضو ومنظّم فعاليات',
+    },
+    detail: {
+      en: 'Since the Foundation year — organised Student Activities Week (Open Week) and ran the club’s social media & event communications. Recognised with certificates for active contribution.',
+      ar: 'منذ السنة التأسيسية — نظّمتُ أسبوع الأنشطة الطلابية (الأسبوع المفتوح) وأدرتُ حسابات النادي والتواصل حول الفعاليات. وحصلتُ على شهادات تقدير للمساهمة الفاعلة.',
+    },
+  },
+  {
+    year: 2022,
+    kind: 'milestone',
+    title: {
+      en: 'Debate Club — Helped run competitions (2022–2024)',
+      ar: 'نادي المناظرات — المساهمة في تنظيم المسابقات (٢٠٢٢–٢٠٢٤)',
+    },
+    detail: {
+      en: 'Supported organising and running debate competitions.',
+      ar: 'دعمتُ تنظيم وإدارة مسابقات المناظرة.',
+    },
+  },
+  {
     year: 2024,
     kind: 'award',
     title: {
@@ -30,7 +54,10 @@ export const journey: TimelineEntry[] = [
   {
     year: 2024,
     kind: 'hackathon',
-    title: { en: 'Omantel × Hafeet Rail Hackathon', ar: 'هاكاثون عُمانتل × قطار حفيت' },
+    title: {
+      en: 'Omantel × Hafeet Rail Hackathon',
+      ar: 'هاكاثون عُمانتل × قطار حفيت',
+    },
     detail: {
       en: 'IoT smart waste-sorting bin concept · NB-IoT on Omantel',
       ar: 'فكرة حاوية فرز نفايات ذكية بإنترنت الأشياء · NB-IoT على شبكة عُمانتل',
@@ -86,5 +113,12 @@ export const journey: TimelineEntry[] = [
     kind: 'milestone',
     title: { en: 'StudyNest live · graduating (Distinction)', ar: 'إطلاق StudyNest · التخرّج بامتياز' },
     detail: { en: 'studynest.dev · B.Eng completes Jul 2026', ar: 'studynest.dev · إتمام البكالوريوس يوليو ٢٠٢٦' },
+  },
+  {
+    year: 2026,
+    kind: 'goal',
+    future: true,
+    title: { en: 'Working toward studying abroad', ar: 'أعمل على الدراسة في الخارج' },
+    detail: { en: 'Next chapter', ar: 'الفصل القادم' },
   },
 ];
