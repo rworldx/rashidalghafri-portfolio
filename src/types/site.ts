@@ -21,5 +21,7 @@ export interface SiteContent {
   phone: string;
   /** Path to the downloadable CV under /public. */
   cvPath: string;
+  /** Professional headshot under /public (falls back to a monogram if missing). */
+  portrait: string;
   socials: SocialLink[];
 }

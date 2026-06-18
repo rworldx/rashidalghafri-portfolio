@@ -49,9 +49,12 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 - `src/lib/fonts.ts` — self-hosted via `next/font/google` (Space Grotesk /
   Inter / JetBrains Mono / IBM Plex Sans Arabic / Tajawal).
 - `src/lib/seo.ts` — `buildMetadata` (per-route) + `buildProjectMetadata`.
-- `src/components/graph/` — the 2D connection graph (canvas/SVG). `GraphSignature`
-  picks interactive canvas vs. static SVG (reduced-motion / SSR). Used on the
-  About page and as the hero's reduced-motion/no-WebGL fallback.
+- `src/components/graph/` — the static SVG node diagram (`ConnectionGraph.static`)
+  used only as the hero's reduced-motion / no-WebGL fallback. (The interactive
+  canvas graph was removed; the About page now features the portrait instead.)
+- `src/components/ui/PortraitCard.tsx` — the About headshot: 3D tilt-on-pointer
+  card with an accent glow and caption; falls back to a monogram if
+  `site.portrait` (default `/images/portrait.jpg`) is missing.
 - `src/components/three/` — the hero's 3D constellation. **Deliberately vanilla
   Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`.** Next 15
   runs React 19 internals in the client bundle, and R3F v8's `react-reconciler`
