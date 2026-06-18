@@ -45,6 +45,7 @@ export const projects: Project[] = [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
       { label: { en: 'Realtime events', ar: 'أحداث لحظية' }, value: '100+' },
       { label: { en: 'Data models', ar: 'نماذج بيانات' }, value: '20' },
+      { label: { en: 'Passing tests', ar: 'اختبارات ناجحة' }, value: '125' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا التجربة' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'حسّن الدراسة' }, value: '95%' },
@@ -67,8 +68,8 @@ export const projects: Project[] = [
         ar: 'مؤمّن بمصادقة JWT وتدوير رموز التحديث والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك / مشاهد) والتحقّق بخطوتين وتأكيد البريد.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events and 20 data models — bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من ١٠٠ نقطة نهاية REST، وأكثر من ١٠٠ حدث لحظي، و٢٠ نموذج بيانات — ثنائية اللغة (إنجليزي/عربي)، خمسة سمات، تطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 125 passing tests — bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من ١٠٠ نقطة نهاية REST، وأكثر من ١٠٠ حدث لحظي، و٢٠ نموذج بيانات، و١٢٥ اختبارًا ناجحًا — ثنائية اللغة (إنجليزي/عربي)، خمسة سمات، تطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
