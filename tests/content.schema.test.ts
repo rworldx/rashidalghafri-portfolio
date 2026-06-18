@@ -8,7 +8,7 @@ import { graph } from '@content/graph';
 import { site } from '@content/site';
 import { certifications } from '@content/awards';
 import { journey } from '@content/journey';
-import { travels } from '@content/personal';
+import { travels, schooling } from '@content/personal';
 import { interests, aboutStory } from '@content/about';
 
 /**
@@ -124,6 +124,10 @@ describe('content/travels', () => {
   });
   it('matches the Travel schema', () => {
     for (const t of travels) expect(() => schema.parse(t)).not.toThrow();
+  });
+  it('schooling entries are well-formed', () => {
+    const s = z.object({ grades: z.string().min(1), name: localized });
+    for (const e of schooling) expect(() => s.parse(e)).not.toThrow();
   });
 });
 

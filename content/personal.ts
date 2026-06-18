@@ -61,6 +61,25 @@ export const travels: Travel[] = [
   },
 ];
 
+/** Early schooling — rendered as an academic "path" on the About page. */
+export const schooling: { grades: string; name: Localized }[] = [
+  { grades: '1–4', name: { en: 'Shumūʿ Al-Maʿrifa School', ar: 'مدرسة شموع المعرفة' } },
+  {
+    grades: '5–10',
+    name: { en: 'Mohammed bin Sulaiman Al Ghafri School', ar: 'مدرسة محمد بن سليمان الغافري' },
+  },
+  {
+    grades: '11–12',
+    name: { en: 'Dirar bin Al-Azwar — Basic Education', ar: 'مدرسة ضرار بن الأزور للتعليم الأساسي' },
+  },
+];
+
+/** Footnote under the schooling path. */
+export const schoolingNote: Localized = {
+  en: 'Scouts (grades 5–10) · consistently among the top students.',
+  ar: 'الكشافة (الصفوف ٥–١٠) · من الطلاب المتفوّقين باستمرار.',
+};
+
 /** Aside note for the travel log (UAE is uncounted — too frequent). */
 export const travelNote: Localized = {
   en: 'UAE — lost count somewhere past 100 visits; it’s practically a second home.',
