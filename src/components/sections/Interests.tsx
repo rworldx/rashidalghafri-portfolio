@@ -8,6 +8,7 @@ import {
   ChefHat,
   Languages,
   Plane,
+  Camera,
   type LucideIcon,
 } from 'lucide-react';
 import { interests } from '@content/about';
@@ -25,6 +26,7 @@ const icons: Record<string, LucideIcon> = {
   ChefHat,
   Languages,
   Plane,
+  Camera,
 };
 
 /** "Beyond the code" interest grid (Addendum A.3). */

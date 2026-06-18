@@ -66,6 +66,7 @@ export const skills: SkillGroup[] = [
       'Teamwork',
       'Presentation',
       'Technical Leadership',
+      'Event Management',
     ],
   },
 ];

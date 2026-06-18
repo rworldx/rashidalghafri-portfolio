@@ -44,8 +44,8 @@ export const awards: Award[] = [
     },
     date: '2024',
     description: {
-      en: 'Completed a 4-day intensive hackathon with international teams — collaborating under pressure to design and prototype a working solution.',
-      ar: 'أكمل هاكاثونًا مكثفًا لمدة ٤ أيام مع فرق دولية — متعاونًا تحت الضغط لتصميم حلٍّ عملي وبناء نموذجه الأولي.',
+      en: 'Co-designed and prototyped a concept for an IoT smart waste-sorting bin: a near-infrared (NIR/MIR) scanner identifies each item and a sorting arm routes recyclables (PET, HDPE, LDPE, PP) into five compartments, while per-compartment fill sensors report to the cloud over NB-IoT on Omantel’s network. A 4-day team build under pressure.',
+      ar: 'شاركتُ في تصميم وبناء نموذج أولي لفكرة حاوية نفايات ذكية تعمل بإنترنت الأشياء: ماسح بالأشعة تحت الحمراء (NIR/MIR) يحدّد كل عنصر وذراع فرز توجّه القابل للتدوير (PET، HDPE، LDPE، PP) إلى خمسة أقسام، مع حسّاسات امتلاء لكل قسم ترسل البيانات إلى السحابة عبر NB-IoT على شبكة عُمانتل. عملٌ جماعي مكثّف على مدى أربعة أيام.',
     },
   },
   {

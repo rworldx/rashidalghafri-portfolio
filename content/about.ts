@@ -30,5 +30,6 @@ export const interests: Interest[] = [
   { icon: 'Clapperboard', label: { en: 'Films, series & anime', ar: 'الأفلام والمسلسلات والأنمي' } },
   { icon: 'ChefHat', label: { en: 'Italian food — pasta above all', ar: 'المطبخ الإيطالي — والباستا قبل كل شيء' } },
   { icon: 'Languages', label: { en: 'English is my favourite subject', ar: 'الإنجليزية مادتي المفضلة' } },
+  { icon: 'Camera', label: { en: 'Photography — capturing moments off-screen', ar: 'التصوير — التقاط اللحظات خارج الشاشة' } },
   { icon: 'Plane', label: { en: 'Planning to study abroad', ar: 'أخطّط للدراسة في الخارج' } },
 ];

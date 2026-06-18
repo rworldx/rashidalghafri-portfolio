@@ -15,6 +15,30 @@ export const timeline: TimelineEntry[] = [
     },
   },
   {
+    year: 2022,
+    kind: 'milestone',
+    title: {
+      en: 'IT Club — Member & Event Organizer',
+      ar: 'نادي تقنية المعلومات — عضو ومنظّم فعاليات',
+    },
+    detail: {
+      en: 'Since the Foundation year — organised Student Activities Week (Open Week) and ran the club’s social media & event communications. Recognised with certificates for active contribution.',
+      ar: 'منذ السنة التأسيسية — نظّمتُ أسبوع الأنشطة الطلابية (الأسبوع المفتوح) وأدرتُ حسابات النادي والتواصل حول الفعاليات. وحصلتُ على شهادات تقدير للمساهمة الفاعلة.',
+    },
+  },
+  {
+    year: 2022,
+    kind: 'milestone',
+    title: {
+      en: 'Debate Club — Helped run competitions (2022–2024)',
+      ar: 'نادي المناظرات — المساهمة في تنظيم المسابقات (٢٠٢٢–٢٠٢٤)',
+    },
+    detail: {
+      en: 'Supported organising and running debate competitions.',
+      ar: 'دعمتُ تنظيم وإدارة مسابقات المناظرة.',
+    },
+  },
+  {
     year: 2024,
     kind: 'award',
     title: {
@@ -28,9 +52,12 @@ export const timeline: TimelineEntry[] = [
     kind: 'hackathon',
     title: {
       en: 'Omantel × Hafeet Rail Hackathon',
-      ar: 'هاكاثون عُمانتل × قطار حافيت',
+      ar: 'هاكاثون عُمانتل × قطار حفيت',
     },
-    detail: { en: '4-day international hackathon', ar: 'هاكاثون دولي على مدى ٤ أيام' },
+    detail: {
+      en: 'IoT smart waste-sorting bin concept · NB-IoT on Omantel',
+      ar: 'فكرة حاوية فرز نفايات ذكية بإنترنت الأشياء · NB-IoT على شبكة عُمانتل',
+    },
   },
   {
     year: 2025,

@@ -112,8 +112,11 @@ export function ContactForm() {
         )}
       </div>
 
-      {/* Honeypot — visually hidden, ignored by humans, hidden from AT. */}
-      <div className="absolute -left-[9999px]" aria-hidden>
+      {/* Honeypot — visually hidden, ignored by humans, hidden from AT.
+          Uses `sr-only` (clip-based) rather than an off-screen `-left-[9999px]`,
+          which in RTL is counted as ~9999px of scrollable width and broke the
+          Arabic layout (phantom horizontal overflow). */}
+      <div className="sr-only" aria-hidden>
         <label htmlFor="company">Company</label>
         <input id="company" tabIndex={-1} autoComplete="off" {...register('company')} />
       </div>
