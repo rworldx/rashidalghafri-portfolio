@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site.config';
 
 /** Enumerates both locales × all routes (PRD §11). */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ['', '/projects', '/about', '/contact'];
+  const staticPaths = ['', '/projects', '/resume', '/about', '/contact'];
   const projectPaths = projects.map((p) => `/projects/${p.slug}`);
   const allPaths = [...staticPaths, ...projectPaths];
 

@@ -4,11 +4,12 @@
  */
 export interface NavItem {
   href: string;
-  labelKey: 'work' | 'about' | 'contact';
+  labelKey: 'work' | 'about' | 'resume' | 'contact';
 }
 
 export const navItems: NavItem[] = [
-  { href: '/about', labelKey: 'about' },
   { href: '/projects', labelKey: 'work' },
+  { href: '/resume', labelKey: 'resume' },
+  { href: '/about', labelKey: 'about' },
   { href: '/contact', labelKey: 'contact' },
 ];

@@ -13,7 +13,7 @@ function alternates(path: string) {
   return languages;
 }
 
-type MetaKey = 'home' | 'projects' | 'about' | 'contact';
+type MetaKey = 'home' | 'projects' | 'resume' | 'about' | 'contact';
 
 /** Per-route metadata from the `meta` message namespace + canonical/alternates. */
 export async function buildMetadata(

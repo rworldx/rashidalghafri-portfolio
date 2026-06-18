@@ -25,10 +25,9 @@ export interface Interest {
 }
 
 export type TimelineKind =
+  | 'birth'
+  | 'travel'
   | 'education'
-  | 'project'
-  | 'award'
-  | 'hackathon'
   | 'milestone'
   | 'goal';
 

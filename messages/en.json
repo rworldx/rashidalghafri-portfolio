@@ -12,6 +12,10 @@
       "title": "About — Rashid Al Ghafri",
       "description": "Software engineering student, builder, and national STEM finalist from Oman."
     },
+    "resume": {
+      "title": "Résumé — Rashid Al Ghafri",
+      "description": "Education, skills, awards and certifications — the credentials at a glance."
+    },
     "contact": {
       "title": "Contact — Rashid Al Ghafri",
       "description": "Get in touch with Rashid Al Ghafri."
@@ -20,6 +24,7 @@
   "nav": {
     "work": "Work",
     "about": "About",
+    "resume": "Résumé",
     "contact": "Contact",
     "menu": "Menu",
     "close": "Close",
@@ -56,6 +61,15 @@
     "viewAll": "All projects",
     "year": "Year",
     "role": "Role"
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Experience & leadership"
+  },
+  "resume": {
+    "eyebrow": "Résumé",
+    "title": "Credentials at a glance",
+    "download": "Download CV"
   },
   "skills": {
     "eyebrow": "Capabilities",

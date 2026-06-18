@@ -1,120 +1,61 @@
 import type { TimelineEntry } from '@/types/common';
 
-/** Chronological timeline driving the visual spine (Addendum B.3). Real CV data. */
+/**
+ * Personal journey (Addendum B.3) — life & travel, NOT professional milestones
+ * (those live on /work and /resume, so nothing is duplicated). Drives the
+ * scroll-draw timeline on the About page.
+ */
 export const timeline: TimelineEntry[] = [
+  {
+    year: 2004,
+    kind: 'birth',
+    title: { en: 'Born in Oman', ar: 'وُلدت في عُمان' },
+    detail: { en: '3 September 2004 · from Ibri', ar: '٣ سبتمبر ٢٠٠٤ · من ولاية عبري' },
+  },
+  {
+    year: 2007,
+    kind: 'travel',
+    title: { en: 'First flight — Thailand', ar: 'أول رحلة طيران — تايلاند' },
+    detail: { en: 'Three years old', ar: 'في الثالثة من عمري' },
+  },
+  {
+    year: 2013,
+    kind: 'travel',
+    title: { en: 'Summer in Germany', ar: 'صيف في ألمانيا' },
+    detail: { en: 'And online since — on Instagram since 2013', ar: 'ومنذ ذلك الحين على إنستغرام (٢٠١٣)' },
+  },
+  {
+    year: 2014,
+    kind: 'milestone',
+    title: { en: 'Scouts (grades 5–10)', ar: 'الكشافة (الصفوف ٥–١٠)' },
+    detail: { en: 'Six years of teamwork outdoors', ar: 'ست سنوات من العمل الجماعي في الهواء الطلق' },
+  },
+  {
+    year: 2018,
+    kind: 'travel',
+    title: { en: 'Azerbaijan', ar: 'أذربيجان' },
+    detail: { en: 'New region, new culture', ar: 'منطقة جديدة وثقافة جديدة' },
+  },
   {
     year: 2022,
     kind: 'education',
-    title: {
-      en: 'Began B.Eng, Software Engineering — BUC',
-      ar: 'بدأت بكالوريوس هندسة البرمجيات — كلية البريمي الجامعية',
-    },
+    title: { en: 'Started Software Engineering — BUC', ar: 'بدأت هندسة البرمجيات — كلية البريمي الجامعية' },
+    detail: { en: 'The pivot to building · also: Thailand again (Feb 2022)', ar: 'التحوّل نحو البناء · وأيضًا: تايلاند مجددًا (فبراير ٢٠٢٢)' },
+  },
+  {
+    year: 2023,
+    kind: 'travel',
+    title: { en: 'GCC road trip', ar: 'رحلة برية عبر الخليج' },
     detail: {
-      en: 'Al Buraimi University College, Oman · Oct 2022',
-      ar: 'كلية البريمي الجامعية، عُمان · أكتوبر ٢٠٢٢',
+      en: 'Oman → UAE → Saudi Arabia → Bahrain → Qatar',
+      ar: 'عُمان ← الإمارات ← السعودية ← البحرين ← قطر',
     },
-  },
-  {
-    year: 2022,
-    kind: 'milestone',
-    title: {
-      en: 'IT Club — Member & Event Organizer',
-      ar: 'نادي تقنية المعلومات — عضو ومنظّم فعاليات',
-    },
-    detail: {
-      en: 'Since the Foundation year — organised Student Activities Week (Open Week) and ran the club’s social media & event communications. Recognised with certificates for active contribution.',
-      ar: 'منذ السنة التأسيسية — نظّمتُ أسبوع الأنشطة الطلابية (الأسبوع المفتوح) وأدرتُ حسابات النادي والتواصل حول الفعاليات. وحصلتُ على شهادات تقدير للمساهمة الفاعلة.',
-    },
-  },
-  {
-    year: 2022,
-    kind: 'milestone',
-    title: {
-      en: 'Debate Club — Helped run competitions (2022–2024)',
-      ar: 'نادي المناظرات — المساهمة في تنظيم المسابقات (٢٠٢٢–٢٠٢٤)',
-    },
-    detail: {
-      en: 'Supported organising and running debate competitions.',
-      ar: 'دعمتُ تنظيم وإدارة مسابقات المناظرة.',
-    },
-  },
-  {
-    year: 2024,
-    kind: 'award',
-    title: {
-      en: 'Injaz Oman — National Pre-Finals ("Techno Water")',
-      ar: 'إنجاز عُمان — التصفيات قبل النهائية ("تكنو ووتر")',
-    },
-    detail: { en: 'Exhibited at Al Arefan City, Muscat', ar: 'عُرض في مدينة العرفان، مسقط' },
-  },
-  {
-    year: 2024,
-    kind: 'hackathon',
-    title: {
-      en: 'Omantel × Hafeet Rail Hackathon',
-      ar: 'هاكاثون عُمانتل × قطار حفيت',
-    },
-    detail: {
-      en: 'IoT smart waste-sorting bin concept · NB-IoT on Omantel',
-      ar: 'فكرة حاوية فرز نفايات ذكية بإنترنت الأشياء · NB-IoT على شبكة عُمانتل',
-    },
-  },
-  {
-    year: 2025,
-    kind: 'project',
-    title: { en: 'Started building StudyNest', ar: 'بدأت بناء StudyNest' },
-    detail: {
-      en: 'AI-powered collaborative study platform',
-      ar: 'منصّة دراسة تعاونية مدعومة بالذكاء الاصطناعي',
-    },
-  },
-  {
-    year: 2025,
-    kind: 'award',
-    title: {
-      en: '2nd Place — Promising Student Projects Camp (EnerGrid)',
-      ar: 'المركز الثاني — مخيم مشاريع الطلاب الواعدة (EnerGrid)',
-    },
-    detail: {
-      en: 'Smart energy-monitoring concept · cash prize from Riyada',
-      ar: 'فكرة ذكية لمراقبة الطاقة · جائزة نقدية من ريادة',
-    },
-  },
-  {
-    year: 2026,
-    kind: 'milestone',
-    title: {
-      en: 'Webmaster — IEEE Student Branch (BUC launch)',
-      ar: 'مسؤول الموقع — فرع IEEE الطلابي (إطلاق BUC)',
-    },
-    detail: { en: 'Official branch launch · Feb 2026', ar: 'الإطلاق الرسمي للفرع · فبراير ٢٠٢٦' },
-  },
-  {
-    year: 2026,
-    kind: 'milestone',
-    title: {
-      en: 'Department Representative — Capstone Showcase',
-      ar: 'ممثّل القسم — معرض مشاريع التخرّج',
-    },
-    detail: { en: 'Presented to the Dean & faculty · Apr 2026', ar: 'قدّمت أمام العميد وأعضاء الهيئة · أبريل ٢٠٢٦' },
-  },
-  {
-    year: 2026,
-    kind: 'award',
-    title: { en: 'LIYSF — National Finalist, Top 30', ar: 'LIYSF — متأهل وطني، أفضل ٣٠' },
-    detail: { en: 'Top 30 of 738 STEM projects · Jun 2026', ar: 'أفضل ٣٠ من ٧٣٨ مشروعًا · يونيو ٢٠٢٦' },
-  },
-  {
-    year: 2026,
-    kind: 'milestone',
-    title: { en: 'StudyNest live · graduating (Distinction)', ar: 'إطلاق StudyNest · التخرّج بامتياز' },
-    detail: { en: 'studynest.dev · B.Eng completes Jul 2026', ar: 'studynest.dev · إتمام البكالوريوس يوليو ٢٠٢٦' },
   },
   {
     year: 2026,
     kind: 'goal',
     future: true,
     title: { en: 'Working toward studying abroad', ar: 'أعمل على الدراسة في الخارج' },
-    detail: { en: 'Next chapter', ar: 'الفصل القادم' },
+    detail: { en: 'The next chapter', ar: 'الفصل القادم' },
   },
 ];

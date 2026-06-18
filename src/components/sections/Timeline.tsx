@@ -13,11 +13,10 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 
 /** Token-driven accent per entry kind (no hardcoded colours). */
 const dotColor: Record<TimelineKind, string> = {
+  birth: 'var(--accent)',
+  travel: 'var(--success)',
   education: 'var(--accent)',
-  project: 'var(--success)',
-  award: 'var(--accent)',
-  hackathon: 'var(--text)',
-  milestone: 'var(--success)',
+  milestone: 'var(--text)',
   goal: 'var(--text-muted)',
 };
 

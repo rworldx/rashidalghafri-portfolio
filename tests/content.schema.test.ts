@@ -97,7 +97,7 @@ describe('content/graph', () => {
 describe('content/timeline', () => {
   const schema = z.object({
     year: z.number().int(),
-    kind: z.enum(['education', 'project', 'award', 'hackathon', 'milestone', 'goal']),
+    kind: z.enum(['birth', 'travel', 'education', 'milestone', 'goal']),
     title: localized,
     detail: localized,
     future: z.boolean().optional(),

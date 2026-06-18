@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Container } from '@/components/layout/Container';
 import { ProjectsGrid } from '@/components/sections/ProjectsGrid';
+import { Experience } from '@/components/sections/Experience';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -22,6 +23,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         </h1>
       </Container>
       <ProjectsGrid withHeading={false} />
+      <Experience />
     </div>
   );
 }

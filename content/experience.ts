@@ -55,4 +55,36 @@ export const experience: ExperienceItem[] = [
       },
     ],
   },
+  {
+    id: 'it-club',
+    kind: 'activity',
+    order: 2,
+    title: { en: 'Member & Event Organizer — IT Club', ar: 'عضو ومنظّم فعاليات — نادي تقنية المعلومات' },
+    org: { en: 'Al Buraimi University College', ar: 'كلية البريمي الجامعية' },
+    period: '2022 – 2026',
+    bullets: [
+      {
+        en: 'Active since the Foundation year; helped organise the club’s flagship annual events, including Student Activities Week (Open Week) — earning repeated recognition for sustained contribution.',
+        ar: 'عضو فاعل منذ السنة التأسيسية؛ ساهمت في تنظيم فعاليات النادي السنوية الكبرى، ومنها أسبوع الأنشطة الطلابية (الأسبوع المفتوح) — ونلت تقديرًا متكرّرًا على المساهمة المستمرة.',
+      },
+      {
+        en: 'Manage the club’s official social-media presence and event communications across activities.',
+        ar: 'أدير الحضور الرسمي للنادي على وسائل التواصل والتواصل حول الفعاليات.',
+      },
+    ],
+  },
+  {
+    id: 'debate',
+    kind: 'activity',
+    order: 1,
+    title: { en: 'Member — Debate Club', ar: 'عضو — نادي المناظرات' },
+    org: { en: 'Al Buraimi University College', ar: 'كلية البريمي الجامعية' },
+    period: '2022 – 2024',
+    bullets: [
+      {
+        en: 'Supported organising and running debate competitions.',
+        ar: 'دعمت تنظيم وإدارة مسابقات المناظرة.',
+      },
+    ],
+  },
 ];
