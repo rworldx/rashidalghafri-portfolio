@@ -2,9 +2,8 @@ import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { FeaturedProject } from '@/components/sections/FeaturedProject';
 import { ProjectsGrid } from '@/components/sections/ProjectsGrid';
-import { Skills } from '@/components/sections/Skills';
-import { Awards } from '@/components/sections/Awards';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { AboutTeaser } from '@/components/sections/AboutTeaser';
+import { ContactCta } from '@/components/sections/ContactCta';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { buildMetadata } from '@/lib/seo';
 
@@ -23,11 +22,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd />
       <Hero />
       <FeaturedProject />
-      {/* Renders nothing while StudyNest is the only (featured) project. */}
+      {/* Teaser of the rest of the work; full list lives on /projects. */}
       <ProjectsGrid excludeSlug="studynest" />
-      <Skills />
-      <Awards />
-      <ContactSection />
+      <AboutTeaser />
+      <ContactCta />
     </>
   );
 }

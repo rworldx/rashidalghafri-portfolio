@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { About } from '@/components/sections/About';
+import { Connections } from '@/components/sections/Connections';
 import { Interests } from '@/components/sections/Interests';
 import { Education } from '@/components/sections/Education';
 import { Timeline } from '@/components/sections/Timeline';
@@ -19,6 +20,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <div className="pt-10">
       <About />
+      <Connections />
       <Interests />
       <Education />
       <Timeline />
