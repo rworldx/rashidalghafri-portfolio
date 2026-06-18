@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { About } from '@/components/sections/About';
 import { Connections } from '@/components/sections/Connections';
-import { Timeline } from '@/components/sections/Timeline';
+import { TravelLog } from '@/components/sections/TravelLog';
 import { Interests } from '@/components/sections/Interests';
 import { buildMetadata } from '@/lib/seo';
 
@@ -18,7 +18,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     <div className="pt-10">
       <About />
       <Connections />
-      <Timeline />
+      <TravelLog />
       <Interests />
     </div>
   );

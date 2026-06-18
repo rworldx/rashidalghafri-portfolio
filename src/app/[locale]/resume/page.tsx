@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Download } from 'lucide-react';
 import { site } from '@content/site';
 import { Container } from '@/components/layout/Container';
+import { Timeline } from '@/components/sections/Timeline';
 import { Education } from '@/components/sections/Education';
 import { Skills } from '@/components/sections/Skills';
 import { Awards } from '@/components/sections/Awards';
@@ -40,6 +41,7 @@ export default async function ResumePage({ params }: { params: Promise<{ locale:
         </div>
       </Container>
 
+      <Timeline />
       <Education />
       <Skills />
       <Awards />

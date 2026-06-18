@@ -7,7 +7,8 @@ import { experience } from '@content/experience';
 import { graph } from '@content/graph';
 import { site } from '@content/site';
 import { certifications } from '@content/awards';
-import { timeline } from '@content/timeline';
+import { journey } from '@content/journey';
+import { travels } from '@content/personal';
 import { interests, aboutStory } from '@content/about';
 
 /**
@@ -94,20 +95,35 @@ describe('content/graph', () => {
   });
 });
 
-describe('content/timeline', () => {
+describe('content/journey', () => {
   const schema = z.object({
     year: z.number().int(),
-    kind: z.enum(['birth', 'travel', 'education', 'milestone', 'goal']),
+    kind: z.enum(['education', 'project', 'award', 'hackathon', 'milestone', 'goal']),
     title: localized,
     detail: localized,
     future: z.boolean().optional(),
   });
   it('matches the TimelineEntry schema', () => {
-    for (const e of timeline) expect(() => schema.parse(e)).not.toThrow();
+    for (const e of journey) expect(() => schema.parse(e)).not.toThrow();
   });
   it('is chronologically non-decreasing by year', () => {
-    const years = timeline.map((e) => e.year);
+    const years = journey.map((e) => e.year);
     expect(years).toEqual([...years].sort((a, b) => a - b));
+  });
+});
+
+describe('content/travels', () => {
+  const schema = z.object({
+    fromCode: z.string().min(1),
+    toCode: z.string().min(1),
+    to: localized,
+    year: z.union([z.number(), z.string()]),
+    note: localized,
+    mode: z.enum(['flight', 'road']),
+    stops: z.array(z.string()).optional(),
+  });
+  it('matches the Travel schema', () => {
+    for (const t of travels) expect(() => schema.parse(t)).not.toThrow();
   });
 });
 

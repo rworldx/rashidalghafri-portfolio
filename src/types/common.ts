@@ -25,13 +25,14 @@ export interface Interest {
 }
 
 export type TimelineKind =
-  | 'birth'
-  | 'travel'
   | 'education'
+  | 'project'
+  | 'award'
+  | 'hackathon'
   | 'milestone'
   | 'goal';
 
-/** One entry on the visual timeline spine. */
+/** One entry on the visual (professional) journey spine — used on /resume. */
 export interface TimelineEntry {
   year: number;
   kind: TimelineKind;
@@ -39,4 +40,18 @@ export interface TimelineEntry {
   detail: Localized;
   /** Future/aspirational entry — rendered hollow/dashed. */
   future?: boolean;
+}
+
+/** A trip — rendered as a boarding-pass card in the About travel log. */
+export interface Travel {
+  /** Short origin/destination codes (e.g. "OM", "TH"). */
+  fromCode: string;
+  toCode: string;
+  to: Localized;
+  /** Display year (number or string). */
+  year: number | string;
+  note: Localized;
+  mode: 'flight' | 'road';
+  /** Multi-stop chain (codes) for road trips. */
+  stops?: string[];
 }

@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { m, useScroll, useSpring } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
-import { timeline } from '@content/timeline';
+import { journey } from '@content/journey';
 import type { TimelineKind } from '@/types/common';
 import { pick } from '@/lib/localized';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -13,10 +13,11 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 
 /** Token-driven accent per entry kind (no hardcoded colours). */
 const dotColor: Record<TimelineKind, string> = {
-  birth: 'var(--accent)',
-  travel: 'var(--success)',
   education: 'var(--accent)',
-  milestone: 'var(--text)',
+  project: 'var(--success)',
+  award: 'var(--accent)',
+  hackathon: 'var(--text)',
+  milestone: 'var(--success)',
   goal: 'var(--text-muted)',
 };
 
@@ -56,7 +57,7 @@ export function Timeline() {
           />
 
           <ol className="space-y-10">
-            {timeline.map((entry, i) => (
+            {journey.map((entry, i) => (
               <Reveal as="li" key={`${entry.year}-${i}`} delay={i * 0.04} className="relative ps-10">
                 <span
                   className="absolute start-0 top-1 inline-flex h-[15px] w-[15px] items-center justify-center rounded-full border-2 border-bg"
