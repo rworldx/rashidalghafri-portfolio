@@ -85,6 +85,48 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'ieee-buc-website',
+    featured: false,
+    title: 'IEEE BUC Student Branch Website',
+    year: 2026,
+    role: 'Webmaster · Built & maintained',
+    summary: {
+      en: 'The official website for the IEEE Student Branch at Al Buraimi University College — built and maintained as branch Webmaster.',
+      ar: 'الموقع الرسمي لفرع طلاب IEEE في كلية البريمي الجامعية — بنيتُه وأتولّى صيانته بصفتي مسؤول الموقع.',
+    },
+    problem: {
+      en: 'A newly launched student branch needed a credible, fast official web presence to share its activities and reach its members.',
+      ar: 'احتاج فرعٌ طلابي حديث الإطلاق إلى حضور رقمي رسمي سريع وموثوق للتعريف بأنشطته والوصول إلى أعضائه.',
+    },
+    solution: {
+      en: 'A responsive, SEO-optimized website (sitemap, robots, and JSON-LD structured data) built with Next.js and TypeScript — designed, built and maintained single-handedly as the branch Webmaster.',
+      ar: 'موقع متجاوب ومُحسَّن لمحرّكات البحث (خريطة موقع، وملف robots، وبيانات JSON-LD المنظَّمة) بُني باستخدام Next.js وTypeScript — صمّمته وبنيته وأتولّى صيانته بمفردي بصفتي مسؤول الموقع.',
+    },
+    liveUrl: 'https://ieee-buc-website.vercel.app',
+    repoUrl: 'https://github.com/rworldx/ieee-buc-website',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    highlights: [
+      {
+        en: 'Designed, built and maintained single-handedly as the branch Webmaster.',
+        ar: 'صُمّم وبُني وتُتولّى صيانته بمفردي بصفتي مسؤول الموقع.',
+      },
+      {
+        en: 'Responsive across devices, built with Next.js, TypeScript, Tailwind CSS and Framer Motion.',
+        ar: 'متجاوب عبر الأجهزة، مبني باستخدام Next.js وTypeScript وTailwind CSS وFramer Motion.',
+      },
+      {
+        en: 'SEO-optimized: sitemap, robots, and JSON-LD structured data.',
+        ar: 'مُحسَّن لمحرّكات البحث: خريطة موقع، وملف robots، وبيانات JSON-LD المنظَّمة.',
+      },
+    ],
+    cover: '/images/projects/ieee-buc.png',
+    gallery: [],
+    links: [
+      { label: 'Live demo', href: 'https://ieee-buc-website.vercel.app', external: true },
+      { label: 'Source', href: 'https://github.com/rworldx/ieee-buc-website', external: true },
+    ],
+  },
+  {
     slug: 'energrid',
     featured: false,
     title: 'EnerGrid',
