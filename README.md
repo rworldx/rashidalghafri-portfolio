@@ -10,6 +10,23 @@ Next.js 15 (App Router) · TypeScript (strict) · Tailwind CSS · next-intl
 (EN/AR + RTL) · next-themes (light/dark) · Framer Motion · Vitest. Deployed on
 Vercel.
 
+## Features
+
+- **Bilingual (EN/AR)** with full right-to-left (RTL) support via next-intl
+- **Interactive connection graph** — a signature animated hero linking projects, skills, and experience
+- **Light / dark themes** with system-preference detection (next-themes)
+- **Content-as-data** — projects, skills, awards, and timeline are typed data files; the grid, case-study pages, sitemap, and OG images all generate automatically
+- **Static-first & accessible** — pages pre-render as SSG for speed; keyboard- and screen-reader-friendly
+- **Contact form** powered by Resend
+
+## Screenshots
+
+> _Screenshots coming soon._
+>
+> <!-- Add images under public/screenshots/ (or docs/) and reference them here, e.g.:
+> ![Home — connection graph](public/screenshots/home.png)
+> ![Project case study](public/screenshots/project.png) -->
+
 ## Getting started
 
 ```bash

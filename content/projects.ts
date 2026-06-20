@@ -21,8 +21,8 @@ export const projects: Project[] = [
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين: لا توجد طريقة سهلة لإيجاد شركاء دراسة متوافقين، ولا مساحة مشتركة للعمل معًا فعليًا، ولا مساعدة سياقية عند التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform: an AI-assisted, multi-factor matching engine ranks compatible partners (subjects, study style, availability, academic level) in under a second; a low-latency real-time layer powers chat, voice and video study rooms with screen sharing; and a Google Gemini-powered study assistant analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
-      ar: 'منصة متكاملة: محرّك مطابقة متعدّد العوامل مدعوم بالذكاء الاصطناعي يرتّب الشركاء المتوافقين (المواد، أسلوب الدراسة، التوافر، المستوى الأكاديمي) في أقل من ثانية؛ وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة؛ ومساعد دراسة مدعوم بـ Google Gemini يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط المراجعة والبطاقات التعليمية.',
+      en: 'An end-to-end platform: an algorithmic, multi-factor matching engine ranks compatible partners (subjects, study style, availability, academic level) in under a second; a low-latency real-time layer powers chat, voice and video study rooms with screen sharing; and a Google Gemini-powered study assistant analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
+      ar: 'منصة متكاملة: محرّك مطابقة خوارزمي متعدّد العوامل يرتّب الشركاء المتوافقين (المواد، أسلوب الدراسة، التوافر، المستوى الأكاديمي) في أقل من ثانية؛ وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة؛ ومساعد دراسة مدعوم بـ Google Gemini يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط المراجعة والبطاقات التعليمية.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -52,8 +52,8 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        en: 'AI-assisted, multi-factor matching engine — pairs partners on subjects, study style, availability and academic level, returning ranked recommendations in under a second.',
-        ar: 'محرّك مطابقة متعدّد العوامل مدعوم بالذكاء الاصطناعي — يوائم الشركاء حسب المواد وأسلوب الدراسة والتوافر والمستوى الأكاديمي، ويعيد توصيات مرتّبة في أقل من ثانية.',
+        en: 'Algorithmic, multi-factor matching engine — pairs partners on subjects, study style, availability and academic level, returning ranked recommendations in under a second.',
+        ar: 'محرّك مطابقة خوارزمي متعدّد العوامل — يوائم الشركاء حسب المواد وأسلوب الدراسة والتوافر والمستوى الأكاديمي، ويعيد توصيات مرتّبة في أقل من ثانية.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
