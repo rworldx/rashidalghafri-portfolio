@@ -71,8 +71,12 @@ export function PortraitCard() {
             style={{ background: 'linear-gradient(to top, rgba(8,11,18,0.72) 0%, rgba(8,11,18,0) 55%)' }}
           />
 
-          {/* Availability chip. */}
-          <div className="absolute end-3 top-3 inline-flex items-center gap-1.5 rounded-sm bg-bg/70 px-2 py-1 font-mono text-[11px] text-text backdrop-blur">
+          {/* Availability chip — sits on the photo, so it's always white text
+              on a dark scrim regardless of theme. */}
+          <div
+            className="absolute end-3 top-3 inline-flex items-center gap-1.5 rounded-sm px-2 py-1 font-mono text-[11px] text-white backdrop-blur"
+            style={{ background: 'rgba(8,11,18,0.55)' }}
+          >
             <StatusDot />
             {pick(site.location, locale)}
           </div>
