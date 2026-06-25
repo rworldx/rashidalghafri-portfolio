@@ -9,7 +9,7 @@ interface NumberStat {
 export const personalStats: NumberStat[] = [
   { value: '7', label: { en: 'Countries visited', ar: 'دولة زرتُها' } },
   { value: '27', label: { en: 'Anime watched', ar: 'أنمي شاهدته' } },
-  { value: '200+', label: { en: 'Films seen', ar: 'فيلم' } },
+  { value: '300+', label: { en: 'Films seen', ar: 'فيلم' } },
   { value: '20+', label: { en: 'Series finished', ar: 'مسلسل' } },
 ];
 
