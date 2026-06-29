@@ -30,14 +30,27 @@ export default async function ResumePage({ params }: { params: Promise<{ locale:
           <h1 className="font-display text-4xl font-semibold text-text sm:text-5xl">
             {t('title')}
           </h1>
-          <a
-            href={site.cvPath}
-            download
-            className={cn(buttonVariants({ variant: 'secondary', size: 'md' }))}
-          >
-            <Download className="h-4 w-4" />
-            {t('download')}
-          </a>
+          <div className="flex flex-col items-end gap-2">
+            <a
+              href={site.cvPath}
+              download
+              className={cn(buttonVariants({ variant: 'secondary', size: 'md' }))}
+            >
+              <Download className="h-4 w-4" />
+              {t('download')}
+            </a>
+            {/* Subtle secondary link — ATS-friendly Word version. */}
+            <a
+              href="/resume/Rashid_Al_Ghafri_CV_ATS.docx"
+              download
+              target="_blank"
+              rel="noopener"
+              aria-label={t('atsAria')}
+              className="font-mono text-xs text-text-muted underline-offset-4 hover:text-text hover:underline"
+            >
+              {t('ats')}
+            </a>
+          </div>
         </div>
       </Container>
 

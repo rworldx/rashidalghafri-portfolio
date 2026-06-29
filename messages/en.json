@@ -69,7 +69,9 @@
   "resume": {
     "eyebrow": "Résumé",
     "title": "Credentials at a glance",
-    "download": "Download CV"
+    "download": "Download CV",
+    "ats": "Need an ATS-friendly version?",
+    "atsAria": "Download ATS-friendly CV (Word document)"
   },
   "skills": {
     "eyebrow": "Capabilities",
