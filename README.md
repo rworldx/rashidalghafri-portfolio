@@ -1,7 +1,7 @@
 # rashidalghafri.com
 
-Personal portfolio for **Rashid Al Ghafri** — software engineer & final-year SE
-student. Built as a fast, bilingual (EN/AR), accessible, static-first site with
+Personal portfolio for **Rashid Al Ghafri** — software engineer & recent SE
+graduate. Built as a fast, bilingual (EN/AR), accessible, static-first site with
 a signature interactive connection graph.
 
 ## Stack

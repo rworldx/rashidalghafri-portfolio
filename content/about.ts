@@ -3,8 +3,8 @@ import type { Localized } from '@/types/common';
 
 /** Short About-section intro. */
 export const aboutIntro: Localized = {
-  en: `I'm Rashid — a 21-year-old Software Engineering student from Ibri, Oman. My path here wasn't a straight line, and that's the most honest thing about me.`,
-  ar: `أنا راشد، طالب هندسة برمجيات في الحادية والعشرين من عمري، من ولاية عبري في عُمان. طريقي إلى هنا لم يكن مستقيمًا، وهذا أصدق ما فيّ.`,
+  en: `I'm Rashid — a 21-year-old Software Engineering graduate (BSc, First-Class Distinction) from Ibri, Oman. My path here wasn't a straight line, and that's the most honest thing about me.`,
+  ar: `أنا راشد، خريج هندسة برمجيات (بكالوريوس، امتياز مع مرتبة الشرف الأولى) في الحادية والعشرين من عمري، من ولاية عبري في عُمان. طريقي إلى هنا لم يكن مستقيمًا، وهذا أصدق ما فيّ.`,
 };
 
 /** Full origin story — rendered as flowing paragraphs on the About page. */

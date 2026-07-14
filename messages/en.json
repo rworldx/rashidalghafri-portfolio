@@ -2,7 +2,7 @@
   "meta": {
     "home": {
       "title": "Rashid Al Ghafri — Software Engineer",
-      "description": "Software engineer and final-year SE student building full-stack systems and AI-driven tools. Creator of StudyNest."
+      "description": "Software engineer and SE graduate (BSc, First-Class Distinction) building full-stack systems and AI-driven tools. Creator of StudyNest."
     },
     "projects": {
       "title": "Work — Rashid Al Ghafri",
@@ -10,7 +10,7 @@
     },
     "about": {
       "title": "About — Rashid Al Ghafri",
-      "description": "Software engineering student, builder, and national STEM finalist from Oman."
+      "description": "Software engineering graduate, builder, and national STEM finalist from Oman."
     },
     "resume": {
       "title": "Résumé — Rashid Al Ghafri",
@@ -109,7 +109,7 @@
     "certsEyebrow": "Certifications",
     "certsTitle": "Credentials",
     "storyTitle": "My story",
-    "intro": "I'm a final-year Software Engineering student at Al Buraimi University College with a 3.96/4.00 CGPA, more interested in shipping working systems than collecting frameworks. My capstone, StudyNest, took me from a problem statement to a deployed, AI-powered platform used by real students — and to the national STEM finals.",
+    "intro": "I'm a Software Engineering graduate (BSc, First-Class Distinction) from Al Buraimi University College with a 3.96/4.00 CGPA, more interested in shipping working systems than collecting frameworks. My capstone, StudyNest, took me from a problem statement to a deployed, AI-powered platform used by real students — and to the national STEM finals.",
     "focus": "I focus on full-stack development, low-latency real-time applications, and practical AI integration. I like work that is precise, fast, and accountable to real users."
   },
   "caseStudy": {

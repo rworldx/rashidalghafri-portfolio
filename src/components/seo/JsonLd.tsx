@@ -15,6 +15,10 @@ export function JsonLd() {
     email: `mailto:${site.email}`,
     jobTitle: 'Software Engineer',
     address: { '@type': 'PostalAddress', addressCountry: 'OM' },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Al Buraimi University College',
+    },
     sameAs: site.socials
       .filter((s) => s.id !== 'email')
       .map((s) => s.href),

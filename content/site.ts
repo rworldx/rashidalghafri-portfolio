@@ -11,8 +11,8 @@ export const site: SiteContent = {
     ar: 'مهندس برمجيات · مطوّر متكامل',
   },
   tagline: {
-    en: 'Final-year Software Engineering student building AI-driven, real-time full-stack systems — from concept to launch.',
-    ar: 'طالب هندسة برمجيات في سنته الأخيرة، يبني أنظمة متكاملة فورية مدعومة بالذكاء الاصطناعي — من الفكرة إلى الإطلاق.',
+    en: 'Software Engineering graduate (BSc, First-Class Distinction) building AI-driven, real-time full-stack systems — from concept to launch.',
+    ar: 'خريج هندسة برمجيات (بكالوريوس، امتياز مع مرتبة الشرف الأولى)، يبني أنظمة متكاملة فورية مدعومة بالذكاء الاصطناعي — من الفكرة إلى الإطلاق.',
   },
   status: {
     en: 'available for opportunities · Oman · 2026',

@@ -10,7 +10,7 @@ export const journey: TimelineEntry[] = [
     year: 2022,
     kind: 'education',
     title: {
-      en: 'Began B.Eng, Software Engineering — BUC',
+      en: 'Began BSc Software Engineering — BUC',
       ar: 'بدأت بكالوريوس هندسة البرمجيات — كلية البريمي الجامعية',
     },
     detail: {
@@ -111,8 +111,8 @@ export const journey: TimelineEntry[] = [
   {
     year: 2026,
     kind: 'milestone',
-    title: { en: 'StudyNest live · graduating (Distinction)', ar: 'إطلاق StudyNest · التخرّج بامتياز' },
-    detail: { en: 'studynest.dev · B.Eng completes Jul 2026', ar: 'studynest.dev · إتمام البكالوريوس يوليو ٢٠٢٦' },
+    title: { en: 'Graduated with First-Class Distinction · BSc Software Engineering', ar: 'التخرّج بامتياز مع مرتبة الشرف الأولى · بكالوريوس هندسة البرمجيات' },
+    detail: { en: 'studynest.dev live · Jul 2026', ar: 'studynest.dev · يوليو ٢٠٢٦' },
   },
   {
     year: 2026,

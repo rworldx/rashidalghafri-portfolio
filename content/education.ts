@@ -16,7 +16,7 @@ interface Education {
 
 /** Education block (from the CV) — degree, honours, coursework, languages. */
 export const education: Education = {
-  degree: { en: 'Bachelor of Software Engineering', ar: 'بكالوريوس هندسة البرمجيات' },
+  degree: { en: 'BSc Software Engineering', ar: 'بكالوريوس هندسة البرمجيات' },
   school: 'Al Buraimi University College · Al Buraimi, Oman',
   period: { en: 'Oct 2022 – Jul 2026', ar: 'أكتوبر ٢٠٢٢ – يوليو ٢٠٢٦' },
   honours: {
