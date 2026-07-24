@@ -56,7 +56,8 @@ export function PortraitCard() {
         aria-hidden
         className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] opacity-30 blur-3xl"
         style={{
-          background: 'radial-gradient(58% 58% at 50% 28%, var(--accent) 0%, transparent 72%)',
+          background:
+            'radial-gradient(58% 58% at 50% 28%, var(--accent) 0%, transparent 72%)',
         }}
       />
 
@@ -88,7 +89,8 @@ export function PortraitCard() {
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
-              background: 'linear-gradient(to top, rgb(8 11 18 / 0.78) 0%, rgb(8 11 18 / 0) 52%)',
+              background:
+                'linear-gradient(to top, rgb(8 11 18 / 0.78) 0%, rgb(8 11 18 / 0) 52%)',
             }}
           />
 

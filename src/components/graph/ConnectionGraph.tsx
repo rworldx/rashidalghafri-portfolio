@@ -184,7 +184,8 @@ export function ConnectionGraph({ className }: { className?: string }) {
     const onUp = (e: PointerEvent) => {
       dragging = null;
       canvas.style.cursor = hover ? 'grab' : 'default';
-      if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+      if (canvas.hasPointerCapture(e.pointerId))
+        canvas.releasePointerCapture(e.pointerId);
     };
     canvas.addEventListener('pointerdown', onDown);
     canvas.addEventListener('pointermove', onMove);

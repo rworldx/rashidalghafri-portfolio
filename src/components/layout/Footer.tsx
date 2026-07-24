@@ -25,12 +25,14 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-phi-4 border-t border-border bg-bg-deep/40">
+    <footer className="bg-bg-deep/40 relative mt-phi-4 border-t border-border">
       <Container className="py-phi-3">
         <div className="grid gap-phi-2 lg:grid-cols-[1.618fr_1fr] lg:items-end">
           <div>
             <p className="display-3 text-text">{pick(site.displayName, locale)}</p>
-            <p className="mt-3 max-w-md text-sm text-text-muted">{pick(site.role, locale)}</p>
+            <p className="mt-3 max-w-md text-sm text-text-muted">
+              {pick(site.role, locale)}
+            </p>
             <a
               href={`mailto:${site.email}`}
               className="action mt-6 inline-block border-b border-accent-line pb-0.5 text-lg text-text transition-colors duration-quick ease-out hover:border-accent hover:text-accent"

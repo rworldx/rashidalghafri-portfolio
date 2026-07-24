@@ -59,9 +59,11 @@
     /* ---- Elevation: tinted to the background hue, never pure black ---- */
     --shadow-sm: 0 1px 2px oklch(0.216 0.014 264 / 0.05);
     --shadow-card:
-      0 1px 2px oklch(0.216 0.014 264 / 0.04), 0 12px 32px -16px oklch(0.216 0.014 264 / 0.16);
+      0 1px 2px oklch(0.216 0.014 264 / 0.04),
+      0 12px 32px -16px oklch(0.216 0.014 264 / 0.16);
     --shadow-lift:
-      0 2px 4px oklch(0.216 0.014 264 / 0.05), 0 24px 56px -24px oklch(0.216 0.014 264 / 0.22);
+      0 2px 4px oklch(0.216 0.014 264 / 0.05),
+      0 24px 56px -24px oklch(0.216 0.014 264 / 0.22);
     --hairline: inset 0 1px 0 oklch(1 0 0 / 0.7);
   }
 
@@ -196,7 +198,7 @@
    * sizes) — the larger the type, the tighter it is set. Floor is -0.04em.
    */
   .display-1 {
-    font-size: clamp(2.9rem, 1.35rem + 7vw, 6.2rem);
+    font-size: clamp(2.1rem, 1.1rem + 6.8vw, 6.2rem);
     line-height: 0.96;
     letter-spacing: -0.038em;
     font-weight: 500;
@@ -232,7 +234,6 @@
     font-style: italic;
     letter-spacing: -0.02em;
     padding-inline-end: 0.06em;
-    padding-bottom: 0.06em;
   }
 
   /**

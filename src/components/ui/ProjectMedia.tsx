@@ -27,7 +27,11 @@ interface Asset {
 function resolveAsset(project: Project, variant: 'cover' | 'thumb'): Asset {
   // A thumb, if set, overrides only the compact grid card.
   if (variant === 'thumb' && project.thumb) return project.thumb;
-  return { src: project.cover, dark: project.coverDark, kind: project.coverKind ?? 'screenshot' };
+  return {
+    src: project.cover,
+    dark: project.coverDark,
+    kind: project.coverKind ?? 'screenshot',
+  };
 }
 
 /**
@@ -64,14 +68,23 @@ export function ProjectMedia({
   if (!asset.src) {
     return (
       <div className={cn('relative overflow-hidden bg-surface-2', className)}>
-        <ProjectSignature slug={project.slug} title={project.title} caption={project.role} />
+        <ProjectSignature
+          slug={project.slug}
+          title={project.title}
+          caption={project.role}
+        />
       </div>
     );
   }
 
   if (hasThemedPair) {
     return (
-      <div className={cn('relative overflow-hidden bg-surface-2 [isolation:isolate]', className)}>
+      <div
+        className={cn(
+          'relative overflow-hidden bg-surface-2 [isolation:isolate]',
+          className,
+        )}
+      >
         {/* Light: a dark mark on white, multiplied so the white ground drops out. */}
         <Image
           src={asset.src as string}

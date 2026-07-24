@@ -27,7 +27,7 @@ export function ContactCta() {
   return (
     <section className={cn(sectionY, 'relative')} id="contact">
       <Container>
-        <Reveal className="rounded-xl border border-border bg-surface/50 p-8 shadow-card sm:p-phi-3">
+        <Reveal className="bg-surface/50 rounded-xl border border-border p-8 shadow-card sm:p-phi-3">
           <div className="grid gap-phi-2 lg:grid-cols-[1.618fr_1fr] lg:items-end">
             <div>
               <p className="mb-6 inline-flex items-center gap-2.5 font-mono text-2xs uppercase tracking-[0.14em] text-text-muted">
@@ -37,13 +37,18 @@ export function ContactCta() {
               <h2 className="display-2 text-text">
                 <Emphasise title={t('title')} emphasis={t('emphasis')} />
               </h2>
-              <p className="measure-tight mt-phi text-lg text-text-muted">{t('subtitle')}</p>
+              <p className="measure-tight mt-phi text-lg text-text-muted">
+                {t('subtitle')}
+              </p>
             </div>
 
             <div className="flex flex-col items-start gap-5 lg:items-end">
               <Link
                 href="/contact"
-                className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), 'group')}
+                className={cn(
+                  buttonVariants({ variant: 'primary', size: 'lg' }),
+                  'group',
+                )}
               >
                 {t('cta')}
                 <ArrowRight

@@ -28,7 +28,7 @@ export function ProjectCard({ project, wide = false, className }: Props) {
     <Link
       href={`/projects/${project.slug}`}
       className={cn(
-        'group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-surface/60 shadow-card',
+        'bg-surface/60 group flex h-full flex-col overflow-hidden rounded-lg border border-border shadow-card',
         'transition-[border-color,box-shadow,transform] duration-500 ease-out',
         'hover:-translate-y-1 hover:border-border-strong hover:shadow-lift',
         'active:translate-y-0 active:scale-[0.995] active:duration-press',
@@ -63,7 +63,9 @@ export function ProjectCard({ project, wide = false, className }: Props) {
 
         <h3 className="display-4 mt-3 text-text">{project.title}</h3>
         <p className="mt-1.5 text-sm text-text-faint">{project.role}</p>
-        <p className="mt-3 line-clamp-3 text-text-muted">{pick(project.summary, locale)}</p>
+        <p className="mt-3 line-clamp-3 text-text-muted">
+          {pick(project.summary, locale)}
+        </p>
 
         <div className="mt-5 flex flex-wrap gap-2 pt-1">
           {project.stack.slice(0, wide ? 6 : 4).map((s) => (

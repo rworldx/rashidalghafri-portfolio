@@ -8,7 +8,7 @@ import { cn } from '@/lib/cn';
 export function StatusDot({ className }: { className?: string }) {
   return (
     <span className={cn('relative inline-flex size-1.5 shrink-0', className)} aria-hidden>
-      <span className="absolute inset-0 rounded-full bg-signal animate-signal-pulse" />
+      <span className="absolute inset-0 animate-signal-pulse rounded-full bg-signal" />
       <span className="relative size-1.5 rounded-full bg-signal" />
     </span>
   );

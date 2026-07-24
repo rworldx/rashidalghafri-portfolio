@@ -21,19 +21,28 @@ export async function POST(req: Request) {
 
   const limit = rateLimit(`contact:${ip}`);
   if (!limit.ok) {
-    return json({ success: false, error: { code: 'RATE_LIMIT', message: 'Too many requests' } }, 429);
+    return json(
+      { success: false, error: { code: 'RATE_LIMIT', message: 'Too many requests' } },
+      429,
+    );
   }
 
   let payload: unknown;
   try {
     payload = await req.json();
   } catch {
-    return json({ success: false, error: { code: 'VALIDATION', message: 'Invalid body' } }, 400);
+    return json(
+      { success: false, error: { code: 'VALIDATION', message: 'Invalid body' } },
+      400,
+    );
   }
 
   const parsed = contactSchema.safeParse(payload);
   if (!parsed.success) {
-    return json({ success: false, error: { code: 'VALIDATION', message: 'Invalid fields' } }, 400);
+    return json(
+      { success: false, error: { code: 'VALIDATION', message: 'Invalid fields' } },
+      400,
+    );
   }
 
   // Honeypot tripped → pretend success so bots don't learn anything.
@@ -70,10 +79,16 @@ export async function POST(req: Request) {
     });
 
     if (!res.ok) {
-      return json({ success: false, error: { code: 'PROVIDER', message: 'Send failed' } }, 502);
+      return json(
+        { success: false, error: { code: 'PROVIDER', message: 'Send failed' } },
+        502,
+      );
     }
     return json({ success: true, message: 'Sent' }, 200);
   } catch {
-    return json({ success: false, error: { code: 'PROVIDER', message: 'Send failed' } }, 502);
+    return json(
+      { success: false, error: { code: 'PROVIDER', message: 'Send failed' } },
+      502,
+    );
   }
 }

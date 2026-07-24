@@ -82,16 +82,17 @@ export function HeroBackground({ className }: { className?: string }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setPaused(!entry?.isIntersecting),
-      { threshold: 0.05 },
-    );
+    const io = new IntersectionObserver(([entry]) => setPaused(!entry?.isIntersecting), {
+      threshold: 0.05,
+    });
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   const useStatic = !mounted || reduced || !canRender3D || !colors;
-  const fallback = <ConnectionGraphStatic data={graph} ambient className="h-full w-full" />;
+  const fallback = (
+    <ConnectionGraphStatic data={graph} ambient className="h-full w-full" />
+  );
 
   return (
     <div ref={ref} className={className}>

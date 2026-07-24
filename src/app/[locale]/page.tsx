@@ -7,13 +7,21 @@ import { ContactCta } from '@/components/sections/ContactCta';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { buildMetadata } from '@/lib/seo';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   return buildMetadata(locale, 'home', '/');
 }
 
 /** Home — single-scroll narrative (PRD FR-2..7). Composes data-driven sections. */
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   setRequestLocale(locale);
 

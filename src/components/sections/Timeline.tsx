@@ -36,7 +36,10 @@ export function Timeline() {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 78%', 'end 62%'] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 78%', 'end 62%'],
+  });
   const fill = useSpring(scrollYProgress, { stiffness: 80, damping: 24 });
 
   return (

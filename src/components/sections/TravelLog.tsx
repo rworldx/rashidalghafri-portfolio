@@ -35,8 +35,16 @@ export function TravelLog() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {travels.map((trip, i) => (
-            <Reveal key={`${trip.toCode}-${trip.year}`} delay={i * 0.06} className="h-full">
-              <Pass trip={trip} boardingLabel={t('boardingPass')} note={pick(trip.note, locale)}>
+            <Reveal
+              key={`${trip.toCode}-${trip.year}`}
+              delay={i * 0.06}
+              className="h-full"
+            >
+              <Pass
+                trip={trip}
+                boardingLabel={t('boardingPass')}
+                note={pick(trip.note, locale)}
+              >
                 {pick(trip.to, locale)}
               </Pass>
             </Reveal>
@@ -78,7 +86,9 @@ function Pass({
         <span className="font-mono text-2xs uppercase tracking-[0.16em] text-text-faint">
           {boardingLabel}
         </span>
-        <span className="tnum force-ltr font-mono text-sm font-medium text-accent">{trip.year}</span>
+        <span className="tnum force-ltr font-mono text-sm font-medium text-accent">
+          {trip.year}
+        </span>
       </div>
 
       {/* The stub seam: a dashed rule with a punched notch at either end. */}

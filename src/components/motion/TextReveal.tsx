@@ -38,23 +38,80 @@ export function TextReveal({
   const words = text.split(' ');
   const emphasisWords = emphasis ? new Set(emphasis.split(' ')) : null;
 
+  const groups: Array<{
+    isEmphasis: boolean;
+    words: Array<{ word: string; index: number }>;
+  }> = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    if (!word) continue;
+    const isEmp = Boolean(emphasisWords?.has(word));
+
+    if (isEmp) {
+      const lastGroup = groups[groups.length - 1];
+      if (lastGroup && lastGroup.isEmphasis) {
+        lastGroup.words.push({ word, index: i });
+      } else {
+        groups.push({ isEmphasis: true, words: [{ word, index: i }] });
+      }
+    } else {
+      groups.push({ isEmphasis: false, words: [{ word, index: i }] });
+    }
+  }
+
   return (
     <Tag className={cn(className)} aria-label={text}>
-      {words.map((word, i) => (
-        <span
-          key={`${word}-${i}`}
-          aria-hidden
-          className="inline-block overflow-hidden pb-[0.16em] align-bottom [margin-bottom:-0.16em]"
-        >
-          <span
-            className={cn('word-rise inline-block', emphasisWords?.has(word) && 'em-italic')}
-            style={{ '--d': `${delay + i * stagger}s` } as CSSProperties}
-          >
-            {word}
-            {i < words.length - 1 ? ' ' : ''}
+      {groups.map((group, groupIdx) => {
+        const isLastGroup = groupIdx === groups.length - 1;
+
+        if (group.isEmphasis) {
+          return (
+            <span key={`group-${groupIdx}`} className="inline-block whitespace-nowrap">
+              {group.words.map(({ word, index }, wIdx) => {
+                const isLastInGroup = wIdx === group.words.length - 1;
+                return (
+                  <span key={`${word}-${index}`}>
+                    <span
+                      aria-hidden
+                      className="inline-block overflow-hidden pb-[0.16em] align-bottom [margin-bottom:-0.16em]"
+                    >
+                      <span
+                        className="word-rise em-italic inline-block"
+                        style={{ '--d': `${delay + index * stagger}s` } as CSSProperties}
+                      >
+                        {word}
+                      </span>
+                    </span>
+                    {!isLastInGroup ? ' ' : ''}
+                  </span>
+                );
+              })}
+              {!isLastGroup ? ' ' : ''}
+            </span>
+          );
+        }
+
+        const firstItem = group.words[0];
+        if (!firstItem) return null;
+        const { word, index } = firstItem;
+        return (
+          <span key={`${word}-${index}`}>
+            <span
+              aria-hidden
+              className="inline-block overflow-hidden pb-[0.16em] align-bottom [margin-bottom:-0.16em]"
+            >
+              <span
+                className="word-rise inline-block"
+                style={{ '--d': `${delay + index * stagger}s` } as CSSProperties}
+              >
+                {word}
+              </span>
+            </span>
+            {!isLastGroup ? ' ' : ''}
           </span>
-        </span>
-      ))}
+        );
+      })}
     </Tag>
   );
 }

@@ -66,11 +66,17 @@ export const schooling: { grades: string; name: Localized }[] = [
   { grades: '1–4', name: { en: 'Shumūʿ Al-Maʿrifa School', ar: 'مدرسة شموع المعرفة' } },
   {
     grades: '5–10',
-    name: { en: 'Mohammed bin Sulaiman Al Ghafri School', ar: 'مدرسة محمد بن سليمان الغافري' },
+    name: {
+      en: 'Mohammed bin Sulaiman Al Ghafri School',
+      ar: 'مدرسة محمد بن سليمان الغافري',
+    },
   },
   {
     grades: '11–12',
-    name: { en: 'Dirar bin Al-Azwar — Basic Education', ar: 'مدرسة ضرار بن الأزور للتعليم الأساسي' },
+    name: {
+      en: 'Dirar bin Al-Azwar — Basic Education',
+      ar: 'مدرسة ضرار بن الأزور للتعليم الأساسي',
+    },
   },
 ];
 

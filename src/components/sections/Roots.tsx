@@ -61,7 +61,11 @@ export function Roots() {
         <Reveal delay={0.08}>
           <p className="mt-phi-2 inline-flex flex-wrap items-center gap-x-3 gap-y-2 rounded-full border border-border px-5 py-3 text-sm text-text-muted">
             <Tent strokeWidth={1.5} aria-hidden className="size-4 shrink-0 text-accent" />
-            <GraduationCap strokeWidth={1.5} aria-hidden className="size-4 shrink-0 text-accent" />
+            <GraduationCap
+              strokeWidth={1.5}
+              aria-hidden
+              className="size-4 shrink-0 text-accent"
+            />
             {pick(schoolingNote, locale)}
           </p>
         </Reveal>

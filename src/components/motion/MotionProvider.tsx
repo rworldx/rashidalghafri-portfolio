@@ -18,7 +18,10 @@ const loadFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 export function MotionProvider({ children }: { children: ReactNode }) {
   return (
     <LazyMotion features={loadFeatures} strict>
-      <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+      <MotionConfig
+        reducedMotion="user"
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
         {children}
       </MotionConfig>
     </LazyMotion>

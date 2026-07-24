@@ -25,11 +25,47 @@ export const aboutStory: { en: string[]; ar: string[] } = {
 
 /** "Beyond the code" — small, tasteful interest grid. */
 export const interests: Interest[] = [
-  { icon: 'Film', label: { en: 'Marvel Cinematic Universe — lifelong fan', ar: 'عالم مارفل السينمائي — مُعجب منذ الصغر' } },
-  { icon: 'Headphones', label: { en: 'Dark, cinematic alt-pop — Lana Del Rey & The Weeknd on repeat', ar: 'بوب بديل سينمائي وكئيب — لانا ديل ري و ذا ويكند على الإعادة' } },
-  { icon: 'Clapperboard', label: { en: 'Films, series & anime', ar: 'الأفلام والمسلسلات والأنمي' } },
-  { icon: 'ChefHat', label: { en: 'Italian food — pasta above all', ar: 'المطبخ الإيطالي — والباستا قبل كل شيء' } },
-  { icon: 'Languages', label: { en: 'English is my favourite subject', ar: 'الإنجليزية مادتي المفضلة' } },
-  { icon: 'Camera', label: { en: 'Photography — capturing moments off-screen', ar: 'التصوير — التقاط اللحظات خارج الشاشة' } },
-  { icon: 'Plane', label: { en: 'Travelling the world — cultures, cities and countrysides', ar: 'أعشق السفر حول العالم — الثقافات والمدن والأرياف' } },
+  {
+    icon: 'Film',
+    label: {
+      en: 'Marvel Cinematic Universe — lifelong fan',
+      ar: 'عالم مارفل السينمائي — مُعجب منذ الصغر',
+    },
+  },
+  {
+    icon: 'Headphones',
+    label: {
+      en: 'Dark, cinematic alt-pop — Lana Del Rey & The Weeknd on repeat',
+      ar: 'بوب بديل سينمائي وكئيب — لانا ديل ري و ذا ويكند على الإعادة',
+    },
+  },
+  {
+    icon: 'Clapperboard',
+    label: { en: 'Films, series & anime', ar: 'الأفلام والمسلسلات والأنمي' },
+  },
+  {
+    icon: 'ChefHat',
+    label: {
+      en: 'Italian food — pasta above all',
+      ar: 'المطبخ الإيطالي — والباستا قبل كل شيء',
+    },
+  },
+  {
+    icon: 'Languages',
+    label: { en: 'English is my favourite subject', ar: 'الإنجليزية مادتي المفضلة' },
+  },
+  {
+    icon: 'Camera',
+    label: {
+      en: 'Photography — capturing moments off-screen',
+      ar: 'التصوير — التقاط اللحظات خارج الشاشة',
+    },
+  },
+  {
+    icon: 'Plane',
+    label: {
+      en: 'Travelling the world — cultures, cities and countrysides',
+      ar: 'أعشق السفر حول العالم — الثقافات والمدن والأرياف',
+    },
+  },
 ];

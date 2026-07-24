@@ -8,7 +8,10 @@ import { InteractiveGraph } from '@/components/graph/InteractiveGraph';
 import { nodeColor } from '@/components/graph/nodeColor';
 import type { GraphNodeKind } from '@/types/graph';
 
-const legend: { kind: GraphNodeKind; key: 'legendSelf' | 'legendProject' | 'legendRecognition' | 'legendSkill' }[] = [
+const legend: {
+  kind: GraphNodeKind;
+  key: 'legendSelf' | 'legendProject' | 'legendRecognition' | 'legendSkill';
+}[] = [
   { kind: 'self', key: 'legendSelf' },
   { kind: 'project', key: 'legendProject' },
   { kind: 'skill', key: 'legendSkill' },
@@ -36,7 +39,7 @@ export function Connections() {
         />
 
         <Reveal>
-          <div className="overflow-hidden rounded-lg border border-border bg-surface/50 shadow-card">
+          <div className="bg-surface/50 overflow-hidden rounded-lg border border-border shadow-card">
             <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-border px-5 py-4 sm:px-6">
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 {legend.map(({ kind, key }) => (

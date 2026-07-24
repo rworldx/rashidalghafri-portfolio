@@ -81,7 +81,10 @@ export function FeaturedProject() {
               ))}
             </Reveal>
 
-            <Reveal delay={0.14} className="mt-phi-2 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Reveal
+              delay={0.14}
+              className="mt-phi-2 flex flex-wrap items-center gap-x-6 gap-y-3"
+            >
               <Link
                 href={`/projects/${project.slug}`}
                 className="action group inline-flex items-center gap-2 border-b border-accent-line pb-1 font-medium text-accent transition-colors duration-quick ease-out hover:border-accent"
@@ -127,7 +130,7 @@ export function FeaturedProject() {
                 <div key={s.label.en}>
                   <dt className="sr-only">{pick(s.label, locale)}</dt>
                   <dd>
-                    <span className="force-ltr block font-mono text-2xl text-text tnum">
+                    <span className="force-ltr tnum block font-mono text-2xl text-text">
                       <AnimatedCounter value={s.value} />
                     </span>
                     <span className="mt-1 block text-sm text-text-muted">

@@ -60,7 +60,7 @@ export function Hero() {
       <Container className="relative">
         <div className="lg:grid lg:grid-cols-[1.618fr_1fr] lg:items-center lg:gap-phi-2">
           <div className="max-w-[38rem]">
-            <p className="hero-in force-ltr mb-8 inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted backdrop-blur">
+            <p className="hero-in force-ltr bg-surface/70 mb-8 inline-flex items-center gap-2.5 rounded-full border border-border py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted backdrop-blur">
               <StatusDot />
               {pick(site.status, locale)}
             </p>
@@ -94,7 +94,10 @@ export function Hero() {
               <Magnetic>
                 <Link
                   href="/projects"
-                  className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), 'group')}
+                  className={cn(
+                    buttonVariants({ variant: 'primary', size: 'lg' }),
+                    'group',
+                  )}
                 >
                   {t('viewWork')}
                   <ArrowRight

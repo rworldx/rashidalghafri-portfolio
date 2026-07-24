@@ -12,13 +12,21 @@ import { buttonVariants } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
 import { buildMetadata } from '@/lib/seo';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   return buildMetadata(locale, 'resume', '/resume');
 }
 
 /** Résumé: the scannable credentials (education, journey, skills, awards, certs). */
-export default async function ResumePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ResumePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('resume');

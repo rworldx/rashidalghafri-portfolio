@@ -50,15 +50,15 @@ npm run dev                  # http://localhost:3000
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `npm run dev` | Local dev server |
-| `npm run build` | Production build (all pages SSG) |
-| `npm run start` | Serve the production build |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm run lint` | ESLint (incl. the sections-modularity rule) |
-| `npm run test:unit` | Vitest unit + content-schema tests |
-| `npm run format` | Prettier |
+| Command             | Purpose                                     |
+| ------------------- | ------------------------------------------- |
+| `npm run dev`       | Local dev server                            |
+| `npm run build`     | Production build (all pages SSG)            |
+| `npm run start`     | Serve the production build                  |
+| `npm run typecheck` | `tsc --noEmit`                              |
+| `npm run lint`      | ESLint (incl. the sections-modularity rule) |
+| `npm run test:unit` | Vitest unit + content-schema tests          |
+| `npm run format`    | Prettier                                    |
 
 ## Editing content
 

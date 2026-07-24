@@ -19,43 +19,59 @@ export default async function ProjectOg({
   const { locale, slug } = await params;
   const project = getProject(slug);
   const title = project?.title ?? siteConfig.name;
-  const summary = project ? project.summary[locale as 'en' | 'ar'] ?? project.summary.en : '';
+  const summary = project
+    ? (project.summary[locale as 'en' | 'ar'] ?? project.summary.en)
+    : '';
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '80px',
+        background: '#0a0e14',
+        color: '#eceff4',
+      }}
+    >
       <div
         style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '80px',
-          background: '#0a0e14',
-          color: '#eceff4',
+          fontSize: 26,
+          color: '#5b82ff',
+          textTransform: 'uppercase',
+          letterSpacing: 4,
         }}
       >
-        <div style={{ fontSize: 26, color: '#5b82ff', textTransform: 'uppercase', letterSpacing: 4 }}>
-          Case study
-        </div>
-        <div style={{ fontSize: 100, fontWeight: 700, marginTop: 16, letterSpacing: '-0.03em' }}>
-          {title}
-        </div>
-        <div
-          style={{
-            fontSize: 32,
-            color: '#9aa5b8',
-            marginTop: 20,
-            maxWidth: 1000,
-            lineHeight: 1.3,
-            display: 'flex',
-          }}
-        >
-          {summary.slice(0, 120)}
-        </div>
-        <div style={{ fontSize: 26, color: '#9aa5b8', marginTop: 'auto' }}>{siteConfig.name}</div>
+        Case study
       </div>
-    ),
+      <div
+        style={{
+          fontSize: 100,
+          fontWeight: 700,
+          marginTop: 16,
+          letterSpacing: '-0.03em',
+        }}
+      >
+        {title}
+      </div>
+      <div
+        style={{
+          fontSize: 32,
+          color: '#9aa5b8',
+          marginTop: 20,
+          maxWidth: 1000,
+          lineHeight: 1.3,
+          display: 'flex',
+        }}
+      >
+        {summary.slice(0, 120)}
+      </div>
+      <div style={{ fontSize: 26, color: '#9aa5b8', marginTop: 'auto' }}>
+        {siteConfig.name}
+      </div>
+    </div>,
     size,
   );
 }

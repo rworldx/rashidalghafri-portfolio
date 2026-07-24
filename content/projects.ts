@@ -86,8 +86,16 @@ export const projects: Project[] = [
     gallery: [],
     links: [
       { label: 'Live demo', href: 'https://studynest.dev', external: true },
-      { label: 'Source', href: 'https://github.com/rworldx/StudyNest-Source', external: true },
-      { label: 'Instagram · @studynest.om', href: 'https://instagram.com/studynest.om', external: true },
+      {
+        label: 'Source',
+        href: 'https://github.com/rworldx/StudyNest-Source',
+        external: true,
+      },
+      {
+        label: 'Instagram · @studynest.om',
+        href: 'https://instagram.com/studynest.om',
+        external: true,
+      },
     ],
   },
   {
@@ -129,7 +137,11 @@ export const projects: Project[] = [
     gallery: [],
     links: [
       { label: 'Live demo', href: 'https://ieee-buc-website.vercel.app', external: true },
-      { label: 'Source', href: 'https://github.com/rworldx/ieee-buc-website', external: true },
+      {
+        label: 'Source',
+        href: 'https://github.com/rworldx/ieee-buc-website',
+        external: true,
+      },
     ],
   },
   {

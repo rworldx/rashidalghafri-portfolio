@@ -1,4 +1,9 @@
-import { Host_Grotesk, Geist_Mono, Nothing_You_Could_Do, Aref_Ruqaa } from 'next/font/google';
+import {
+  Host_Grotesk,
+  Geist_Mono,
+  Nothing_You_Could_Do,
+  Aref_Ruqaa,
+} from 'next/font/google';
 import localFont from 'next/font/local';
 
 /**
@@ -56,8 +61,16 @@ export const fontSansAr = localFont({
   variable: '--font-sans-ar',
   display: 'swap',
   src: [
-    { path: '../fonts/thmanyah/thmanyahsans-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../fonts/thmanyah/thmanyahsans-Medium.woff2', weight: '500', style: 'normal' },
+    {
+      path: '../fonts/thmanyah/thmanyahsans-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah/thmanyahsans-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
     { path: '../fonts/thmanyah/thmanyahsans-Bold.woff2', weight: '700', style: 'normal' },
   ],
 });
@@ -66,9 +79,21 @@ export const fontDisplayAr = localFont({
   variable: '--font-display-ar',
   display: 'swap',
   src: [
-    { path: '../fonts/thmanyah/thmanyahserifdisplay-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../fonts/thmanyah/thmanyahserifdisplay-Medium.woff2', weight: '500', style: 'normal' },
-    { path: '../fonts/thmanyah/thmanyahserifdisplay-Bold.woff2', weight: '700', style: 'normal' },
+    {
+      path: '../fonts/thmanyah/thmanyahserifdisplay-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah/thmanyahserifdisplay-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah/thmanyahserifdisplay-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
   ],
 });
 

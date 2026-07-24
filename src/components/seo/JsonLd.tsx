@@ -19,9 +19,7 @@ export function JsonLd() {
       '@type': 'CollegeOrUniversity',
       name: 'Al Buraimi University College',
     },
-    sameAs: site.socials
-      .filter((s) => s.id !== 'email')
-      .map((s) => s.href),
+    sameAs: site.socials.filter((s) => s.id !== 'email').map((s) => s.href),
     knowsAbout: ['Full-Stack Development', 'Real-time Systems', 'AI Integration'],
     subjectOf: projects.map((p) => ({
       '@type': 'CreativeWork',

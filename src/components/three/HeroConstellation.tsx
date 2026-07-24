@@ -225,7 +225,9 @@ export default function HeroConstellation({ colors, paused, isDark }: Props) {
         const isHovered = hovered === n.mesh;
         const s = isHovered ? 1.75 : 1;
         n.mesh.scale.lerp(tmp.set(s, s, s), 0.15);
-        const targetOpacity = isHovered ? opacity.hover : restOpacity(n.weight, opacity.node);
+        const targetOpacity = isHovered
+          ? opacity.hover
+          : restOpacity(n.weight, opacity.node);
         n.mat.opacity += (targetOpacity - n.mat.opacity) * 0.15;
       }
 
@@ -271,7 +273,8 @@ export default function HeroConstellation({ colors, paused, isDark }: Props) {
       edges.geometry.dispose();
       edgeMat.dispose();
       renderer.dispose();
-      if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
+      if (renderer.domElement.parentNode === mount)
+        mount.removeChild(renderer.domElement);
     };
     // Build the scene exactly once; `colors` / `isDark` seed the initial
     // materials and are then kept in sync by the effects below. Re-running this

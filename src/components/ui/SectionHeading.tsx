@@ -32,7 +32,12 @@ export function SectionHeading({
   as: Tag = 'h2',
 }: SectionHeadingProps) {
   return (
-    <Reveal className={cn('flex flex-wrap items-end justify-between gap-x-8 gap-y-4', className)}>
+    <Reveal
+      className={cn(
+        'flex flex-wrap items-end justify-between gap-x-8 gap-y-4',
+        className,
+      )}
+    >
       <div className="min-w-0">
         <hr className="rule-fade mb-6 w-16" aria-hidden />
         {label && <p className="label mb-4 text-text-faint">{label}</p>}

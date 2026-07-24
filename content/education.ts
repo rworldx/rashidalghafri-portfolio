@@ -34,7 +34,13 @@ export const education: Education = {
     'Artificial Intelligence',
   ],
   languages: [
-    { name: { en: 'Arabic', ar: 'العربية' }, level: { en: 'Native (C2)', ar: 'اللغة الأم (C2)' } },
-    { name: { en: 'English', ar: 'الإنجليزية' }, level: { en: 'Upper-Intermediate (B2)', ar: 'فوق المتوسط (B2)' } },
+    {
+      name: { en: 'Arabic', ar: 'العربية' },
+      level: { en: 'Native (C2)', ar: 'اللغة الأم (C2)' },
+    },
+    {
+      name: { en: 'English', ar: 'الإنجليزية' },
+      level: { en: 'Upper-Intermediate (B2)', ar: 'فوق المتوسط (B2)' },
+    },
   ],
 };

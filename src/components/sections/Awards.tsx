@@ -26,7 +26,11 @@ export function Awards() {
   return (
     <section className={sectionY}>
       <Container>
-        <SectionHeading title={t('title')} emphasis={t('emphasis')} className="mb-phi-2" />
+        <SectionHeading
+          title={t('title')}
+          emphasis={t('emphasis')}
+          className="mb-phi-2"
+        />
 
         <ol className="border-t border-border-strong">
           {sorted.map((award, i) => (
@@ -65,7 +69,9 @@ function AwardEntry({
             />
           )}
         </div>
-        {award.org && <p className="mt-2 text-sm text-text-muted">{pick(award.org, locale)}</p>}
+        {award.org && (
+          <p className="mt-2 text-sm text-text-muted">{pick(award.org, locale)}</p>
+        )}
         {award.tag && (
           <p className="mt-3">
             <Badge tone="accent">{pick(award.tag, locale)}</Badge>
@@ -89,7 +95,7 @@ function AwardEntry({
         href={award.href}
         className={cn(
           rowClass,
-          'group transition-colors duration-quick ease-out hover:bg-surface/50',
+          'hover:bg-surface/50 group transition-colors duration-quick ease-out',
         )}
       >
         {inner}

@@ -25,7 +25,13 @@ export default function RootNotFound() {
           padding: '2rem',
         }}
       >
-        <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', margin: 0, letterSpacing: '-0.03em' }}>
+        <h1
+          style={{
+            fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
+            margin: 0,
+            letterSpacing: '-0.03em',
+          }}
+        >
           404. Page not found.
         </h1>
         <Link href="/" style={{ color: '#8aa4ff', textUnderlineOffset: '4px' }}>

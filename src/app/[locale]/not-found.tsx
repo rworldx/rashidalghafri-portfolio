@@ -16,7 +16,9 @@ export default function NotFound() {
 
   return (
     <Container className="flex min-h-[70dvh] flex-col justify-center py-phi-4">
-      <p className="tnum font-mono text-2xs uppercase tracking-[0.2em] text-accent">{t('code')}</p>
+      <p className="tnum font-mono text-2xs uppercase tracking-[0.2em] text-accent">
+        {t('code')}
+      </p>
       <h1 className="display-1 mt-6 text-text">{t('title')}</h1>
       <p className="measure-tight mt-phi text-lg text-text-muted">{t('body')}</p>
 

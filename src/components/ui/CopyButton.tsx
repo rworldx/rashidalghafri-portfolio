@@ -16,7 +16,12 @@ interface CopyButtonProps {
  * region as well as shown, and the timer is cleared on unmount so a fast
  * navigation cannot set state on a gone component.
  */
-export function CopyButton({ value, copyLabel, copiedLabel, className }: CopyButtonProps) {
+export function CopyButton({
+  value,
+  copyLabel,
+  copiedLabel,
+  className,
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>();
 

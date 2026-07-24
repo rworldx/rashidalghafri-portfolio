@@ -28,7 +28,13 @@ interface RevealProps {
  * JavaScript being downloaded; the `data-reveal` hook in the root layout covers
  * JavaScript being disabled entirely.
  */
-export function Reveal({ children, className, delay = 0, as = 'div', distance = 18 }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = 'div',
+  distance = 18,
+}: RevealProps) {
   const Tag = as;
   const ref = useRef<HTMLElement>(null);
   const [shown, setShown] = useState(false);

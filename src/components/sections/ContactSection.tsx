@@ -12,7 +12,12 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ContactForm } from '@/components/ui/ContactForm';
 import { cn } from '@/lib/cn';
 
-const iconFor = { github: Github, linkedin: Linkedin, email: Mail, instagram: Instagram } as const;
+const iconFor = {
+  github: Github,
+  linkedin: Linkedin,
+  email: Mail,
+  instagram: Instagram,
+} as const;
 
 /**
  * Two ways in, side by side: the direct details for anyone who would rather
@@ -51,7 +56,11 @@ export function ContactSection() {
                 >
                   {site.email}
                 </a>
-                <CopyButton value={site.email} copyLabel={t('copy')} copiedLabel={t('copied')} />
+                <CopyButton
+                  value={site.email}
+                  copyLabel={t('copy')}
+                  copiedLabel={t('copied')}
+                />
               </div>
             </div>
 
@@ -64,7 +73,11 @@ export function ContactSection() {
                 >
                   {site.phone}
                 </a>
-                <CopyButton value={site.phone} copyLabel={t('copy')} copiedLabel={t('copied')} />
+                <CopyButton
+                  value={site.phone}
+                  copyLabel={t('copy')}
+                  copiedLabel={t('copied')}
+                />
               </div>
             </div>
 

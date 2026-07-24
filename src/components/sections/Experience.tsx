@@ -15,12 +15,18 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 export function Experience() {
   const t = useTranslations('experience');
   const locale = useLocale();
-  const items = experience.filter((e) => e.kind !== 'education').sort((a, b) => b.order - a.order);
+  const items = experience
+    .filter((e) => e.kind !== 'education')
+    .sort((a, b) => b.order - a.order);
 
   return (
     <section className={sectionY}>
       <Container>
-        <SectionHeading title={t('title')} emphasis={t('emphasis')} className="mb-phi-2" />
+        <SectionHeading
+          title={t('title')}
+          emphasis={t('emphasis')}
+          className="mb-phi-2"
+        />
 
         <ol className="border-t border-border-strong">
           {items.map((item, i) => (

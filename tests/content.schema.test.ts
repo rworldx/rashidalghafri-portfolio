@@ -44,7 +44,9 @@ const projectSchema = z.object({
     .optional(),
   gallery: z.array(z.string()).optional(),
   links: z
-    .array(z.object({ label: z.string(), href: z.string(), external: z.boolean().optional() }))
+    .array(
+      z.object({ label: z.string(), href: z.string(), external: z.boolean().optional() }),
+    )
     .optional(),
 });
 
@@ -59,7 +61,11 @@ describe('content/projects', () => {
 });
 
 describe('content/skills', () => {
-  const schema = z.object({ id: z.string(), label: localized, items: z.array(z.string()).min(1) });
+  const schema = z.object({
+    id: z.string(),
+    label: localized,
+    items: z.array(z.string()).min(1),
+  });
   it('matches the SkillGroup schema', () => {
     for (const s of skills) expect(() => schema.parse(s)).not.toThrow();
   });

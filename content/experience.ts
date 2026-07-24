@@ -7,7 +7,10 @@ export const experience: ExperienceItem[] = [
     kind: 'education',
     order: 5,
     title: { en: 'BSc Software Engineering', ar: 'بكالوريوس هندسة البرمجيات' },
-    org: { en: 'Al Buraimi University College, Oman', ar: 'كلية البريمي الجامعية، عُمان' },
+    org: {
+      en: 'Al Buraimi University College, Oman',
+      ar: 'كلية البريمي الجامعية، عُمان',
+    },
     period: 'Oct 2022 – Jul 2026',
     bullets: [
       {
@@ -59,7 +62,10 @@ export const experience: ExperienceItem[] = [
     id: 'it-club',
     kind: 'activity',
     order: 2,
-    title: { en: 'Member & Event Organizer — IT Club', ar: 'عضو ومنظّم فعاليات — نادي تقنية المعلومات' },
+    title: {
+      en: 'Member & Event Organizer — IT Club',
+      ar: 'عضو ومنظّم فعاليات — نادي تقنية المعلومات',
+    },
     org: { en: 'Al Buraimi University College', ar: 'كلية البريمي الجامعية' },
     period: '2022 – 2026',
     bullets: [

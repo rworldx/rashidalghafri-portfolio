@@ -47,7 +47,9 @@ export function ConnectionGraphStatic({ data, ambient = false, className }: Prop
       viewBox={`0 0 ${W} ${H}`}
       className={className}
       role={ambient ? 'presentation' : 'img'}
-      aria-label={ambient ? undefined : 'Diagram connecting projects, skills and recognition'}
+      aria-label={
+        ambient ? undefined : 'Diagram connecting projects, skills and recognition'
+      }
       style={{ opacity: ambient ? 0.5 : 1 }}
     >
       <g stroke="var(--border)" strokeWidth={1}>
@@ -75,7 +77,7 @@ export function ConnectionGraphStatic({ data, ambient = false, className }: Prop
                   y={p.y - nodeRadius(n.weight ?? 1) - 6}
                   textAnchor="middle"
                   fill="var(--text-muted)"
-                  style={{ font: "500 11px var(--font-mono), monospace" }}
+                  style={{ font: '500 11px var(--font-mono), monospace' }}
                 >
                   {n.label}
                 </text>

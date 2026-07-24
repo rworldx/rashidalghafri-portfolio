@@ -16,7 +16,9 @@ import { StatusDot } from '@/components/ui/StatusDot';
 
 /** Pre-render every locale x project. */
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => projects.map((p) => ({ locale, slug: p.slug })));
+  return routing.locales.flatMap((locale) =>
+    projects.map((p) => ({ locale, slug: p.slug })),
+  );
 }
 
 export async function generateMetadata({
@@ -78,7 +80,9 @@ export default async function CaseStudyPage({
           <p className="mt-4 font-mono text-2xs uppercase tracking-[0.14em] text-accent">
             {project.role}
           </p>
-          <p className="measure mt-phi text-xl text-text-muted">{pick(project.summary, locale)}</p>
+          <p className="measure mt-phi text-xl text-text-muted">
+            {pick(project.summary, locale)}
+          </p>
 
           <div className="mt-phi-2 flex flex-wrap items-center gap-x-6 gap-y-3">
             {project.liveUrl && (
@@ -182,7 +186,11 @@ export default async function CaseStudyPage({
                         rel={link.external ? 'noopener noreferrer' : undefined}
                         className="action inline-flex items-center gap-2 text-text-muted transition-colors duration-quick ease-out hover:text-accent"
                       >
-                        <ExternalLink strokeWidth={1.5} aria-hidden className="size-4 shrink-0" />
+                        <ExternalLink
+                          strokeWidth={1.5}
+                          aria-hidden
+                          className="size-4 shrink-0"
+                        />
                         {link.label}
                       </a>
                     </li>

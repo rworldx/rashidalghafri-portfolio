@@ -16,7 +16,9 @@ export function InteractiveGraph({ className }: { className?: string }) {
   const reduced = useReducedMotion();
 
   if (!mounted || reduced) {
-    return <ConnectionGraphStatic data={graph} className={className ?? 'h-full w-full'} />;
+    return (
+      <ConnectionGraphStatic data={graph} className={className ?? 'h-full w-full'} />
+    );
   }
   return <ConnectionGraph className={className} />;
 }

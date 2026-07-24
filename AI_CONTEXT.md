@@ -41,7 +41,7 @@ The visual system, and the reasoning that would otherwise get re-litigated:
 - **The field.** `body::before` is a single fixed gradient layer and
   `body::after` is the grain. Fixed means the compositor never repaints them on
   scroll. Never move either onto a scrolling container.
-- **Type: one Latin family.** Host Grotesk carries display *and* body; hierarchy
+- **Type: one Latin family.** Host Grotesk carries display _and_ body; hierarchy
   comes from weight, size and size-specific tracking, not a second typeface.
   Geist Mono is the only contrast axis, reserved for metadata, codes and figures.
   Emphasis inside a headline uses **Host Grotesk's own italic** via `.em-italic`
@@ -61,7 +61,7 @@ The visual system, and the reasoning that would otherwise get re-litigated:
 - **Motion.** Strong ease-out (`ease-out` = `cubic-bezier(.23,1,.32,1)`); springs
   for anything a pointer touches; `transform`/`opacity` only. Scroll state comes
   from Framer's `useScroll` — **a `scroll` event listener is banned.**
-- **Section openers are restrained.** A small tracked label above *every* section
+- **Section openers are restrained.** A small tracked label above _every_ section
   is the most-repeated generated-design tell there is, so `SectionHeading`
   renders `label` only where it names a genuine shift in genre (currently: the
   travel log, the journey, the résumé header). Everywhere else the headline
@@ -124,6 +124,7 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 which **forbids the heavy `motion.*` import**. Every animated element must use
 `m.*` from `framer-motion` (hooks like `useScroll`/`useSpring`/`useInView` import
 normally). `strict` throws at runtime if a `motion.*` slips in.
+
 - `src/lib/contact-schema.ts` — Zod schema + response envelope, shared by the
   form and the API route.
 

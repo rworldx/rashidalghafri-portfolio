@@ -24,7 +24,11 @@ export function Skills() {
   return (
     <section className={sectionY}>
       <Container>
-        <SectionHeading title={t('title')} emphasis={t('emphasis')} className="mb-phi-2" />
+        <SectionHeading
+          title={t('title')}
+          emphasis={t('emphasis')}
+          className="mb-phi-2"
+        />
 
         <dl className="border-t border-border-strong">
           {skills.map((group, i) => (
@@ -49,7 +53,9 @@ export function Skills() {
         </dl>
 
         <Reveal delay={0.08}>
-          <p className="measure mt-8 text-sm text-text-muted">{pick(exploring, locale)}</p>
+          <p className="measure mt-8 text-sm text-text-muted">
+            {pick(exploring, locale)}
+          </p>
         </Reveal>
       </Container>
     </section>

@@ -44,7 +44,9 @@ export function Certifications() {
                   </div>
                 </div>
                 {cert.detail && (
-                  <p className="measure mt-4 text-text-muted">{pick(cert.detail, locale)}</p>
+                  <p className="measure mt-4 text-text-muted">
+                    {pick(cert.detail, locale)}
+                  </p>
                 )}
                 {cert.credentialUrl && (
                   <a

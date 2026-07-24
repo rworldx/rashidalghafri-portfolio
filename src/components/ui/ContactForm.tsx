@@ -5,7 +5,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { AlertCircle, Check, Send } from 'lucide-react';
-import { contactSchema, type ContactInput, type ContactResponse } from '@/lib/contact-schema';
+import {
+  contactSchema,
+  type ContactInput,
+  type ContactResponse,
+} from '@/lib/contact-schema';
 import { site } from '@content/site';
 import { Button } from './Button';
 import { cn } from '@/lib/cn';
@@ -72,11 +76,12 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div
-        role="status"
-        className="panel flex items-start gap-3 p-6 sm:p-8"
-      >
-        <Check strokeWidth={1.75} aria-hidden className="mt-0.5 size-5 shrink-0 text-signal" />
+      <div role="status" className="panel flex items-start gap-3 p-6 sm:p-8">
+        <Check
+          strokeWidth={1.75}
+          aria-hidden
+          className="mt-0.5 size-5 shrink-0 text-signal"
+        />
         <div>
           <p className="text-text">{t('success')}</p>
           <button
@@ -147,7 +152,11 @@ export function ContactForm() {
           className="flex items-start gap-2 rounded-sm bg-danger-soft px-4 py-3 text-sm text-danger"
           role="alert"
         >
-          <AlertCircle strokeWidth={1.75} aria-hidden className="mt-0.5 size-4 shrink-0" />
+          <AlertCircle
+            strokeWidth={1.75}
+            aria-hidden
+            className="mt-0.5 size-4 shrink-0"
+          />
           <span>
             {serverError}{' '}
             <a className="underline underline-offset-2" href={`mailto:${site.email}`}>
@@ -157,7 +166,12 @@ export function ContactForm() {
         </p>
       )}
 
-      <Button type="submit" size="lg" disabled={status === 'submitting'} aria-busy={status === 'submitting'}>
+      <Button
+        type="submit"
+        size="lg"
+        disabled={status === 'submitting'}
+        aria-busy={status === 'submitting'}
+      >
         <Send strokeWidth={1.75} aria-hidden className="size-4" />
         {status === 'submitting' ? t('sending') : t('send')}
       </Button>
@@ -203,7 +217,11 @@ function Field({
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
+    <p
+      id={id}
+      role="alert"
+      className="mt-2 flex items-center gap-1.5 text-sm text-danger"
+    >
       <AlertCircle strokeWidth={1.75} aria-hidden className="size-3.5 shrink-0" />
       {message}
     </p>

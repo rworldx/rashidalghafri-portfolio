@@ -49,7 +49,9 @@ export function Navbar() {
         return;
       }
       if (e.key !== 'Tab' || !panel) return;
-      const focusables = panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      const focusables = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (!first || !last) return;
@@ -96,7 +98,8 @@ export function Navbar() {
         <div className="hidden items-center gap-1 md:flex">
           <ul className="flex items-center">
             {navItems.map((item) => {
-              const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const active =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <li key={item.href}>
                   <Link
@@ -177,7 +180,8 @@ export function Navbar() {
               transition={{ staggerChildren: 0.05, delayChildren: 0.06 }}
             >
               {navItems.map((item, i) => {
-                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                const active =
+                  pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
                   <m.li
                     key={item.href}

@@ -31,7 +31,9 @@ export function Education() {
             <div className="grid gap-phi-2 lg:grid-cols-[1.618fr_1fr]">
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                  <h3 className="display-3 text-text">{pick(education.degree, locale)}</h3>
+                  <h3 className="display-3 text-text">
+                    {pick(education.degree, locale)}
+                  </h3>
                   <span className="tnum font-mono text-2xs uppercase tracking-[0.14em] text-text-faint">
                     {pick(education.period, locale)}
                   </span>

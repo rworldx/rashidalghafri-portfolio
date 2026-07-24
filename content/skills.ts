@@ -20,7 +20,12 @@ export const skills: SkillGroup[] = [
   {
     id: 'ai',
     label: { en: 'AI & Prompt Engineering', ar: 'الذكاء الاصطناعي وهندسة الأوامر' },
-    items: ['Gemini API', 'Prompt Engineering', 'Multimodal AI', 'Agentic workflows (n8n)'],
+    items: [
+      'Gemini API',
+      'Prompt Engineering',
+      'Multimodal AI',
+      'Agentic workflows (n8n)',
+    ],
   },
   {
     id: 'ai-tools',
@@ -45,7 +50,15 @@ export const skills: SkillGroup[] = [
   {
     id: 'tools',
     label: { en: 'IDEs & Tools', ar: 'بيئات التطوير والأدوات' },
-    items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Visual Studio', 'Android Studio', 'NetBeans'],
+    items: [
+      'Git',
+      'GitHub',
+      'Postman',
+      'VS Code',
+      'Visual Studio',
+      'Android Studio',
+      'NetBeans',
+    ],
   },
   {
     id: 'design',

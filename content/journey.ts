@@ -49,7 +49,10 @@ export const journey: TimelineEntry[] = [
       en: 'Injaz Oman — National Pre-Finals ("Techno Water")',
       ar: 'إنجاز عُمان — التصفيات قبل النهائية ("تكنو ووتر")',
     },
-    detail: { en: 'Exhibited at Al Arefan City, Muscat', ar: 'عُرض في مدينة العرفان، مسقط' },
+    detail: {
+      en: 'Exhibited at Al Arefan City, Muscat',
+      ar: 'عُرض في مدينة العرفان، مسقط',
+    },
   },
   {
     year: 2024,
@@ -91,7 +94,10 @@ export const journey: TimelineEntry[] = [
       en: 'Webmaster — IEEE Student Branch (BUC launch)',
       ar: 'مسؤول الموقع — فرع IEEE الطلابي (إطلاق BUC)',
     },
-    detail: { en: 'Official branch launch · Feb 2026', ar: 'الإطلاق الرسمي للفرع · فبراير ٢٠٢٦' },
+    detail: {
+      en: 'Official branch launch · Feb 2026',
+      ar: 'الإطلاق الرسمي للفرع · فبراير ٢٠٢٦',
+    },
   },
   {
     year: 2026,
@@ -100,18 +106,27 @@ export const journey: TimelineEntry[] = [
       en: 'Department Representative — Capstone Showcase',
       ar: 'ممثّل القسم — معرض مشاريع التخرّج',
     },
-    detail: { en: 'Presented to the Dean & faculty · Apr 2026', ar: 'قدّمت أمام العميد وأعضاء الهيئة · أبريل ٢٠٢٦' },
+    detail: {
+      en: 'Presented to the Dean & faculty · Apr 2026',
+      ar: 'قدّمت أمام العميد وأعضاء الهيئة · أبريل ٢٠٢٦',
+    },
   },
   {
     year: 2026,
     kind: 'award',
     title: { en: 'LIYSF — National Finalist, Top 30', ar: 'LIYSF — متأهل وطني، أفضل ٣٠' },
-    detail: { en: 'Top 30 of 738 STEM projects · Jun 2026', ar: 'أفضل ٣٠ من ٧٣٨ مشروعًا · يونيو ٢٠٢٦' },
+    detail: {
+      en: 'Top 30 of 738 STEM projects · Jun 2026',
+      ar: 'أفضل ٣٠ من ٧٣٨ مشروعًا · يونيو ٢٠٢٦',
+    },
   },
   {
     year: 2026,
     kind: 'milestone',
-    title: { en: 'Graduated with First-Class Distinction · BSc Software Engineering', ar: 'التخرّج بامتياز مع مرتبة الشرف الأولى · بكالوريوس هندسة البرمجيات' },
+    title: {
+      en: 'Graduated with First-Class Distinction · BSc Software Engineering',
+      ar: 'التخرّج بامتياز مع مرتبة الشرف الأولى · بكالوريوس هندسة البرمجيات',
+    },
     detail: { en: 'studynest.dev live · Jul 2026', ar: 'studynest.dev · يوليو ٢٠٢٦' },
   },
   {
