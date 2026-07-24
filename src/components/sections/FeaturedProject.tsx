@@ -5,108 +5,140 @@ import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { featuredProjects } from '@content/projects';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { AnimatedCounter } from '@/components/motion/AnimatedCounter';
-import { Card } from '@/components/ui/Card';
+import { ProjectMedia } from '@/components/ui/ProjectMedia';
 import { Tag } from '@/components/ui/Tag';
 import { Badge } from '@/components/ui/Badge';
 import { StatusDot } from '@/components/ui/StatusDot';
+import { cn } from '@/lib/cn';
 
-/** Featured flagship block — StudyNest (PRD FR-3). Data-driven from content. */
+/**
+ * The flagship. Composed as an asymmetric editorial feature on the golden
+ * split rather than a card: the work gets the long side, the argument for it
+ * gets the short side.
+ *
+ * The old terminal chrome here (three fake window dots) was a hand-built
+ * imitation of product UI, which is the most recognisable AI-design tell there
+ * is. The real measured outcomes carry the section instead, set as a plain
+ * fact line rather than a row of dashboard tiles.
+ */
 export function FeaturedProject() {
   const t = useTranslations('featured');
   const locale = useLocale();
   const project = featuredProjects[0];
   if (!project) return null;
 
+  const host = project.liveUrl?.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
-        <Reveal className="mb-6 flex items-center gap-3">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">
-            {t('eyebrow')}
-          </p>
-          {project.liveUrl && (
-            <Badge tone="success">
-              <StatusDot />
-              {t('live')}
-            </Badge>
-          )}
+        <Reveal>
+          <hr className="rule-fade mb-8 w-16" aria-hidden />
         </Reveal>
 
-        <Card className="overflow-hidden p-7 sm:p-10">
-          {/* Terminal-style header bar (PRD §3.5). */}
-          <div className="mb-7 flex items-center gap-1.5" aria-hidden>
-            <span className="h-3 w-3 rounded-full bg-surface-2" />
-            <span className="h-3 w-3 rounded-full bg-surface-2" />
-            <span className="h-3 w-3 rounded-full bg-surface-2" />
-            <span className="ms-3 font-mono text-xs text-text-muted">
-              {project.slug} · {project.year}
-            </span>
-          </div>
-
-          <Reveal>
-            <h3 className="font-display text-4xl font-semibold text-text">{project.title}</h3>
-            <p className="mt-4 max-w-2xl text-lg text-text-muted">
-              {pick(project.summary, locale)}
-            </p>
-          </Reveal>
-
-          {/* Stats */}
-          {project.stats && (
-            <Reveal className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4" delay={0.1}>
-              {project.stats.map((s) => (
-                <div key={s.label.en} className="rounded border border-border bg-surface-2 p-4">
-                  <p className="font-display text-3xl font-semibold text-text">
-                    <AnimatedCounter value={s.value} />
-                  </p>
-                  <p className="mt-1 font-mono text-xs text-text-muted">{pick(s.label, locale)}</p>
-                </div>
-              ))}
-            </Reveal>
-          )}
-
-          {/* Stack */}
-          <Reveal className="mt-8 flex flex-wrap gap-2" delay={0.15}>
-            {project.stack.slice(0, 8).map((s) => (
-              <Tag key={s}>{s}</Tag>
-            ))}
-          </Reveal>
-
-          {/* Actions */}
-          <Reveal className="mt-8 flex flex-wrap items-center gap-4" delay={0.2}>
+        <div className="grid gap-phi-2 lg:grid-cols-[1.618fr_1fr] lg:items-center">
+          {/* The work itself leads. */}
+          <Reveal className="order-1">
             <Link
               href={`/projects/${project.slug}`}
-              className="inline-flex items-center gap-1.5 font-medium text-accent hover:underline"
+              aria-label={`${project.title}: ${t('viewCaseStudy')}`}
+              className="group block overflow-hidden rounded-lg border border-border shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-border-strong hover:shadow-lift"
             >
-              {t('viewCaseStudy')}
-              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+              <ProjectMedia
+                project={project}
+                priority
+                sizes="(min-width: 1024px) 62vw, 100vw"
+                className="aspect-[1.618/1] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
             </Link>
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-text-muted hover:text-text"
-              >
-                <ExternalLink className="h-4 w-4" />
-                {t('viewLive')}
-              </a>
-            )}
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-text-muted hover:text-text"
-              >
-                <Github className="h-4 w-4" />
-                {t('viewSource')}
-              </a>
-            )}
           </Reveal>
-        </Card>
+
+          <div className="order-2">
+            <Reveal>
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="display-3 text-text">{project.title}</h2>
+                {project.liveUrl && (
+                  <Badge tone="signal">
+                    <StatusDot />
+                    {t('live')}
+                  </Badge>
+                )}
+              </div>
+              <p className="mt-2 font-mono text-2xs uppercase tracking-[0.14em] text-text-faint">
+                {project.role}
+              </p>
+              <p className="measure mt-phi text-lg text-text-muted">
+                {pick(project.summary, locale)}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08} className="mt-phi-2 flex flex-wrap gap-2">
+              {project.stack.slice(0, 6).map((s) => (
+                <Tag key={s}>{s}</Tag>
+              ))}
+            </Reveal>
+
+            <Reveal delay={0.14} className="mt-phi-2 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="action group inline-flex items-center gap-2 border-b border-accent-line pb-1 font-medium text-accent transition-colors duration-quick ease-out hover:border-accent"
+              >
+                {t('viewCaseStudy')}
+                <ArrowRight
+                  strokeWidth={1.75}
+                  aria-hidden
+                  className="size-4 transition-transform duration-quick ease-out group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+                />
+              </Link>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="action inline-flex items-center gap-2 text-sm text-text-muted transition-colors duration-quick ease-out hover:text-text"
+                >
+                  <ExternalLink strokeWidth={1.5} aria-hidden className="size-4" />
+                  <span className="force-ltr">{host}</span>
+                </a>
+              )}
+              {project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="action inline-flex items-center gap-2 text-sm text-text-muted transition-colors duration-quick ease-out hover:text-text"
+                >
+                  <Github strokeWidth={1.5} aria-hidden className="size-4" />
+                  {t('viewSource')}
+                </a>
+              )}
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Measured outcomes, as a fact line. No tiles, no tracks, no chrome. */}
+        {project.stats && project.stats.length > 0 && (
+          <Reveal delay={0.1} className="mt-phi-3 border-t border-border pt-8">
+            <dl className={cn('flex flex-wrap gap-x-phi-2 gap-y-6')}>
+              {project.stats.map((s) => (
+                <div key={s.label.en}>
+                  <dt className="sr-only">{pick(s.label, locale)}</dt>
+                  <dd>
+                    <span className="force-ltr block font-mono text-2xl text-text tnum">
+                      <AnimatedCounter value={s.value} />
+                    </span>
+                    <span className="mt-1 block text-sm text-text-muted">
+                      {pick(s.label, locale)}
+                    </span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        )}
       </Container>
     </section>
   );

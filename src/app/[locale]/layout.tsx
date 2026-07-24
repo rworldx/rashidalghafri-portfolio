@@ -37,6 +37,23 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body id="top">
+        {/*
+          Scroll-reveals set their start state inline, which would leave every
+          section blank if scripts never run. This restores them for no-JS
+          readers and headless renderers.
+
+          It lives at the top of <body>, not in a manual <head>: the App Router
+          owns the document head, and rendering one by hand desynchronises the
+          server and client trees (React reports it as a hydration mismatch).
+        */}
+        <noscript>
+          {/* eslint-disable-next-line react/no-danger */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: '[data-reveal]{opacity:1!important;transform:none!important}',
+            }}
+          />
+        </noscript>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <MotionProvider>

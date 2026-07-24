@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
@@ -11,17 +11,25 @@ interface CopyButtonProps {
   className?: string;
 }
 
-/** Copies `value` to clipboard with an explicit copied state (PRD FR-7). */
+/**
+ * Copies `value`, then says so. The confirmation is announced via a live
+ * region as well as shown, and the timer is cleared on unmount so a fast
+ * navigation cannot set state on a gone component.
+ */
 export function CopyButton({ value, copyLabel, copiedLabel, className }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied(false), 2000);
     } catch {
-      /* clipboard unavailable — value is still visible to select manually */
+      /* Clipboard unavailable. The value stays visible and selectable. */
     }
   };
 
@@ -29,14 +37,19 @@ export function CopyButton({ value, copyLabel, copiedLabel, className }: CopyBut
     <button
       type="button"
       onClick={onCopy}
-      aria-label={copied ? copiedLabel : copyLabel}
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-sm border border-border bg-surface px-2.5 py-1 font-mono text-xs text-text-muted transition-colors hover:text-text',
+        'inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted sm:min-h-9',
+        'transition-[color,border-color,transform] duration-quick ease-out',
+        'hover:border-border-strong hover:text-text active:scale-[0.96] active:duration-press',
         className,
       )}
     >
-      {copied ? <Check className="h-3.5 w-3.5 text-success" /> : <Copy className="h-3.5 w-3.5" />}
-      {copied ? copiedLabel : copyLabel}
+      {copied ? (
+        <Check strokeWidth={2} aria-hidden className="size-3.5 text-signal" />
+      ) : (
+        <Copy strokeWidth={1.75} aria-hidden className="size-3.5" />
+      )}
+      <span aria-live="polite">{copied ? copiedLabel : copyLabel}</span>
     </button>
   );
 }

@@ -1,40 +1,46 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Award as AwardIcon, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { awards } from '@content/awards';
 import type { Award } from '@/types/award';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { cn } from '@/lib/cn';
 
-/** Honours & achievements (PRD FR-6). Sorted most-recent first. */
+/**
+ * Recognition as full-width editorial entries, most recent first. The date
+ * anchors the lead column so the run reads as a record you can scan by year,
+ * and each entry gets the full measure for its description instead of being
+ * squeezed into half a card.
+ */
 export function Awards() {
   const t = useTranslations('awards');
   const locale = useLocale();
   const sorted = [...awards].sort((a, b) => b.order - a.order);
 
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
-        <SectionHeading eyebrow={t('eyebrow')} title={t('title')} className="mb-10" />
-        <div className="grid gap-5 sm:grid-cols-2">
+        <SectionHeading title={t('title')} emphasis={t('emphasis')} className="mb-phi-2" />
+
+        <ol className="border-t border-border-strong">
           {sorted.map((award, i) => (
-            <Reveal key={award.id} delay={i * 0.05}>
-              <AwardItem award={award} locale={locale} viewLabel={t('viewDetails')} />
+            <Reveal as="li" key={award.id} delay={i * 0.05} distance={14}>
+              <AwardEntry award={award} locale={locale} viewLabel={t('viewDetails')} />
             </Reveal>
           ))}
-        </div>
+        </ol>
       </Container>
     </section>
   );
 }
 
-function AwardItem({
+function AwardEntry({
   award,
   locale,
   viewLabel,
@@ -43,40 +49,52 @@ function AwardItem({
   locale: string;
   viewLabel: string;
 }) {
-  const body = (
-    <>
-      <div className="flex items-start justify-between gap-4">
-        <AwardIcon className="h-5 w-5 shrink-0 text-accent" />
-        <span className="font-mono text-xs text-text-muted">{award.date}</span>
-      </div>
-      <h3 className="mt-4 font-display text-xl font-semibold text-text">
-        {pick(award.title, locale)}
-      </h3>
-      {award.org && <p className="mt-1 text-sm text-accent">{pick(award.org, locale)}</p>}
-      {award.tag && (
-        <div className="mt-2">
-          <Badge tone="accent">{pick(award.tag, locale)}</Badge>
+  const inner = (
+    <div className="grid gap-x-phi-2 gap-y-3 py-8 sm:grid-cols-[minmax(7rem,1fr)_2.618fr]">
+      <p className="tnum force-ltr font-mono text-2xs uppercase tracking-[0.14em] text-text-faint sm:pt-2">
+        {award.date}
+      </p>
+      <div>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="display-4 text-text">{pick(award.title, locale)}</h3>
+          {award.href && (
+            <ArrowUpRight
+              strokeWidth={1.5}
+              aria-hidden
+              className="mt-1 size-5 shrink-0 text-text-faint transition-[color,transform] duration-quick ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent rtl:-scale-x-100"
+            />
+          )}
         </div>
-      )}
-      <p className="mt-3 text-sm text-text-muted">{pick(award.description, locale)}</p>
-      {award.href && (
-        <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-accent">
-          {viewLabel}
-          <ArrowUpRight className="h-3.5 w-3.5 rtl:-scale-x-100" />
-        </span>
-      )}
-    </>
+        {award.org && <p className="mt-2 text-sm text-text-muted">{pick(award.org, locale)}</p>}
+        {award.tag && (
+          <p className="mt-3">
+            <Badge tone="accent">{pick(award.tag, locale)}</Badge>
+          </p>
+        )}
+        <p className="measure mt-4 text-text-muted">{pick(award.description, locale)}</p>
+        {award.href && (
+          <p className="mt-4 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-[0.14em] text-accent">
+            {viewLabel}
+          </p>
+        )}
+      </div>
+    </div>
   );
+
+  const rowClass = 'block border-b border-border';
 
   if (award.href) {
     return (
       <Link
         href={award.href}
-        className="group block h-full rounded-lg border border-border bg-surface p-6 shadow-card transition-colors hover:border-accent"
+        className={cn(
+          rowClass,
+          'group transition-colors duration-quick ease-out hover:bg-surface/50',
+        )}
       >
-        {body}
+        {inner}
       </Link>
     );
   }
-  return <Card className="flex h-full flex-col p-6">{body}</Card>;
+  return <div className={rowClass}>{inner}</div>;
 }

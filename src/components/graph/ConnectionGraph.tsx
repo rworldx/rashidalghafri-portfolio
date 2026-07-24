@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { graph } from '@content/graph';
+import { readTokenColor } from '@/lib/css-color';
 import type { GraphNodeKind } from '@/types/graph';
 
 interface SimNode {
@@ -19,11 +20,11 @@ function radiusFor(weight: number): number {
   return 5 + weight * 2.5;
 }
 
-/** Resolve a CSS variable to a concrete colour (canvas can't use `var()`). */
-function readVar(name: string, fallback: string): string {
-  if (typeof window === 'undefined') return fallback;
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
-}
+/**
+ * Canvas cannot use `var()`, and it cannot parse the OKLCH the tokens are
+ * authored in either, so every value is normalised via the browser's own
+ * colour parser (see lib/css-color).
+ */
 
 /**
  * Interactive 2D force-directed connection graph (PRD §3.5 signature).
@@ -70,26 +71,46 @@ export function ConnectionGraph({ className }: { className?: string }) {
     let colors = readColors();
     function readColors() {
       return {
-        border: readVar('--border', '#e2e0d8'),
-        accent: readVar('--accent', '#2f5bea'),
-        success: readVar('--success', '#1fa97a'),
-        text: readVar('--text', '#15171c'),
-        muted: readVar('--text-muted', '#5b6270'),
-        surface: readVar('--surface', '#ffffff'),
+        border: readTokenColor('--border-strong', '#e2e0d8'),
+        accent: readTokenColor('--accent', '#2f5bea'),
+        signal: readTokenColor('--signal', '#1fa97a'),
+        text: readTokenColor('--text', '#15171c'),
+        muted: readTokenColor('--text-muted', '#5b6270'),
+        faint: readTokenColor('--text-faint', '#8b8f99'),
       };
     }
     const colorOf = (kind: GraphNodeKind) =>
       kind === 'self'
         ? colors.accent
         : kind === 'project'
-          ? colors.success
+          ? colors.signal
           : kind === 'recognition'
             ? colors.text
             : colors.muted;
 
+    /*
+     * Loop control, declared before anything that can call it. `resize()` runs
+     * during setup, so a `wake` defined further down would be in the temporal
+     * dead zone at that point. `tickFn` stays null until the loop exists,
+     * which makes an early wake a safe no-op instead of a ReferenceError.
+     */
+    let raf = 0;
+    let running = false;
+    let visible = false;
+    let settleFrames = 0;
+    let tickFn: (() => void) | null = null;
+
+    const wake = () => {
+      settleFrames = 0;
+      if (!tickFn || running || !visible) return;
+      running = true;
+      raf = requestAnimationFrame(tickFn);
+    };
+
     // Re-read palette when the theme class flips.
     const themeObserver = new MutationObserver(() => {
       colors = readColors();
+      wake();
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
@@ -97,6 +118,7 @@ export function ConnectionGraph({ className }: { className?: string }) {
     });
 
     const resize = () => {
+      wake();
       w = Math.max(wrap.clientWidth, 1);
       h = Math.max(wrap.clientHeight, 1);
       canvas.width = w * dpr;
@@ -123,12 +145,14 @@ export function ConnectionGraph({ className }: { className?: string }) {
       const n = pick(x, y);
       if (n) {
         dragging = n;
+        wake();
         canvas.setPointerCapture(e.pointerId);
         canvas.style.cursor = 'grabbing';
       }
     };
     const onMove = (e: PointerEvent) => {
       const { x, y } = pos(e);
+      wake();
       if (dragging) {
         dragging.x = x;
         dragging.y = y;
@@ -154,8 +178,16 @@ export function ConnectionGraph({ className }: { className?: string }) {
       }
     });
 
-    // Simulation + render loop.
-    let raf = 0;
+    /*
+     * Simulation + render loop.
+     *
+     * It stops. The previous version rescheduled forever, so a force
+     * simulation and a full canvas repaint ran at 60fps for as long as the
+     * page was open — including while scrolled far past the graph. It settles
+     * once the layout stops moving, and an IntersectionObserver keeps it
+     * parked while off-screen. Any interaction (hover, drag, resize, theme
+     * change) wakes it again.
+     */
     const tick = () => {
       const cx = w / 2;
       const cy = h / 2;
@@ -237,12 +269,42 @@ export function ConnectionGraph({ className }: { className?: string }) {
         ctx.textAlign = 'center';
         ctx.fillText(n.label, n.x, n.y - r - 6);
       }
+
+      // Settle: once the whole system is essentially still and nobody is
+      // touching it, stop drawing rather than burning frames on a static image.
+      const energy = nodes.reduce((sum, n) => sum + Math.abs(n.vx) + Math.abs(n.vy), 0);
+      if (energy < 0.35 && !dragging && !hover) {
+        settleFrames++;
+      } else {
+        settleFrames = 0;
+      }
+      if (settleFrames > 30) {
+        running = false;
+        return;
+      }
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+
+    tickFn = tick;
+
+    // Only run while the graph is actually on screen.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = Boolean(entry?.isIntersecting);
+        if (visible) wake();
+        else {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0.01 },
+    );
+    io.observe(wrap);
 
     return () => {
       cancelAnimationFrame(raf);
+      running = false;
+      io.disconnect();
       ro.disconnect();
       themeObserver.disconnect();
       canvas.removeEventListener('pointerdown', onDown);
@@ -252,7 +314,17 @@ export function ConnectionGraph({ className }: { className?: string }) {
   }, []);
 
   return (
-    <div ref={wrapRef} className={className} style={{ width: '100%', height: '100%', touchAction: 'none' }}>
+    /*
+     * `pan-y` rather than `none`: dragging a node horizontally still works,
+     * but a vertical swipe scrolls the page instead of being swallowed by the
+     * canvas. A full-width interactive that traps the scroll is the fastest
+     * way to strand someone on a phone.
+     */
+    <div
+      ref={wrapRef}
+      className={className}
+      style={{ width: '100%', height: '100%', touchAction: 'pan-y' }}
+    >
       <canvas ref={canvasRef} />
     </div>
   );

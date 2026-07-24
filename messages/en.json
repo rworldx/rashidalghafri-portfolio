@@ -1,23 +1,23 @@
 {
   "meta": {
     "home": {
-      "title": "Rashid Al Ghafri — Software Engineer",
+      "title": "Rashid Al Ghafri, Software Engineer",
       "description": "Software engineer and SE graduate (BSc, First-Class Distinction) building full-stack systems and AI-driven tools. Creator of StudyNest."
     },
     "projects": {
-      "title": "Work — Rashid Al Ghafri",
-      "description": "Selected projects, led by StudyNest — an AI-powered collaborative study platform."
+      "title": "Work · Rashid Al Ghafri",
+      "description": "Selected projects, led by StudyNest, an AI-powered collaborative study platform."
     },
     "about": {
-      "title": "About — Rashid Al Ghafri",
+      "title": "About · Rashid Al Ghafri",
       "description": "Software engineering graduate, builder, and national STEM finalist from Oman."
     },
     "resume": {
-      "title": "Résumé — Rashid Al Ghafri",
-      "description": "Education, skills, awards and certifications — the credentials at a glance."
+      "title": "Résumé · Rashid Al Ghafri",
+      "description": "Education, skills, awards and certifications: the credentials at a glance."
     },
     "contact": {
-      "title": "Contact — Rashid Al Ghafri",
+      "title": "Contact · Rashid Al Ghafri",
       "description": "Get in touch with Rashid Al Ghafri."
     }
   },
@@ -60,33 +60,38 @@
     "title": "Things I've built",
     "viewAll": "All projects",
     "year": "Year",
-    "role": "Role"
+    "role": "Role",
+    "emphasis": "built"
   },
   "experience": {
     "eyebrow": "Experience",
-    "title": "Experience & leadership"
+    "title": "Experience & leadership",
+    "emphasis": "leadership"
   },
   "resume": {
     "eyebrow": "Résumé",
     "title": "Credentials at a glance",
     "download": "Download CV",
     "ats": "Need an ATS-friendly version?",
-    "atsAria": "Download ATS-friendly CV (Word document)"
+    "atsAria": "Download ATS-friendly CV (Word document)",
+    "emphasis": "glance"
   },
   "skills": {
     "eyebrow": "Capabilities",
-    "title": "Skills & tools"
+    "title": "Skills & tools",
+    "emphasis": "tools"
   },
   "awards": {
     "eyebrow": "Recognition",
     "title": "Honours & achievements",
-    "viewDetails": "View details"
+    "viewDetails": "View details",
+    "emphasis": "achievements"
   },
   "about": {
     "eyebrow": "About",
     "title": "Systems-minded builder from Oman",
     "graphTitle": "How it connects",
-    "graphHint": "Drag a node to explore.",
+    "graphHint": "Drag a node to pull the graph apart.",
     "connectionsEyebrow": "Connections",
     "more": "More about me",
     "educationTitle": "Education & leadership",
@@ -109,8 +114,22 @@
     "certsEyebrow": "Certifications",
     "certsTitle": "Credentials",
     "storyTitle": "My story",
-    "intro": "I'm a Software Engineering graduate (BSc, First-Class Distinction) from Al Buraimi University College with a 3.96/4.00 CGPA, more interested in shipping working systems than collecting frameworks. My capstone, StudyNest, took me from a problem statement to a deployed, AI-powered platform used by real students — and to the national STEM finals.",
-    "focus": "I focus on full-stack development, low-latency real-time applications, and practical AI integration. I like work that is precise, fast, and accountable to real users."
+    "intro": "I'm a Software Engineering graduate (BSc, First-Class Distinction) from Al Buraimi University College with a 3.96/4.00 CGPA, more interested in shipping working systems than collecting frameworks. My capstone, StudyNest, took me from a problem statement to a deployed, AI-powered platform used by real students, and to the national STEM finals.",
+    "focus": "I focus on full-stack development, low-latency real-time applications, and practical AI integration. I like work that is precise, fast, and accountable to real users.",
+    "emphasis": "builder",
+    "graphEmphasis": "connects",
+    "journeyEmphasis": "here",
+    "travelEmphasis": "been",
+    "rootsEmphasis": "started",
+    "interestsEmphasis": "clock",
+    "educationEmphasis": "studied",
+    "certsEmphasis": "",
+    "storyEmphasis": "story",
+    "legendSelf": "Rashid",
+    "legendProject": "Projects",
+    "legendSkill": "Skills",
+    "legendRecognition": "Recognition",
+    "verify": "Verify"
   },
   "caseStudy": {
     "overview": "Overview",
@@ -121,12 +140,13 @@
     "highlights": "Key features",
     "outcomes": "Outcomes",
     "links": "Links",
-    "back": "All projects"
+    "back": "All projects",
+    "next": "Next project"
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's build something",
-    "subtitle": "Recruiting, collaboration, or a question about my work — I read every message.",
+    "subtitle": "Recruiting, collaboration, or a question about my work. I read every message.",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "cta": "Get in touch",
@@ -138,12 +158,14 @@
       "message": "Message",
       "send": "Send message",
       "sending": "Sending…",
-      "success": "Thanks — your message is on its way. I'll reply soon.",
+      "success": "Thanks. Your message is on its way and I'll reply soon.",
       "errorValidation": "Please check the highlighted fields and try again.",
       "errorRate": "That's a few too many messages. Try again in a minute.",
       "errorProvider": "Something went wrong on my end. Email me directly instead.",
-      "mailtoFallback": "Email directly"
-    }
+      "mailtoFallback": "Email directly",
+      "sendAnother": "Send another message"
+    },
+    "emphasis": "something"
   },
   "footer": {
     "builtWith": "Built with Next.js",

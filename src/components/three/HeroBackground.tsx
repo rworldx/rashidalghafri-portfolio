@@ -8,6 +8,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useMounted } from '@/hooks/useMounted';
 import { ConnectionGraphStatic } from '@/components/graph/ConnectionGraph.static';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
+import { readTokenColor } from '@/lib/css-color';
 import type { ConstellationColors } from './HeroConstellation';
 
 /** R3F is heavy + browser-only → load it after paint, never on the server. */
@@ -16,18 +17,30 @@ const HeroConstellation = dynamic(() => import('./HeroConstellation'), {
   loading: () => null,
 });
 
-function readColor(name: string, fallback: string): string {
-  if (typeof window === 'undefined') return fallback;
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
-}
-
+/**
+ * Tokens are authored in OKLCH, which THREE.Color cannot parse — every value
+ * goes through the browser's own colour parser first (see lib/css-color).
+ *
+ * The field is tonal: every node is drawn from the accent family rather than
+ * from the text ramp. Reading `--text` for a node meant near-black spheres in
+ * light mode, which rendered as heavy grey marbles scattered over the paper
+ * instead of a constellation. Kinds are not distinguished here on purpose —
+ * this is ambient and unlabelled, so a second hue would only break the
+ * one-accent rule for no gain. The About-page graph, which *is* labelled and
+ * has a key, keeps its per-kind colours.
+ */
 function readColors(): ConstellationColors {
+  const accent = readTokenColor('--accent', '#5b82ff');
+  const line = readTokenColor('--accent-line', '#7f9cff');
+  // Every node is the accent; hierarchy comes from size and opacity instead.
+  // Painting the minor nodes in `--accent-line` made them near-invisible on
+  // light paper, which is what "the field doesn't fully show" was.
   return {
-    self: readColor('--accent', '#5b82ff'),
-    project: readColor('--success', '#7ce0c4'),
-    recognition: readColor('--text', '#eceff4'),
-    skill: readColor('--text-muted', '#9aa5b8'),
-    edge: readColor('--border', '#222c3a'),
+    self: accent,
+    project: accent,
+    recognition: accent,
+    skill: accent,
+    edge: line,
   };
 }
 
@@ -86,7 +99,11 @@ export function HeroBackground({ className }: { className?: string }) {
         fallback
       ) : (
         <ErrorBoundary fallback={fallback}>
-          <HeroConstellation colors={colors} paused={paused} />
+          <HeroConstellation
+            colors={colors}
+            paused={paused}
+            isDark={resolvedTheme === 'dark'}
+          />
         </ErrorBoundary>
       )}
     </div>

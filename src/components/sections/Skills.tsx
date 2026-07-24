@@ -3,39 +3,53 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { skills, exploring } from '@content/skills';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 import { Tag } from '@/components/ui/Tag';
 
-/** Skills grouped by category (PRD FR-? home / about). Data-driven. */
+/**
+ * Capabilities as a ledger: the category on the short side, the items flowing
+ * across the long side, one hairline between rows.
+ *
+ * Ten groups rendered as ten identical bordered cards was the single most
+ * template-looking block on the site, and it also made the page harder to
+ * scan — the eye had to re-enter every box. A reader can now run straight
+ * down the category column and stop at the one they care about.
+ */
 export function Skills() {
   const t = useTranslations('skills');
   const locale = useLocale();
 
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
-        <SectionHeading eyebrow={t('eyebrow')} title={t('title')} className="mb-10" />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading title={t('title')} emphasis={t('emphasis')} className="mb-phi-2" />
+
+        <dl className="border-t border-border-strong">
           {skills.map((group, i) => (
-            <Reveal key={group.id} delay={i * 0.05}>
-              <Card className="h-full p-6">
-                <p className="font-mono text-xs uppercase tracking-widest text-text-muted">
-                  {pick(group.label, locale)}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+            <Reveal
+              key={group.id}
+              delay={Math.min(i, 6) * 0.04}
+              distance={12}
+              className="grid gap-x-phi-2 gap-y-3 border-b border-border py-6 sm:grid-cols-[minmax(9rem,1fr)_2.618fr] sm:py-7"
+            >
+              <dt className="label pt-1 text-text-faint">{pick(group.label, locale)}</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
-                    <Tag key={item}>{item}</Tag>
+                    <li key={item}>
+                      <Tag>{item}</Tag>
+                    </li>
                   ))}
-                </div>
-              </Card>
+                </ul>
+              </dd>
             </Reveal>
           ))}
-        </div>
-        <Reveal delay={0.1}>
-          <p className="mt-8 font-mono text-sm text-text-muted">{pick(exploring, locale)}</p>
+        </dl>
+
+        <Reveal delay={0.08}>
+          <p className="measure mt-8 text-sm text-text-muted">{pick(exploring, locale)}</p>
         </Reveal>
       </Container>
     </section>

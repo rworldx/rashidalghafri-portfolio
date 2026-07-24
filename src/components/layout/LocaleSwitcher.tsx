@@ -6,7 +6,7 @@ import { usePathname, useRouter } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/cn';
 
-/** Toggles EN ⇄ AR on the current route, persisting via next-intl cookie. */
+/** Toggles EN to AR on the current route, persisting via the next-intl cookie. */
 export function LocaleSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const t = useTranslations('locale');
@@ -29,7 +29,10 @@ export function LocaleSwitcher({ className }: { className?: string }) {
       disabled={isPending}
       aria-label={t('switch')}
       className={cn(
-        'inline-flex h-9 items-center justify-center rounded-sm px-2.5 font-mono text-xs uppercase tracking-wide text-text-muted transition-colors hover:bg-surface-2 hover:text-text',
+        // 44px on touch, tightened to 36px only where a pointer is precise.
+        'inline-flex size-11 items-center justify-center rounded-full font-mono text-2xs uppercase tracking-[0.12em] text-text-muted md:size-9',
+        'transition-[color,background-color,transform] duration-quick ease-out',
+        'hover:bg-surface-2 hover:text-text active:scale-[0.94] active:duration-press disabled:opacity-50',
         className,
       )}
     >

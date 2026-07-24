@@ -11,7 +11,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <div className="pt-10">
+    <div className="pt-phi-4">
       <ContactSection />
     </div>
   );

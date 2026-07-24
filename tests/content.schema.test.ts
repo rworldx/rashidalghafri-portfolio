@@ -31,7 +31,16 @@ const projectSchema = z.object({
   stack: z.array(z.string()).min(1),
   stats: z.array(z.object({ label: localized, value: z.string() })).optional(),
   highlights: z.array(localized).optional(),
-  cover: z.string().min(1),
+  // Optional: a project without a screenshot renders the generated signature.
+  cover: z.string().min(1).optional(),
+  coverKind: z.enum(['screenshot', 'logo']).optional(),
+  thumb: z
+    .object({
+      src: z.string().min(1),
+      dark: z.string().min(1).optional(),
+      kind: z.enum(['screenshot', 'logo']),
+    })
+    .optional(),
   gallery: z.array(z.string()).optional(),
   links: z
     .array(z.object({ label: z.string(), href: z.string(), external: z.boolean().optional() }))

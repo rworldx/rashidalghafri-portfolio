@@ -11,12 +11,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildMetadata(locale, 'about', '/about');
 }
 
-/** About — purely personal: who Rashid is. Credentials live on /resume, work on /projects. */
+/** About: purely personal. Credentials live on /resume, work on /projects. */
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <div className="pt-10">
+    <div className="pt-phi-4">
       <About />
       <Connections />
       <TravelLog />

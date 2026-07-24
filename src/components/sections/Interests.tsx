@@ -14,11 +14,10 @@ import {
 import { interests } from '@content/about';
 import { personalStats } from '@content/personal';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { AnimatedCounter } from '@/components/motion/AnimatedCounter';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 
 /** Maps the icon name stored in content to a lucide component. */
 const icons: Record<string, LucideIcon> = {
@@ -31,50 +30,67 @@ const icons: Record<string, LucideIcon> = {
   Camera,
 };
 
-/** "Beyond the code" interest grid (Addendum A.3). */
+/**
+ * What he does when he is not building.
+ *
+ * Seven interests used to be seven identical cards, which is the shape that
+ * makes any page look generated. They are a two-column list separated by
+ * hairlines instead: the same information, grouped by space and rhythm rather
+ * than boxed one by one.
+ */
 export function Interests() {
   const t = useTranslations('about');
   const locale = useLocale();
 
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
         <SectionHeading
-          eyebrow={t('interestsEyebrow')}
           title={t('interestsTitle')}
-          className="mb-10"
+          emphasis={t('interestsEmphasis')}
+          className="mb-phi-2"
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        <ul className="grid gap-x-phi-2 sm:grid-cols-2">
           {interests.map((interest, i) => {
             const Icon = icons[interest.icon] ?? Film;
             return (
-              <Reveal key={interest.icon} delay={i * 0.05}>
-                <Card className="flex h-full items-center gap-4 p-5">
-                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-accent-soft text-accent">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <p className="text-text-muted">{pick(interest.label, locale)}</p>
-                </Card>
+              <Reveal
+                as="li"
+                key={interest.icon}
+                delay={i * 0.04}
+                distance={12}
+                className="flex items-center gap-4 border-b border-border py-5"
+              >
+                <Icon
+                  strokeWidth={1.5}
+                  aria-hidden
+                  className="size-5 shrink-0 text-accent"
+                />
+                <span className="text-text-muted">{pick(interest.label, locale)}</span>
               </Reveal>
             );
           })}
-        </div>
+        </ul>
 
-        {/* By the numbers — light personal colour, not pro metrics. */}
-        <Reveal className="mt-12">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-text-muted">
-            {t('numbersTitle')}
-          </p>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {/* Light personal numbers, not professional metrics. */}
+        <Reveal className="mt-phi-3">
+          <h3 className="label mb-6 text-text-faint">{t('numbersTitle')}</h3>
+          <dl className="flex flex-wrap gap-x-phi-2 gap-y-6">
             {personalStats.map((s) => (
-              <div key={s.label.en} className="rounded border border-border bg-surface-2 p-4">
-                <p className="font-display text-3xl font-semibold text-text">
-                  <AnimatedCounter value={s.value} />
-                </p>
-                <p className="mt-1 font-mono text-xs text-text-muted">{pick(s.label, locale)}</p>
+              <div key={s.label.en}>
+                <dt className="sr-only">{pick(s.label, locale)}</dt>
+                <dd>
+                  <span className="tnum force-ltr block font-mono text-2xl text-text">
+                    <AnimatedCounter value={s.value} />
+                  </span>
+                  <span className="mt-1 block text-sm text-text-muted">
+                    {pick(s.label, locale)}
+                  </span>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </Reveal>
       </Container>
     </section>

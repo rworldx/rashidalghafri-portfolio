@@ -76,7 +76,15 @@ export const projects: Project[] = [
         ar: 'جرى التحقّق منها في تجربة مع ٤٤ طالبًا: ٨٦٪ أبدوا رضًا عاليًا و٩٥٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },
     ],
-    cover: '/images/projects/studynest-cover.svg',
+    cover: '/images/projects/studynest.png',
+    // The landing-page capture is unreadable at card size, so the work
+    // grid leads with the mark instead. Themed pair: the logo has a
+    // baked-in background, so one file cannot serve both modes.
+    thumb: {
+      src: '/images/projects/studynest-lightlogo.jpg',
+      dark: '/images/projects/studynest-darklogo.jpg',
+      kind: 'logo',
+    },
     gallery: [],
     links: [
       { label: 'Live demo', href: 'https://studynest.dev', external: true },
@@ -167,7 +175,9 @@ export const projects: Project[] = [
         ar: 'حصلت على المركز الثاني بين أكثر من ٢٠ فريقًا — ونالت جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
       },
     ],
-    cover: '/images/projects/energrid-cover.svg',
+    // A brand mark, not a screenshot: shown whole rather than cropped.
+    cover: '/images/projects/energrid-logo.jpg',
+    coverKind: 'logo',
     gallery: [],
   },
 ];

@@ -5,27 +5,34 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { aboutIntro } from '@content/about';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 
-/** Compact About glimpse for the home page — links to the full /about page. */
+/**
+ * A single statement, set large. No heading above it and no card around it:
+ * the sentence is the section, and giving it the full measure is what makes it
+ * land differently from the media-led block above.
+ */
 export function AboutTeaser() {
   const t = useTranslations('about');
   const locale = useLocale();
 
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
-        <SectionHeading eyebrow={t('eyebrow')} title={t('title')} className="mb-6" />
-        <Reveal className="max-w-2xl">
-          <p className="text-lg text-text-muted">{pick(aboutIntro, locale)}</p>
+        <Reveal>
+          <hr className="rule-fade mb-8 w-16" aria-hidden />
+          <p className="display-3 measure text-text">{pick(aboutIntro, locale)}</p>
           <Link
             href="/about"
-            className="mt-6 inline-flex items-center gap-1.5 font-medium text-accent hover:underline"
+            className="action group mt-phi-2 inline-flex items-center gap-2 border-b border-accent-line pb-1 font-medium text-accent transition-colors duration-quick ease-out hover:border-accent"
           >
             {t('more')}
-            <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+            <ArrowRight
+              strokeWidth={1.75}
+              aria-hidden
+              className="size-4 transition-transform duration-quick ease-out group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+            />
           </Link>
         </Reveal>
       </Container>

@@ -6,7 +6,7 @@ export function nodeColor(kind: GraphNodeKind): string {
     case 'self':
       return 'var(--accent)';
     case 'project':
-      return 'var(--success)';
+      return 'var(--signal)';
     case 'recognition':
       return 'var(--text)';
     case 'skill':

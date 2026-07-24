@@ -1,5 +1,17 @@
 import type { Localized, LinkItem, Stat } from './common';
 
+/** An image used in the compact work-grid card. */
+export interface ProjectThumb {
+  /** Path under /public. Used in light theme, and in dark when `dark` is unset. */
+  src: string;
+  /**
+   * Dark-theme counterpart. Needed when the asset has a baked-in background
+   * (a JPEG logo), since one file cannot serve both themes.
+   */
+  dark?: string;
+  kind: 'screenshot' | 'logo';
+}
+
 export interface Project {
   /** URL slug, used for /projects/[slug]. */
   slug: string;
@@ -20,8 +32,27 @@ export interface Project {
   stats?: Stat[];
   /** Case-study key features (each a short localized line). */
   highlights?: Localized[];
-  /** Cover image path under /public. */
-  cover: string;
+  /**
+   * Cover image path under /public. Optional: when a project has no real
+   * screenshot yet, ProjectMedia renders the generated signature instead of
+   * shipping a placeholder graphic.
+   */
+  cover?: string;
+  /**
+   * How the cover fills its frame.
+   *  `screenshot` (default) — a wide capture that should bleed edge to edge.
+   *  `logo` — a mark that must be shown whole, so it is contained and centred
+   *  on a plate instead of being cropped. Use this for square or
+   *  white-background brand assets.
+   */
+  coverKind?: 'screenshot' | 'logo';
+  /**
+   * Optional override for the compact card in the work grid. A wide product
+   * screenshot is unreadable at card size, where a mark is recognisable
+   * instantly — so a project can lead with its logo in the grid and still show
+   * the real product on the large feature block and the case study.
+   */
+  thumb?: ProjectThumb;
   gallery?: string[];
   links?: LinkItem[];
 }

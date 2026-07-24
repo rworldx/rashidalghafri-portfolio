@@ -12,12 +12,25 @@ Vercel.
 
 ## Features
 
-- **Bilingual (EN/AR)** with full right-to-left (RTL) support via next-intl
-- **Interactive connection graph** — a signature animated hero linking projects, skills, and experience
-- **Light / dark themes** with system-preference detection (next-themes)
-- **Content-as-data** — projects, skills, awards, and timeline are typed data files; the grid, case-study pages, sitemap, and OG images all generate automatically
-- **Static-first & accessible** — pages pre-render as SSG for speed; keyboard- and screen-reader-friendly
-- **Contact form** powered by Resend
+- **Bilingual (EN/AR)** with full right-to-left (RTL) support via next-intl,
+  and an Arabic type system of its own (Thmanyah Sans / Serif Display)
+- **A signature 3D field** built from the real project/skill/recognition graph,
+  in vanilla Three.js, with a static SVG fallback for reduced motion and no-WebGL
+- **Light / dark themes** on OKLCH tokens, every text pair verified at WCAG AA
+  or better in both modes
+- **Content-as-data** — projects, skills, awards, and timeline are typed data
+  files; the grid, case-study pages, sitemap, and OG images all generate
+  automatically
+- **Static-first & accessible** — pages pre-render as SSG; keyboard- and
+  screen-reader-friendly, with reveals that survive JavaScript being off
+- **Contact form** powered by Resend, with inline validation and a mailto fallback
+
+## Design system
+
+Documented in [AI_CONTEXT.md](AI_CONTEXT.md#design-language): one accent
+(cobalt), one Latin family (Host Grotesk) with its own italic for emphasis, a
+golden-ratio type and spacing ramp, and a single shape rule (pills for controls,
+22px for surfaces, 10px for inputs).
 
 ## Screenshots
 

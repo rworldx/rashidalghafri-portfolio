@@ -17,6 +17,8 @@ interface Props {
   colors: ConstellationColors;
   /** Paused when the hero scrolls out of view (perf). */
   paused: boolean;
+  /** Drives opacity only — the palette itself comes from the tokens. */
+  isDark: boolean;
 }
 
 function colorForKind(kind: GraphNodeKind, c: ConstellationColors): string {
@@ -56,21 +58,35 @@ function layout(): Map<string, THREE.Vector3> {
 
 interface SceneApi {
   setColors: (c: ConstellationColors) => void;
+  setOpacity: (dark: boolean) => void;
 }
 
+/** Node and edge opacity per theme. Light paper needs a lighter touch. */
+const OPACITY = {
+  light: { node: 0.9, edge: 0.5, hover: 1 },
+  dark: { node: 0.95, edge: 0.45, hover: 1 },
+};
+
 /**
- * Imperative vanilla Three.js constellation (Addendum B.1). Built without
- * @react-three/fiber to avoid coupling to React's reconciler internals (Next 15
- * runs React 19 in the client bundle). Continuous rotation + gentle bob, pointer
- * tilt, and per-node hover highlight via raycasting. Mounted client-only & lazy;
- * reduced-motion / no-WebGL handled by the parent (HeroBackground).
+ * Imperative vanilla Three.js constellation. Built without @react-three/fiber
+ * to avoid coupling to React's reconciler internals (Next 15 runs React 19 in
+ * the client bundle, and R3F v8's reconciler reads React 18's
+ * `ReactCurrentOwner`, which is `undefined` there -> crash). Do not reintroduce
+ * R3F unless you also move to React 19 + R3F v9.
+ *
+ * Nodes are FLAT (MeshBasicMaterial), not lit. A lit standard material with an
+ * emissive term rendered as shaded grey marbles over the light-mode paper,
+ * which read as scattered objects rather than as a diagram. Flat discs also
+ * mean the scene needs no lights at all, which is less work per frame.
+ *
+ * The camera pulls back on narrow containers so the whole sphere always fits
+ * instead of being cropped by the viewport.
  */
-export default function HeroConstellation({ colors, paused }: Props) {
+export default function HeroConstellation({ colors, paused, isDark }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(paused);
   const apiRef = useRef<SceneApi | null>(null);
 
-  // Keep latest values readable inside the rAF loop / color effect.
   pausedRef.current = paused;
 
   useEffect(() => {
@@ -82,7 +98,19 @@ export default function HeroConstellation({ colors, paused }: Props) {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.set(0, 0, 9);
+
+    /** Frame the sphere so it fits whatever box it is given. */
+    const frame = () => {
+      const aspect = width / height;
+      // The layout sphere is r=3.4, flattened to 0.7 on Y. Add margin for the
+      // node discs themselves and for the pointer tilt swinging it around.
+      const need = 4.6;
+      const vFov = (camera.fov * Math.PI) / 180;
+      const distV = need / Math.tan(vFov / 2);
+      const distH = need / (Math.tan(vFov / 2) * aspect);
+      camera.position.z = Math.max(distV, distH, 8.5);
+      camera.updateProjectionMatrix();
+    };
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
@@ -91,36 +119,45 @@ export default function HeroConstellation({ colors, paused }: Props) {
     renderer.domElement.style.height = '100%';
     mount.appendChild(renderer.domElement);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    const point = new THREE.PointLight(0xffffff, 40);
-    point.position.set(6, 6, 8);
-    scene.add(point);
-
     const tilt = new THREE.Group();
     const spin = new THREE.Group();
     tilt.add(spin);
     scene.add(tilt);
 
     const positions = layout();
+    let opacity = isDark ? OPACITY.dark : OPACITY.light;
 
-    // Nodes.
-    const nodes: { mesh: THREE.Mesh; mat: THREE.MeshStandardMaterial; id: string; kind: GraphNodeKind }[] = [];
+    /**
+     * Nodes: flat discs. Everything is the accent colour, so the hierarchy has
+     * to come from size and opacity — a heavier node is both larger and more
+     * solid. `rest` is stored per node so the hover animation has something
+     * definite to return to.
+     */
+    const nodes: {
+      mesh: THREE.Mesh;
+      mat: THREE.MeshBasicMaterial;
+      id: string;
+      kind: GraphNodeKind;
+      weight: number;
+    }[] = [];
+    const restOpacity = (weight: number, base: number) =>
+      Math.min(1, base * (0.62 + weight * 0.19));
+
     for (const n of graph.nodes) {
       const p = positions.get(n.id);
       if (!p) continue;
-      const r = 0.12 + (n.weight ?? 1) * 0.05;
-      const geo = new THREE.SphereGeometry(r, 24, 24);
-      const mat = new THREE.MeshStandardMaterial({
+      const weight = n.weight ?? 1;
+      const r = 0.055 + weight * 0.032;
+      const geo = new THREE.SphereGeometry(r, 20, 20);
+      const mat = new THREE.MeshBasicMaterial({
         color: colorForKind(n.kind, colors),
-        emissive: colorForKind(n.kind, colors),
-        emissiveIntensity: 0.6,
-        roughness: 0.35,
-        metalness: 0.1,
+        transparent: true,
+        opacity: restOpacity(weight, opacity.node),
       });
       const mesh = new THREE.Mesh(geo, mat);
       mesh.position.copy(p);
       spin.add(mesh);
-      nodes.push({ mesh, mat, id: n.id, kind: n.kind });
+      nodes.push({ mesh, mat, id: n.id, kind: n.kind, weight });
     }
 
     // Edges.
@@ -136,7 +173,7 @@ export default function HeroConstellation({ colors, paused }: Props) {
     const edgeMat = new THREE.LineBasicMaterial({
       color: colors.edge,
       transparent: true,
-      opacity: 0.35,
+      opacity: opacity.edge,
     });
     const edges = new THREE.LineSegments(edgeGeo, edgeMat);
     spin.add(edges);
@@ -154,7 +191,10 @@ export default function HeroConstellation({ colors, paused }: Props) {
       target.set(pointer.x, pointer.y);
 
       raycaster.setFromCamera(pointer, camera);
-      const hit = raycaster.intersectObjects(nodes.map((n) => n.mesh), false)[0];
+      const hit = raycaster.intersectObjects(
+        nodes.map((n) => n.mesh),
+        false,
+      )[0];
       hovered = (hit?.object as THREE.Mesh) ?? null;
       renderer.domElement.style.cursor = hovered ? 'pointer' : 'default';
     };
@@ -175,21 +215,23 @@ export default function HeroConstellation({ colors, paused }: Props) {
       if (pausedRef.current) return;
       const t = clock.elapsedTime;
 
-      spin.rotation.y += delta * 0.06; // continuous loop
-      spin.position.y = Math.sin(t * 0.5) * 0.15; // gentle bob
+      spin.rotation.y += delta * 0.055;
+      spin.position.y = Math.sin(t * 0.45) * 0.14;
 
-      tilt.rotation.x += (target.y * 0.25 - tilt.rotation.x) * 0.05;
-      tilt.rotation.y += (target.x * 0.35 - tilt.rotation.y) * 0.05;
+      tilt.rotation.x += (target.y * 0.22 - tilt.rotation.x) * 0.05;
+      tilt.rotation.y += (target.x * 0.3 - tilt.rotation.y) * 0.05;
 
       for (const n of nodes) {
-        const s = hovered === n.mesh ? 1.55 : 1;
+        const isHovered = hovered === n.mesh;
+        const s = isHovered ? 1.75 : 1;
         n.mesh.scale.lerp(tmp.set(s, s, s), 0.15);
-        const targetEmissive = hovered === n.mesh ? 1.6 : 0.6;
-        n.mat.emissiveIntensity += (targetEmissive - n.mat.emissiveIntensity) * 0.15;
+        const targetOpacity = isHovered ? opacity.hover : restOpacity(n.weight, opacity.node);
+        n.mat.opacity += (targetOpacity - n.mat.opacity) * 0.15;
       }
 
       renderer.render(scene, camera);
     };
+    frame();
     animate();
 
     // Resize.
@@ -197,20 +239,22 @@ export default function HeroConstellation({ colors, paused }: Props) {
       width = Math.max(mount.clientWidth, 1);
       height = Math.max(mount.clientHeight, 1);
       camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+      frame();
       renderer.setSize(width, height);
     });
     ro.observe(mount);
 
-    // Expose a colour setter for the theme effect.
     apiRef.current = {
       setColors: (c) => {
         for (const n of nodes) {
-          const hex = colorForKind(n.kind, c);
-          n.mat.color.set(hex);
-          n.mat.emissive.set(hex);
+          n.mat.color.set(colorForKind(n.kind, c));
         }
         edgeMat.color.set(c.edge);
+      },
+      setOpacity: (dark) => {
+        opacity = dark ? OPACITY.dark : OPACITY.light;
+        for (const n of nodes) n.mat.opacity = restOpacity(n.weight, opacity.node);
+        edgeMat.opacity = opacity.edge;
       },
     };
 
@@ -224,20 +268,25 @@ export default function HeroConstellation({ colors, paused }: Props) {
         n.mesh.geometry.dispose();
         n.mat.dispose();
       }
-      edgeGeo.dispose();
+      edges.geometry.dispose();
       edgeMat.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
-    // Build the scene exactly once; `colors` seeds the initial materials and is
-    // then kept in sync by the effect below — re-running this would leak GL.
+    // Build the scene exactly once; `colors` / `isDark` seed the initial
+    // materials and are then kept in sync by the effects below. Re-running this
+    // would leak GL contexts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Update materials when the theme palette changes (no scene rebuild).
+  // Keep materials in sync with the theme without rebuilding the scene.
   useEffect(() => {
     apiRef.current?.setColors(colors);
   }, [colors]);
+
+  useEffect(() => {
+    apiRef.current?.setOpacity(isDark);
+  }, [isDark]);
 
   return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
 }

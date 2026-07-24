@@ -34,3 +34,12 @@ yarn-error.log*
 /coverage
 /test-results
 /playwright-report
+
+# Local working material, not part of the site.
+# Skills/ holds third-party-licensed agent instructions. Thmanyah-Font-Family/
+# is the full vendor download (.otf masters, licence PDFs, specimen guide) and
+# is not needed to build. Only the six .woff2 files next/font/local resolves at
+# compile time are committed, under src/fonts/thmanyah/ — without them the
+# build fails with "Module not found".
+/Skills/
+/Thmanyah-Font-Family/

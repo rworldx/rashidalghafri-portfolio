@@ -3,52 +3,106 @@
 @tailwind utilities;
 
 /**
- * Design tokens (PRD §3). Components reference ONLY semantic Tailwind tokens
- * (bg-bg, text-text-muted, border-border, etc.) which map to these variables.
- * Never hardcode a colour in a component.
+ * DESIGN TOKENS
+ *
+ * Components reference ONLY semantic Tailwind tokens (bg-bg, text-text-muted,
+ * border-border, text-accent …) which map to the variables below. Never
+ * hardcode a colour in a component.
+ *
+ * Colour is authored in OKLCH so lightness steps are perceptually even across
+ * both themes. Strategy: RESTRAINED — a warm-paper / near-black neutral field
+ * carrying one committed accent (cobalt). Cobalt-on-paper is the identity this
+ * site already shipped; it is preserved rather than re-invented.
+ *
+ * Scale: the type ramp and the section rhythm are both golden-ratio derived.
+ * Minor steps use sqrt(phi) = 1.272, major steps use phi = 1.618.
  */
 @layer base {
   :root {
-    /* Surfaces */
-    --bg: #f6f5f1;
-    --surface: #ffffff;
-    --surface-2: #eeede7;
-    --border: #e2e0d8;
+    /* ---- Surfaces (light: warm paper, easy on the eye vs. pure white) ---- */
+    --bg: oklch(0.964 0.0055 92);
+    --bg-deep: oklch(0.941 0.0075 92);
+    --surface: oklch(0.991 0.0025 92);
+    --surface-2: oklch(0.934 0.0075 92);
+    --border: oklch(0.878 0.009 92);
+    --border-strong: oklch(0.79 0.012 92);
 
-    /* Text */
-    --text: #15171c;
-    --text-muted: #5b6270;
+    /* ---- Text ---- */
+    --text: oklch(0.216 0.014 264);
+    --text-muted: oklch(0.472 0.017 264);
+    --text-faint: oklch(0.612 0.014 264);
 
-    /* Accent + states */
-    --accent: #2f5bea;
-    --accent-soft: #e6ecff;
-    --success: #1fa97a;
-    --focus-ring: #2f5bea;
+    /* ---- Accent + states ---- */
+    --accent: oklch(0.518 0.185 262);
+    --accent-hover: oklch(0.462 0.19 262);
+    --accent-soft: oklch(0.935 0.035 262);
+    --accent-line: oklch(0.83 0.07 262);
+    --on-accent: oklch(0.995 0 0);
+    --signal: oklch(0.62 0.14 162);
+    --danger: oklch(0.505 0.196 27);
+    --danger-soft: oklch(0.945 0.032 27);
+    --focus-ring: oklch(0.518 0.185 262);
 
-    /* Radius */
-    --radius-sm: 8px;
-    --radius: 14px;
+    /* ---- Ambient field (the page's atmosphere layer, see body::before) ---- */
+    --field-a: oklch(0.985 0.012 262 / 0.85);
+    --field-b: oklch(0.955 0.014 92 / 0.6);
+    --field-c: oklch(0.93 0.008 92 / 0.55);
+    --grain-opacity: 0.032;
+
+    /* ---- Radius: ONE system. Interactive = pill, surfaces = 16/22px ---- */
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius: 16px;
     --radius-lg: 22px;
+    --radius-xl: 30px;
 
-    /* Elevation */
-    --shadow-card: 0 1px 2px rgb(21 23 28 / 0.04), 0 8px 24px -12px rgb(21 23 28 / 0.12);
+    /* ---- Elevation: tinted to the background hue, never pure black ---- */
+    --shadow-sm: 0 1px 2px oklch(0.216 0.014 264 / 0.05);
+    --shadow-card:
+      0 1px 2px oklch(0.216 0.014 264 / 0.04), 0 12px 32px -16px oklch(0.216 0.014 264 / 0.16);
+    --shadow-lift:
+      0 2px 4px oklch(0.216 0.014 264 / 0.05), 0 24px 56px -24px oklch(0.216 0.014 264 / 0.22);
+    --hairline: inset 0 1px 0 oklch(1 0 0 / 0.7);
   }
 
   .dark {
-    --bg: #0a0e14;
-    --surface: #121823;
-    --surface-2: #1a2333;
-    --border: #222c3a;
+    /* ---- Surfaces (dark: engineered near-black, gradient field on top) ---- */
+    --bg: oklch(0.161 0.0125 265);
+    --bg-deep: oklch(0.128 0.011 265);
+    --surface: oklch(0.203 0.0145 265);
+    --surface-2: oklch(0.246 0.0165 265);
+    --border: oklch(0.293 0.017 265);
+    --border-strong: oklch(0.372 0.019 265);
 
-    --text: #eceff4;
-    --text-muted: #9aa5b8;
+    --text: oklch(0.955 0.004 265);
+    --text-muted: oklch(0.735 0.016 265);
+    --text-faint: oklch(0.598 0.018 265);
 
-    --accent: #5b82ff;
-    --accent-soft: #16213d;
-    --success: #7ce0c4;
-    --focus-ring: #7ca0ff;
+    --accent: oklch(0.735 0.152 264);
+    --accent-hover: oklch(0.795 0.135 264);
+    --accent-soft: oklch(0.278 0.062 264);
+    --accent-line: oklch(0.44 0.11 264);
+    --on-accent: oklch(0.16 0.02 264);
+    --signal: oklch(0.79 0.13 165);
+    --danger: oklch(0.735 0.155 25);
+    --danger-soft: oklch(0.285 0.075 25);
+    --focus-ring: oklch(0.775 0.14 264);
 
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+    /*
+     * Dark mode is a single flat colour, by request. The atmosphere layer is
+     * switched off entirely rather than dimmed, so `--bg` is the only thing
+     * behind the page and there is no gradient banding on large screens.
+     * Depth comes from the surface ramp and the hairlines instead.
+     */
+    --field-a: transparent;
+    --field-b: transparent;
+    --field-c: transparent;
+    --grain-opacity: 0.042;
+
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.5);
+    --shadow-card: 0 1px 2px oklch(0 0 0 / 0.45), 0 16px 40px -20px oklch(0 0 0 / 0.72);
+    --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.5), 0 32px 72px -28px oklch(0 0 0 / 0.85);
+    --hairline: inset 0 1px 0 oklch(1 0 0 / 0.07);
   }
 
   * {
@@ -57,26 +111,69 @@
 
   html {
     scroll-behavior: smooth;
+    /* Anchors clear the floating nav. */
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
+    /*
+     * `clip`, never `hidden`. Decorative bleed (the portrait's ambient glow,
+     * the hero field) must not be able to widen the document, but `hidden`
+     * would turn <html> into a scroll container and break every `sticky`
+     * element on the site. `clip` cuts the overflow without doing that.
+     */
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-bg text-text font-sans antialiased;
+    @apply bg-bg font-sans text-text antialiased;
+    font-optical-sizing: auto;
+    font-kerning: normal;
     text-rendering: optimizeLegibility;
+    /* Nothing on the page outruns its container horizontally. */
+    overflow-x: clip;
   }
 
-  /* Locale-driven font families (PRD §3.2 — Arabic swap). */
+  /**
+   * THE FIELD — the page's atmosphere.
+   * A single fixed, pointer-transparent layer holding the gradient (and grain
+   * in dark mode). Fixed means the compositor never repaints it on scroll,
+   * which is the only safe way to ship a full-viewport gradient.
+   */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 68% at 50% -12%, var(--field-a) 0%, transparent 62%),
+      radial-gradient(90% 55% at 88% 8%, var(--field-b) 0%, transparent 58%),
+      linear-gradient(180deg, transparent 42%, var(--field-c) 100%);
+  }
+
+  /* Grain, on its own fixed layer. Never on a scrolling container. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Locale-driven font families (Arabic swap: Thmanyah). */
   html[lang='ar'] body {
     @apply font-sans-ar;
   }
 
-  /* Visible keyboard focus everywhere (WCAG 2.2 — PRD §12). */
+  /* Visible keyboard focus everywhere (WCAG 2.2). */
   :focus-visible {
     outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-    border-radius: var(--radius-sm);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
   }
 
-  /* Mono indices / code stay LTR even inside an RTL layout. */
+  /* Mono indices / codes stay LTR even inside an RTL layout. */
   [dir='rtl'] .force-ltr {
     direction: ltr;
     unicode-bidi: isolate;
@@ -86,26 +183,263 @@
     background: var(--accent-soft);
     color: var(--text);
   }
+
+  /* Figures never jitter between values. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /**
+   * Display type. Tracking is size-specific (Apple: never one value for all
+   * sizes) — the larger the type, the tighter it is set. Floor is -0.04em.
+   */
+  .display-1 {
+    font-size: clamp(2.9rem, 1.35rem + 7vw, 6.2rem);
+    line-height: 0.96;
+    letter-spacing: -0.038em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  .display-2 {
+    font-size: clamp(2.15rem, 1.28rem + 3.6vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.032em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  .display-3 {
+    font-size: clamp(1.62rem, 1.15rem + 1.9vw, 2.55rem);
+    line-height: 1.1;
+    letter-spacing: -0.024em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  .display-4 {
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.62rem);
+    line-height: 1.18;
+    letter-spacing: -0.018em;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  /**
+   * Italic emphasis inside display type. Descender clearance is mandatory:
+   * `y g j p q` clip against tight leading, so the span reserves its own space.
+   */
+  .em-italic {
+    font-style: italic;
+    letter-spacing: -0.02em;
+    padding-inline-end: 0.06em;
+    padding-bottom: 0.06em;
+  }
+
+  /**
+   * Scroll-reveal. Paired with components/motion/Reveal.tsx, which only
+   * toggles `data-shown` from an IntersectionObserver — the animation itself
+   * is pure CSS, so a revealed block is never waiting on a JS bundle to become
+   * visible. Compositor properties only.
+   */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-y, 18px), 0);
+    transition:
+      opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay, 0s),
+      transform 0.7s cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay, 0s);
+  }
+  .reveal[data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      transform: none;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  /* Word-by-word headline rise. Pairs with motion/TextReveal.tsx. */
+  @keyframes word-rise {
+    from {
+      transform: translate3d(0, 112%, 0);
+    }
+    to {
+      transform: none;
+    }
+  }
+  .word-rise {
+    animation: word-rise 0.85s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+    animation-delay: var(--d, 0s);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .word-rise {
+      animation: none;
+    }
+  }
+
+  /**
+   * Hero entrance, in CSS rather than JS.
+   *
+   * These lines used to be Framer elements, which meant they could not start
+   * animating until the lazily-loaded motion chunk arrived — pushing the
+   * largest text on the page (the tagline, the actual value proposition) to a
+   * 2.0s LCP. CSS animates at first paint with nothing on the critical path,
+   * and it still works with JavaScript disabled.
+   *
+   * `backwards` fill holds the start state during the delay so nothing flashes
+   * in before its turn.
+   */
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .hero-in {
+    animation: hero-rise 0.5s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+    animation-delay: var(--d, 0ms);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in {
+      animation: none;
+    }
+  }
+
+  /* The single handwritten moment on the site. */
+  .signature {
+    font-family: var(--font-script), cursive;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+  /*
+   * Arabic signs in ruqʿah, the script Arabic is actually handwritten in.
+   * Only the family and the leading are set here; the size is passed per
+   * locale at the call site, because a font-size here loses to Tailwind's
+   * size utility (the utilities layer is emitted after components, and layer
+   * order beats selector specificity).
+   */
+  html[lang='ar'] .signature {
+    font-family: var(--font-script-ar), cursive;
+    line-height: 1.8;
+  }
+
+  /* Small caps label. All-caps needs opened tracking to breathe. */
+  .label {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6875rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+  }
+
+  /* Body measure. Never wider than a comfortable read. */
+  .measure {
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+  .measure-tight {
+    max-width: 52ch;
+    text-wrap: pretty;
+  }
+
+  /**
+   * Standalone action links (back links, "view all", an email, a social) need
+   * a 44px touch target. Padding them would drag their underline away from the
+   * text, so the hit area is grown with a pseudo-element instead: the target
+   * gets bigger, the layout does not move.
+   *
+   * Only on coarse pointers. A mouse does not need the slack, and inline links
+   * inside prose are exempt from the size rule anyway.
+   */
+  .action {
+    position: relative;
+  }
+  @media (pointer: coarse) {
+    .action::after {
+      content: '';
+      position: absolute;
+      /*
+       * 0.9rem of vertical slack each side. That is what it takes to lift even
+       * a 16px-tall mono link (a back link, "back to top") over the 44px
+       * target minimum: 16px + 2 * 14.4px = 44.8px.
+       */
+      inset: -0.9rem -0.4rem;
+    }
+  }
+
+  /* A hairline that fades out — used instead of hard 1px section dividers. */
+  .rule-fade {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, var(--border-strong), transparent);
+  }
+  [dir='rtl'] .rule-fade {
+    background: linear-gradient(270deg, var(--border-strong), transparent);
+  }
+
+  /**
+   * Translucent chrome (nav, floating surfaces). Approximates a real material:
+   * blur + saturation + a bright top edge catching the light. Solid fallback
+   * under prefers-reduced-transparency.
+   */
+  .material {
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: var(--hairline), var(--shadow-card);
+  }
+
+  /* Surface: the one raised-panel treatment. Concentric radii, hairline edge. */
+  .panel {
+    background: color-mix(in oklab, var(--surface) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--hairline), var(--shadow-card);
+  }
 }
 
 @layer utilities {
   .font-sans-ar {
     font-family: var(--font-sans-ar), var(--font-sans), sans-serif;
   }
-  .font-display-ar {
-    font-family: var(--font-display-ar), var(--font-display), sans-serif;
+  /* Arabic headings swap to Thmanyah Serif Display. */
+  html[lang='ar'] .display-1,
+  html[lang='ar'] .display-2,
+  html[lang='ar'] .display-3,
+  html[lang='ar'] .display-4 {
+    font-family: var(--font-display-ar), var(--font-sans-ar), sans-serif;
+    letter-spacing: 0;
+    line-height: 1.24;
   }
 
-  /* Skip-to-content link (PRD §12). */
+  /* Skip-to-content link. */
   .skip-link {
     @apply sr-only;
   }
   .skip-link:focus {
-    @apply not-sr-only fixed left-4 top-4 z-[100] rounded bg-surface px-4 py-2 text-sm text-text shadow-card;
+    @apply not-sr-only fixed left-4 top-4 z-[90] rounded-sm bg-surface px-4 py-2 text-sm text-text shadow-card;
   }
 }
 
-/* Honour reduced motion globally as a safety net (MotionProvider also gates). */
+@media (prefers-reduced-transparency: reduce) {
+  .material {
+    background: var(--bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .panel {
+    background: var(--surface);
+  }
+}
+
+/* Reduced motion: a global safety net. MotionProvider also gates Framer. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

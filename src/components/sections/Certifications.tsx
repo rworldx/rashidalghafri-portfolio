@@ -4,55 +4,63 @@ import { useLocale, useTranslations } from 'next-intl';
 import { BadgeCheck, ExternalLink } from 'lucide-react';
 import { certifications } from '@content/awards';
 import { pick } from '@/lib/localized';
-import { Container } from '@/components/layout/Container';
+import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
 
-/** Certifications (Addendum A.4). Renders only when the list is non-empty. */
+/** Certifications. Renders nothing when the list is empty. */
 export function Certifications() {
   const t = useTranslations('about');
   const locale = useLocale();
   if (certifications.length === 0) return null;
 
   return (
-    <section className="py-20">
+    <section className={sectionY}>
       <Container>
-        <SectionHeading eyebrow={t('certsEyebrow')} title={t('certsTitle')} className="mb-10" />
-        <div className="grid gap-5 sm:grid-cols-2">
+        <SectionHeading title={t('certsTitle')} className="mb-phi-2" />
+
+        <ul className="border-t border-border-strong">
           {certifications.map((cert, i) => (
-            <Reveal key={cert.id} delay={i * 0.05}>
-              <Card className="flex h-full flex-col p-6">
+            <Reveal
+              as="li"
+              key={cert.id}
+              delay={i * 0.05}
+              distance={12}
+              className="grid gap-x-phi-2 gap-y-3 border-b border-border py-8 sm:grid-cols-[minmax(7rem,1fr)_2.618fr]"
+            >
+              <p className="tnum force-ltr font-mono text-2xs uppercase tracking-[0.14em] text-text-faint sm:pt-2">
+                {cert.year}
+              </p>
+              <div>
                 <div className="flex items-start gap-3">
-                  <BadgeCheck className="h-5 w-5 shrink-0 text-success" />
-                  <div className="flex-1">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-lg font-semibold text-text">
-                        {cert.title}
-                      </h3>
-                      <span className="font-mono text-xs text-text-muted">{cert.year}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-accent">{cert.issuer}</p>
+                  <BadgeCheck
+                    strokeWidth={1.5}
+                    aria-hidden
+                    className="mt-1 size-5 shrink-0 text-signal"
+                  />
+                  <div>
+                    <h3 className="display-4 text-text">{cert.title}</h3>
+                    <p className="mt-2 text-sm text-text-muted">{cert.issuer}</p>
                   </div>
                 </div>
                 {cert.detail && (
-                  <p className="mt-3 text-sm text-text-muted">{pick(cert.detail, locale)}</p>
+                  <p className="measure mt-4 text-text-muted">{pick(cert.detail, locale)}</p>
                 )}
                 {cert.credentialUrl && (
                   <a
                     href={cert.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-text-muted hover:text-text"
+                    className="action mt-4 inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.14em] text-text-muted transition-colors duration-quick ease-out hover:text-accent"
                   >
-                    <ExternalLink className="h-3.5 w-3.5" />
-                    Verify
+                    <ExternalLink strokeWidth={1.5} aria-hidden className="size-3.5" />
+                    {t('verify')}
                   </a>
                 )}
-              </Card>
+              </div>
             </Reveal>
           ))}
-        </div>
+        </ul>
       </Container>
     </section>
   );

@@ -1,11 +1,15 @@
 import { cn } from '@/lib/cn';
 
-/** Pulsing "active/live" dot in the success colour (PRD hero status line). */
+/**
+ * The site's ONE decorative-looking dot, and it is not decorative: it only
+ * appears where something is genuinely live (availability, a deployed URL).
+ * A coloured dot before every list row is a tell; this one carries state.
+ */
 export function StatusDot({ className }: { className?: string }) {
   return (
-    <span className={cn('relative inline-flex h-2 w-2', className)} aria-hidden>
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
-      <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+    <span className={cn('relative inline-flex size-1.5 shrink-0', className)} aria-hidden>
+      <span className="absolute inset-0 rounded-full bg-signal animate-signal-pulse" />
+      <span className="relative size-1.5 rounded-full bg-signal" />
     </span>
   );
 }
