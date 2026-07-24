@@ -91,7 +91,7 @@
     "eyebrow": "نبذة",
     "title": "صانع يفكّر بعقلية الأنظمة من عُمان",
     "graphTitle": "كيف يترابط ذلك",
-    "graphHint": "اسحب أي عقدة لتفكيك الرسم.",
+    "graphHint": "اسحب أي عقدة لتحريكها.",
     "connectionsEyebrow": "الروابط",
     "more": "المزيد عني",
     "educationTitle": "التعليم والقيادة",
@@ -129,7 +129,8 @@
     "legendProject": "المشاريع",
     "legendSkill": "المهارات",
     "legendRecognition": "التكريم",
-    "verify": "التحقّق"
+    "verify": "التحقّق",
+    "graphHintTouch": "المس أي عقدة واسحبها لتحريكها."
   },
   "caseStudy": {
     "overview": "نظرة عامة",

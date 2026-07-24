@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { graph } from '@content/graph';
 import { readTokenColor } from '@/lib/css-color';
+import { cn } from '@/lib/cn';
 import type { GraphNodeKind } from '@/types/graph';
 
 interface SimNode {
@@ -37,6 +38,11 @@ export function ConnectionGraph({ className }: { className?: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  // Safe to read at render: this component only mounts client-side (the parent
+  // shows a static SVG until then), so there is no SSR/hydration concern.
+  const coarse =
+    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
   useEffect(() => {
     const wrap = wrapRef.current;
     const canvas = canvasRef.current;
@@ -47,6 +53,16 @@ export function ConnectionGraph({ className }: { className?: string }) {
     let w = Math.max(wrap.clientWidth, 1);
     let h = Math.max(wrap.clientHeight, 1);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    // Touch needs bigger everything: fat fingers, small screens, no hover.
+    const nodeScale = coarse ? 1.55 : 1;
+    const hitSlop = coarse ? 26 : 12;
+    const labelPx = coarse ? 13 : 11;
+    const rOf = (weight: number) => radiusFor(weight) * nodeScale;
+    // Whether a node's label is drawn. On small/touch canvases, showing all ten
+    // at once is illegible, so only the important nodes and the one being
+    // touched keep a label.
+    const declutter = coarse || w < 460;
 
     // Seed nodes on a ring (deterministic), self in the centre.
     const nodes: SimNode[] = graph.nodes.map((n, i) => {
@@ -138,7 +154,7 @@ export function ConnectionGraph({ className }: { className?: string }) {
       return { x: e.clientX - r.left, y: e.clientY - r.top };
     };
     const pick = (x: number, y: number) =>
-      nodes.find((n) => Math.hypot(n.x - x, n.y - y) <= radiusFor(n.weight) + 12) ?? null;
+      nodes.find((n) => Math.hypot(n.x - x, n.y - y) <= rOf(n.weight) + hitSlop) ?? null;
 
     const onDown = (e: PointerEvent) => {
       const { x, y } = pos(e);
@@ -154,8 +170,10 @@ export function ConnectionGraph({ className }: { className?: string }) {
       const { x, y } = pos(e);
       wake();
       if (dragging) {
-        dragging.x = x;
-        dragging.y = y;
+        // Keep the grabbed node inside the frame so it cannot be dragged out
+        // of sight and lost.
+        dragging.x = Math.max(16, Math.min(w - 16, x));
+        dragging.y = Math.max(16, Math.min(h - 16, y));
         dragging.vx = 0;
         dragging.vy = 0;
       } else {
@@ -259,15 +277,29 @@ export function ConnectionGraph({ className }: { className?: string }) {
       ctx.globalAlpha = 1;
 
       for (const n of nodes) {
-        const r = radiusFor(n.weight) * (n === hover || n === dragging ? 1.35 : 1);
+        const active = n === hover || n === dragging;
+        const r = rOf(n.weight) * (active ? 1.3 : 1);
+
+        // A faint ring so nodes read as grabbable handles, not just dots.
+        ctx.beginPath();
+        ctx.strokeStyle = colorOf(n.kind);
+        ctx.globalAlpha = active ? 0.35 : 0.16;
+        ctx.lineWidth = coarse ? 2 : 1.5;
+        ctx.arc(n.x, n.y, r + (coarse ? 7 : 5), 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
         ctx.beginPath();
         ctx.fillStyle = colorOf(n.kind);
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = n === hover || n === dragging ? colors.text : colors.muted;
-        ctx.font = '500 11px ui-monospace, monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText(n.label, n.x, n.y - r - 6);
+
+        if (!declutter || active || n.weight >= 2) {
+          ctx.fillStyle = active ? colors.text : colors.muted;
+          ctx.font = `500 ${labelPx}px ui-monospace, monospace`;
+          ctx.textAlign = 'center';
+          ctx.fillText(n.label, n.x, n.y - r - 7);
+        }
       }
 
       // Settle: once the whole system is essentially still and nobody is
@@ -311,19 +343,26 @@ export function ConnectionGraph({ className }: { className?: string }) {
       canvas.removeEventListener('pointermove', onMove);
       canvas.removeEventListener('pointerup', onUp);
     };
+    // Built once. `coarse` is derived from the device at mount and does not
+    // change over the component's life, so it needs no re-run.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     /*
-     * `pan-y` rather than `none`: dragging a node horizontally still works,
-     * but a vertical swipe scrolls the page instead of being swallowed by the
-     * canvas. A full-width interactive that traps the scroll is the fastest
-     * way to strand someone on a phone.
+     * Touch-action by pointer type.
+     *
+     * On a fine pointer (mouse) `pan-y` is harmless. On touch it was the whole
+     * problem: `pan-y` hands every vertical swipe to the page, so you could not
+     * drag a node downward — it scrolled and the drag was cancelled. Coarse
+     * pointers get `none` so a drag tracks in every direction. The canvas is a
+     * short, bounded widget with the legend bar above it and page padding
+     * around it, so a reader can still scroll past by swiping just outside it.
      */
     <div
       ref={wrapRef}
-      className={className}
-      style={{ width: '100%', height: '100%', touchAction: 'pan-y' }}
+      className={cn('select-none', className)}
+      style={{ width: '100%', height: '100%', touchAction: coarse ? 'none' : 'pan-y' }}
     >
       <canvas ref={canvasRef} />
     </div>

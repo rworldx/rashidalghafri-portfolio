@@ -374,6 +374,19 @@
     }
   }
 
+  /* Show the hint that matches the input device. */
+  .hint-coarse {
+    display: none;
+  }
+  @media (pointer: coarse) {
+    .hint-fine {
+      display: none;
+    }
+    .hint-coarse {
+      display: inline;
+    }
+  }
+
   /* A hairline that fades out — used instead of hard 1px section dividers. */
   .rule-fade {
     height: 1px;

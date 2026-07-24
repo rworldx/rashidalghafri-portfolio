@@ -47,6 +47,12 @@ export interface Project {
    */
   coverKind?: 'screenshot' | 'logo';
   /**
+   * Dark-theme counterpart for the cover. Needed when the cover is a logo with
+   * a baked-in background (a JPEG), since one file cannot serve both themes.
+   * When present, each variant's ground is blended out against the surface.
+   */
+  coverDark?: string;
+  /**
    * Optional override for the compact card in the work grid. A wide product
    * screenshot is unreadable at card size, where a mark is recognisable
    * instantly — so a project can lead with its logo in the grid and still show

@@ -34,6 +34,7 @@ const projectSchema = z.object({
   // Optional: a project without a screenshot renders the generated signature.
   cover: z.string().min(1).optional(),
   coverKind: z.enum(['screenshot', 'logo']).optional(),
+  coverDark: z.string().min(1).optional(),
   thumb: z
     .object({
       src: z.string().min(1),

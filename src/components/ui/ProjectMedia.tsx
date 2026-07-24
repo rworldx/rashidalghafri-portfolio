@@ -17,6 +17,19 @@ interface Props {
   className?: string;
 }
 
+interface Asset {
+  src?: string;
+  /** Dark-theme counterpart, for logos with a baked-in background. */
+  dark?: string;
+  kind: 'screenshot' | 'logo';
+}
+
+function resolveAsset(project: Project, variant: 'cover' | 'thumb'): Asset {
+  // A thumb, if set, overrides only the compact grid card.
+  if (variant === 'thumb' && project.thumb) return project.thumb;
+  return { src: project.cover, dark: project.coverDark, kind: project.coverKind ?? 'screenshot' };
+}
+
 /**
  * A project's visual. A real asset wins whenever one exists; otherwise the
  * generated signature stands in, so a missing image never ships as a grey box
@@ -24,7 +37,7 @@ interface Props {
  *
  * Screenshots and logos are not interchangeable. A screenshot is a wide capture
  * and should bleed to the edges; a logo is a mark, and cropping it decapitates
- * the wordmark, so it is contained and given room.
+ * the wordmark, so it is contained and shown large.
  *
  * Logos also arrive as JPEGs with a baked-in background and no alpha. Where a
  * light/dark pair exists, each variant is blended against the site's own
@@ -39,12 +52,16 @@ export function ProjectMedia({
   sizes,
   className,
 }: Props) {
-  const thumb = variant === 'thumb' ? project.thumb : undefined;
-  const src = thumb?.src ?? project.cover;
-  const isLogo = thumb ? thumb.kind === 'logo' : project.coverKind === 'logo';
-  const hasThemedPair = Boolean(thumb?.dark);
+  const asset = resolveAsset(project, variant);
+  const isLogo = asset.kind === 'logo';
+  const hasThemedPair = isLogo && Boolean(asset.src) && Boolean(asset.dark);
+  const imgSizes = sizes ?? '(min-width: 1024px) 50vw, 100vw';
 
-  if (!src) {
+  // Padding is small on purpose: the mark should read big. It sits well inside
+  // the frame either way because the source is square and the frame is wide.
+  const logoPad = 'p-[6%]';
+
+  if (!asset.src) {
     return (
       <div className={cn('relative overflow-hidden bg-surface-2', className)}>
         <ProjectSignature slug={project.slug} title={project.title} caption={project.role} />
@@ -52,28 +69,26 @@ export function ProjectMedia({
     );
   }
 
-  const imgSizes = sizes ?? '(min-width: 1024px) 50vw, 100vw';
-
-  if (isLogo && hasThemedPair && thumb) {
+  if (hasThemedPair) {
     return (
       <div className={cn('relative overflow-hidden bg-surface-2 [isolation:isolate]', className)}>
         {/* Light: a dark mark on white, multiplied so the white ground drops out. */}
         <Image
-          src={thumb.src}
+          src={asset.src as string}
           alt=""
           fill
           priority={priority}
           sizes={imgSizes}
-          className="object-contain p-[14%] mix-blend-multiply dark:hidden"
+          className={cn('object-contain mix-blend-multiply dark:hidden', logoPad)}
         />
         {/* Dark: a light mark on black, screened so the black ground drops out. */}
         <Image
-          src={thumb.dark as string}
+          src={asset.dark as string}
           alt=""
           fill
           priority={priority}
           sizes={imgSizes}
-          className="hidden object-contain p-[14%] mix-blend-screen dark:block"
+          className={cn('hidden object-contain mix-blend-screen dark:block', logoPad)}
         />
       </div>
     );
@@ -90,12 +105,12 @@ export function ProjectMedia({
       )}
     >
       <Image
-        src={src}
+        src={asset.src}
         alt=""
         fill
         priority={priority}
         sizes={imgSizes}
-        className={cn(isLogo ? 'object-contain p-[8%]' : 'object-cover')}
+        className={cn(isLogo ? cn('object-contain', logoPad) : 'object-cover')}
       />
     </div>
   );

@@ -76,15 +76,13 @@ export const projects: Project[] = [
         ar: 'جرى التحقّق منها في تجربة مع ٤٤ طالبًا: ٨٦٪ أبدوا رضًا عاليًا و٩٥٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },
     ],
-    cover: '/images/projects/studynest.png',
-    // The landing-page capture is unreadable at card size, so the work
-    // grid leads with the mark instead. Themed pair: the logo has a
-    // baked-in background, so one file cannot serve both modes.
-    thumb: {
-      src: '/images/projects/studynest-lightlogo.jpg',
-      dark: '/images/projects/studynest-darklogo.jpg',
-      kind: 'logo',
-    },
+    // The mark leads everywhere — grid, feature block and case study. The
+    // landing-page capture read as an unrecognisable smudge at any small size.
+    // Themed pair: the logo has a baked-in background, so one file cannot
+    // serve both modes (light mark on white, dark mark on black).
+    cover: '/images/projects/studynest-lightlogo.jpg',
+    coverDark: '/images/projects/studynest-darklogo.jpg',
+    coverKind: 'logo',
     gallery: [],
     links: [
       { label: 'Live demo', href: 'https://studynest.dev', external: true },

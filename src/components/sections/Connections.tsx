@@ -52,7 +52,11 @@ export function Connections() {
                   </li>
                 ))}
               </ul>
-              <p className="font-mono text-2xs text-text-faint">{t('graphHint')}</p>
+              {/* The right hint for the input device, chosen in CSS. */}
+              <p className="font-mono text-2xs text-text-faint">
+                <span className="hint-fine">{t('graphHint')}</span>
+                <span className="hint-coarse">{t('graphHintTouch')}</span>
+              </p>
             </div>
 
             <div className="aspect-[4/3] w-full sm:aspect-[2/1] lg:aspect-[5/2]">

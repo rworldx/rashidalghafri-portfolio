@@ -91,7 +91,7 @@
     "eyebrow": "About",
     "title": "Systems-minded builder from Oman",
     "graphTitle": "How it connects",
-    "graphHint": "Drag a node to pull the graph apart.",
+    "graphHint": "Drag any node to move it.",
     "connectionsEyebrow": "Connections",
     "more": "More about me",
     "educationTitle": "Education & leadership",
@@ -129,7 +129,8 @@
     "legendProject": "Projects",
     "legendSkill": "Skills",
     "legendRecognition": "Recognition",
-    "verify": "Verify"
+    "verify": "Verify",
+    "graphHintTouch": "Touch and drag any node to move it."
   },
   "caseStudy": {
     "overview": "Overview",
