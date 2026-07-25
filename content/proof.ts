@@ -38,8 +38,8 @@ export const proof: ProofPoint[] = [
     value: { en: '3.96', ar: '٣٫٩٦' },
     label: { en: 'CGPA out of 4.00', ar: 'المعدل التراكمي من ٤٫٠٠' },
     detail: {
-      en: 'BSc Software Engineering, First-Class Distinction · College Honour Roll, both semesters',
-      ar: 'بكالوريوس هندسة البرمجيات، امتياز مع مرتبة الشرف الأولى · لوحة شرف الكلية في الفصلين',
+      en: 'BSc Software Engineering, First-Class Distinction · College Honour Roll, every semester',
+      ar: 'بكالوريوس هندسة البرمجيات، امتياز مع مرتبة الشرف الأولى · لوحة شرف الكلية في جميع الفصول',
     },
   },
   {

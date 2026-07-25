@@ -20,8 +20,8 @@ export const education: Education = {
   school: 'Al Buraimi University College · Al Buraimi, Oman',
   period: { en: 'Oct 2022 – Jul 2026', ar: 'أكتوبر ٢٠٢٢ – يوليو ٢٠٢٦' },
   honours: {
-    en: 'CGPA 3.96 / 4.00 — First-Class Distinction · College Honour Roll (both semesters) · Dean’s List. Senior capstone (StudyNest) graded Distinction.',
-    ar: 'معدّل ٣٫٩٦ / ٤٫٠٠ — امتياز مع مرتبة الشرف الأولى · لوحة شرف الكلية (الفصلين) · قائمة العميد. مشروع التخرّج (StudyNest) بتقدير امتياز.',
+    en: 'CGPA 3.96 / 4.00 — First-Class Distinction · College Honour Roll (every semester) · Dean’s List. Senior capstone (StudyNest) graded Distinction.',
+    ar: 'معدّل ٣٫٩٦ / ٤٫٠٠ — امتياز مع مرتبة الشرف الأولى · لوحة شرف الكلية (جميع الفصول) · قائمة العميد. مشروع التخرّج (StudyNest) بتقدير امتياز.',
   },
   coursework: [
     'Data Structures & Algorithms',
