@@ -7,9 +7,9 @@ import { travels, travelNote } from '@content/personal';
 import type { Travel } from '@/types/common';
 import { pick } from '@/lib/localized';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { FlowBranch } from '@/components/flow/FlowBranch';
 
 /**
  * Each trip as a boarding pass. The ticket notch is cut with two radial
@@ -24,41 +24,39 @@ export function TravelLog() {
   const locale = useLocale();
 
   return (
-    <section className={sectionY}>
-      <Container>
-        <SectionHeading
-          label={t('travelEyebrow')}
-          title={t('travelTitle')}
-          emphasis={t('travelEmphasis')}
-          className="mb-phi-2"
-        />
+    <FlowBranch>
+      <SectionHeading
+        label={t('travelEyebrow')}
+        title={t('travelTitle')}
+        emphasis={t('travelEmphasis')}
+        className="mb-phi-2"
+      />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {travels.map((trip, i) => (
-            <Reveal
-              key={`${trip.toCode}-${trip.year}`}
-              delay={i * 0.06}
-              className="h-full"
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {travels.map((trip, i) => (
+          <Reveal
+            key={`${trip.toCode}-${trip.year}`}
+            delay={i * 0.06}
+            className="h-full"
+          >
+            <Pass
+              trip={trip}
+              boardingLabel={t('boardingPass')}
+              note={pick(trip.note, locale)}
             >
-              <Pass
-                trip={trip}
-                boardingLabel={t('boardingPass')}
-                note={pick(trip.note, locale)}
-              >
-                {pick(trip.to, locale)}
-              </Pass>
-            </Reveal>
-          ))}
-
-          <Reveal delay={travels.length * 0.06} className="h-full">
-            <div className="flex h-full flex-col justify-center rounded-lg border border-dashed border-border-strong p-6">
-              <MapPin strokeWidth={1.5} aria-hidden className="size-5 text-accent" />
-              <p className="mt-4 text-text-muted">{pick(travelNote, locale)}</p>
-            </div>
+              {pick(trip.to, locale)}
+            </Pass>
           </Reveal>
-        </div>
-      </Container>
-    </section>
+        ))}
+
+        <Reveal delay={travels.length * 0.06} className="h-full">
+          <div className="flex h-full flex-col justify-center rounded-lg border border-dashed border-border-strong p-6">
+            <MapPin strokeWidth={1.5} aria-hidden className="size-5 text-accent" />
+            <p className="mt-4 text-text-muted">{pick(travelNote, locale)}</p>
+          </div>
+        </Reveal>
+      </div>
+    </FlowBranch>
   );
 }
 

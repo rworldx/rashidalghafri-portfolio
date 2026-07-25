@@ -46,6 +46,11 @@
     "viewWork": "View work",
     "downloadCv": "Download CV"
   },
+  "throughLine": {
+    "title": "Every system here moves something to someone who needed it.",
+    "emphasis": "someone who needed it",
+    "body": "Study partners to isolated students. Live consumption data to households. Branch activity to members. The problems differ; the shape of the answer rarely does — and the record below is what came of it."
+  },
   "featured": {
     "eyebrow": "Featured project",
     "problem": "Problem",
@@ -131,6 +136,10 @@
     "legendRecognition": "Recognition",
     "verify": "Verify",
     "graphHintTouch": "Touch and drag any node to move it."
+  },
+  "colophon": {
+    "title": "The line down the side",
+    "emphasis": "down the side"
   },
   "caseStudy": {
     "overview": "Overview",

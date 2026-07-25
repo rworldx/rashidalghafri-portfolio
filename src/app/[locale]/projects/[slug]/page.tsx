@@ -8,7 +8,6 @@ import { pick } from '@/lib/localized';
 import { buildProjectMetadata } from '@/lib/seo';
 import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
-import { AnimatedCounter } from '@/components/motion/AnimatedCounter';
 import { ProjectMedia } from '@/components/ui/ProjectMedia';
 import { Tag } from '@/components/ui/Tag';
 import { Badge } from '@/components/ui/Badge';
@@ -127,7 +126,7 @@ export default async function CaseStudyPage({
                   <dt className="sr-only">{pick(s.label, locale)}</dt>
                   <dd>
                     <span className="tnum force-ltr block font-mono text-2xl text-text">
-                      <AnimatedCounter value={s.value} />
+                      {s.value}
                     </span>
                     <span className="mt-1 block text-sm text-text-muted">
                       {pick(s.label, locale)}

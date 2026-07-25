@@ -19,7 +19,21 @@ const widths = {
   text: 'max-w-3xl',
 } as const;
 
-/** Max-width + responsive gutters. The single source of layout width. */
+/**
+ * Max-width + responsive gutters. The single source of layout width.
+ *
+ * GEOMETRY CONTRACT WITH THE FLOW RAIL — the inline-start padding is exactly
+ * double the rail's own inset (rail at 20 / 32 / 48px, content at 40 / 64 /
+ * 96px), which leaves the gutter free for the rail and gives every branch spur
+ * a run equal to the rail's inset. The asymmetry is deliberate: the content
+ * column sits off-centre because the spine occupies the start gutter.
+ *
+ * The phone step is tighter than a proportional scale would give: at 390px
+ * every pixel the gutter takes comes straight off the measure, so the rail
+ * sits at 20px rather than 24px there.
+ *
+ * If you change these values, change <FlowRail> and <FlowBranch> with them.
+ */
 export function Container({
   children,
   className,
@@ -27,7 +41,13 @@ export function Container({
   width = 'shell',
 }: ContainerProps) {
   return (
-    <Tag className={cn('mx-auto w-full px-6 sm:px-8 lg:px-12', widths[width], className)}>
+    <Tag
+      className={cn(
+        'mx-auto w-full pe-5 ps-10 sm:pe-8 sm:ps-16 lg:pe-12 lg:ps-24',
+        widths[width],
+        className,
+      )}
+    >
       {children}
     </Tag>
   );

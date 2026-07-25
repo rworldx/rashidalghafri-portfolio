@@ -6,11 +6,11 @@ import { Link } from '@/i18n/navigation';
 import { awards } from '@content/awards';
 import type { Award } from '@/types/award';
 import { pick } from '@/lib/localized';
-import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Badge } from '@/components/ui/Badge';
 import { cn } from '@/lib/cn';
+import { FlowBranch } from '@/components/flow/FlowBranch';
 
 /**
  * Recognition as full-width editorial entries, most recent first. The date
@@ -24,23 +24,21 @@ export function Awards() {
   const sorted = [...awards].sort((a, b) => b.order - a.order);
 
   return (
-    <section className={sectionY}>
-      <Container>
-        <SectionHeading
-          title={t('title')}
-          emphasis={t('emphasis')}
-          className="mb-phi-2"
-        />
+    <FlowBranch>
+      <SectionHeading
+        title={t('title')}
+        emphasis={t('emphasis')}
+        className="mb-phi-2"
+      />
 
-        <ol className="border-t border-border-strong">
-          {sorted.map((award, i) => (
-            <Reveal as="li" key={award.id} delay={i * 0.05} distance={14}>
-              <AwardEntry award={award} locale={locale} viewLabel={t('viewDetails')} />
-            </Reveal>
-          ))}
-        </ol>
-      </Container>
-    </section>
+      <ol className="border-t border-border-strong">
+        {sorted.map((award, i) => (
+          <Reveal as="li" key={award.id} delay={i * 0.05} distance={14}>
+            <AwardEntry award={award} locale={locale} viewLabel={t('viewDetails')} />
+          </Reveal>
+        ))}
+      </ol>
+    </FlowBranch>
   );
 }
 

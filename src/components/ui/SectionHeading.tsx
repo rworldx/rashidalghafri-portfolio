@@ -22,7 +22,14 @@ interface SectionHeadingProps {
   as?: 'h1' | 'h2';
 }
 
-/** Section opener: a fading rule, the headline, and nothing it does not need. */
+/**
+ * Section opener: the headline, and nothing it does not need.
+ *
+ * The short fading rule that used to sit above every headline is gone. The
+ * flow rail now draws a spur from the page's spine into each section, which
+ * says the same thing structurally and says it better — keeping both meant two
+ * decorative horizontal lines introducing every block.
+ */
 export function SectionHeading({
   title,
   emphasis,
@@ -39,7 +46,6 @@ export function SectionHeading({
       )}
     >
       <div className="min-w-0">
-        <hr className="rule-fade mb-6 w-16" aria-hidden />
         {label && <p className="label mb-4 text-text-faint">{label}</p>}
         <Tag className="display-2 text-text">
           <Emphasise title={title} emphasis={emphasis} />

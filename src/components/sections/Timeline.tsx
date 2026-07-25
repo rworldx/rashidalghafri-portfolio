@@ -7,9 +7,9 @@ import { journey } from '@content/journey';
 import type { TimelineKind } from '@/types/common';
 import { pick } from '@/lib/localized';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { FlowBranch } from '@/components/flow/FlowBranch';
 
 /** Token-driven accent per entry kind. No hardcoded colours. */
 const dotColor: Record<TimelineKind, string> = {
@@ -43,62 +43,60 @@ export function Timeline() {
   const fill = useSpring(scrollYProgress, { stiffness: 80, damping: 24 });
 
   return (
-    <section className={sectionY}>
-      <Container>
-        <SectionHeading
-          label={t('journeyEyebrow')}
-          title={t('journeyTitle')}
-          emphasis={t('journeyEmphasis')}
-          className="mb-phi-2"
+    <FlowBranch>
+      <SectionHeading
+        label={t('journeyEyebrow')}
+        title={t('journeyTitle')}
+        emphasis={t('journeyEmphasis')}
+        className="mb-phi-2"
+      />
+
+      <div ref={ref} className="relative">
+        {/* Track, then the fill that tracks scroll progress over it. */}
+        <span className="absolute inset-y-0 start-[7px] w-px bg-border" aria-hidden />
+        <m.span
+          aria-hidden
+          className="absolute inset-y-0 start-[7px] w-px origin-top bg-accent"
+          style={reduced ? { scaleY: 1 } : { scaleY: fill }}
         />
 
-        <div ref={ref} className="relative">
-          {/* Track, then the fill that tracks scroll progress over it. */}
-          <span className="absolute inset-y-0 start-[7px] w-px bg-border" aria-hidden />
-          <m.span
-            aria-hidden
-            className="absolute inset-y-0 start-[7px] w-px origin-top bg-accent"
-            style={reduced ? { scaleY: 1 } : { scaleY: fill }}
-          />
-
-          <ol className="space-y-9">
-            {journey.map((entry, i) => {
-              const isNewYear = i === 0 || journey[i - 1]?.year !== entry.year;
-              return (
-                <Reveal
-                  as="li"
-                  key={`${entry.year}-${i}`}
-                  delay={Math.min(i, 8) * 0.035}
-                  distance={12}
-                  className="relative ps-10"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute start-0 top-[5px] block size-[15px] rounded-full border-[3px] border-bg"
-                    style={{
-                      background: entry.future ? 'var(--bg)' : dotColor[entry.kind],
-                      boxShadow: entry.future
-                        ? `inset 0 0 0 2px ${dotColor[entry.kind]}`
-                        : undefined,
-                    }}
-                  />
-                  {isNewYear && (
-                    <p className="tnum force-ltr mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-accent">
-                      {entry.year}
-                    </p>
-                  )}
-                  <h3 className="display-4 text-text">{pick(entry.title, locale)}</h3>
-                  {pick(entry.detail, locale) && (
-                    <p className="measure mt-1.5 text-sm text-text-muted">
-                      {pick(entry.detail, locale)}
-                    </p>
-                  )}
-                </Reveal>
-              );
-            })}
-          </ol>
-        </div>
-      </Container>
-    </section>
+        <ol className="space-y-9">
+          {journey.map((entry, i) => {
+            const isNewYear = i === 0 || journey[i - 1]?.year !== entry.year;
+            return (
+              <Reveal
+                as="li"
+                key={`${entry.year}-${i}`}
+                delay={Math.min(i, 8) * 0.035}
+                distance={12}
+                className="relative ps-10"
+              >
+                <span
+                  aria-hidden
+                  className="absolute start-0 top-[5px] block size-[15px] rounded-full border-[3px] border-bg"
+                  style={{
+                    background: entry.future ? 'var(--bg)' : dotColor[entry.kind],
+                    boxShadow: entry.future
+                      ? `inset 0 0 0 2px ${dotColor[entry.kind]}`
+                      : undefined,
+                  }}
+                />
+                {isNewYear && (
+                  <p className="tnum force-ltr mb-2 font-mono text-2xs uppercase tracking-[0.16em] text-accent">
+                    {entry.year}
+                  </p>
+                )}
+                <h3 className="display-4 text-text">{pick(entry.title, locale)}</h3>
+                {pick(entry.detail, locale) && (
+                  <p className="measure mt-1.5 text-sm text-text-muted">
+                    {pick(entry.detail, locale)}
+                  </p>
+                )}
+              </Reveal>
+            );
+          })}
+        </ol>
+      </div>
+    </FlowBranch>
   );
 }

@@ -4,9 +4,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Tent, GraduationCap } from 'lucide-react';
 import { schooling, schoolingNote } from '@content/personal';
 import { pick } from '@/lib/localized';
-import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { FlowBranch } from '@/components/flow/FlowBranch';
 
 /**
  * The early schooling path. This is one of the few places on the site where a
@@ -22,54 +22,52 @@ export function Roots() {
   const locale = useLocale();
 
   return (
-    <section className={sectionY}>
-      <Container>
-        <SectionHeading
-          title={t('rootsTitle')}
-          emphasis={t('rootsEmphasis')}
-          className="mb-phi-2"
-        />
+    <FlowBranch>
+      <SectionHeading
+        title={t('rootsTitle')}
+        emphasis={t('rootsEmphasis')}
+        className="mb-phi-2"
+      />
 
-        <Reveal>
-          <ol className="relative grid gap-8 sm:grid-cols-3 sm:gap-6">
-            {/* Desktop rail. */}
-            <span
-              aria-hidden
-              className="absolute inset-x-8 top-[9px] hidden h-px bg-border sm:block"
-            />
-            {/* Mobile rail. */}
-            <span
-              aria-hidden
-              className="absolute bottom-6 start-[9px] top-3 w-px bg-border sm:hidden"
-            />
+      <Reveal>
+        <ol className="relative grid gap-8 sm:grid-cols-3 sm:gap-6">
+          {/* Desktop rail. */}
+          <span
+            aria-hidden
+            className="absolute inset-x-8 top-[9px] hidden h-px bg-border sm:block"
+          />
+          {/* Mobile rail. */}
+          <span
+            aria-hidden
+            className="absolute bottom-6 start-[9px] top-3 w-px bg-border sm:hidden"
+          />
 
-            {schooling.map((step) => (
-              <li key={step.grades} className="relative ps-8 sm:ps-0">
-                <span
-                  aria-hidden
-                  className="absolute start-0 top-1 block size-[19px] rounded-full border-[3px] border-bg bg-accent sm:relative sm:top-0 sm:mb-4 sm:block"
-                />
-                <p className="force-ltr font-mono text-2xs uppercase tracking-[0.16em] text-accent">
-                  {t('grades')} {step.grades}
-                </p>
-                <p className="display-4 mt-2 text-text">{pick(step.name, locale)}</p>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+          {schooling.map((step) => (
+            <li key={step.grades} className="relative ps-8 sm:ps-0">
+              <span
+                aria-hidden
+                className="absolute start-0 top-1 block size-[19px] rounded-full border-[3px] border-bg bg-accent sm:relative sm:top-0 sm:mb-4 sm:block"
+              />
+              <p className="force-ltr font-mono text-2xs uppercase tracking-[0.16em] text-accent">
+                {t('grades')} {step.grades}
+              </p>
+              <p className="display-4 mt-2 text-text">{pick(step.name, locale)}</p>
+            </li>
+          ))}
+        </ol>
+      </Reveal>
 
-        <Reveal delay={0.08}>
-          <p className="mt-phi-2 inline-flex flex-wrap items-center gap-x-3 gap-y-2 rounded-full border border-border px-5 py-3 text-sm text-text-muted">
-            <Tent strokeWidth={1.5} aria-hidden className="size-4 shrink-0 text-accent" />
-            <GraduationCap
-              strokeWidth={1.5}
-              aria-hidden
-              className="size-4 shrink-0 text-accent"
-            />
-            {pick(schoolingNote, locale)}
-          </p>
-        </Reveal>
-      </Container>
-    </section>
+      <Reveal delay={0.08}>
+        <p className="mt-phi-2 inline-flex flex-wrap items-center gap-x-3 gap-y-2 rounded-full border border-border px-5 py-3 text-sm text-text-muted">
+          <Tent strokeWidth={1.5} aria-hidden className="size-4 shrink-0 text-accent" />
+          <GraduationCap
+            strokeWidth={1.5}
+            aria-hidden
+            className="size-4 shrink-0 text-accent"
+          />
+          {pick(schoolingNote, locale)}
+        </p>
+      </Reveal>
+    </FlowBranch>
   );
 }

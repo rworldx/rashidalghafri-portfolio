@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { MotionProvider } from '@/components/motion/MotionProvider';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { FlowRail } from '@/components/flow/FlowRail';
 
 /** Pre-render every locale at build time (PRD §5.2 static-first). */
 export function generateStaticParams() {
@@ -61,7 +62,16 @@ export default async function LocaleLayout({
                 {t('skipToContent')}
               </a>
               <Navbar />
-              <main id="main">{children}</main>
+              {/*
+                `relative` is load-bearing: the flow rail is absolutely
+                positioned against <main> and measures its full height to map
+                scroll progress. Removing it would collapse the rail onto the
+                viewport instead of the document.
+              */}
+              <main id="main" className="relative">
+                <FlowRail />
+                {children}
+              </main>
               <Footer />
             </MotionProvider>
           </NextIntlClientProvider>

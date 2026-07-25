@@ -5,11 +5,11 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { projects as allProjects } from '@content/projects';
 import type { Project } from '@/types/project';
-import { Container, sectionY } from '@/components/layout/Container';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { cn } from '@/lib/cn';
+import { FlowBranch } from '@/components/flow/FlowBranch';
 
 interface Props {
   /** Override the list (e.g. the /projects index). Defaults to all projects. */
@@ -34,44 +34,42 @@ export function ProjectsGrid({ projects, withHeading = true, excludeSlug }: Prop
   const leadIsWide = list.length % 2 === 1;
 
   return (
-    <section className={sectionY}>
-      <Container>
-        {withHeading && (
-          <SectionHeading
-            title={t('title')}
-            emphasis={t('emphasis')}
-            className="mb-phi-2"
-            aside={
-              <Link
-                href="/projects"
-                className="action group inline-flex items-center gap-2 text-sm text-text-muted transition-colors duration-quick ease-out hover:text-text"
-              >
-                {t('viewAll')}
-                <ArrowRight
-                  strokeWidth={1.5}
-                  aria-hidden
-                  className="size-4 transition-transform duration-quick ease-out group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
-                />
-              </Link>
-            }
-          />
-        )}
+    <FlowBranch>
+      {withHeading && (
+        <SectionHeading
+          title={t('title')}
+          emphasis={t('emphasis')}
+          className="mb-phi-2"
+          aside={
+            <Link
+              href="/projects"
+              className="action group inline-flex items-center gap-2 text-sm text-text-muted transition-colors duration-quick ease-out hover:text-text"
+            >
+              {t('viewAll')}
+              <ArrowRight
+                strokeWidth={1.5}
+                aria-hidden
+                className="size-4 transition-transform duration-quick ease-out group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+              />
+            </Link>
+          }
+        />
+      )}
 
-        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
-          {list.map((p, i) => {
-            const wide = leadIsWide && i === 0;
-            return (
-              <Reveal
-                key={p.slug}
-                delay={i * 0.07}
-                className={cn('h-full', wide && 'sm:col-span-2')}
-              >
-                <ProjectCard project={p} wide={wide} />
-              </Reveal>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
+      <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+        {list.map((p, i) => {
+          const wide = leadIsWide && i === 0;
+          return (
+            <Reveal
+              key={p.slug}
+              delay={i * 0.07}
+              className={cn('h-full', wide && 'sm:col-span-2')}
+            >
+              <ProjectCard project={p} wide={wide} />
+            </Reveal>
+          );
+        })}
+      </div>
+    </FlowBranch>
   );
 }

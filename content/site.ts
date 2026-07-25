@@ -10,13 +10,25 @@ export const site: SiteContent = {
     en: 'Software Engineer · Full-Stack Developer',
     ar: 'مهندس برمجيات · مطوّر متكامل',
   },
+  /**
+   * The hero's one sentence. It states the through-line of the work plainly —
+   * every system here connects people to something they need — which is the
+   * site's organising idea surfacing as a claim about the engineering, not as
+   * a metaphor. Kept under 25 words so the hero stays one moment.
+   */
   tagline: {
-    en: 'Software Engineering graduate (BSc, First-Class Distinction) building AI-driven, real-time full-stack systems, from concept to launch.',
-    ar: 'خريج هندسة برمجيات (بكالوريوس، امتياز مع مرتبة الشرف الأولى)، يبني أنظمة متكاملة فورية مدعومة بالذكاء الاصطناعي، من الفكرة إلى الإطلاق.',
+    en: 'Software Engineering graduate, First-Class Distinction. I build real-time, AI-driven systems that connect people to what they need — concept to launch.',
+    ar: 'خريج هندسة برمجيات بامتياز مع مرتبة الشرف الأولى. أبني أنظمة فورية مدعومة بالذكاء الاصطناعي توصل الناس إلى ما يحتاجونه — من الفكرة إلى الإطلاق.',
   },
+  /**
+   * The availability line. Specific beats vague: "available for opportunities"
+   * tells a recruiter nothing they can act on, whereas the start date and the
+   * geography answer the two questions they actually have. Kept short enough
+   * to sit on one line inside the hero's pill at 360px.
+   */
   status: {
-    en: 'available for opportunities · Oman · 2026',
-    ar: 'متاح للفرص · عُمان · ٢٠٢٦',
+    en: 'available now · Oman, GCC & remote',
+    ar: 'متاح الآن · عُمان والخليج وعن بُعد',
   },
   location: {
     en: 'Oman',

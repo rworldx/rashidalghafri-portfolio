@@ -30,27 +30,59 @@ Motion. Static-first: every public page is SSG; the only server code is
    Sections compose from `ui/`, `motion/`, `graph/`, `layout/`, `lib/`,
    `content/`, `types/`.
 
-## Design language
+## Design language — "Flow"
 
-The visual system, and the reasoning that would otherwise get re-litigated:
+The visual system, and the reasoning that would otherwise get re-litigated.
 
-- **Palette strategy: restrained.** A warm-paper (light) / engineered near-black
-  (dark) neutral field carrying exactly **one** accent, cobalt. One accent per
-  view; do not introduce a second hue for a badge or a CTA. Every text/background
-  pair in both themes is verified at WCAG AA or better (body text clears AAA).
+**The organising idea.** The whole site is built on the falaj — Oman's
+gravity-fed irrigation network: one source, a spine, branches out to everyone
+who needs the water, nothing wasted. It shapes the rail running down every
+page, the way sections branch off that rail instead of stacking on it, and the
+network in the hero.
+
+It is **named in exactly one place**: the colophon at the end of `/about`. There
+are no canals, no water textures, no sand, no cultural motifs anywhere in the
+visual language — the idea lives in the engineering, which is the only place it
+belongs. A visitor should feel the page is unusually connected long before they
+are told why. `tests/concept.test.ts` fails the build if the motif leaks into
+any other copy, because nothing else would catch it.
+
+- **The signature: the flow line.** `components/flow/FlowRail` draws one
+  hairline down the inline-start gutter of every page; the part above the
+  reader is live (accent), the rest dormant. `FlowBranch` wraps each section
+  and draws a spur back to the rail ending in a node that wakes as the reader
+  passes. It is allowed to exist because it carries information — real reading
+  progress, plus the fact that every section descends from one source.
+  **Geometry contract:** rail at `start-5 / sm:8 / lg:12`, `Container`
+  inline-start padding is exactly double (`ps-10 / sm:16 / lg:24`), spur spans
+  the gap. Change one, change all three.
+- **Palette strategy: cool mineral neutrals, exactly one accent.** Two moves
+  away from the previous design, both deliberate: the field went from *warm*
+  paper (hue 92) to **cool** (hue 232/242) because a cream/sand background is
+  the most over-reached-for AI default there is; and the accent moved from a
+  violet-leaning cobalt (h262) to a **true engineered azure** (h242/244),
+  because h262 sits on the edge of the "AI blue/purple glow" everyone ships.
+  One accent per view — do not introduce a second hue for a badge or a CTA.
+  Every pair was verified with a WCAG pass (body clears AAA in both themes).
+  The one sanctioned exception is the *labelled* About graph, which needs
+  categorical colour because it has a key.
 - **The field.** `body::before` is a single fixed gradient layer and
   `body::after` is the grain. Fixed means the compositor never repaints them on
   scroll. Never move either onto a scrolling container.
-- **Type: one Latin family.** Host Grotesk carries display _and_ body; hierarchy
-  comes from weight, size and size-specific tracking, not a second typeface.
-  Geist Mono is the only contrast axis, reserved for metadata, codes and figures.
-  Emphasis inside a headline uses **Host Grotesk's own italic** via `.em-italic`
-  (which reserves descender clearance) or `<Emphasise>` — never an injected
-  second family. Arabic swaps to Thmanyah Sans / Thmanyah Serif Display and takes
-  **no italic**, because Arabic has none.
+- **Type: display and body are different grotesques.** Display is **Archivo**
+  on its `wdth` axis, set NARROWED (88–96, tighter as it grows) so headlines
+  read as engineered and a long name holds one line. Body is Host Grotesk.
+  Archivo was chosen over the more characterful Bricolage Grotesque for one
+  hard reason: **Bricolage ships no italic**, and emphasis inside a headline
+  must be the same family's own italic cut (`.em-italic` / `<Emphasise>`),
+  never a second family injected for effect. Geist Mono is the only other
+  contrast axis, reserved for metadata, codes and figures. Arabic swaps to
+  Thmanyah Sans / Serif Display, takes **no italic**, and must reset
+  `font-variation-settings` (it is not a variable-width face).
 - **The signature face.** `Nothing You Could Do` appears exactly **once** on the
-  whole site: the signature closing the About story, English only. Using it
-  anywhere else turns a signature into decoration.
+  whole site: the signature closing the About story, English only. Arabic gets
+  Aref Ruqaa, a real Arabic hand. Using either anywhere else turns a signature
+  into decoration.
 - **Scale is golden-ratio derived.** Type steps at √φ (1.272) and φ (1.618);
   spacing tokens `phi`…`phi-5`; asymmetric layouts split `1.618fr 1fr`.
 - **Shape system (one rule, no exceptions).** Interactive controls → full pill.
@@ -61,14 +93,21 @@ The visual system, and the reasoning that would otherwise get re-litigated:
 - **Motion.** Strong ease-out (`ease-out` = `cubic-bezier(.23,1,.32,1)`); springs
   for anything a pointer touches; `transform`/`opacity` only. Scroll state comes
   from Framer's `useScroll` — **a `scroll` event listener is banned.**
+- **Measured outcomes are never animated.** Count-ups are gone from the proof
+  ledger, the featured stats and the case-study stats: counting "Top 30" spends
+  a second rendering "Top 29", and these are checkable claims about a rank, a
+  grade and a pilot. `AnimatedCounter` survives only in `Interests`, whose
+  figures are explicitly personal and soft. The rule: **never animate a number
+  that is a credential.**
 - **Section openers are restrained.** A small tracked label above _every_ section
   is the most-repeated generated-design tell there is, so `SectionHeading`
-  renders `label` only where it names a genuine shift in genre (currently: the
-  travel log, the journey, the résumé header). Everywhere else the headline
-  stands alone. Keep the count at or under `ceil(sections / 3)` per page.
-- **Cards are the lazy answer.** Skills, awards, experience, certifications and
-  interests are hairline ledgers and editorial rows, not grids of identical
-  boxes. Reach for `Card` only where elevation communicates real hierarchy.
+  renders `label` only where it names a genuine shift in genre. Keep the count
+  at or under `ceil(sections / 3)` per page. The short hairline that used to sit
+  above every headline is gone — the branch spur says the same thing better.
+- **Cards are the lazy answer.** Skills, awards, experience, certifications, the
+  proof ledger and interests are hairline ledgers and editorial rows, not grids
+  of identical boxes. Reach for `Card` only where elevation communicates real
+  hierarchy.
 - **Project imagery.** `ProjectMedia` prefers a real screenshot; with no `cover`
   it falls back to `ProjectSignature`, a deterministic mark whose geometry is
   derived from the project's own data. Never ship a grey placeholder box.
@@ -105,14 +144,22 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 - `src/components/ui/PortraitCard.tsx` — the About headshot: 3D tilt-on-pointer
   card with an accent glow and caption; falls back to a monogram if
   `site.portrait` (default `/images/portrait.jpg`) is missing.
-- `src/components/three/` — the hero's 3D constellation. **Deliberately vanilla
+- `src/components/three/` — the hero's 3D network (`FlowNetwork`): Rashid's real
+  graph laid out by BFS depth, with light pulses that always travel *outward*
+  from the source. It is data, not decoration. **Deliberately vanilla
   Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`.** Next 15
   runs React 19 internals in the client bundle, and R3F v8's `react-reconciler`
   reads React 18's `ReactCurrentOwner` → `undefined` → crash. Do not reintroduce
-  R3F unless you also move to React 19 + R3F v9. `HeroConstellation` builds the
+  R3F unless you also move to React 19 + R3F v9. `FlowNetwork` builds the
   scene once and exposes a `setColors` API the theme effect calls; `HeroBackground`
   gates it (reduced-motion / WebGL / viewport-pause) and wraps it in an
-  `ErrorBoundary` that falls back to the static graph.
+  `ErrorBoundary` that falls back to the static graph. The static fallback and
+  the WebGL version are the same picture, so both draw every node in the accent
+  when `ambient` — an unlabelled diagram must not use colour it cannot explain.
+- `src/components/flow/` — the signature. `FlowRail` (page spine, scroll-driven)
+  and `FlowBranch` (section wrapper: spur + node). Every section on every page
+  is a `FlowBranch`; sections no longer render `<section>` + `<Container>`
+  themselves.
 - `src/components/ui/SectionHeading.tsx` — also exports `<Emphasise>`, the
   helper that sets one phrase of a headline in the family's italic cut.
 - `src/components/ui/ProjectMedia.tsx` / `ProjectSignature.tsx` — screenshot if
@@ -135,7 +182,7 @@ npm run dev         # local dev
 npm run build       # production build (SSG)
 npm run typecheck   # tsc --noEmit
 npm run lint        # ESLint (incl. cross-section rule)
-npm run test:unit   # Vitest (content-schema + component tests)
+npm run test:unit   # Vitest (content-schema, component + concept-guard tests)
 ```
 
 ## Environment

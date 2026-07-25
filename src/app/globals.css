@@ -3,51 +3,69 @@
 @tailwind utilities;
 
 /**
- * DESIGN TOKENS
+ * DESIGN TOKENS — "FLOW"
  *
  * Components reference ONLY semantic Tailwind tokens (bg-bg, text-text-muted,
  * border-border, text-accent …) which map to the variables below. Never
  * hardcode a colour in a component.
  *
  * Colour is authored in OKLCH so lightness steps are perceptually even across
- * both themes. Strategy: RESTRAINED — a warm-paper / near-black neutral field
- * carrying one committed accent (cobalt). Cobalt-on-paper is the identity this
- * site already shipped; it is preserved rather than re-invented.
+ * both themes.
+ *
+ * PALETTE STRATEGY — cool mineral neutrals carrying exactly ONE accent.
+ *
+ * Two deliberate moves away from what this site shipped before:
+ *
+ *  1. The neutral field is COOL (hue ~232/242), not warm paper (hue 92). A
+ *     cream/sand/paper background is the single most over-reached-for AI
+ *     default there is; warmth belongs in imagery, not in the body background.
+ *  2. The accent moved from a violet-leaning cobalt (h262) to a true
+ *     engineered azure (h242/244). h262 sits on the edge of the "AI blue/purple
+ *     glow" everyone ships. h242 reads as instrument precision instead.
+ *
+ * Every text/background pair below was verified with a WCAG contrast pass
+ * before shipping (body text clears AAA in both themes; the accent clears AA
+ * on every surface it is allowed to sit on). Contrast is verified, not assumed.
  *
  * Scale: the type ramp and the section rhythm are both golden-ratio derived.
  * Minor steps use sqrt(phi) = 1.272, major steps use phi = 1.618.
  */
 @layer base {
   :root {
-    /* ---- Surfaces (light: warm paper, easy on the eye vs. pure white) ---- */
-    --bg: oklch(0.964 0.0055 92);
-    --bg-deep: oklch(0.941 0.0075 92);
-    --surface: oklch(0.991 0.0025 92);
-    --surface-2: oklch(0.934 0.0075 92);
-    --border: oklch(0.878 0.009 92);
-    --border-strong: oklch(0.79 0.012 92);
+    /* ---- Surfaces (light: cool mineral, deliberately NOT warm paper) ---- */
+    --bg: oklch(0.972 0.0035 232);
+    --bg-deep: oklch(0.947 0.005 232);
+    --surface: oklch(0.995 0.0018 232);
+    --surface-2: oklch(0.935 0.0065 232);
+    --border: oklch(0.873 0.008 232);
+    --border-strong: oklch(0.778 0.012 232);
 
     /* ---- Text ---- */
-    --text: oklch(0.216 0.014 264);
-    --text-muted: oklch(0.472 0.017 264);
-    --text-faint: oklch(0.612 0.014 264);
+    --text: oklch(0.203 0.018 245);
+    --text-muted: oklch(0.455 0.021 245);
+    --text-faint: oklch(0.592 0.019 245);
 
     /* ---- Accent + states ---- */
-    --accent: oklch(0.518 0.185 262);
-    --accent-hover: oklch(0.462 0.19 262);
-    --accent-soft: oklch(0.935 0.035 262);
-    --accent-line: oklch(0.83 0.07 262);
+    --accent: oklch(0.468 0.158 244);
+    --accent-hover: oklch(0.408 0.162 244);
+    --accent-soft: oklch(0.938 0.03 244);
+    --accent-line: oklch(0.836 0.062 244);
     --on-accent: oklch(0.995 0 0);
     --signal: oklch(0.62 0.14 162);
     --danger: oklch(0.505 0.196 27);
     --danger-soft: oklch(0.945 0.032 27);
-    --focus-ring: oklch(0.518 0.185 262);
+    --focus-ring: oklch(0.468 0.158 244);
 
     /* ---- Ambient field (the page's atmosphere layer, see body::before) ---- */
-    --field-a: oklch(0.985 0.012 262 / 0.85);
-    --field-b: oklch(0.955 0.014 92 / 0.6);
-    --field-c: oklch(0.93 0.008 92 / 0.55);
-    --grain-opacity: 0.032;
+    --field-a: oklch(0.986 0.011 244 / 0.9);
+    --field-b: oklch(0.962 0.009 232 / 0.6);
+    --field-c: oklch(0.934 0.007 232 / 0.55);
+    --grain-opacity: 0.03;
+
+    /* ---- The flow line (the site's signature; see components/flow) ---- */
+    --flow-rail: oklch(0.873 0.008 232);
+    --flow-live: oklch(0.468 0.158 244);
+    --flow-glow: oklch(0.468 0.158 244 / 0.28);
 
     /* ---- Radius: ONE system. Interactive = pill, surfaces = 16/22px ---- */
     --radius-xs: 6px;
@@ -68,27 +86,31 @@
   }
 
   .dark {
-    /* ---- Surfaces (dark: engineered near-black, gradient field on top) ---- */
-    --bg: oklch(0.161 0.0125 265);
-    --bg-deep: oklch(0.128 0.011 265);
-    --surface: oklch(0.203 0.0145 265);
-    --surface-2: oklch(0.246 0.0165 265);
-    --border: oklch(0.293 0.017 265);
-    --border-strong: oklch(0.372 0.019 265);
+    /* ---- Surfaces (dark: cool graphite, gradient field switched off) ---- */
+    --bg: oklch(0.158 0.0145 242);
+    --bg-deep: oklch(0.124 0.013 242);
+    --surface: oklch(0.202 0.017 242);
+    --surface-2: oklch(0.247 0.019 242);
+    --border: oklch(0.294 0.02 242);
+    --border-strong: oklch(0.375 0.023 242);
 
-    --text: oklch(0.955 0.004 265);
-    --text-muted: oklch(0.735 0.016 265);
-    --text-faint: oklch(0.598 0.018 265);
+    --text: oklch(0.957 0.004 242);
+    --text-muted: oklch(0.738 0.017 242);
+    --text-faint: oklch(0.6 0.019 242);
 
-    --accent: oklch(0.735 0.152 264);
-    --accent-hover: oklch(0.795 0.135 264);
-    --accent-soft: oklch(0.278 0.062 264);
-    --accent-line: oklch(0.44 0.11 264);
-    --on-accent: oklch(0.16 0.02 264);
+    --accent: oklch(0.782 0.132 240);
+    --accent-hover: oklch(0.842 0.108 240);
+    --accent-soft: oklch(0.281 0.058 240);
+    --accent-line: oklch(0.446 0.104 240);
+    --on-accent: oklch(0.155 0.022 242);
     --signal: oklch(0.79 0.13 165);
     --danger: oklch(0.735 0.155 25);
     --danger-soft: oklch(0.285 0.075 25);
-    --focus-ring: oklch(0.775 0.14 264);
+    --focus-ring: oklch(0.812 0.12 240);
+
+    --flow-rail: oklch(0.294 0.02 242);
+    --flow-live: oklch(0.782 0.132 240);
+    --flow-glow: oklch(0.782 0.132 240 / 0.3);
 
     /*
      * Dark mode is a single flat colour, by request. The atmosphere layer is
@@ -194,35 +216,51 @@
 
 @layer components {
   /**
-   * Display type. Tracking is size-specific (Apple: never one value for all
-   * sizes) — the larger the type, the tighter it is set. Floor is -0.04em.
+   * Display type — Archivo on its `wdth` axis.
+   *
+   * Two things vary with size, never one:
+   *  - TRACKING tightens as the type grows (large text reads too loose at a
+   *    fixed value, small text reads too tight). Floor is -0.042em.
+   *  - WIDTH narrows as the type grows. The biggest sizes are set at wdth 88,
+   *    the smallest at 96. A narrowed cut at display size reads as engineered
+   *    rather than shouty, and it lets "Rashid Al Ghafri" hold one line.
+   *
+   * Leading tracks size inversely: tight up top, open at the bottom.
    */
   .display-1 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-variation-settings: 'wdth' 88;
     font-size: clamp(2.1rem, 1.1rem + 6.8vw, 6.2rem);
-    line-height: 0.96;
-    letter-spacing: -0.038em;
-    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.042em;
+    font-weight: 600;
     text-wrap: balance;
   }
   .display-2 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-variation-settings: 'wdth' 90;
     font-size: clamp(2.15rem, 1.28rem + 3.6vw, 4rem);
-    line-height: 1.02;
-    letter-spacing: -0.032em;
-    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-weight: 600;
     text-wrap: balance;
   }
   .display-3 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-variation-settings: 'wdth' 93;
     font-size: clamp(1.62rem, 1.15rem + 1.9vw, 2.55rem);
-    line-height: 1.1;
-    letter-spacing: -0.024em;
-    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.026em;
+    font-weight: 600;
     text-wrap: balance;
   }
   .display-4 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-variation-settings: 'wdth' 96;
     font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.62rem);
-    line-height: 1.18;
+    line-height: 1.16;
     letter-spacing: -0.018em;
-    font-weight: 500;
+    font-weight: 600;
     text-wrap: balance;
   }
 
@@ -410,6 +448,130 @@
     box-shadow: var(--hairline), var(--shadow-card);
   }
 
+  /**
+   * ── THE FLOW LINE ────────────────────────────────────────────────────────
+   *
+   * The site's signature, and the only structural device that repeats.
+   *
+   * A single continuous rail runs the full height of every page on the inline
+   * -start side. Sections do not simply stack on it — they BRANCH off it, each
+   * one connected back by a short spur ending in a node. The rail carries the
+   * reader's progress: everything above the read position is live (accent),
+   * everything below is dormant (hairline). Nodes wake as the progress passes.
+   *
+   * This is deliberately not decoration. It encodes two true things at once —
+   * where you are in the document, and that every section descends from one
+   * source. The idea underneath it (Oman's falaj: one source, branching
+   * distribution, nothing wasted) is never stated visually. A visitor should
+   * feel that the page is connected long before they read why on /about.
+   *
+   * Everything here is compositor-only: the live segment is a scaleY on a
+   * pre-painted gradient, never a height animation.
+   */
+  /*
+   * Both ends of the rail are masked rather than cut. The top fade lets the
+   * line emerge at the hero's origin cap instead of sliding out from behind
+   * the floating nav, and the bottom fade stops it butting into the footer.
+   * The mask is on the painted element, so the scroll-driven scaleY below is
+   * unaffected by it.
+   */
+  .flow-rail,
+  .flow-live {
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      transparent 0,
+      #000 7rem,
+      #000 calc(100% - 5rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0,
+      #000 7rem,
+      #000 calc(100% - 5rem),
+      transparent 100%
+    );
+  }
+
+  .flow-rail {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 1px;
+    background: var(--flow-rail);
+  }
+
+  /* The live (already-read) portion. Scaled from the top by scroll progress. */
+  .flow-live {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 1px;
+    height: 100%;
+    transform-origin: top;
+    background: linear-gradient(
+      180deg,
+      var(--flow-live) 0%,
+      var(--flow-live) 82%,
+      var(--flow-glow) 100%
+    );
+  }
+
+  /**
+   * A section's connection back to the rail: a horizontal spur, then a node.
+   * The spur draws itself outward when the section arrives, so a section
+   * visibly attaches to the system rather than fading in beside it.
+   */
+  .flow-spur {
+    position: absolute;
+    inset-inline-start: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--flow-rail), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  [dir='rtl'] .flow-spur {
+    background: linear-gradient(270deg, var(--flow-rail), transparent);
+    transform-origin: right;
+  }
+  .flow-spur[data-shown] {
+    transform: scaleX(1);
+  }
+
+  /**
+   * The node where a branch meets the rail. Dormant it is a hairline ring;
+   * live it fills with the accent and throws a soft halo. The halo is a
+   * box-shadow spread rather than a second element, so waking a node costs
+   * one compositor property and no layout.
+   */
+  .flow-node {
+    position: absolute;
+    inset-inline-start: 0;
+    width: 7px;
+    height: 7px;
+    margin-inline-start: -3px;
+    border-radius: 9999px;
+    background: var(--bg);
+    border: 1px solid var(--flow-rail);
+    transition:
+      background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+      border-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .flow-node[data-live] {
+    background: var(--flow-live);
+    border-color: var(--flow-live);
+    box-shadow: 0 0 0 4px var(--flow-glow);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow-spur {
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* Surface: the one raised-panel treatment. Concentric radii, hairline edge. */
   .panel {
     background: color-mix(in oklab, var(--surface) 88%, transparent);
@@ -423,12 +585,20 @@
   .font-sans-ar {
     font-family: var(--font-sans-ar), var(--font-sans), sans-serif;
   }
-  /* Arabic headings swap to Thmanyah Serif Display. */
+  /**
+   * Arabic headings swap to Thmanyah Serif Display.
+   *
+   * `font-variation-settings` MUST be reset here. Thmanyah is not a
+   * variable-width face, and leaving `wdth` set would either be ignored or —
+   * worse, depending on the engine — synthesise a distortion. Latin display
+   * tracking is also wrong for Arabic, which is set at 0 with open leading.
+   */
   html[lang='ar'] .display-1,
   html[lang='ar'] .display-2,
   html[lang='ar'] .display-3,
   html[lang='ar'] .display-4 {
     font-family: var(--font-display-ar), var(--font-sans-ar), sans-serif;
+    font-variation-settings: normal;
     letter-spacing: 0;
     line-height: 1.24;
   }

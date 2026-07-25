@@ -10,6 +10,8 @@ import { certifications } from '@content/awards';
 import { journey } from '@content/journey';
 import { travels, schooling } from '@content/personal';
 import { interests, aboutStory } from '@content/about';
+import { proof } from '@content/proof';
+import { colophon } from '@content/colophon';
 
 /**
  * Validates every content entry against a schema mirroring src/types (PRD §14).
@@ -175,5 +177,47 @@ describe('content/site', () => {
   it('has a valid email and at least one social', () => {
     expect(z.string().email().safeParse(site.email).success).toBe(true);
     expect(site.socials.length).toBeGreaterThan(0);
+  });
+});
+
+describe('content/proof', () => {
+  const schema = z.object({ value: localized, label: localized, detail: localized });
+
+  it('matches the ProofPoint schema', () => {
+    for (const p of proof) expect(() => schema.parse(p)).not.toThrow();
+  });
+
+  /**
+   * These four figures are the first thing a recruiter reads, and every one of
+   * them is a checkable claim about a real award, grade or pilot. Guarding the
+   * exact strings means a careless edit to the headline credentials fails the
+   * suite instead of quietly shipping. Update these only alongside the CV.
+   */
+  it('states the verified credentials exactly', () => {
+    const byLabel = new Map(proof.map((p) => [p.label.en, p.value.en]));
+    expect(byLabel.get('of 738 national STEM projects')).toBe('Top 30');
+    expect(byLabel.get('CGPA out of 4.00')).toBe('3.96');
+    expect(byLabel.get('said the AI assistant helped')).toBe('95%');
+    expect(byLabel.get('of 20+ teams')).toBe('2nd');
+  });
+
+  it('keeps the ledger short enough to scan', () => {
+    expect(proof.length).toBeLessThanOrEqual(4);
+  });
+});
+
+describe('content/colophon', () => {
+  it('is fully bilingual', () => {
+    expect(colophon.body.length).toBeGreaterThan(0);
+    for (const p of colophon.body) expect(() => localized.parse(p)).not.toThrow();
+  });
+
+  /**
+   * The site's organising idea is explained here and NOWHERE else — it has to
+   * survive on structure everywhere else, or it is decoration. This asserts the
+   * explanation still exists; the "nowhere else" half is enforced below.
+   */
+  it('is where the concept is named', () => {
+    expect(colophon.body.some((p) => /falaj/i.test(p.en))).toBe(true);
   });
 });

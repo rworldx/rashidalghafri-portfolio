@@ -52,7 +52,7 @@ export function ConnectionGraphStatic({ data, ambient = false, className }: Prop
       }
       style={{ opacity: ambient ? 0.5 : 1 }}
     >
-      <g stroke="var(--border)" strokeWidth={1}>
+      <g stroke={ambient ? 'var(--accent-line)' : 'var(--border)'} strokeWidth={1}>
         {data.edges.map((e, i) => {
           const a = positions.get(e.source);
           const b = positions.get(e.target);
@@ -69,7 +69,17 @@ export function ConnectionGraphStatic({ data, ambient = false, className }: Prop
                 cx={p.x}
                 cy={p.y}
                 r={nodeRadius(n.weight ?? 1)}
-                fill={nodeColor(n.kind)}
+                /*
+                 * Ambient mode is UNLABELLED, so a per-kind hue would be a
+                 * colour no reader can decode — and it would put a second and
+                 * third hue on a page that commits to one accent. Hierarchy
+                 * comes from radius alone here. The About-page graph, which is
+                 * labelled and has a key, keeps its per-kind colours.
+                 *
+                 * This also has to match what the WebGL network does, since the
+                 * two are the same picture: one is the fallback for the other.
+                 */
+                fill={ambient ? 'var(--accent)' : nodeColor(n.kind)}
               />
               {!ambient && (
                 <text

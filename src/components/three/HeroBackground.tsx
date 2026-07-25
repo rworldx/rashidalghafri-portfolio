@@ -9,10 +9,10 @@ import { useMounted } from '@/hooks/useMounted';
 import { ConnectionGraphStatic } from '@/components/graph/ConnectionGraph.static';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { readTokenColor } from '@/lib/css-color';
-import type { ConstellationColors } from './HeroConstellation';
+import type { FlowColors } from './FlowNetwork';
 
-/** R3F is heavy + browser-only → load it after paint, never on the server. */
-const HeroConstellation = dynamic(() => import('./HeroConstellation'), {
+/** WebGL is heavy + browser-only → load it after paint, never on the server. */
+const FlowNetwork = dynamic(() => import('./FlowNetwork'), {
   ssr: false,
   loading: () => null,
 });
@@ -21,7 +21,7 @@ const HeroConstellation = dynamic(() => import('./HeroConstellation'), {
  * Tokens are authored in OKLCH, which THREE.Color cannot parse — every value
  * goes through the browser's own colour parser first (see lib/css-color).
  *
- * The field is tonal: every node is drawn from the accent family rather than
+ * The field is tonal: everything is drawn from the accent family rather than
  * from the text ramp. Reading `--text` for a node meant near-black spheres in
  * light mode, which rendered as heavy grey marbles scattered over the paper
  * instead of a constellation. Kinds are not distinguished here on purpose —
@@ -29,18 +29,14 @@ const HeroConstellation = dynamic(() => import('./HeroConstellation'), {
  * one-accent rule for no gain. The About-page graph, which *is* labelled and
  * has a key, keeps its per-kind colours.
  */
-function readColors(): ConstellationColors {
-  const accent = readTokenColor('--accent', '#5b82ff');
-  const line = readTokenColor('--accent-line', '#7f9cff');
-  // Every node is the accent; hierarchy comes from size and opacity instead.
-  // Painting the minor nodes in `--accent-line` made them near-invisible on
-  // light paper, which is what "the field doesn't fully show" was.
+function readColors(): FlowColors {
+  const accent = readTokenColor('--accent', '#3b64e0');
+  // Hierarchy comes from node size and pulse brightness, never from a second
+  // hue — the one-accent rule holds inside the canvas too.
   return {
-    self: accent,
-    project: accent,
-    recognition: accent,
-    skill: accent,
-    edge: line,
+    node: accent,
+    edge: readTokenColor('--accent-line', '#8aa4ef'),
+    pulse: accent,
   };
 }
 
@@ -55,7 +51,7 @@ function webglSupported(): boolean {
 }
 
 /**
- * Decides between the 3D constellation and the static SVG diagram, manages
+ * Decides between the 3D network and the static SVG diagram, manages
  * theme-aware colours, and pauses rendering when the hero scrolls away.
  * Reduced-motion or no-WebGL → static fallback (PRD §5.3/§5.5, Addendum B.1).
  */
@@ -65,7 +61,7 @@ export function HeroBackground({ className }: { className?: string }) {
   const { resolvedTheme } = useTheme();
   const ref = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-  const [colors, setColors] = useState<ConstellationColors | null>(null);
+  const [colors, setColors] = useState<FlowColors | null>(null);
   const [canRender3D, setCanRender3D] = useState(false);
 
   useEffect(() => {
@@ -100,7 +96,7 @@ export function HeroBackground({ className }: { className?: string }) {
         fallback
       ) : (
         <ErrorBoundary fallback={fallback}>
-          <HeroConstellation
+          <FlowNetwork
             colors={colors}
             paused={paused}
             isDark={resolvedTheme === 'dark'}

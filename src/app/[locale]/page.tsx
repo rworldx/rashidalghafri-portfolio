@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
+import { ThroughLine } from '@/components/sections/ThroughLine';
 import { FeaturedProject } from '@/components/sections/FeaturedProject';
 import { ProjectsGrid } from '@/components/sections/ProjectsGrid';
 import { AboutTeaser } from '@/components/sections/AboutTeaser';
@@ -29,6 +30,8 @@ export default async function HomePage({
     <>
       <JsonLd />
       <Hero />
+      {/* The record leads, before any project. A recruiter decides here. */}
+      <ThroughLine />
       <FeaturedProject />
       {/* Teaser of the rest of the work; full list lives on /projects. */}
       <ProjectsGrid excludeSlug="studynest" />

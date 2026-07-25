@@ -4,6 +4,7 @@ import { Connections } from '@/components/sections/Connections';
 import { TravelLog } from '@/components/sections/TravelLog';
 import { Roots } from '@/components/sections/Roots';
 import { Interests } from '@/components/sections/Interests';
+import { Colophon } from '@/components/sections/Colophon';
 import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
@@ -30,6 +31,8 @@ export default async function AboutPage({
       <TravelLog />
       <Roots />
       <Interests />
+      {/* The payoff: the only place the site's organising idea is named. */}
+      <Colophon />
     </div>
   );
 }

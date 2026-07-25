@@ -33,7 +33,7 @@ const config: Config = {
         'danger-soft': 'var(--danger-soft)',
       },
       fontFamily: {
-        display: ['var(--font-sans)', 'var(--font-display-ar)', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-display-ar)', 'sans-serif'],
         sans: ['var(--font-sans)', 'var(--font-sans-ar)', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
         script: ['var(--font-script)', 'cursive'],
