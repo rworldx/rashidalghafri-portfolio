@@ -10,9 +10,10 @@ import { join } from 'node:path';
  * shapes the rail down every page, the way sections branch off it, and the
  * network in the hero.
  *
- * It is named in exactly ONE place: the colophon on /about. Everywhere else it
- * has to survive on structure alone. A concept a portfolio announces is
- * decoration; one a visitor feels first and discovers later is architecture.
+ * The channel is now rendered literally — a 3D falaj you travel down as you
+ * scroll — so the idea is unmistakably VISIBLE. What stays controlled is the
+ * NAMING: the word appears in exactly one place, the colophon on /about.
+ * Visitors should experience the system first and learn what it is second.
  *
  * This test exists because that rule is invisible in code review — nothing
  * breaks if someone drops "falaj" into a headline, it just quietly turns the

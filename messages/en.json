@@ -51,6 +51,20 @@
     "emphasis": "someone who needed it",
     "body": "Study partners to isolated students. Live consumption data to households. Branch activity to members. The problems differ; the shape of the answer rarely does — and the record below is what came of it."
   },
+  "manifesto": {
+    "flow": "Flow",
+    "flowBody": "Water moves because the ground falls away. Good software is the same: get the shape right and the thing runs on its own, long after you stop pushing it.",
+    "systems": "Systems",
+    "systemsBody": "I do not build screens, I build the thing behind them — 100+ endpoints, 100+ realtime events, 20 data models, and the tests that keep them honest.",
+    "connection": "Connection",
+    "connectionBody": "Every project here exists because somebody could not reach something on their own. That is the whole job, and it is the only brief I care about."
+  },
+  "journeySection": {
+    "eyebrow": "The channel",
+    "title": "One source. Four outlets.",
+    "lede": "Scroll to travel the channel. Each branch feeds one project.",
+    "open": "Open the case study"
+  },
   "featured": {
     "eyebrow": "Featured project",
     "problem": "Problem",

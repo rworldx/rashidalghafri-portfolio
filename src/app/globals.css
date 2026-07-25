@@ -67,6 +67,16 @@
     --flow-live: oklch(0.468 0.158 244);
     --flow-glow: oklch(0.468 0.158 244 / 0.28);
 
+    /*
+     * ---- The falaj scene (WebGL) ----
+     * Dedicated tokens, NOT the surface ramp. The channel is lit geometry
+     * competing with a full-bleed background, so it needs its own stone value
+     * with real separation from `--bg`; reusing `--surface-2` rendered the
+     * whole scene as near-black on near-black and looked like a broken canvas.
+     */
+    --falaj-stone: oklch(0.795 0.009 232);
+    --falaj-stone-deep: oklch(0.688 0.012 232);
+
     /* ---- Radius: ONE system. Interactive = pill, surfaces = 16/22px ---- */
     --radius-xs: 6px;
     --radius-sm: 10px;
@@ -111,6 +121,10 @@
     --flow-rail: oklch(0.294 0.02 242);
     --flow-live: oklch(0.782 0.132 240);
     --flow-glow: oklch(0.782 0.132 240 / 0.3);
+
+    /* Lit stone still has to separate from a 0.158 background. */
+    --falaj-stone: oklch(0.352 0.016 242);
+    --falaj-stone-deep: oklch(0.246 0.014 242);
 
     /*
      * Dark mode is a single flat colour, by request. The atmosphere layer is
@@ -227,6 +241,32 @@
    *
    * Leading tracks size inversely: tight up top, open at the bottom.
    */
+  /**
+   * Poster scale. One step above display-1, and used in exactly two places:
+   * the name in the hero, and the three manifesto words. It is deliberately
+   * enormous — an editorial opening only works if it commits, and a "large"
+   * headline that stops at 4rem reads as a heading rather than a poster.
+   *
+   * Tracking bottoms out at -0.045em and the width axis at its narrowest, so
+   * "Rashid Al Ghafri" still holds two lines on a phone without shrinking to
+   * body scale.
+   */
+  .display-hero {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-variation-settings: 'wdth' 86;
+    font-size: clamp(2.9rem, 1.2rem + 9.4vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  html[lang='ar'] .display-hero {
+    font-family: var(--font-display-ar), var(--font-sans-ar), sans-serif;
+    font-variation-settings: normal;
+    letter-spacing: 0;
+    line-height: 1.18;
+  }
+
   .display-1 {
     font-family: var(--font-display), var(--font-sans), sans-serif;
     font-variation-settings: 'wdth' 88;
@@ -569,6 +609,43 @@
     .flow-spur {
       transform: none;
       transition: none;
+    }
+  }
+
+  /**
+   * Marquee. Two identical tracks side by side, the pair translated by exactly
+   * -50% — that is what makes the loop seamless, and why the content must be
+   * duplicated in the markup rather than animated with a modulo.
+   *
+   * `will-change` is deliberately NOT set: this runs for the whole time the
+   * section is on screen, and promoting a wide layer permanently costs more
+   * than the animation saves.
+   */
+  @keyframes marquee-track {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee-track var(--marquee-duration, 48s) linear infinite;
+  }
+  [dir='rtl'] .marquee {
+    animation-direction: reverse;
+  }
+  .marquee-host:hover .marquee {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      animation: none;
+      /* Static, and scrollable by hand so the content is still reachable. */
+      width: 100%;
+      overflow-x: auto;
     }
   }
 

@@ -1,36 +1,35 @@
 'use client';
 
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, Download } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { site } from '@content/site';
+import { proof } from '@content/proof';
 import { pick } from '@/lib/localized';
 import { Container } from '@/components/layout/Container';
 import { TextReveal } from '@/components/motion/TextReveal';
-import { HeroBackground } from '@/components/three/HeroBackground';
 import { StatusDot } from '@/components/ui/StatusDot';
 import { buttonVariants } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { cn } from '@/lib/cn';
 
 /**
- * The source.
+ * The opening frame — editorial, not a landing page.
  *
- * This is where the page's spine begins, so the hero renders the rail's origin
- * cap rather than a branch node — every section below descends from here. That
- * is the entire concept stated structurally and never in words.
+ * The name is set at poster scale and the portrait is a real photograph at real
+ * size, because on a personal portfolio the person IS the brand: an award-shelf
+ * of portfolio sites all open the same way, with the maker's name enormous and
+ * their face beside it, and they do it because it works. A face and a name at
+ * scale is a stronger opening than any abstract graphic.
  *
- * FOUR text elements, hard limit: one small label, the name, one sentence, the
- * two things a visitor actually came to do. The role and the availability are
- * deliberately merged into the single label rather than taking a line each —
- * a hero is one moment, not a summary. Credentials live in the section below,
- * where they can be read instead of skimmed.
+ * The ambient WebGL that used to live here has moved to <FalajJourney>, where
+ * it gets a whole pinned section and can actually be seen. Splitting the 3D
+ * budget between a faint hero backdrop and a real scene meant neither landed.
  *
- * The load is ONE orchestrated sequence, not scattered effects: the name rises
- * word by word out of a clip, then the sentence and the actions follow it. The
- * entrance is CSS, not Framer, because this is the largest text on the page and
- * holding it behind a lazily-loaded animation bundle would delay the LCP.
+ * The entrance is CSS, not Framer: this is the LCP text, and it must not wait
+ * on a lazily-loaded animation bundle.
  */
 export function Hero() {
   const t = useTranslations('hero');
@@ -38,38 +37,18 @@ export function Hero() {
   const isEnglish = locale === 'en';
 
   const name = pick(site.displayName, locale);
-  // The family name takes the italic cut, and stays grouped so it never breaks
+  // The family name takes the italic cut and stays grouped, so it never breaks
   // across a line mid-name. Arabic has no true italic and the Thmanyah display
   // face ships none, so emphasis is Latin-only by design.
   const emphasis = isEnglish ? name.split(' ').slice(1).join(' ') : undefined;
 
-  return (
-    <section className="relative flex min-h-[100dvh] items-center overflow-hidden pb-phi-3 pt-28 sm:pt-32 lg:pt-24">
-      {/*
-        The network. Centred and masked on small screens so it never competes
-        with the type; on large screens it sits opposite the headline. Inset
-        rather than bled off the edge so the whole thing stays on screen, and
-        the camera reframes to whatever box it gets — nothing is cropped at any
-        width, or in RTL.
-      */}
-      <div
-        aria-hidden
-        className={cn(
-          'pointer-events-none absolute inset-0 -z-10',
-          'opacity-55 sm:opacity-70 lg:pointer-events-auto lg:opacity-100',
-          '[mask-image:radial-gradient(ellipse_at_center,black_52%,transparent_84%)]',
-          'lg:inset-y-4 lg:end-[1%] lg:start-[44%]',
-        )}
-      >
-        <HeroBackground className="size-full" />
-      </div>
+  // Two figures only. The full record is one section below; a hero that lists
+  // four statistics has stopped being a hero.
+  const headline = proof.slice(0, 2);
 
-      {/*
-        The origin cap: where the spine starts. A ring around a filled core,
-        slightly larger than a branch node and always live — the source is
-        never "unread". Offset below the floating nav so it is not hidden
-        behind the chrome on first paint.
-      */}
+  return (
+    <section className="relative overflow-hidden pb-phi-3 pt-28 sm:pt-32 lg:pb-phi-4 lg:pt-24">
+      {/* The origin cap: where the page's spine begins. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-24 z-0 sm:top-28"
@@ -83,19 +62,19 @@ export function Hero() {
       </div>
 
       <Container className="relative">
-        <div className="lg:grid lg:grid-cols-[1.618fr_1fr] lg:items-center lg:gap-phi-2">
-          <div className="max-w-[38rem]">
-            <p className="hero-in force-ltr mb-8 inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted backdrop-blur">
-              <StatusDot />
-              {pick(site.status, locale)}
-            </p>
+        <p className="hero-in force-ltr mb-phi inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted backdrop-blur">
+          <StatusDot />
+          {pick(site.status, locale)}
+        </p>
 
+        <div className="grid items-end gap-phi-2 lg:grid-cols-[1.35fr_1fr] lg:gap-phi-3">
+          <div className="order-2 lg:order-1">
             <TextReveal
               as="h1"
               text={name}
               emphasis={emphasis}
               delay={0.1}
-              className="display-1 text-text"
+              className="display-hero text-text"
             />
 
             <p
@@ -112,10 +91,7 @@ export function Hero() {
               <Magnetic>
                 <Link
                   href="/projects"
-                  className={cn(
-                    buttonVariants({ variant: 'primary', size: 'lg' }),
-                    'group',
-                  )}
+                  className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), 'group')}
                 >
                   {t('viewWork')}
                   <ArrowRight
@@ -135,7 +111,51 @@ export function Hero() {
               </a>
             </div>
           </div>
+
+          {/*
+            The portrait. Duotone-free and uncropped at the face — a portfolio
+            headshot that has been art-directed into abstraction stops doing the
+            one job it has. The accent wash sits *behind* it, never over it.
+          */}
+          <div
+            className="hero-in order-1 lg:order-2"
+            style={{ '--d': '120ms' } as CSSProperties}
+          >
+            <div className="relative mx-auto w-full max-w-[22rem] lg:max-w-none">
+              <div
+                aria-hidden
+                className="absolute -inset-6 -z-10 rounded-full bg-accent/12 blur-3xl"
+              />
+              <div className="relative overflow-hidden rounded-xl border border-border bg-surface-2 shadow-lift">
+                <Image
+                  src={site.portrait ?? '/images/portrait.jpg'}
+                  alt={`${site.name}, ${pick(site.role, locale)}`}
+                  width={720}
+                  height={900}
+                  priority
+                  sizes="(min-width: 1024px) 34vw, 80vw"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Two figures, on the same baseline as the fold. */}
+        <dl className="hero-in mt-phi-2 flex flex-wrap gap-x-phi-3 gap-y-6 border-t border-border pt-8 lg:mt-phi-3"
+          style={{ '--d': '380ms' } as CSSProperties}
+        >
+          {headline.map((p) => (
+            // `flex-col-reverse` so the FIGURE reads first while <dt> still
+            // precedes its <dd> in the DOM, as the spec requires. On a plain
+            // block wrapper an `order` utility does nothing at all, which is
+            // how the labels ended up sitting above the numbers.
+            <div key={p.label.en} className="flex flex-col-reverse">
+              <dt className="mt-1 text-sm text-text-muted">{pick(p.label, locale)}</dt>
+              <dd className="tnum display-4 text-accent">{pick(p.value, locale)}</dd>
+            </div>
+          ))}
+        </dl>
       </Container>
     </section>
   );

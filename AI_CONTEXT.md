@@ -34,19 +34,36 @@ Motion. Static-first: every public page is SSG; the only server code is
 
 The visual system, and the reasoning that would otherwise get re-litigated.
 
-**The organising idea.** The whole site is built on the falaj — Oman's
-gravity-fed irrigation network: one source, a spine, branches out to everyone
-who needs the water, nothing wasted. It shapes the rail running down every
-page, the way sections branch off that rail instead of stacking on it, and the
-network in the hero.
+**The organising idea — Flow. Systems. Connection.** The site is built on the
+falaj, Oman's gravity-fed irrigation network: one source, a spine, branches out
+to everyone who needs the water. It is rendered **literally** — `FalajJourney`
+is a pinned section where the camera travels down a real 3D channel as you
+scroll, and each branch it passes feeds one project.
 
-It is **named in exactly one place**: the colophon at the end of `/about`. There
-are no canals, no water textures, no sand, no cultural motifs anywhere in the
-visual language — the idea lives in the engineering, which is the only place it
-belongs. A visitor should feel the page is unusually connected long before they
-are told why. `tests/concept.test.ts` fails the build if the motif leaks into
-any other copy, because nothing else would catch it.
+The thesis is stated openly by `Manifesto` (three words at poster scale, lit one
+at a time by scroll). What stays controlled is the NAMING: the word "falaj"
+appears in exactly one place, the colophon at the end of `/about`, so a visitor
+experiences the system first and learns what it is second.
+`tests/concept.test.ts` fails the build if the word leaks into any other copy.
 
+**HOME IS A SEQUENCE, NOT A MENU.** Hero (poster + portrait) → Manifesto
+(kinetic type) → Journey (pinned 3D) → ThroughLine (the receipts) → Marquee →
+Projects → About → Contact. Eight sections, eight different layout families.
+Two sections sharing a layout is what makes a portfolio read as a template.
+
+- **The centrepiece: `three/FalajFlythrough`.** A deep-cut stone channel with
+  running water, branch forks, and light motes, travelled by a scroll-driven
+  camera. Three things are load-bearing and easy to break:
+  **(1)** the walls are 4.4 tall on purpose — a shallow channel leaves the top
+  two-thirds of a portrait phone as empty void;
+  **(2)** the camera is orientation-aware — `fov` in Three is VERTICAL, so a
+  tall viewport collapses the horizontal field and needs a widened (clamped)
+  fov plus a lower, more level camera;
+  **(3)** blending follows the theme — additive glow over a near-white
+  background saturates to white and the water vanishes, so light mode uses
+  normal blending.
+  Stone comes from dedicated `--falaj-*` tokens, NOT the surface ramp; reusing
+  `--surface-2` rendered the whole scene near-black on near-black.
 - **The signature: the flow line.** `components/flow/FlowRail` draws one
   hairline down the inline-start gutter of every page; the part above the
   reader is live (accent), the rest dormant. `FlowBranch` wraps each section
