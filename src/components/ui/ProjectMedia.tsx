@@ -58,7 +58,20 @@ export function ProjectMedia({
 }: Props) {
   const asset = resolveAsset(project, variant);
   const isLogo = asset.kind === 'logo';
-  const hasThemedPair = isLogo && Boolean(asset.src) && Boolean(asset.dark);
+  /**
+   * Any asset with both variants swaps with the theme, not just logos.
+   *
+   * This used to require `isLogo`, so a SCREENSHOT with a dark capture fell
+   * through to the single-image branch and stayed frozen on its light version
+   * while the rest of the page changed around it.
+   *
+   * The two kinds swap differently, and that difference is the reason the
+   * check was tangled up with `isLogo` in the first place. A logo has a baked
+   * ground that must be blended away and is contained inside the frame. A
+   * screenshot is the picture itself: it bleeds to the edges and must never be
+   * blended, or the theme's background would show through the interface.
+   */
+  const hasThemedPair = Boolean(asset.src) && Boolean(asset.dark);
   const imgSizes = sizes ?? '(min-width: 1024px) 50vw, 100vw';
 
   // Padding is small on purpose: the mark should read big. It sits well inside
@@ -81,27 +94,41 @@ export function ProjectMedia({
     return (
       <div
         className={cn(
-          'relative overflow-hidden bg-surface-2 [isolation:isolate]',
+          'relative overflow-hidden bg-surface-2',
+          // Isolation only matters where a blend mode is in play.
+          isLogo && '[isolation:isolate]',
           className,
         )}
       >
-        {/* Light: a dark mark on white, multiplied so the white ground drops out. */}
+        {/* Light variant. */}
         <Image
           src={asset.src as string}
           alt=""
           fill
           priority={priority}
           sizes={imgSizes}
-          className={cn('object-contain mix-blend-multiply dark:hidden', logoPad)}
+          className={cn(
+            'dark:hidden',
+            isLogo
+              ? // A dark mark on white, multiplied so the white ground drops out.
+                cn('object-contain mix-blend-multiply', logoPad)
+              : 'object-cover',
+          )}
         />
-        {/* Dark: a light mark on black, screened so the black ground drops out. */}
+        {/* Dark variant. */}
         <Image
           src={asset.dark as string}
           alt=""
           fill
           priority={priority}
           sizes={imgSizes}
-          className={cn('hidden object-contain mix-blend-screen dark:block', logoPad)}
+          className={cn(
+            'hidden dark:block',
+            isLogo
+              ? // A light mark on black, screened so the black ground drops out.
+                cn('object-contain mix-blend-screen', logoPad)
+              : 'object-cover',
+          )}
         />
       </div>
     );

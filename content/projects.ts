@@ -234,7 +234,10 @@ export const projects: Project[] = [
         ar: 'عند تفعيل تقليل الحركة تتوقف الرسوم ثلاثية الأبعاد تمامًا من دون أن يختفي أي محتوى. وعند تقليل الشفافية أو رفع التباين تتحول الأسطح الضبابية إلى أسطح صريحة واضحة.',
       },
     ],
-    cover: '/images/projects/portfolio.png',
+    // Two captures, because the site itself has two themes and one file
+    // cannot honestly represent both.
+    cover: '/images/projects/portfolio-light.png',
+    coverDark: '/images/projects/portfolio-dark.png',
     coverKind: 'screenshot',
     /**
      * The design notes, moved here from a standalone "About this site" section.

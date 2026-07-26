@@ -22,11 +22,14 @@ import { cn } from '@/lib/cn';
  * you can always see what is coming. Moving the deck rotates the next one to
  * face you.
  *
- * The stage carries `class="dark"`, which flips the whole token set inside it
- * regardless of the visitor's theme. Deliberate, and the reason no colour is
- * hardcoded here: a projection room is dark inside a bright building too, and
- * doing it with the theme class keeps contrast, borders and the accent
- * on-system rather than hand-mixed.
+ * The stage FOLLOWS the visitor's theme. It used to force `class="dark"` so
+ * the room stayed dark inside a light page, which read well but broke
+ * something more important: every asset with a light and a dark variant
+ * resolves its variant from the nearest `.dark` ancestor, so inside a
+ * permanently dark stage those assets were frozen on their dark version and
+ * the theme toggle did nothing to them. Separation now comes from `bg-bg-deep`,
+ * one step off the page, which reads as a distinct room in both themes and
+ * lets every cover switch with the toggle.
  *
  * GEOMETRY. Offsets are the shortest signed distance around a RING, not along
  * a line, so with only three works the deck still fills both side slots
@@ -168,7 +171,7 @@ export function KeynoteSlides() {
 
   return (
     // `dark` here is the stage, not the visitor's theme. See the note above.
-    <section className="dark relative overflow-hidden bg-bg py-phi-4 text-text sm:py-phi-5">
+    <section className="relative overflow-hidden bg-bg-deep py-phi-4 text-text sm:py-phi-5">
       <Container>
         <h2 className="museum-1 max-w-[14ch] text-text">{t('title')}</h2>
       </Container>
