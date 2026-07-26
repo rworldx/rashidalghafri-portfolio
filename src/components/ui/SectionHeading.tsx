@@ -52,7 +52,7 @@ export function SectionHeading({
     >
       <div className="min-w-0">
         {label && <p className="label mb-4 text-text-faint">{label}</p>}
-        <Tag className="serif-2 text-text">
+        <Tag className="museum-2 text-text">
           <Emphasise title={title} emphasis={emphasis} />
         </Tag>
       </div>

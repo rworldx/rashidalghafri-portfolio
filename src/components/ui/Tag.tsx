@@ -10,7 +10,7 @@ export function Tag({ className, children, ...props }: HTMLAttributes<HTMLSpanEl
   return (
     <span
       className={cn(
-        'bg-surface-2/60 inline-flex items-center rounded-full border border-border px-2.5 py-1 font-mono text-2xs text-text-muted',
+        'bg-surface-2/60 inline-flex items-center rounded-sm border border-border px-2.5 py-1 font-mono text-2xs text-text-muted',
         className,
       )}
       {...props}

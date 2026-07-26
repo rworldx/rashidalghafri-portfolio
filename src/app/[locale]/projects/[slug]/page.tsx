@@ -75,7 +75,7 @@ export default async function CaseStudyPage({
               </Badge>
             )}
           </div>
-          <h1 className="serif-display mt-5 text-text">{project.title}</h1>
+          <h1 className="museum-1 mt-5 text-text">{project.title}</h1>
           <p className="mt-4 font-mono text-2xs uppercase tracking-[0.14em] text-accent">
             {project.role}
           </p>
@@ -164,7 +164,7 @@ export default async function CaseStudyPage({
                         {' / '}
                         {String(project.chapters?.length ?? 0).padStart(2, '0')}
                       </p>
-                      <h2 className="serif-2 text-text">{pick(chapter.title, locale)}</h2>
+                      <h2 className="museum-2 text-text">{pick(chapter.title, locale)}</h2>
                       <div className="measure mt-phi space-y-4">
                         {chapter.body.map((paragraph, pIdx) => (
                           <p key={pIdx} className="text-lg text-text-muted">
@@ -200,7 +200,7 @@ export default async function CaseStudyPage({
 
             {project.highlights && !project.chapters && (
               <Reveal>
-                <h2 className="serif-2 text-text">{t('highlights')}</h2>
+                <h2 className="museum-2 text-text">{t('highlights')}</h2>
                 <ul className="measure mt-phi space-y-4">
                   {project.highlights.map((h, i) => (
                     <li key={i} className="flex gap-3.5 text-text-muted">
@@ -266,7 +266,7 @@ export default async function CaseStudyPage({
             >
               <div>
                 <p className="label mb-3 text-text-faint">{t('next')}</p>
-                <p className="serif-2 text-text transition-colors duration-quick ease-out group-hover:text-accent">
+                <p className="museum-2 text-text transition-colors duration-quick ease-out group-hover:text-accent">
                   {next.title}
                 </p>
               </div>
@@ -286,7 +286,7 @@ export default async function CaseStudyPage({
 function Prose({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <Reveal>
-      <h2 className="serif-2 text-text">{title}</h2>
+      <h2 className="museum-2 text-text">{title}</h2>
       <p className="measure mt-phi text-lg text-text-muted">{children}</p>
     </Reveal>
   );

@@ -19,7 +19,7 @@ export default function NotFound() {
       <p className="tnum font-mono text-2xs uppercase tracking-[0.2em] text-accent">
         {t('code')}
       </p>
-      <h1 className="serif-display mt-6 text-text">{t('title')}</h1>
+      <h1 className="museum-1 mt-6 text-text">{t('title')}</h1>
       <p className="measure-tight mt-phi text-lg text-text-muted">{t('body')}</p>
 
       <div className="mt-phi-2">

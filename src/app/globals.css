@@ -88,17 +88,20 @@
     --backdrop-base: oklch(0.905 0.012 244);
     --backdrop-sheen: oklch(0.985 0.006 244);
 
-    --glass-fill: oklch(0.28 0.02 245 / 0.045);
-    --glass-inset: oklch(1 0 0 / 0.7);
-    --glass-edge: oklch(1 0 0 / 0.85);
-    --glass-edge-mid: oklch(0.28 0.02 245 / 0.12);
 
-    /* ---- Radius: ONE system. Interactive = pill, surfaces = 16/22px ---- */
-    --radius-xs: 6px;
-    --radius-sm: 10px;
-    --radius: 16px;
-    --radius-lg: 22px;
-    --radius-xl: 30px;
+    /*
+     * ---- Radius: museum-crisp ----
+     * A gallery frames work in rectangles. Soft 22-30px corners read as app
+     * chrome and consumer-product polish, which is the opposite of the room
+     * this site is trying to be. Everything is squared right down; controls
+     * keep a small radius so they still read as pressable, and nothing is a
+     * pill any more.
+     */
+    --radius-xs: 2px;
+    --radius-sm: 3px;
+    --radius: 4px;
+    --radius-lg: 4px;
+    --radius-xl: 6px;
 
     /* ---- Elevation: tinted to the background hue, never pure black ---- */
     --shadow-sm: 0 1px 2px oklch(0.216 0.014 264 / 0.05);
@@ -145,10 +148,6 @@
     --backdrop-base: oklch(0.135 0.018 250);
     --backdrop-sheen: oklch(0.365 0.055 248);
 
-    --glass-fill: oklch(1 0 0 / 0.045);
-    --glass-inset: oklch(1 0 0 / 0.14);
-    --glass-edge: oklch(1 0 0 / 0.5);
-    --glass-edge-mid: oklch(1 0 0 / 0.16);
 
     /*
      * Dark mode is a single flat colour, by request. The atmosphere layer is
@@ -746,117 +745,72 @@
   }
 
   /**
-   * ── THE MUSEUM VOICE ─────────────────────────────────────────────────────
+   * ── DISPLAY TYPE ─────────────────────────────────────────────────────────
    *
-   * Bodoni Moda, italic, for the gallery headline and exhibit titles. A didone
-   * at display size needs three things the grotesque scale does not:
-   *  - much TIGHTER tracking, because high-contrast serifs set loose at size;
-   *  - TIGHT leading, since the x-height is small relative to the cap;
-   *  - real descender clearance, because the italic descenders are long.
+   * Upright, in the UI face (SF on Apple hardware), set large and tight.
+   *
+   * These used to be an italic didone, and every heading on the site was in
+   * it. A whole page of italic serif does not read as elegant, it reads as
+   * costume. Italic now appears in exactly one place: the single emphasised
+   * word inside a headline, where the contrast against upright type is the
+   * whole point. See `.em-italic`.
+   *
+   * Tracking tightens as the size grows, which is the one rule large type
+   * cannot skip.
    */
-  .serif-display {
-    font-family: var(--font-serif), Georgia, serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(2.7rem, 1.1rem + 8.6vw, 7.5rem);
-    line-height: 0.94;
-    letter-spacing: -0.028em;
+  .museum-1 {
+    font-size: clamp(2.6rem, 1.1rem + 8.2vw, 6.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 600;
     text-wrap: balance;
-    /* The italic's descenders clip against tight leading without this. */
-    padding-block-end: 0.08em;
   }
-  .serif-2 {
-    font-family: var(--font-serif), Georgia, serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.9rem, 1.1rem + 3.1vw, 3.4rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+  .museum-2 {
+    font-size: clamp(1.85rem, 1.1rem + 2.9vw, 3.2rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    font-weight: 600;
     text-wrap: balance;
-    padding-block-end: 0.06em;
   }
-  /* Arabic has no italic and no didone. It keeps the Thmanyah display voice. */
-  html[lang='ar'] .serif-display,
-  html[lang='ar'] .serif-2 {
+  html[lang='ar'] .museum-1,
+  html[lang='ar'] .museum-2 {
     font-family: var(--font-display-ar), var(--font-sans-ar), sans-serif;
-    font-style: normal;
     letter-spacing: 0;
-    line-height: 1.2;
+    line-height: 1.24;
+    font-weight: 700;
   }
 
   /**
-   * ── LIQUID GLASS ─────────────────────────────────────────────────────────
+   * ── PLATE ────────────────────────────────────────────────────────────────
    *
-   * Floating chrome over a moving backdrop. The edge is the whole trick: a
-   * masked 1.4px gradient ring, bright at top and bottom and absent through
-   * the middle, which reads as light catching a real bevel rather than as a
-   * flat stroke. Without it, backdrop-blur alone just looks like a grey box.
+   * The one surface treatment, and it is deliberately almost nothing: a flat
+   * fill and a hairline edge.
    *
-   * Two weights only, and they mean different things:
-   *   .glass         chrome and containers (nav, chips, exhibit cards)
-   *   .glass-strong  the ONE primary action per view
-   * Never stack one on the other — a light translucent surface on top of
-   * another light translucent surface destroys legibility.
+   * This replaced a full liquid-glass system (layered blurs, masked bevel
+   * gradients, inset highlights). Glass is a consumer-product texture. In a
+   * room where the work is supposed to be the only thing with presence, every
+   * blurred, bevelled panel competes with the pictures for attention. Flat
+   * planes recede, which is what a wall is supposed to do.
    *
-   * Tinted per theme, not hardcoded white: on a light background a white
-   * scrim is invisible, so light mode tints toward ink instead.
+   * `.plate-quiet` is the same idea with no fill at all, for chrome floating
+   * over a moving backdrop where even a fill would read as a box.
    */
-  .glass,
-  .glass-strong {
-    position: relative;
-    overflow: hidden;
-    background: var(--glass-fill);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-    border: none;
-    box-shadow: inset 0 1px 1px var(--glass-inset);
+  .plate {
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
-  .glass {
-    --glass-blur: 14px;
+  .plate-quiet {
+    background: color-mix(in oklab, var(--bg) 62%, transparent);
+    border: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
-  .glass-strong {
-    --glass-blur: 42px;
-    box-shadow:
-      0 8px 28px -12px oklch(0 0 0 / 0.35),
-      inset 0 1px 1px var(--glass-inset);
-  }
-  .glass::before,
-  .glass-strong::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(
-      180deg,
-      var(--glass-edge) 0%,
-      var(--glass-edge-mid) 22%,
-      transparent 42%,
-      transparent 58%,
-      var(--glass-edge-mid) 78%,
-      var(--glass-edge) 100%
-    );
-    /* Both spellings: WebKit needs the prefix, everyone else needs the
-       standard property, and shipping only one silently drops the bevel. */
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /*
-   * Vibrancy: text over a translucent surface needs more weight and a touch
-   * more tracking than the same text on a solid one, or it dissolves into
-   * whatever is moving underneath.
-   */
-  .on-glass {
-    font-weight: 500;
-    letter-spacing: 0.01em;
+  @media (prefers-reduced-transparency: reduce) {
+    .plate-quiet {
+      background: var(--bg);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
   }
 
   /* Surface: the one raised-panel treatment. Concentric radii, hairline edge. */
@@ -965,33 +919,10 @@
    * just raising opacity would still be a translucent panel, which is exactly
    * what this preference asks us not to ship.
    */
-  .glass,
-  .glass-strong {
-    background: var(--surface);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    border: 1px solid var(--border);
-    box-shadow: none;
-  }
-  .glass::before,
-  .glass-strong::before {
-    display: none;
-  }
 }
 
 /* High contrast: near-solid surfaces with a defined edge. */
 @media (prefers-contrast: more) {
-  .glass,
-  .glass-strong {
-    background: var(--surface);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    border: 1px solid var(--border-strong);
-  }
-  .glass::before,
-  .glass-strong::before {
-    display: none;
-  }
 }
 
 /* Reduced motion: a global safety net. MotionProvider also gates Framer. */

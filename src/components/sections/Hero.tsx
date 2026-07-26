@@ -28,12 +28,12 @@ const LiquidBackdrop = dynamic(() => import('@/components/three/LiquidBackdrop')
 /**
  * THE MUSEUM — the entrance hall.
  *
- * A single lit room: a slow liquid-metal light turning behind the glass, the
+ * A single lit room: a slow liquid-metal light turning behind the plate-quiet, the
  * name set as an exhibition title, and the least chrome that can still carry a
  * visitor onward. Everything floats; nothing is boxed.
  *
  * FOUR text elements, hard limit — one chip, the title, one sentence, the two
- * actions. The credentials sit in glass plates below the fold line, the way a
+ * actions. The credentials sit in plate-quiet plates below the fold line, the way a
  * gallery puts the wall label beside the work rather than inside the frame.
  *
  * The title is CSS-animated, not Framer-animated: it is the LCP element, and
@@ -93,7 +93,7 @@ export function Hero() {
       {/*
         The light in the room. Reduced motion or no WebGL falls back to a still
         gradient wash rather than a blank wall — the composition depends on
-        something being behind the glass.
+        something being behind the plate-quiet.
       */}
       <div aria-hidden className="absolute inset-0 -z-10">
         {showBackdrop ? (
@@ -117,7 +117,7 @@ export function Hero() {
 
       <Container className="relative">
         <p
-          className="glass hero-in on-glass mb-phi inline-flex items-center gap-2.5 rounded-full py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
+          className="plate-quiet hero-in mb-phi inline-flex items-center gap-2.5 rounded-sm py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
         >
           <StatusDot />
           {pick(site.status, locale)}
@@ -128,7 +128,7 @@ export function Hero() {
           text={name}
           upright={upright}
           delay={0.15}
-          className="serif-display max-w-[15ch] text-text"
+          className="museum-1 max-w-[15ch] text-text"
         />
 
         <p
@@ -145,7 +145,7 @@ export function Hero() {
           {/* Exactly one primary action per view. */}
           <Link
             href="/projects"
-            className="glass-strong on-glass group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm text-text transition-transform duration-press ease-out active:scale-[0.97]"
+            className="plate on-plate-quiet group inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm text-text transition-transform duration-press ease-out active:scale-[0.97]"
           >
             {t('viewWork')}
             <ArrowUpRight
@@ -174,10 +174,10 @@ export function Hero() {
               key={p.label.en}
               // Width is a FLOOR, not a fixed size. Arabic sets these figures
               // as words ("أفضل ٣٠"), which wrapped and cramped a fixed plate.
-              className="glass flex min-w-[13.5rem] max-w-[20rem] flex-col-reverse rounded-lg p-5"
+              className="plate-quiet flex min-w-[13.5rem] max-w-[20rem] flex-col-reverse rounded-lg p-5"
             >
               <dt className="mt-2 text-xs text-text-muted">{pick(p.label, locale)}</dt>
-              <dd className="serif-2 tnum text-text">{pick(p.value, locale)}</dd>
+              <dd className="museum-2 tnum text-text">{pick(p.value, locale)}</dd>
             </div>
           ))}
         </dl>
@@ -191,7 +191,7 @@ export function Hero() {
       >
         <span className="label text-text-faint">{t('creditsLabel')}</span>
         {['LIYSF', 'IEEE', 'Riyada', 'Omantel', 'Injaz'].map((n) => (
-          <span key={n} className="serif-2 text-xl text-text-muted sm:text-2xl">
+          <span key={n} className="museum-2 text-xl text-text-muted sm:text-2xl">
             {n}
           </span>
         ))}

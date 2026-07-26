@@ -3,23 +3,23 @@ import type { Localized } from '@/types/common';
 
 /** Short About-section intro. */
 export const aboutIntro: Localized = {
-  en: `I'm Rashid — a 21-year-old Software Engineering graduate (BSc, First-Class Distinction) from Ibri, Oman. My path here wasn't a straight line, and that's the most honest thing about me.`,
-  ar: `أنا راشد، خريج هندسة برمجيات (بكالوريوس، امتياز مع مرتبة الشرف الأولى) في الحادية والعشرين من عمري، من ولاية عبري في عُمان. طريقي إلى هنا لم يكن مستقيمًا، وهذا أصدق ما فيّ.`,
+  en: `I am Rashid. I am 21, from Ibri in Oman, and I finished a Software Engineering degree with First-Class Distinction. My path here was not a straight line. Nothing about me is more honest than that.`,
+  ar: `أنا راشد. عمري ٢١ عامًا، من ولاية عبري في عُمان، وأنهيت بكالوريوس هندسة البرمجيات بامتياز مع مرتبة الشرف الأولى. لم يكن طريقي إلى هنا مستقيمًا. ولا شيء فيّ أصدق من هذا.`,
 };
 
 /** Full origin story — rendered as flowing paragraphs on the About page. */
 export const aboutStory: { en: string[]; ar: string[] } = {
   en: [
-    `As a kid I was going to be an archaeologist — not because of cartoons, but because of National Geographic. I sat through every episode on animals, space, and dinosaurs, fascinated by how much world there was to dig into. That same curiosity ran through the films I loved: action, adventure, sci-fi, superheroes, and Japanese anime — stories about people who saw the world differently.`,
-    `Then it was cooking. I found I actually had a hand for it, especially Italian food. (Pasta is still my favourite meal to this day.) After that, it was the sky — I wanted to be a pilot, or an astronaut at NASA, because what I really wanted was to roam the planet and see its cultures, cities, and landscapes for myself.`,
-    `The constant under all of it was technology. Somewhere along the way I realised I understood it more deeply than most people my age — I'd take apart the games I played to see how they worked, endlessly curious about the systems running quietly behind everyday life. That curiosity was the real signal, and it pointed at one thing: build.`,
-    `So I chose Software Engineering, and a way of working that matches who I am. I'm drawn to flexible, location-independent work — the kind of career I can do from home, from a plane, or from a beach, on a schedule that's mine. I work quietly, with focus, and StudyNest is what that looks like pointed at a real problem. Right now, I'm working toward studying abroad — and I have a plan for it.`,
+    `As a kid I wanted to be an archaeologist. National Geographic put the idea there. I watched every episode on animals, space and dinosaurs, and I liked how much world there was to dig into. The films I loved pulled the same way. Action, adventure, science fiction, superheroes, Japanese anime. Stories about people who saw the world differently.`,
+    `Then came cooking. I had a hand for Italian food. Pasta is still my favourite meal. After cooking came the sky. I wanted to fly, or to work at NASA. What I wanted underneath was to move around the planet and see its cities and cultures myself.`,
+    `Technology stayed constant through all of it. I understood computers more deeply than most people my age. I took apart the games I played to see how they worked. The systems running quietly behind daily life held my attention longest. The signal was clear enough. Build.`,
+    `So I chose Software Engineering, and a way of working to match. I want flexible work with no fixed address. From home, from a plane, from a beach, on my own schedule. I work quietly and with focus. StudyNest is what happens when I point both at a real problem. Now I am working toward studying abroad, and I have a plan for getting there.`,
   ],
   ar: [
-    `عندما كنت صغيرًا أردت أن أصبح عالم آثار — لا بسبب الرسوم المتحركة، بل بسبب قناة ناشونال جيوغرافيك. كنت أتابع كل حلقة عن الحيوانات والفضاء والديناصورات، مفتونًا بكمّ العوالم التي يمكن استكشافها. وامتد الفضول نفسه إلى ما أحببته من أفلام: الأكشن والمغامرة والخيال العلمي والأبطال الخارقين، والأنمي الياباني.`,
-    `ثم جاء الطبخ. اكتشفت أن لديّ موهبةً فيه، خاصة المأكولات الإيطالية — وما زالت الباستا أكلتي المفضلة حتى اليوم. بعدها كانت السماء؛ أردت أن أصبح طيارًا أو رائد فضاء في ناسا، لأن ما أردته حقًا هو أن أجوب العالم وأرى ثقافاته ومدنه ومناظره بعينيّ.`,
-    `لكن الثابت تحت كل ذلك كان التكنولوجيا. أدركت في مرحلةٍ ما أنني أفهمها أعمق من معظم من هم في سنّي؛ كنت أفكّك الألعاب التي ألعبها لأرى كيف تعمل، وفضولي لا ينتهي تجاه الأنظمة التي تعمل بهدوء خلف تفاصيل حياتنا اليومية. كان ذلك الفضول هو الإشارة الحقيقية، وكان يشير إلى شيء واحد: أن أبني.`,
-    `لذلك اخترت هندسة البرمجيات، وطريقة عملٍ تشبهني: أنجذب إلى العمل المرن غير المقيّد بمكان — مهنة أستطيع ممارستها من البيت، أو من الطائرة، أو من شاطئ، بجدولٍ هو جدولي. أعمل بهدوء وتركيز، وStudyNest هو ما يبدو عليه ذلك حين أوجّهه نحو مشكلة حقيقية. والآن أعمل على خطةٍ للدراسة في الخارج.`,
+    `في صغري أردت أن أصبح عالم آثار. قناة ناشونال جيوغرافيك هي من زرعت الفكرة. تابعت كل حلقة عن الحيوانات والفضاء والديناصورات، وأعجبني كم العوالم المتاحة للتنقيب. والأفلام التي أحببتها جذبتني الجذبة نفسها. الأكشن والمغامرة والخيال العلمي والأبطال الخارقون والأنمي الياباني. حكايات عن أناس رأوا العالم بطريقة مختلفة.`,
+    `ثم جاء الطبخ. كانت لي يد في المطبخ الإيطالي. وما زالت الباستا أكلتي المفضلة. وبعد الطبخ جاءت السماء. أردت أن أطير، أو أن أعمل في ناسا. وما أردته في العمق هو أن أتنقل في الأرض وأرى مدنها وثقافاتها بعينيّ.`,
+    `بقيت التقنية ثابتة خلال هذا كله. كنت أفهم الحواسيب أعمق من معظم من هم في سنّي. وكنت أفكّك الألعاب التي ألعبها لأرى كيف تعمل. والأنظمة التي تعمل بهدوء خلف تفاصيل اليوم شدّت انتباهي أطول من غيرها. كانت الإشارة واضحة بما يكفي. ابنِ.`,
+    `فاخترت هندسة البرمجيات، وطريقة عمل تناسبني. أريد عملًا مرنًا بلا عنوان ثابت. من البيت، أو من الطائرة، أو من شاطئ، وبجدول أضعه أنا. أعمل بهدوء وتركيز. و«ستدي نست» هي ما يحدث حين أوجّه الاثنين نحو مشكلة حقيقية. والآن أعمل على الدراسة في الخارج، ولديّ خطة للوصول.`,
   ],
 };
 

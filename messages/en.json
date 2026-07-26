@@ -50,15 +50,15 @@
   "throughLine": {
     "title": "Every system here moves something to someone who needed it.",
     "emphasis": "someone who needed it",
-    "body": "Study partners to isolated students. Live consumption data to households. Branch activity to members. The problems differ; the shape of the answer rarely does — and the record below is what came of it."
+    "body": "Study partners to students working alone. Live power readings to households. Branch news to members. The problems differ. The shape of the answer rarely does."
   },
   "manifesto": {
-    "flow": "Craft",
-    "flowBody": "Get the shape right and the thing runs on its own. Most of what I build is invisible by design — you notice it only when it is missing.",
+    "flow": "Shape",
+    "flowBody": "Get the shape right and the system runs without you. Most of my work is invisible by design. You notice it only when something breaks.",
     "systems": "Systems",
-    "systemsBody": "I do not build screens, I build the thing behind them: 100+ endpoints, 100+ realtime events, 20 data models, and the tests that keep them honest.",
+    "systemsBody": "I do not build screens. I build what sits behind them. 100+ endpoints, 100+ realtime events, 20 data models, and the tests to keep them honest.",
     "connection": "Connection",
-    "connectionBody": "Every project here exists because somebody could not reach something on their own. That is the whole job, and the only brief I care about."
+    "connectionBody": "Every project here started because someone could not reach something on their own. StudyNest reached students studying alone. EnerGrid reached households paying for power they never see."
   },
   "gallery": {
     "title": "Selected work, one room at a time",

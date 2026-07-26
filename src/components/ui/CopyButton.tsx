@@ -43,7 +43,7 @@ export function CopyButton({
       type="button"
       onClick={onCopy}
       className={cn(
-        'inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted sm:min-h-9',
+        'inline-flex min-h-11 items-center gap-1.5 rounded-sm border border-border px-4 font-mono text-2xs uppercase tracking-[0.12em] text-text-muted sm:min-h-9',
         'transition-[color,border-color,transform] duration-quick ease-out',
         'hover:border-border-strong hover:text-text active:scale-[0.96] active:duration-press',
         className,

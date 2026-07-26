@@ -88,7 +88,7 @@ function Word({
         <div className="flex flex-wrap items-baseline gap-x-phi gap-y-2">
           <h2
             className={cn(
-              'serif-display text-text',
+              'museum-1 text-text',
               // The full stop is part of the statement, not punctuation the
               // headline happens to end with.
               'after:text-accent after:content-["."]',

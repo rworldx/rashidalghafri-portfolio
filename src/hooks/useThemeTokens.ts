@@ -29,7 +29,19 @@ export function useThemeTokens<T>(read: () => T): T | null {
   useEffect(() => {
     const root = document.documentElement;
 
-    const sample = () => setTokens(stable());
+    // Dedupe by VALUE. next-themes mutates `class` and `style` and injects a
+    // transition-suppressing <style>, so a single toggle fires the observer
+    // several times. Without this the consumer gets a fresh object each time
+    // and re-uploads identical colours to the GPU, which is what made the
+    // animated backdrop visibly jump on every theme click.
+    let previous = '';
+    const sample = () => {
+      const nextTokens = stable();
+      const signature = JSON.stringify(nextTokens);
+      if (signature === previous) return;
+      previous = signature;
+      setTokens(nextTokens);
+    };
     sample();
 
     const observer = new MutationObserver(sample);

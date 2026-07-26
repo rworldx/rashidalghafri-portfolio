@@ -1,26 +1,26 @@
 import type { Localized } from '@/types/common';
 
 /**
- * The short note about how the site is made, on /about and nowhere else.
+ * The note about how the site is made. On /about, and nowhere else.
  *
- * Kept honest and specific. A colophon that lists adjectives ("clean, modern,
- * user-focused") says nothing; one that names actual decisions is the only
- * kind worth printing. Everything claimed here is verifiable by looking at
- * the page it is printed on.
+ * Written to Rashid's rules: short sentences, active voice, no dashes, no
+ * semicolons, no filler. A colophon listing adjectives says nothing. One that
+ * names decisions is the only kind worth printing, and every claim here can be
+ * checked against the page it sits on.
  */
 export const colophon: { body: Localized[] } = {
   body: [
     {
-      en: 'This site is staged as a gallery: one room, one work at a time, and as little interface as I could get away with. The argument is simple — if the work is worth looking at, it should not have to compete with the thing it is displayed in.',
-      ar: 'هذا الموقع مُقامٌ كصالة عرض: غرفة واحدة، وعملٌ واحد في كل مرة، وأقلّ ما يمكن من الواجهة. والفكرة بسيطة: إن كان العمل يستحقّ النظر، فلا ينبغي أن ينافسه ما يُعرض فيه.',
+      en: 'This site is built like a gallery. One room, one work at a time, and as little interface as I could get away with. If the work is worth looking at, you should not have to look past a wrapper to see it.',
+      ar: 'هذا الموقع مبنيّ كصالة عرض. غرفة واحدة، وعمل واحد في كل مرة، وأقلّ ما استطعت من الواجهة. إن كان العمل يستحقّ النظر، فلا ينبغي أن تنظر من خلف غلاف لتراه.',
     },
     {
-      en: 'The type does the work. A didone italic carries the titles the way an exhibition label would; everything structural is set in a narrowed grotesque so the two never compete. Arabic is set in Thmanyah throughout, with none of the letter-spacing or small caps that Latin habits tend to impose on a cursive script.',
-      ar: 'الخطّ هو الذي يحمل العمل هنا. تحمل الحروف المائلة العناوين كما تفعل لوحة التعريف في المعرض، ويُضبط كل ما هو بنيويّ بخطٍّ مضغوط حتى لا يتنافس الاثنان. والعربية مضبوطة بخط «ثمانية» في كل الموقع، بلا تباعدٍ بين الحروف ولا محاكاةٍ لعادات لاتينية لا تناسب خطًّا متّصلًا.',
+      en: 'Type does most of the work. Headings run large and upright in the system face. One word in a headline turns italic when it carries the weight of the line. Arabic uses Thmanyah everywhere, with no letter spacing and no small caps, because Arabic joins its letters and those two habits pull the joins apart.',
+      ar: 'الخطّ يقوم بأكثر العمل هنا. تأتي العناوين كبيرة ومنتصبة بخط النظام. وتميل كلمة واحدة في العنوان حين تحمل ثقل السطر. والعربية بخط «ثمانية» في كل مكان، بلا تباعد بين الحروف وبلا محاكاة للأحرف الكبيرة، لأن العربية تصل حروفها وهاتان العادتان تفصلانها.',
     },
     {
-      en: 'The rest is deliberate and quiet: one accent colour, contrast checked rather than assumed, no animation a reader did not ask for by scrolling, and a full fallback for anyone whose device or settings would rather not run the moving parts. Built with Next.js and Three.js, in English and Arabic.',
-      ar: 'وما تبقّى متعمَّدٌ وهادئ: لونٌ مميّز واحد، وتباينٌ مُتحقَّقٌ منه لا مفترَض، ولا حركةَ لم يطلبها القارئ بتمريره، وبديلٌ كامل لمن لا يرغب جهازه أو إعداداته في تشغيل الأجزاء المتحرّكة. بُني بـ Next.js وThree.js، بالعربية والإنجليزية.',
+      en: 'The rest is quiet on purpose. One accent colour. Contrast measured, not guessed. No animation you did not start by scrolling. Anyone whose device or settings would rather skip the moving parts gets a full version without them. Built with Next.js and Three.js, in English and Arabic.',
+      ar: 'وما تبقّى هادئ بقصد. لون مميّز واحد. وتباين مقيس لا مُخمّن. ولا حركة لم تبدأها أنت بتمريرك. ومن لا يريد جهازه أو إعداداته تشغيل الأجزاء المتحرّكة يحصل على نسخة كاملة بدونها. بُني بـ Next.js وThree.js، بالعربية والإنجليزية.',
     },
   ],
 };

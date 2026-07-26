@@ -93,7 +93,7 @@ export function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
-                        'inline-flex size-11 items-center justify-center rounded-full border border-border text-text-muted',
+                        'inline-flex size-11 items-center justify-center rounded-sm border border-border text-text-muted',
                         'transition-[color,border-color,transform] duration-quick ease-out',
                         'hover:border-border-strong hover:text-text active:scale-[0.94] active:duration-press',
                       )}

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatePresence, m, type PanInfo } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { projects as allProjects } from '@content/projects';
 import type { Project } from '@/types/project';
@@ -109,12 +109,12 @@ export function KeynoteSlides() {
     }
   };
 
-  // Card geometry from the measured stage. The centre card takes just over
-  // half the stage and the neighbours step out by ~68% of a card, which is the
-  // ratio at which enough of them shows to read as a deck you can move rather
-  // than as one image with decoration either side.
-  const cardWidth = Math.min(Math.max(stageWidth * 0.54, 210), 680);
-  const step = cardWidth * 0.68;
+  // Card geometry from the measured stage. The neighbours step out by nearly a
+  // full card width so they read as whole works standing beside the centre
+  // one, not as slivers tucked behind it. Tighter than this and the deck stops
+  // showing you what is coming, which is the only reason to build a deck.
+  const cardWidth = Math.min(Math.max(stageWidth * 0.48, 200), 620);
+  const step = cardWidth * 0.9;
 
   const active = slides[index];
   if (!active) return null;
@@ -123,17 +123,7 @@ export function KeynoteSlides() {
     // `dark` here is the stage, not the visitor's theme. See the note above.
     <section className="dark relative overflow-hidden bg-bg py-phi-4 text-text sm:py-phi-5">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="serif-display max-w-[12ch] text-text">{t('title')}</h2>
-          <div className="flex items-center gap-2">
-            <DeckButton onClick={prev} label={t('previous')}>
-              <ArrowLeft strokeWidth={1.75} aria-hidden className="size-4" />
-            </DeckButton>
-            <DeckButton onClick={next} label={t('next')}>
-              <ArrowRight strokeWidth={1.75} aria-hidden className="size-4" />
-            </DeckButton>
-          </div>
-        </div>
+        <h2 className="museum-1 max-w-[14ch] text-text">{t('title')}</h2>
       </Container>
 
       {/* ── The deck ─────────────────────────────────────────────────────── */}
@@ -183,16 +173,16 @@ export function KeynoteSlides() {
                     : {
                         x: `calc(-50% + ${offset * step * dir}px)`,
                         y: '-50%',
-                        rotateY: -offset * dir * 34,
+                        rotateY: -offset * dir * 26,
                         // Real depth, not z-index. Inside a `preserve-3d`
                         // context the browser paints by 3D position and
                         // IGNORES z-index entirely — with every card at z=0
                         // they sorted by DOM order, so later slides drew on
                         // top of the centre one and the active card appeared
                         // to be see-through.
-                        z: -distance * 150,
+                        z: -distance * 130,
                         scale: 1 - distance * 0.13,
-                        opacity: hidden ? 0 : 1 - distance * 0.3,
+                        opacity: hidden ? 0 : 1 - distance * 0.42,
                       }
                 }
                 transition={{ type: 'spring', bounce: 0, duration: 0.62 }}
@@ -241,7 +231,7 @@ export function KeynoteSlides() {
               {active.year}
             </p>
 
-            <h3 className="serif-2 text-text">{active.title}</h3>
+            <h3 className="museum-2 text-text">{active.title}</h3>
 
             <p className="measure mt-4 text-base text-text-muted sm:text-lg">
               {pick(active.summary, locale)}
@@ -295,7 +285,7 @@ export function KeynoteSlides() {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => go(i)}
                 className={cn(
-                  'relative rounded-full px-4 py-2 text-sm transition-colors duration-quick ease-out',
+                  'relative rounded-sm px-4 py-2 text-sm transition-colors duration-quick ease-out',
                   selected ? 'text-text' : 'text-text-faint hover:text-text-muted',
                 )}
               >
@@ -303,7 +293,7 @@ export function KeynoteSlides() {
                   <m.span
                     layoutId={`${baseId}-deck-active`}
                     aria-hidden
-                    className="absolute inset-0 rounded-full bg-surface-2"
+                    className="absolute inset-0 rounded-sm bg-surface-2"
                     transition={{ type: 'spring', bounce: 0.18, duration: 0.5 }}
                   />
                 )}
@@ -358,9 +348,9 @@ function SlideCard({
     // and without a fresh stacking context that blend reaches THROUGH the card
     // into the cards stacked behind it — the centre slide dissolved into the
     // deck and the neighbours showed through it.
-    'isolate block w-full overflow-hidden rounded-xl border border-border bg-surface shadow-lift',
+    'isolate block w-full overflow-hidden border border-border bg-surface',
     'transition-[border-color] duration-500 ease-out',
-    isActive ? 'hover:border-border-strong' : 'cursor-pointer',
+    isActive ? 'shadow-lift hover:border-border-strong' : 'cursor-pointer',
   );
 
   if (isActive) {
@@ -399,23 +389,3 @@ function SlideCard({
   );
 }
 
-function DeckButton({
-  onClick,
-  label,
-  children,
-}: {
-  onClick: () => void;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      className="glass inline-flex size-11 items-center justify-center rounded-full text-text transition-transform duration-press ease-out active:scale-[0.94]"
-    >
-      {children}
-    </button>
-  );
-}

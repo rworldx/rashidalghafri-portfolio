@@ -26,7 +26,7 @@ export default async function ProjectsPage({
   return (
     <div className="pt-phi-4">
       <Container>
-        <h1 className="serif-display text-text">
+        <h1 className="museum-1 text-text">
           <Emphasise title={t('title')} emphasis={t('emphasis')} />
         </h1>
       </Container>
