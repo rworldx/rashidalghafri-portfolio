@@ -267,7 +267,6 @@ export function KeynoteSlides() {
                   tabId={`${baseId}-tab-${i}`}
                   onSelect={() => go(i)}
                   draggingRef={draggingRef}
-                  priority={i === 0}
                 />
               </m.div>
             );
@@ -386,7 +385,6 @@ function SlideCard({
   tabId,
   onSelect,
   draggingRef,
-  priority,
 }: {
   project: Project;
   isActive: boolean;
@@ -395,12 +393,16 @@ function SlideCard({
   tabId: string;
   onSelect: () => void;
   draggingRef: React.MutableRefObject<boolean>;
-  priority: boolean;
 }) {
+  /**
+   * No `priority` here on purpose. The deck sits below the fold, so marking a
+   * card as priority would preload it and compete with the hero for bandwidth
+   * on first paint. Next lazy-loads by default, and every cover now carries an
+   * inline blur placeholder, so the frame is never empty while one arrives.
+   */
   const media = (
     <ProjectMedia
       project={project}
-      priority={priority}
       sizes="(min-width: 1024px) 62vw, 90vw"
       className="aspect-[1.6/1] w-full"
     />

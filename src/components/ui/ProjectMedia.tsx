@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { Project } from '@/types/project';
 import { cn } from '@/lib/cn';
+import { imageBlur } from '@content/image-blur';
 import { ProjectSignature } from './ProjectSignature';
 
 interface Props {
@@ -78,6 +79,14 @@ export function ProjectMedia({
   // the frame either way because the source is square and the frame is wide.
   const logoPad = 'p-[6%]';
 
+  /**
+   * A 16px preview, inlined so the frame is never blank while the real file
+   * arrives. Next needs an explicit `blurDataURL` for images referenced by
+   * path rather than by static import, so the previews are generated from the
+   * real files and checked in (content/image-blur.ts).
+   */
+  const blurFor = (src: string) => imageBlur[src.split('/').pop() ?? ''];
+
   if (!asset.src) {
     return (
       <div className={cn('relative overflow-hidden bg-surface-2', className)}>
@@ -107,6 +116,8 @@ export function ProjectMedia({
           fill
           priority={priority}
           sizes={imgSizes}
+          placeholder={blurFor(asset.src as string) ? 'blur' : 'empty'}
+          blurDataURL={blurFor(asset.src as string)}
           className={cn(
             'dark:hidden',
             isLogo
@@ -122,6 +133,8 @@ export function ProjectMedia({
           fill
           priority={priority}
           sizes={imgSizes}
+          placeholder={blurFor(asset.dark as string) ? 'blur' : 'empty'}
+          blurDataURL={blurFor(asset.dark as string)}
           className={cn(
             'hidden dark:block',
             isLogo
@@ -150,6 +163,8 @@ export function ProjectMedia({
         fill
         priority={priority}
         sizes={imgSizes}
+        placeholder={blurFor(asset.src) ? 'blur' : 'empty'}
+        blurDataURL={blurFor(asset.src)}
         className={cn(isLogo ? cn('object-contain', logoPad) : 'object-cover')}
       />
     </div>
