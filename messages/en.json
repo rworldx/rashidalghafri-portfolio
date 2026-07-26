@@ -160,10 +160,6 @@
     "verify": "Verify",
     "graphHintTouch": "Touch and drag any node to move it."
   },
-  "colophon": {
-    "title": "About this site",
-    "emphasis": "this site"
-  },
   "caseStudy": {
     "overview": "Overview",
     "problem": "The problem",

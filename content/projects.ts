@@ -234,6 +234,51 @@ export const projects: Project[] = [
         ar: 'وضع تقليل الحركة يوقف WebGL تمامًا ولا يُخفي شيئًا. ويحصل وضعا تقليل الشفافية والتباين العالي على سطح حقيقي بدل سطح ضبابي.',
       },
     ],
+    cover: '/images/projects/portfolio.png',
+    coverKind: 'screenshot',
+    /**
+     * The design notes, moved here from a standalone "About this site" section.
+     * They belong to the work, not to Rashid, so they read better as part of
+     * the case study than as a separate page telling a visitor about a site
+     * they are already standing in.
+     */
+    chapters: [
+      {
+        title: { en: 'Where it came from', ar: 'من أين جاءت الفكرة' },
+        body: [
+          {
+            en: 'I kept looking at exhibition design rather than at other portfolios. A gallery gives one work a wall and lets you walk up to it. Nothing on that wall competes with the picture. Apple keynotes do the same thing with a stage and one idea at a time.',
+            ar: 'كنت أنظر إلى تصميم المعارض بدل النظر إلى مواقع أخرى. يمنح المعرض العمل الواحد جدارًا كاملًا ويترك لك أن تقترب منه. ولا شيء على ذلك الجدار ينافس الصورة. وتفعل عروض «آبل» الشيء نفسه بمسرح وفكرة واحدة في كل مرة.',
+          },
+          {
+            en: 'So the site is a room. One work at a time, and as little interface as I could get away with. If the work is worth looking at, you should not have to look past a wrapper to see it.',
+            ar: 'فجاء الموقع غرفةً. عمل واحد في كل مرة، وأقلّ ما استطعت من الواجهة. وإن كان العمل يستحقّ النظر، فلا ينبغي أن تنظر من خلف غلاف لتراه.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Type does most of the work', ar: 'الخطّ يقوم بأكثر العمل' },
+        body: [
+          {
+            en: 'Headings run large and upright in the system face. One word in a headline turns italic when it carries the weight of the line. I tried setting every heading in italic first. A whole page of it reads as costume, so the italic went back to one word.',
+            ar: 'تأتي العناوين كبيرة ومنتصبة بخط النظام. وتميل كلمة واحدة في العنوان حين تحمل ثقل السطر. جرّبت أولًا أن أضبط كل عنوان بالمائل. وصفحة كاملة منه تبدو كزيّ تنكّري، فعاد المائل إلى كلمة واحدة.',
+          },
+          {
+            en: 'Arabic uses Thmanyah everywhere, with no letter spacing and no small caps. Arabic joins its letters. Both of those habits come from Latin and they pull the joins apart.',
+            ar: 'والعربية بخط «ثمانية» في كل مكان، بلا تباعد بين الحروف وبلا محاكاة للأحرف الكبيرة. فالعربية تصل حروفها. وكلتا العادتين لاتينية الأصل، وتفصلان ما ينبغي أن يتّصل.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Quiet on purpose', ar: 'هادئ بقصد' },
+        body: [
+          {
+            en: 'One accent colour. Contrast measured, not guessed. No animation you did not start by scrolling. Anyone whose device or settings would rather skip the moving parts gets a full version without them, and nothing stays hidden in that version.',
+            ar: 'لون مميّز واحد. وتباين مقيس لا مُخمّن. ولا حركة لم تبدأها أنت بتمريرك. ومن لا يريد جهازه أو إعداداته تشغيل الأجزاء المتحرّكة يحصل على نسخة كاملة بدونها، ولا يبقى فيها شيء مخفيًّا.',
+          },
+        ],
+      },
+    ],
     gallery: [],
     links: [
       { label: 'Live', href: 'https://rashidalghafri.com', external: true },

@@ -12,7 +12,6 @@ import { travels, schooling } from '@content/personal';
 import { interests, aboutStory } from '@content/about';
 import { proof } from '@content/proof';
 import { learning } from '@content/skills';
-import { colophon } from '@content/colophon';
 
 /**
  * Validates every content entry against a schema mirroring src/types (PRD §14).
@@ -207,12 +206,6 @@ describe('content/proof', () => {
   });
 });
 
-describe('content/colophon', () => {
-  it('is fully bilingual', () => {
-    expect(colophon.body.length).toBeGreaterThan(0);
-    for (const p of colophon.body) expect(() => localized.parse(p)).not.toThrow();
-  });
-});
 
 describe('content/skills', () => {
   /**
