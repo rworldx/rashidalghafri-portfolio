@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useId, useLayoutEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatePresence, m, type PanInfo } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
@@ -56,9 +56,22 @@ export function KeynoteSlides() {
   const draggingRef = useRef(false);
   const [stageWidth, setStageWidth] = useState(0);
 
-  useEffect(() => {
+  /**
+   * Measured BEFORE paint, not after.
+   *
+   * With a plain effect the first frame renders at `stageWidth = 0`, so every
+   * card collapses to the clamped minimum and the deck visibly snaps to its
+   * real size a frame later. That first impression was the whole problem: the
+   * deck looked broken for the moment a visitor first reached it.
+   *
+   * `useLayoutEffect` runs after the DOM is laid out and before the browser
+   * paints, so the first frame a visitor sees is already correct. The
+   * ResizeObserver then keeps it correct through rotation and resizing.
+   */
+  useLayoutEffect(() => {
     const el = stageRef.current;
     if (!el) return;
+    setStageWidth(el.getBoundingClientRect().width);
     const ro = new ResizeObserver(([entry]) =>
       setStageWidth(entry?.contentRect.width ?? 0),
     );
@@ -113,8 +126,28 @@ export function KeynoteSlides() {
   // full card width so they read as whole works standing beside the centre
   // one, not as slivers tucked behind it. Tighter than this and the deck stops
   // showing you what is coming, which is the only reason to build a deck.
-  const cardWidth = Math.min(Math.max(stageWidth * 0.48, 200), 620);
-  const step = cardWidth * 0.9;
+  /**
+   * A FIXED fallback, not `window.innerWidth`.
+   *
+   * Reading the window during render makes the server and the first client
+   * render disagree, which React reports as a hydration mismatch. The same
+   * constant on both sides hydrates cleanly, and the layout effect above
+   * replaces it with the true width before the browser paints.
+   */
+  const measured = stageWidth || 1280;
+
+  /**
+   * Proportions.
+   *
+   * The neighbours must stay INSIDE the stage. Stepping them out by most of a
+   * card width pushed them off both screen edges, so they arrived cropped by
+   * the viewport and the deck looked broken rather than deep. The step is now
+   * set against the card's foreshortened width (a card turned 42 degrees
+   * occupies cos(42) of its flat width), which keeps both neighbours whole on
+   * screen at every size.
+   */
+  const cardWidth = Math.min(Math.max(measured * 0.44, 190), 560);
+  const step = cardWidth * 0.68;
 
   const active = slides[index];
   if (!active) return null;
@@ -131,7 +164,7 @@ export function KeynoteSlides() {
         ref={stageRef}
         onKeyDown={onKeyDown}
         tabIndex={-1}
-        className="relative mt-phi-3 h-[46vw] max-h-[540px] min-h-[230px] w-full focus-visible:outline-none"
+        className="relative mx-auto mt-phi-3 h-[40vw] max-h-[480px] min-h-[220px] w-full max-w-shell focus-visible:outline-none"
         // Perspective belongs on the STAGE so every card shares one vanishing
         // point. Per-card perspective makes each turn about its own centre and
         // the row stops reading as a single object.
@@ -173,16 +206,16 @@ export function KeynoteSlides() {
                     : {
                         x: `calc(-50% + ${offset * step * dir}px)`,
                         y: '-50%',
-                        rotateY: -offset * dir * 26,
+                        rotateY: -offset * dir * 42,
                         // Real depth, not z-index. Inside a `preserve-3d`
                         // context the browser paints by 3D position and
                         // IGNORES z-index entirely — with every card at z=0
                         // they sorted by DOM order, so later slides drew on
                         // top of the centre one and the active card appeared
                         // to be see-through.
-                        z: -distance * 130,
-                        scale: 1 - distance * 0.13,
-                        opacity: hidden ? 0 : 1 - distance * 0.42,
+                        z: -distance * 200,
+                        scale: 1 - distance * 0.16,
+                        opacity: hidden ? 0 : 1 - distance * 0.5,
                       }
                 }
                 transition={{ type: 'spring', bounce: 0, duration: 0.62 }}
@@ -285,7 +318,7 @@ export function KeynoteSlides() {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => go(i)}
                 className={cn(
-                  'relative rounded-sm px-4 py-2 text-sm transition-colors duration-quick ease-out',
+                  'relative rounded-full px-4 py-2 text-sm transition-colors duration-quick ease-out',
                   selected ? 'text-text' : 'text-text-faint hover:text-text-muted',
                 )}
               >
@@ -293,7 +326,7 @@ export function KeynoteSlides() {
                   <m.span
                     layoutId={`${baseId}-deck-active`}
                     aria-hidden
-                    className="absolute inset-0 rounded-sm bg-surface-2"
+                    className="absolute inset-0 rounded-full bg-surface-2"
                     transition={{ type: 'spring', bounce: 0.18, duration: 0.5 }}
                   />
                 )}

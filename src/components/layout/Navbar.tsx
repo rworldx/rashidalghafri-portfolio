@@ -77,7 +77,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-nav px-3 pt-3 sm:px-6 sm:pt-4">
       <div
         className={cn(
-          'mx-auto flex h-14 max-w-shell items-center justify-between rounded-sm pe-2 ps-5 sm:h-16 sm:pe-3 sm:ps-7',
+          'mx-auto flex h-14 max-w-shell items-center justify-between rounded-full pe-2 ps-5 sm:h-16 sm:pe-3 sm:ps-7',
           'transition-[background-color,box-shadow,backdrop-filter] duration-500 ease-out',
           lifted || open ? 'material' : 'bg-transparent shadow-none',
         )}
@@ -88,7 +88,7 @@ export function Navbar() {
           // The wordmark is a mark, not a sentence: forced LTR so the period
           // stays on the right of "RA" instead of being flipped to ".RA" by
           // the bidi algorithm in Arabic.
-          className="force-ltr -ms-2 inline-flex min-h-11 items-center gap-px rounded-sm px-2 text-lg font-medium tracking-[-0.03em] text-text transition-opacity duration-quick ease-out hover:opacity-70"
+          className="force-ltr -ms-2 inline-flex min-h-11 items-center gap-px rounded-full px-2 text-lg font-medium tracking-[-0.03em] text-text transition-opacity duration-quick ease-out hover:opacity-70"
         >
           {site.monogram}
           <span className="text-accent">.</span>
@@ -106,7 +106,7 @@ export function Navbar() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative inline-flex h-9 items-center rounded-sm px-4 text-sm transition-colors duration-quick ease-out',
+                      'relative inline-flex h-9 items-center rounded-full px-4 text-sm transition-colors duration-quick ease-out',
                       active ? 'text-text' : 'text-text-muted hover:text-text',
                     )}
                   >
@@ -114,7 +114,7 @@ export function Navbar() {
                       <m.span
                         layoutId="nav-active"
                         aria-hidden
-                        className="absolute inset-0 rounded-sm bg-surface-2"
+                        className="absolute inset-0 rounded-full bg-surface-2"
                         transition={{ type: 'spring', bounce: 0.18, duration: 0.5 }}
                       />
                     )}
@@ -140,7 +140,7 @@ export function Navbar() {
             aria-label={open ? t('close') : t('menu')}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="-me-1 inline-flex size-11 items-center justify-center rounded-sm text-text transition-transform duration-press ease-out active:scale-[0.94]"
+            className="-me-1 inline-flex size-11 items-center justify-center rounded-full text-text transition-transform duration-press ease-out active:scale-[0.94]"
           >
             {/* Two bars that rotate into an X rather than swapping icons. */}
             <span className="relative block h-3 w-5" aria-hidden>

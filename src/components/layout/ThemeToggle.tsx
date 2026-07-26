@@ -24,7 +24,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
         // 44px on touch, tightened to 36px only where a pointer is precise.
-        'relative inline-flex size-11 items-center justify-center rounded-sm text-text-muted md:size-9',
+        'relative inline-flex size-11 items-center justify-center rounded-full text-text-muted md:size-9',
         'transition-[color,background-color,transform] duration-quick ease-out',
         'hover:bg-surface-2 hover:text-text active:scale-[0.94] active:duration-press',
         className,

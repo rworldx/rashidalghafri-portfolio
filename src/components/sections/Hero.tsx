@@ -117,7 +117,7 @@ export function Hero() {
 
       <Container className="relative">
         <p
-          className="plate-quiet hero-in mb-phi inline-flex items-center gap-2.5 rounded-sm py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
+          className="plate-quiet hero-in mb-phi inline-flex items-center gap-2.5 rounded-full py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
         >
           <StatusDot />
           {pick(site.status, locale)}
@@ -145,7 +145,7 @@ export function Hero() {
           {/* Exactly one primary action per view. */}
           <Link
             href="/projects"
-            className="plate on-plate-quiet group inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm text-text transition-transform duration-press ease-out active:scale-[0.97]"
+            className="plate group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm text-text transition-transform duration-press ease-out active:scale-[0.97]"
           >
             {t('viewWork')}
             <ArrowUpRight
