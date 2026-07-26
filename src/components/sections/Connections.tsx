@@ -1,33 +1,50 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { graph } from '@content/graph';
+import type { GraphNodeKind } from '@/types/graph';
+import { useMounted } from '@/hooks/useMounted';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { InteractiveGraph } from '@/components/graph/InteractiveGraph';
-import { nodeColor } from '@/components/graph/nodeColor';
-import type { GraphNodeKind } from '@/types/graph';
 import { FlowBranch } from '@/components/flow/FlowBranch';
 
-const legend: {
+/** The groups, in the order they earn their place. */
+const groups: {
   kind: GraphNodeKind;
-  key: 'legendSelf' | 'legendProject' | 'legendRecognition' | 'legendSkill';
+  key: 'legendProject' | 'legendSkill' | 'legendRecognition';
 }[] = [
-  { kind: 'self', key: 'legendSelf' },
   { kind: 'project', key: 'legendProject' },
   { kind: 'skill', key: 'legendSkill' },
   { kind: 'recognition', key: 'legendRecognition' },
 ];
 
 /**
- * The connection graph: what he has built, what it took, and what it earned,
- * as one object you can pull apart.
+ * What Rashid has built, what it took, and what it earned.
  *
- * A key was missing before, which left four colours doing unexplained work.
- * The canvas sizes by aspect ratio rather than a fixed 420px so it does not
- * eat a phone screen, and vertical swipes still scroll the page.
+ * TWO PRESENTATIONS, and the small one is not a downgrade.
+ *
+ * A force-directed graph needs room. In a phone-width box, ten labelled nodes
+ * collide with each other and with their own labels, and the reader gets a
+ * knot instead of a relationship. Below the large breakpoint the same data is
+ * a LEDGER: one source, three groups, hairlines between them. It states the
+ * relationships plainly, and plain wins at 390px.
+ *
+ * The graph mounts only where it fits, so a phone never pays for a canvas it
+ * was never going to be able to read. The ledger is also what renders on the
+ * server, so the section is meaningful before any JavaScript runs.
+ *
+ * The old version also put four unexplained hues on a page that commits to one
+ * accent. The ledger needs no colour key at all: the groups are named.
  */
 export function Connections() {
   const t = useTranslations('about');
+  const mounted = useMounted();
+  const roomForGraph = useMediaQuery('(min-width: 1024px)');
+
+  const showGraph = mounted && roomForGraph;
+  const self = graph.nodes.find((n) => n.kind === 'self');
 
   return (
     <FlowBranch>
@@ -37,35 +54,57 @@ export function Connections() {
         className="mb-phi-2"
       />
 
-      <Reveal>
-        <div className="bg-surface/50 overflow-hidden rounded-lg border border-border shadow-card">
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-border px-5 py-4 sm:px-6">
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              {legend.map(({ kind, key }) => (
-                <li key={kind} className="inline-flex items-center gap-2">
-                  <span
-                    aria-hidden
-                    className="size-2 shrink-0 rounded-full"
-                    style={{ background: nodeColor(kind) }}
-                  />
-                  <span className="text-2xs uppercase tracking-[0.1em] text-text-muted">
-                    {t(key)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {/* The right hint for the input device, chosen in CSS. */}
-            <p className="font-mono text-2xs text-text-faint">
-              <span className="hint-fine">{t('graphHint')}</span>
-              <span className="hint-coarse">{t('graphHintTouch')}</span>
-            </p>
+      {showGraph ? (
+        <Reveal>
+          <div className="overflow-hidden rounded-lg border border-border bg-surface/50">
+            <div className="flex items-center justify-end border-b border-border px-6 py-3">
+              <p className="font-mono text-2xs text-text-faint">{t('graphHint')}</p>
+            </div>
+            <div className="aspect-[5/2] w-full">
+              <InteractiveGraph className="size-full" />
+            </div>
           </div>
+        </Reveal>
+      ) : (
+        <Reveal>
+          <dl className="border-t border-border">
+            {/* The source, named once at the top rather than repeated per row. */}
+            <div className="flex items-baseline gap-4 border-b border-border py-5">
+              <dt className="label w-24 shrink-0 text-accent">{t('legendSelf')}</dt>
+              <dd className="text-lg text-text">{self?.label ?? 'Rashid'}</dd>
+            </div>
 
-          <div className="aspect-[4/3] w-full sm:aspect-[2/1] lg:aspect-[5/2]">
-            <InteractiveGraph className="size-full" />
-          </div>
-        </div>
-      </Reveal>
+            {groups.map(({ kind, key }) => {
+              const items = graph.nodes.filter((n) => n.kind === kind);
+              if (items.length === 0) return null;
+              return (
+                <div
+                  key={kind}
+                  className="flex flex-col gap-1.5 border-b border-border py-5 sm:flex-row sm:items-baseline sm:gap-4"
+                >
+                  <dt className="label w-24 shrink-0 text-text-faint">{t(key)}</dt>
+                  <dd className="text-base text-text-muted">
+                    {/*
+                      Plain text with separators, not chips. A row of pills
+                      would read as filters you can press, and none of these
+                      do anything. Weight decides emphasis, so the things that
+                      matter most read first without a second colour.
+                    */}
+                    {items.map((n, i) => (
+                      <span key={n.id}>
+                        {i > 0 && <span className="text-text-faint"> · </span>}
+                        <span className={(n.weight ?? 1) >= 2 ? 'text-text' : undefined}>
+                          {n.label}
+                        </span>
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </Reveal>
+      )}
     </FlowBranch>
   );
 }
