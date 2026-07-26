@@ -13,6 +13,12 @@ interface Props {
   variant?: 'cover' | 'thumb';
   /** Above the fold? Then it is the LCP candidate and must not lazy-load. */
   priority?: boolean;
+  /**
+   * On screen, but not detectably so. Forces `loading="eager"` without the
+   * preload that `priority` adds. Needed by the 3D deck, where the turned side
+   * cards never trip the browser's intersection check.
+   */
+  eager?: boolean;
   /** Rendered width hint for the responsive srcset. */
   sizes?: string;
   className?: string;
@@ -54,6 +60,7 @@ export function ProjectMedia({
   project,
   variant = 'cover',
   priority = false,
+  eager = false,
   sizes,
   className,
 }: Props) {
@@ -74,6 +81,18 @@ export function ProjectMedia({
    */
   const hasThemedPair = Boolean(asset.src) && Boolean(asset.dark);
   const imgSizes = sizes ?? '(min-width: 1024px) 50vw, 100vw';
+
+  /**
+   * `eager` exists for images that ARE on screen but that the browser cannot
+   * tell are on screen.
+   *
+   * Next lazy-loads by default using an intersection check. Inside a
+   * `transform-style: preserve-3d` context that check does not fire for the
+   * turned side cards of the deck, so their covers never started loading and
+   * the neighbours sat blank until one was swiped to the centre. `priority` is
+   * the wrong tool for that: it also preloads, and the deck is below the fold.
+   */
+  const loading = priority ? undefined : eager ? ('eager' as const) : undefined;
 
   // Padding is small on purpose: the mark should read big. It sits well inside
   // the frame either way because the source is square and the frame is wide.
@@ -115,6 +134,7 @@ export function ProjectMedia({
           alt=""
           fill
           priority={priority}
+          loading={loading}
           sizes={imgSizes}
           placeholder={blurFor(asset.src as string) ? 'blur' : 'empty'}
           blurDataURL={blurFor(asset.src as string)}
@@ -132,6 +152,7 @@ export function ProjectMedia({
           alt=""
           fill
           priority={priority}
+          loading={loading}
           sizes={imgSizes}
           placeholder={blurFor(asset.dark as string) ? 'blur' : 'empty'}
           blurDataURL={blurFor(asset.dark as string)}
@@ -162,6 +183,7 @@ export function ProjectMedia({
         alt=""
         fill
         priority={priority}
+        loading={loading}
         sizes={imgSizes}
         placeholder={blurFor(asset.src) ? 'blur' : 'empty'}
         blurDataURL={blurFor(asset.src)}

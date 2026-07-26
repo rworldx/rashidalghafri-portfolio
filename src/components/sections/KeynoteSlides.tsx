@@ -163,7 +163,11 @@ export function KeynoteSlides() {
    * turned 30 degrees occupies cos(30) of its flat width, so the step is
    * measured against the turned width, not the flat one.
    */
-  const cardWidth = Math.min(Math.max(measured * 0.47, 220), 720);
+  // Phones need a bigger SHARE of the screen, not the same share. At 0.47 of a
+  // 430px viewport the card hit its 220px floor and sat marooned in the middle
+  // while both neighbours fell off the edges entirely.
+  const ratio = measured < 640 ? 0.66 : 0.47;
+  const cardWidth = Math.min(Math.max(measured * ratio, 200), 720);
   const step = cardWidth * 0.88;
 
   const active = slides[index];
@@ -226,33 +230,36 @@ export function KeynoteSlides() {
             const hidden = distance > 2;
 
             return (
-              <m.div
+              /*
+                Positioned with a plain CSS transform, NOT with Framer's
+                `animate`.
+
+                Framer holds an animated value and re-targets it when `animate`
+                changes, but it did not pick up a change that came from
+                GEOMETRY rather than from state: the first render happens
+                before the stage is measured, so the offsets were computed
+                against the fallback width, and every card stayed pinned at
+                that first value even after the real width arrived. On a phone
+                that put both neighbours completely off screen.
+
+                A transform written straight into `style` is recomputed on
+                every render by definition, so it can never fall out of step
+                with the measured width. The CSS transition does the easing.
+              */
+              <div
                 key={project.slug}
                 className="absolute left-1/2 top-1/2"
-                initial={false}
-                animate={
-                  reduced
-                    ? { x: '-50%', y: '-50%', opacity: isActive ? 1 : 0 }
-                    : {
-                        x: `calc(-50% + ${offset * step * dir}px)`,
-                        y: '-50%',
-                        rotateY: -offset * dir * 30,
-                        // Real depth, not z-index. Inside a `preserve-3d`
-                        // context the browser paints by 3D position and
-                        // IGNORES z-index entirely — with every card at z=0
-                        // they sorted by DOM order, so later slides drew on
-                        // top of the centre one and the active card appeared
-                        // to be see-through.
-                        z: -distance * 170,
-                        scale: 1 - distance * 0.1,
-                        opacity: hidden ? 0 : 1 - distance * 0.25,
-                      }
-                }
-                transition={{ type: 'spring', bounce: 0, duration: 0.62 }}
                 style={{
                   width: cardWidth,
-                  // Kept as a fallback for the reduced-motion branch, which
-                  // does not use 3D transforms at all.
+                  marginLeft: -cardWidth / 2,
+                  marginTop: -cardWidth / 1.6 / 2,
+                  transform: reduced
+                    ? 'none'
+                    : `translate3d(${offset * step * dir}px, 0, ${-distance * 170}px) rotateY(${-offset * dir * 30}deg) scale(${1 - distance * 0.1})`,
+                  opacity: hidden ? 0 : reduced ? (isActive ? 1 : 0) : 1 - distance * 0.25,
+                  transition: reduced
+                    ? 'opacity 200ms linear'
+                    : 'transform 620ms cubic-bezier(0.23, 1, 0.32, 1), opacity 620ms cubic-bezier(0.23, 1, 0.32, 1)',
                   zIndex: count - distance,
                   transformStyle: 'preserve-3d',
                   pointerEvents: hidden ? 'none' : 'auto',
@@ -262,13 +269,14 @@ export function KeynoteSlides() {
                 <SlideCard
                   project={project}
                   isActive={isActive}
+                  eager={!hidden}
                   openLabel={t('open')}
                   panelId={`${baseId}-panel-${i}`}
                   tabId={`${baseId}-tab-${i}`}
                   onSelect={() => go(i)}
                   draggingRef={draggingRef}
                 />
-              </m.div>
+              </div>
             );
           })}
         </div>
@@ -385,6 +393,7 @@ function SlideCard({
   tabId,
   onSelect,
   draggingRef,
+  eager,
 }: {
   project: Project;
   isActive: boolean;
@@ -393,6 +402,8 @@ function SlideCard({
   tabId: string;
   onSelect: () => void;
   draggingRef: React.MutableRefObject<boolean>;
+  /** Every card the deck renders is visible, so none of them should lazy-load. */
+  eager: boolean;
 }) {
   /**
    * No `priority` here on purpose. The deck sits below the fold, so marking a
@@ -403,6 +414,7 @@ function SlideCard({
   const media = (
     <ProjectMedia
       project={project}
+      eager={eager}
       sizes="(min-width: 1024px) 62vw, 90vw"
       className="aspect-[1.6/1] w-full"
     />
