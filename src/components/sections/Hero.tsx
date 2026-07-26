@@ -11,6 +11,7 @@ import { proof } from '@content/proof';
 import { pick } from '@/lib/localized';
 import { readTokenColor } from '@/lib/css-color';
 import { useMounted } from '@/hooks/useMounted';
+import { useThemeTokens } from '@/hooks/useThemeTokens';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { Container } from '@/components/layout/Container';
 import { BlurText } from '@/components/motion/BlurText';
@@ -48,7 +49,6 @@ export function Hero() {
   const isEnglish = locale === 'en';
 
   const ref = useRef<HTMLElement>(null);
-  const [colors, setColors] = useState<BackdropColors | null>(null);
   const [canRender3D, setCanRender3D] = useState(false);
   const [paused, setPaused] = useState(false);
 
@@ -70,14 +70,8 @@ export function Hero() {
     }
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-    setColors({
-      base: readTokenColor('--backdrop-base', '#0d1220'),
-      sheen: readTokenColor('--backdrop-sheen', '#3b4a6b'),
-      accent: readTokenColor('--accent', '#3b64e0'),
-    });
-  }, [mounted, resolvedTheme]);
+  // Re-read on the real class swap, never on `resolvedTheme` — see the hook.
+  const colors = useThemeTokens<BackdropColors>(readBackdropColors);
 
   useEffect(() => {
     const el = ref.current;
@@ -123,7 +117,7 @@ export function Hero() {
 
       <Container className="relative">
         <p
-          className="glass hero-in on-glass force-ltr mb-phi inline-flex items-center gap-2.5 rounded-full py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
+          className="glass hero-in on-glass mb-phi inline-flex items-center gap-2.5 rounded-full py-2 pe-4 ps-3 font-mono text-2xs uppercase tracking-[0.12em] text-text"
         >
           <StatusDot />
           {pick(site.status, locale)}
@@ -178,7 +172,9 @@ export function Hero() {
           {plates.map((p) => (
             <div
               key={p.label.en}
-              className="glass flex w-[13.5rem] flex-col-reverse rounded-lg p-5"
+              // Width is a FLOOR, not a fixed size. Arabic sets these figures
+              // as words ("أفضل ٣٠"), which wrapped and cramped a fixed plate.
+              className="glass flex min-w-[13.5rem] max-w-[20rem] flex-col-reverse rounded-lg p-5"
             >
               <dt className="mt-2 text-xs text-text-muted">{pick(p.label, locale)}</dt>
               <dd className="serif-2 tnum text-text">{pick(p.value, locale)}</dd>
@@ -202,6 +198,14 @@ export function Hero() {
       </Container>
     </section>
   );
+}
+
+function readBackdropColors(): BackdropColors {
+  return {
+    base: readTokenColor('--backdrop-base', '#0d1220'),
+    sheen: readTokenColor('--backdrop-sheen', '#3b4a6b'),
+    accent: readTokenColor('--accent', '#3b64e0'),
+  };
 }
 
 /** No WebGL, or reduced motion: a still wash, so the room is still lit. */

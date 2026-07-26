@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { Manifesto } from '@/components/sections/Manifesto';
-import { Gallery } from '@/components/sections/Gallery';
+import { KeynoteSlides } from '@/components/sections/KeynoteSlides';
 import { ThroughLine } from '@/components/sections/ThroughLine';
 import { StackMarquee } from '@/components/sections/StackMarquee';
 import { AboutTeaser } from '@/components/sections/AboutTeaser';
@@ -25,7 +25,7 @@ export async function generateMetadata({
  *
  *   Hero        the entrance hall: liquid light, the name as an exhibition title
  *   Manifesto   the statement wall — three words, lit one at a time by scroll
- *   Gallery     the collection: one work per room, never a grid of tiles
+ *   Keynote     the darkened room: one work at a time, driven horizontally
  *   ThroughLine the receipts, before anyone has to take the work on trust
  *   Marquee     the stack, scanned rather than read
  *   About       the person who made it
@@ -47,7 +47,7 @@ export default async function HomePage({
       <JsonLd />
       <Hero />
       <Manifesto />
-      <Gallery />
+      <KeynoteSlides />
       <ThroughLine />
       <StackMarquee />
       <AboutTeaser />

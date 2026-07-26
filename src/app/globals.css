@@ -864,6 +864,58 @@
     line-height: 1.24;
   }
 
+  /**
+   * ── ARABIC TYPOGRAPHY ────────────────────────────────────────────────────
+   *
+   * Arabic is not Latin with different glyphs, and three Latin habits actively
+   * damage it. All three were shipping on this site:
+   *
+   * 1. LETTER-SPACING BREAKS ARABIC. The script is cursive — letters join. Any
+   *    tracking pulls those joins apart and the word visibly falls to pieces.
+   *    Every tracked utility is therefore neutralised under `lang="ar"`.
+   *
+   * 2. THERE IS NO UPPERCASE. `text-transform: uppercase` does nothing to
+   *    Arabic, so a "small caps label" is just unstyled text pretending to be
+   *    a label. It gets weight and colour instead.
+   *
+   * 3. GEIST MONO HAS NO ARABIC. Anything set in the mono face fell back to
+   *    whatever the OS offered — a different font on every machine, next to
+   *    Thmanyah everywhere else. Arabic mono maps to Thmanyah Sans instead.
+   *
+   * Latin runs deliberately marked `.force-ltr` (emails, URLs, figures, codes)
+   * keep the mono face and their tracking, because there the Latin rules apply.
+   */
+  html[lang='ar'] .label,
+  html[lang='ar'] .font-mono,
+  html[lang='ar'] [class*='tracking-'] {
+    letter-spacing: normal;
+  }
+
+  html[lang='ar'] .label,
+  html[lang='ar'] .font-mono {
+    font-family: var(--font-sans-ar), var(--font-sans), sans-serif;
+    text-transform: none;
+  }
+
+  /* A label still needs to read as a label without caps or tracking. */
+  html[lang='ar'] .label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  /* Latin codes keep the mono voice and its tracking. */
+  html[lang='ar'] .force-ltr,
+  html[lang='ar'] .force-ltr.font-mono {
+    font-family: var(--font-mono), monospace;
+  }
+
+  /* Arabic numerals sit on a different baseline rhythm; tabular is still right
+     for figures, but the Latin `tnum` face is not. */
+  html[lang='ar'] .tnum {
+    font-family: var(--font-sans-ar), var(--font-sans), sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+
   /* Skip-to-content link. */
   .skip-link {
     @apply sr-only;

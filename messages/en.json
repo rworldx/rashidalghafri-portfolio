@@ -64,7 +64,9 @@
     "title": "Selected work, one room at a time",
     "upright": "Selected work,",
     "open": "Open the case study",
-    "viewAll": "See every project"
+    "viewAll": "See every project",
+    "previous": "Previous project",
+    "next": "Next project"
   },
   "journeySection": {
     "eyebrow": "The channel",
