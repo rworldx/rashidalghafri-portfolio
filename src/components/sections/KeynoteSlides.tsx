@@ -11,6 +11,7 @@ import { pick } from '@/lib/localized';
 import { Container } from '@/components/layout/Container';
 import { ProjectMedia } from '@/components/ui/ProjectMedia';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/cn';
 
 /**
@@ -42,6 +43,17 @@ export function KeynoteSlides() {
   const t = useTranslations('gallery');
   const locale = useLocale();
   const reduced = useReducedMotion();
+  /**
+   * Drag is for TOUCH only.
+   *
+   * Clicking a side card is the way to move the deck. With a mouse, arming a
+   * drag on the whole stage means every click starts a gesture first, which
+   * makes selecting a card feel hesitant. On a phone the opposite is true: a
+   * neighbour is mostly off-screen and cannot be tapped, so swipe is the only
+   * way to reach it. So the deck is draggable on coarse pointers and purely
+   * clickable on fine ones.
+   */
+  const coarsePointer = useMediaQuery('(pointer: coarse)');
   const baseId = useId();
   const isRtl = locale === 'ar';
 
@@ -137,17 +149,19 @@ export function KeynoteSlides() {
   const measured = stageWidth || 1280;
 
   /**
-   * Proportions.
+   * Proportions — FULL BLEED.
    *
-   * The neighbours must stay INSIDE the stage. Stepping them out by most of a
-   * card width pushed them off both screen edges, so they arrived cropped by
-   * the viewport and the deck looked broken rather than deep. The step is now
-   * set against the card's foreshortened width (a card turned 42 degrees
-   * occupies cos(42) of its flat width), which keeps both neighbours whole on
-   * screen at every size.
+   * The deck spans the whole viewport and the neighbours deliberately run off
+   * both edges, so the row reads as continuing past the screen rather than
+   * ending politely inside the content column. The section clips them.
+   *
+   * The step is set so each neighbour's inner edge meets the centre card's
+   * outer edge with no gap. That has to account for foreshortening: a card
+   * turned 30 degrees occupies cos(30) of its flat width, so the step is
+   * measured against the turned width, not the flat one.
    */
-  const cardWidth = Math.min(Math.max(measured * 0.44, 190), 560);
-  const step = cardWidth * 0.68;
+  const cardWidth = Math.min(Math.max(measured * 0.47, 220), 720);
+  const step = cardWidth * 0.88;
 
   const active = slides[index];
   if (!active) return null;
@@ -164,7 +178,7 @@ export function KeynoteSlides() {
         ref={stageRef}
         onKeyDown={onKeyDown}
         tabIndex={-1}
-        className="relative mx-auto mt-phi-3 h-[40vw] max-h-[480px] min-h-[220px] w-full max-w-shell focus-visible:outline-none"
+        className="relative mt-phi-3 h-[42vw] max-h-[560px] min-h-[230px] w-full focus-visible:outline-none"
         // Perspective belongs on the STAGE so every card shares one vanishing
         // point. Per-card perspective makes each turn about its own centre and
         // the row stops reading as a single object.
@@ -173,7 +187,7 @@ export function KeynoteSlides() {
         <m.div
           className="absolute inset-0"
           style={{ transformStyle: 'preserve-3d' }}
-          drag={reduced ? false : 'x'}
+          drag={reduced || !coarsePointer ? false : 'x'}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.08}
           onDragStart={() => {
@@ -206,16 +220,16 @@ export function KeynoteSlides() {
                     : {
                         x: `calc(-50% + ${offset * step * dir}px)`,
                         y: '-50%',
-                        rotateY: -offset * dir * 42,
+                        rotateY: -offset * dir * 30,
                         // Real depth, not z-index. Inside a `preserve-3d`
                         // context the browser paints by 3D position and
                         // IGNORES z-index entirely — with every card at z=0
                         // they sorted by DOM order, so later slides drew on
                         // top of the centre one and the active card appeared
                         // to be see-through.
-                        z: -distance * 200,
-                        scale: 1 - distance * 0.16,
-                        opacity: hidden ? 0 : 1 - distance * 0.5,
+                        z: -distance * 170,
+                        scale: 1 - distance * 0.1,
+                        opacity: hidden ? 0 : 1 - distance * 0.25,
                       }
                 }
                 transition={{ type: 'spring', bounce: 0, duration: 0.62 }}
@@ -381,7 +395,7 @@ function SlideCard({
     // and without a fresh stacking context that blend reaches THROUGH the card
     // into the cards stacked behind it — the centre slide dissolved into the
     // deck and the neighbours showed through it.
-    'isolate block w-full overflow-hidden border border-border bg-surface',
+    'isolate block w-full overflow-hidden rounded-xl border border-border bg-surface',
     'transition-[border-color] duration-500 ease-out',
     isActive ? 'shadow-lift hover:border-border-strong' : 'cursor-pointer',
   );
