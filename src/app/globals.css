@@ -224,6 +224,11 @@
   }
 
   /* Locale-driven font families (Arabic swap: Thmanyah). */
+  /*
+   * Arabic overrides the Apple system stack entirely. `-apple-system` does
+   * carry Arabic glyphs, but they are not Thmanyah, and mixing the two across
+   * a page is exactly the inconsistency this site is trying to avoid.
+   */
   html[lang='ar'] body {
     @apply font-sans-ar;
   }
@@ -332,10 +337,31 @@
    * Italic emphasis inside display type. Descender clearance is mandatory:
    * `y g j p q` clip against tight leading, so the span reserves its own space.
    */
+  /**
+   * Emphasis inside a headline.
+   *
+   * This is the site's signature move: the one important word drops into the
+   * museum's italic didone while the rest of the line stays in the structural
+   * face. It is the same cut as the family name in the hero, which is what
+   * makes it read as a considered mark rather than as generic italics.
+   *
+   * Descender clearance is mandatory — Bodoni's italic descenders are long and
+   * clip against tight display leading without the reserved space below.
+   */
   .em-italic {
+    font-family: var(--font-serif), Georgia, serif;
     font-style: italic;
-    letter-spacing: -0.02em;
+    font-weight: 400;
+    letter-spacing: -0.015em;
     padding-inline-end: 0.06em;
+    padding-block-end: 0.06em;
+  }
+  /* Arabic has no italic and no didone; emphasis carries by weight instead. */
+  html[lang='ar'] .em-italic {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
   }
 
   /**

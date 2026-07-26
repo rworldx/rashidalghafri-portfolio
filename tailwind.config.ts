@@ -33,8 +33,27 @@ const config: Config = {
         'danger-soft': 'var(--danger-soft)',
       },
       fontFamily: {
+        /*
+         * UI + body: Apple's own system face first.
+         *
+         * SF Pro cannot be embedded on the web — Apple does not licence it for
+         * `@font-face` — so "use Apple fonts" on a website means the system
+         * stack: `-apple-system` resolves to SF Text/Display on every Apple
+         * device, at the optical size the OS picks. Host Grotesk stays right
+         * behind it so a visitor on Windows or Android gets a designed face
+         * rather than falling all the way through to Segoe UI or Roboto.
+         */
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'SF Pro Text',
+          'var(--font-sans)',
+          'var(--font-sans-ar)',
+          'system-ui',
+          'sans-serif',
+        ],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         display: ['var(--font-display)', 'var(--font-display-ar)', 'sans-serif'],
-        sans: ['var(--font-sans)', 'var(--font-sans-ar)', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
         script: ['var(--font-script)', 'cursive'],
       },

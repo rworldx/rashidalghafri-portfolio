@@ -20,7 +20,7 @@ export function AboutTeaser() {
   return (
     <FlowBranch>
       <Reveal>
-        <p className="display-3 measure text-text">{pick(aboutIntro, locale)}</p>
+        <p className="serif-2 measure text-text">{pick(aboutIntro, locale)}</p>
         <Link
           href="/about"
           className="action group mt-phi-2 inline-flex items-center gap-2 border-b border-accent-line pb-1 font-medium text-accent transition-colors duration-quick ease-out hover:border-accent"

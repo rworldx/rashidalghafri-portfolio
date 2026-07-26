@@ -15,7 +15,7 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
 
   return (
     <Container className="flex min-h-[70dvh] flex-col justify-center py-phi-4">
-      <h1 className="display-2 text-text">{t('title')}</h1>
+      <h1 className="serif-2 text-text">{t('title')}</h1>
       <p className="measure-tight mt-phi text-lg text-text-muted">{t('body')}</p>
       <div className="mt-phi-2 flex flex-wrap items-center gap-5">
         <Button onClick={reset} size="lg">

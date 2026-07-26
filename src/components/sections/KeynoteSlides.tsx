@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatePresence, m, type PanInfo } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -14,54 +14,66 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { cn } from '@/lib/cn';
 
 /**
- * THE KEYNOTE — one work at a time, docking into the room.
+ * THE KEYNOTE — a coverflow deck.
  *
- * A darkened gallery: the stage carries `class="dark"` so the whole token set
- * flips inside it regardless of the visitor's theme. That is deliberate and it
- * is why no colour is hardcoded here — a projection room is dark in a bright
- * building too, and doing it with the theme class means contrast, borders and
- * the accent all stay on-system instead of being hand-mixed.
+ * The active work stands square-on in the centre at full size; its neighbours
+ * sit behind and to either side, turned away on the Y axis and scaled back, so
+ * you can always see what is coming. Moving the deck rotates the next one to
+ * face you.
  *
- * Slides move HORIZONTALLY, one at a time, StudyNest first. Four ways to
- * drive it, because a carousel that only responds to one of them is broken for
- * somebody: the named tabs, the arrow buttons, the keyboard (arrow keys, with
- * the tablist following roving-tabindex conventions), and a drag/swipe.
+ * The stage carries `class="dark"`, which flips the whole token set inside it
+ * regardless of the visitor's theme. Deliberate, and the reason no colour is
+ * hardcoded here: a projection room is dark inside a bright building too, and
+ * doing it with the theme class keeps contrast, borders and the accent
+ * on-system rather than hand-mixed.
  *
- * Direction is tracked so a slide always enters from the side you came from —
- * motion that contradicts the gesture reads as a glitch.
+ * GEOMETRY. Offsets are the shortest signed distance around a RING, not along
+ * a line, so with only three works the deck still fills both side slots
+ * instead of leaving a hole at each end. Positions derive from a measured
+ * stage width, so the same code frames correctly from a phone to an ultrawide.
+ *
+ * FOUR WAYS TO DRIVE IT, because a carousel that answers only one of them is
+ * broken for somebody: click a side card, the arrow buttons, the arrow keys
+ * (roving tabindex, so the deck is one tab stop rather than six), and
+ * drag/swipe that commits on velocity OR distance so a flick and a slow
+ * deliberate drag both read as intent.
  */
 export function KeynoteSlides() {
   const t = useTranslations('gallery');
   const locale = useLocale();
   const reduced = useReducedMotion();
   const baseId = useId();
+  const isRtl = locale === 'ar';
 
   // StudyNest leads because it is the flagship; the rest follow in order.
   const slides: Project[] = [
     ...allProjects.filter((p) => p.featured),
     ...allProjects.filter((p) => !p.featured),
-  ].slice(0, 5);
+  ].slice(0, 6);
 
-  const [[index, direction], setSlide] = useState<[number, number]>([0, 0]);
-  // A drag that finishes on top of the link must not navigate. Framer tells us
-  // when a real drag started, which is more reliable than measuring pointer
-  // deltas by hand and does not need a module-level listener.
+  const [index, setIndex] = useState(0);
+  const stageRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
+  const [stageWidth, setStageWidth] = useState(0);
 
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) =>
+      setStageWidth(entry?.contentRect.width ?? 0),
+    );
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const count = slides.length;
   const go = useCallback(
-    (next: number, dir: number) => {
-      const wrapped = (next + slides.length) % slides.length;
-      setSlide([wrapped, dir]);
-    },
-    [slides.length],
+    (next: number) => setIndex(((next % count) + count) % count),
+    [count],
   );
+  const next = useCallback(() => go(index + 1), [go, index]);
+  const prev = useCallback(() => go(index - 1), [go, index]);
 
-  const next = useCallback(() => go(index + 1, 1), [go, index]);
-  const prev = useCallback(() => go(index - 1, -1), [go, index]);
-
-  // Arrow keys drive the deck whenever focus is inside it. RTL swaps which
-  // physical key means "forward", because in Arabic the deck reads right→left.
-  const isRtl = locale === 'ar';
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowRight') {
       e.preventDefault();
@@ -73,157 +85,198 @@ export function KeynoteSlides() {
       else prev();
     } else if (e.key === 'Home') {
       e.preventDefault();
-      go(0, -1);
+      go(0);
     } else if (e.key === 'End') {
       e.preventDefault();
-      go(slides.length - 1, 1);
+      go(count - 1);
     }
   };
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
-    // Cleared on the next tick so the click that follows the release still
-    // sees it set.
+    // Cleared on the next tick so the click that follows a release still sees
+    // it set and can cancel its own navigation.
     window.setTimeout(() => {
       draggingRef.current = false;
     }, 0);
-    // Commit on velocity OR distance — a fast flick and a slow deliberate drag
-    // are both intent, and requiring distance alone makes flicks feel dead.
-    const { offset, velocity } = info;
-    const throwDistance = offset.x + velocity.x * 0.12;
-    const threshold = 90;
-    if (throwDistance < -threshold) {
+    const thrown = info.offset.x + info.velocity.x * 0.12;
+    const threshold = 70;
+    if (thrown < -threshold) {
       if (isRtl) prev();
       else next();
-    } else if (throwDistance > threshold) {
+    } else if (thrown > threshold) {
       if (isRtl) next();
       else prev();
     }
   };
 
+  // Card geometry from the measured stage. The centre card takes just over
+  // half the stage and the neighbours step out by ~68% of a card, which is the
+  // ratio at which enough of them shows to read as a deck you can move rather
+  // than as one image with decoration either side.
+  const cardWidth = Math.min(Math.max(stageWidth * 0.54, 210), 680);
+  const step = cardWidth * 0.68;
+
   const active = slides[index];
   if (!active) return null;
 
   return (
-    // `dark` here is the stage, not the user's theme. See the note above.
+    // `dark` here is the stage, not the visitor's theme. See the note above.
     <section className="dark relative overflow-hidden bg-bg py-phi-4 text-text sm:py-phi-5">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="serif-display max-w-[12ch] text-text">{t('title')}</h2>
-
-          {/* Arrows sit with the heading, not floating over the artwork. */}
           <div className="flex items-center gap-2">
             <DeckButton onClick={prev} label={t('previous')}>
-              <ArrowLeft strokeWidth={1.75} aria-hidden className="size-4 rtl:rotate-180" />
+              <ArrowLeft strokeWidth={1.75} aria-hidden className="size-4" />
             </DeckButton>
             <DeckButton onClick={next} label={t('next')}>
-              <ArrowRight strokeWidth={1.75} aria-hidden className="size-4 rtl:rotate-180" />
+              <ArrowRight strokeWidth={1.75} aria-hidden className="size-4" />
             </DeckButton>
           </div>
         </div>
       </Container>
 
-      {/* The stage. */}
+      {/* ── The deck ─────────────────────────────────────────────────────── */}
       <div
-        className="relative mt-phi-3 focus-visible:outline-none"
+        ref={stageRef}
         onKeyDown={onKeyDown}
         tabIndex={-1}
+        className="relative mt-phi-3 h-[46vw] max-h-[540px] min-h-[230px] w-full focus-visible:outline-none"
+        // Perspective belongs on the STAGE so every card shares one vanishing
+        // point. Per-card perspective makes each turn about its own centre and
+        // the row stops reading as a single object.
+        style={{ perspective: '1600px' }}
       >
-        <AnimatePresence initial={false} mode="wait" custom={direction}>
-          <m.div
-            key={active.slug}
-            id={`${baseId}-panel-${index}`}
-            role="tabpanel"
-            aria-labelledby={`${baseId}-tab-${index}`}
-            custom={direction}
-            initial={
-              reduced ? { opacity: 0 } : { opacity: 0, x: direction > 0 ? 90 : -90 }
-            }
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, x: direction > 0 ? -70 : 70 }}
-            transition={
-              reduced
-                ? { duration: 0.2 }
-                : { type: 'spring', bounce: 0, duration: 0.55 }
-            }
-            drag={reduced ? false : 'x'}
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.14}
-            onDragStart={() => {
-              draggingRef.current = true;
-            }}
-            onDragEnd={onDragEnd}
-            className="cursor-grab active:cursor-grabbing"
-          >
-            <Container>
-              <div className="grid items-center gap-phi-2 lg:grid-cols-[1fr_1.1fr] lg:gap-phi-3">
-                {/* The work. */}
-                <Link
-                  href={`/projects/${active.slug}`}
-                  aria-label={`${active.title} — ${t('open')}`}
-                  // Dragging must not fire a navigation; a click that moved is
-                  // a swipe, not a tap.
-                  onClick={(e) => {
-                    if (draggingRef.current) e.preventDefault();
-                  }}
-                  className="group order-1 block overflow-hidden rounded-xl border border-border shadow-lift lg:order-2"
-                >
-                  <ProjectMedia
-                    project={active}
-                    priority={index === 0}
-                    sizes="(min-width: 1024px) 55vw, 100vw"
-                    className="aspect-[1.6/1] transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
-                  />
-                </Link>
+        <m.div
+          className="absolute inset-0"
+          style={{ transformStyle: 'preserve-3d' }}
+          drag={reduced ? false : 'x'}
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.08}
+          onDragStart={() => {
+            draggingRef.current = true;
+          }}
+          onDragEnd={onDragEnd}
+        >
+          {slides.map((project, i) => {
+            // Shortest signed distance around the ring — this is what lets a
+            // three-item deck still show a card on both sides.
+            let offset = i - index;
+            if (offset > count / 2) offset -= count;
+            if (offset < -count / 2) offset += count;
 
-                {/* The label. */}
-                <div className="order-2 lg:order-1">
-                  <p className="label mb-5 text-text-faint">
-                    <span className="force-ltr">
-                      {String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
-                    </span>
-                    <span className="mx-2 opacity-50">·</span>
-                    {active.year}
-                  </p>
+            const dir = isRtl ? -1 : 1;
+            const distance = Math.abs(offset);
+            const isActive = offset === 0;
+            // Past the second neighbour, hide rather than stack: a deep pile
+            // of near-invisible cards costs paint and buys nothing.
+            const hidden = distance > 2;
 
-                  <h3 className="serif-2 text-text">{active.title}</h3>
-
-                  <p className="measure mt-5 text-base text-text-muted sm:text-lg">
-                    {pick(active.summary, locale)}
-                  </p>
-
-                  {active.stats && active.stats.length > 0 && (
-                    <dl className="mt-phi flex flex-wrap gap-x-phi-2 gap-y-4">
-                      {active.stats.slice(0, 3).map((s) => (
-                        <div key={s.label.en} className="flex flex-col-reverse">
-                          <dt className="mt-1 text-xs text-text-muted">
-                            {pick(s.label, locale)}
-                          </dt>
-                          <dd className="tnum font-mono text-xl text-text">{s.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  )}
-
-                  <Link
-                    href={`/projects/${active.slug}`}
-                    className="action group mt-phi-2 inline-flex items-center gap-2 border-b border-accent-line pb-1 text-sm font-medium text-accent"
-                  >
-                    {t('open')}
-                    <ArrowUpRight
-                      strokeWidth={1.75}
-                      aria-hidden
-                      className="size-4 transition-transform duration-quick ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </Container>
-          </m.div>
-        </AnimatePresence>
+            return (
+              <m.div
+                key={project.slug}
+                className="absolute left-1/2 top-1/2"
+                initial={false}
+                animate={
+                  reduced
+                    ? { x: '-50%', y: '-50%', opacity: isActive ? 1 : 0 }
+                    : {
+                        x: `calc(-50% + ${offset * step * dir}px)`,
+                        y: '-50%',
+                        rotateY: -offset * dir * 34,
+                        // Real depth, not z-index. Inside a `preserve-3d`
+                        // context the browser paints by 3D position and
+                        // IGNORES z-index entirely — with every card at z=0
+                        // they sorted by DOM order, so later slides drew on
+                        // top of the centre one and the active card appeared
+                        // to be see-through.
+                        z: -distance * 150,
+                        scale: 1 - distance * 0.13,
+                        opacity: hidden ? 0 : 1 - distance * 0.3,
+                      }
+                }
+                transition={{ type: 'spring', bounce: 0, duration: 0.62 }}
+                style={{
+                  width: cardWidth,
+                  // Kept as a fallback for the reduced-motion branch, which
+                  // does not use 3D transforms at all.
+                  zIndex: count - distance,
+                  transformStyle: 'preserve-3d',
+                  pointerEvents: hidden ? 'none' : 'auto',
+                }}
+                aria-hidden={hidden || undefined}
+              >
+                <SlideCard
+                  project={project}
+                  isActive={isActive}
+                  openLabel={t('open')}
+                  panelId={`${baseId}-panel-${i}`}
+                  tabId={`${baseId}-tab-${i}`}
+                  onSelect={() => go(i)}
+                  draggingRef={draggingRef}
+                  priority={i === 0}
+                />
+              </m.div>
+            );
+          })}
+        </m.div>
       </div>
 
-      {/* Named tabs — a dot row tells you nothing about where you are going. */}
-      <Container className="mt-phi-3">
+      {/* ── The wall label for whatever is facing you ────────────────────── */}
+      <Container className="mt-phi-2">
+        <AnimatePresence mode="wait">
+          <m.div
+            key={active.slug}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -10 }}
+            transition={{ duration: 0.34, ease: [0.23, 1, 0.32, 1] }}
+            className="max-w-[46rem]"
+          >
+            <p className="label mb-4 text-text-faint">
+              <span className="force-ltr">
+                {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+              </span>
+              <span className="mx-2 opacity-50">·</span>
+              {active.year}
+            </p>
+
+            <h3 className="serif-2 text-text">{active.title}</h3>
+
+            <p className="measure mt-4 text-base text-text-muted sm:text-lg">
+              {pick(active.summary, locale)}
+            </p>
+
+            {active.stats && active.stats.length > 0 && (
+              <dl className="mt-phi flex flex-wrap gap-x-phi-2 gap-y-4">
+                {active.stats.slice(0, 3).map((s) => (
+                  <div key={s.label.en} className="flex flex-col-reverse">
+                    <dt className="mt-1 text-xs text-text-muted">
+                      {pick(s.label, locale)}
+                    </dt>
+                    <dd className="tnum font-mono text-xl text-text">{s.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
+            <Link
+              href={`/projects/${active.slug}`}
+              className="action group mt-phi-2 inline-flex items-center gap-2 border-b border-accent-line pb-1 text-sm font-medium text-accent"
+            >
+              {t('open')}
+              <ArrowUpRight
+                strokeWidth={1.75}
+                aria-hidden
+                className="size-4 transition-transform duration-quick ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
+          </m.div>
+        </AnimatePresence>
+      </Container>
+
+      {/* Named tabs — a row of dots tells you nothing about where you land. */}
+      <Container className="mt-phi-2">
         <div
           role="tablist"
           aria-label={t('title')}
@@ -239,10 +292,8 @@ export function KeynoteSlides() {
                 type="button"
                 aria-selected={selected}
                 aria-controls={`${baseId}-panel-${i}`}
-                // Roving tabindex: one stop for the whole deck, arrows move
-                // within it. Five separate tab stops would be tedious.
                 tabIndex={selected ? 0 : -1}
-                onClick={() => go(i, i > index ? 1 : -1)}
+                onClick={() => go(i)}
                 className={cn(
                   'relative rounded-full px-4 py-2 text-sm transition-colors duration-quick ease-out',
                   selected ? 'text-text' : 'text-text-faint hover:text-text-muted',
@@ -263,6 +314,88 @@ export function KeynoteSlides() {
         </div>
       </Container>
     </section>
+  );
+}
+
+/**
+ * One card in the deck.
+ *
+ * The centre card is a LINK to the case study; the side cards are BUTTONS that
+ * bring themselves to the front. Making every card a link means a click on a
+ * half-turned card navigates somewhere the visitor cannot properly see yet —
+ * the classic carousel trap.
+ */
+function SlideCard({
+  project,
+  isActive,
+  openLabel,
+  panelId,
+  tabId,
+  onSelect,
+  draggingRef,
+  priority,
+}: {
+  project: Project;
+  isActive: boolean;
+  openLabel: string;
+  panelId: string;
+  tabId: string;
+  onSelect: () => void;
+  draggingRef: React.MutableRefObject<boolean>;
+  priority: boolean;
+}) {
+  const media = (
+    <ProjectMedia
+      project={project}
+      priority={priority}
+      sizes="(min-width: 1024px) 62vw, 90vw"
+      className="aspect-[1.6/1] w-full"
+    />
+  );
+
+  const shell = cn(
+    // `isolate` is load-bearing. Logo covers blend with `mix-blend-screen`,
+    // and without a fresh stacking context that blend reaches THROUGH the card
+    // into the cards stacked behind it — the centre slide dissolved into the
+    // deck and the neighbours showed through it.
+    'isolate block w-full overflow-hidden rounded-xl border border-border bg-surface shadow-lift',
+    'transition-[border-color] duration-500 ease-out',
+    isActive ? 'hover:border-border-strong' : 'cursor-pointer',
+  );
+
+  if (isActive) {
+    return (
+      <div id={panelId} role="tabpanel" aria-labelledby={tabId}>
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-label={`${project.title} — ${openLabel}`}
+          // A drag that finishes on the card is a swipe, not a tap.
+          onClick={(e) => {
+            if (draggingRef.current) e.preventDefault();
+          }}
+          className={shell}
+        >
+          {media}
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        if (draggingRef.current) {
+          e.preventDefault();
+          return;
+        }
+        onSelect();
+      }}
+      aria-label={project.title}
+      className={shell}
+    >
+      {media}
+    </button>
   );
 }
 

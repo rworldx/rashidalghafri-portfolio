@@ -28,7 +28,7 @@ export function ThroughLine() {
   return (
     <FlowBranch>
       <Reveal>
-        <h2 className="display-2 measure text-text">
+        <h2 className="serif-2 measure text-text">
           <Emphasise title={t('title')} emphasis={t('emphasis')} />
         </h2>
       </Reveal>
@@ -67,7 +67,7 @@ export function ThroughLine() {
                 gaps ("Top  30", "3 . 96") and reads as data rather than as a
                 headline figure.
               */}
-              <dd className="tnum display-3 order-1 leading-none text-accent sm:order-none sm:col-start-1 sm:row-span-2 sm:row-start-1">
+              <dd className="tnum serif-2 order-1 leading-none text-accent sm:order-none sm:col-start-1 sm:row-span-2 sm:row-start-1">
                 {pick(p.value, locale)}
               </dd>
               <dd className="measure order-3 text-sm text-text-muted sm:order-none sm:col-start-2 sm:row-start-2 sm:mt-1">

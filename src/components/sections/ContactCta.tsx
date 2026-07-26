@@ -33,7 +33,7 @@ export function ContactCta() {
               <StatusDot />
               {pick(site.status, locale)}
             </p>
-            <h2 className="display-2 text-text">
+            <h2 className="serif-2 text-text">
               <Emphasise title={t('title')} emphasis={t('emphasis')} />
             </h2>
             <p className="measure-tight mt-phi text-lg text-text-muted">

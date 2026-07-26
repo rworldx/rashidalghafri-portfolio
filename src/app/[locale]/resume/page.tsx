@@ -36,7 +36,7 @@ export default async function ResumePage({
       <Container>
         <p className="label mb-6 text-text-faint">{t('eyebrow')}</p>
         <div className="flex flex-wrap items-end justify-between gap-x-phi-2 gap-y-8">
-          <h1 className="display-1 text-text">
+          <h1 className="serif-display text-text">
             <Emphasise title={t('title')} emphasis={t('emphasis')} />
           </h1>
 
