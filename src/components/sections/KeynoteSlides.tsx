@@ -174,26 +174,39 @@ export function KeynoteSlides() {
       </Container>
 
       {/* ── The deck ─────────────────────────────────────────────────────── */}
-      <div
+      <m.div
         ref={stageRef}
         onKeyDown={onKeyDown}
         tabIndex={-1}
+        drag={reduced || !coarsePointer ? false : 'x'}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.08}
+        onDragStart={() => {
+          draggingRef.current = true;
+        }}
+        onDragEnd={onDragEnd}
         className="relative mt-phi-3 h-[42vw] max-h-[560px] min-h-[230px] w-full focus-visible:outline-none"
         // Perspective belongs on the STAGE so every card shares one vanishing
         // point. Per-card perspective makes each turn about its own centre and
         // the row stops reading as a single object.
         style={{ perspective: '1600px' }}
       >
-        <m.div
-          className="absolute inset-0"
+        {/*
+          POINTER-TRANSPARENT, and this is load-bearing.
+
+          Hit testing inside a `preserve-3d` context is depth-aware. This
+          wrapper sits at z = 0 while the side cards are pushed back to
+          z = -170 and beyond, so the wrapper is physically IN FRONT of them
+          and swallowed every click aimed at a neighbour. Clicking a side card
+          did nothing at all.
+
+          The wrapper takes no pointer events; each card re-enables them for
+          itself. The drag gesture moved up to the stage, which is not
+          3D-transformed and so cannot occlude anything.
+        */}
+        <div
+          className="pointer-events-none absolute inset-0"
           style={{ transformStyle: 'preserve-3d' }}
-          drag={reduced || !coarsePointer ? false : 'x'}
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.08}
-          onDragStart={() => {
-            draggingRef.current = true;
-          }}
-          onDragEnd={onDragEnd}
         >
           {slides.map((project, i) => {
             // Shortest signed distance around the ring — this is what lets a
@@ -256,8 +269,8 @@ export function KeynoteSlides() {
               </m.div>
             );
           })}
-        </m.div>
-      </div>
+        </div>
+      </m.div>
 
       {/* ── The wall label for whatever is facing you ────────────────────── */}
       <Container className="mt-phi-2">
