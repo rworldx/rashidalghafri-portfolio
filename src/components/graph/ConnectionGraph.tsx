@@ -54,15 +54,26 @@ export function ConnectionGraph({ className }: { className?: string }) {
     let h = Math.max(wrap.clientHeight, 1);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    // Touch needs bigger everything: fat fingers, small screens, no hover.
-    const nodeScale = coarse ? 1.55 : 1;
+    /**
+     * DENSITY drives the whole tuning, not just the pointer type.
+     *
+     * Touch normally wants everything bigger: fat fingers, no hover. But the
+     * graph now carries every project, skill and award rather than a handful,
+     * and at that count "bigger" is what makes a phone unreadable. So a dense
+     * graph shrinks its nodes back down and labels far fewer of them.
+     */
+    const dense = graph.nodes.length > 12;
+    const small = w < 560;
+    const nodeScale = coarse ? (dense ? 1.05 : 1.55) : dense ? 0.85 : 1;
     const hitSlop = coarse ? 26 : 12;
-    const labelPx = coarse ? 13 : 11;
+    const labelPx = coarse ? (dense ? 11 : 13) : 11;
     const rOf = (weight: number) => radiusFor(weight) * nodeScale;
-    // Whether a node's label is drawn. On small/touch canvases, showing all ten
-    // at once is illegible, so only the important nodes and the one being
-    // touched keep a label.
-    const declutter = coarse || w < 460;
+    /**
+     * The minimum weight that earns a permanent label. Everything else labels
+     * on touch or hover. Labelling twelve nodes at 390px is the same illegible
+     * knot as labelling all of them.
+     */
+    const labelFloor = small || coarse ? (dense ? 3 : 2) : dense ? 2 : 0;
 
     // Seed nodes on a ring (deterministic), self in the centre.
     const nodes: SimNode[] = graph.nodes.map((n, i) => {
@@ -219,7 +230,7 @@ export function ConnectionGraph({ className }: { className?: string }) {
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy) || 0.01;
-          const f = 1800 / (dist * dist);
+          const f = (dense ? 2600 : 1800) / (dist * dist);
           const ux = (dx / dist) * f;
           const uy = (dy / dist) * f;
           a.vx += ux;
@@ -229,7 +240,9 @@ export function ConnectionGraph({ className }: { className?: string }) {
         }
       }
       // Springs.
-      const target = Math.min(w, h) * 0.24;
+      // Denser graphs need proportionally MORE space between neighbours, or
+      // the extra nodes simply pack into the same area.
+      const target = Math.min(w, h) * (dense ? 0.3 : 0.24);
       for (const e of graph.edges) {
         const a = byId.get(e.source);
         const b = byId.get(e.target);
@@ -295,11 +308,20 @@ export function ConnectionGraph({ className }: { className?: string }) {
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         ctx.fill();
 
-        if (!declutter || active || n.weight >= 2) {
+        if (active || n.weight >= labelFloor) {
           ctx.fillStyle = active ? colors.text : colors.muted;
           ctx.font = `500 ${labelPx}px ui-monospace, monospace`;
           ctx.textAlign = 'center';
-          ctx.fillText(n.label, n.x, n.y - r - 7);
+          /*
+           * Clamp the label inside the canvas. A node near an edge would
+           * otherwise centre its label past the boundary and the text was cut
+           * in half, which is how "LIYSF, top 30 of 738" rendered as
+           * "YSF, top 30 of".
+           */
+          const half = ctx.measureText(n.label).width / 2;
+          const pad = 4;
+          const lx = Math.min(Math.max(n.x, half + pad), w - half - pad);
+          ctx.fillText(n.label, lx, n.y - r - 7);
         }
       }
 

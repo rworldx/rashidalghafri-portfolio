@@ -1,10 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { graph } from '@content/graph';
 import type { GraphNodeKind } from '@/types/graph';
-import { useMounted } from '@/hooks/useMounted';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { InteractiveGraph } from '@/components/graph/InteractiveGraph';
@@ -23,27 +21,23 @@ const groups: {
 /**
  * What Rashid has built, what it took, and what it earned.
  *
- * TWO PRESENTATIONS, and the small one is not a downgrade.
+ * The graph runs on EVERY screen. What changes with the screen is the space
+ * it gets and how much of it is labelled.
  *
- * A force-directed graph needs room. In a phone-width box, ten labelled nodes
- * collide with each other and with their own labels, and the reader gets a
- * knot instead of a relationship. Below the large breakpoint the same data is
- * a LEDGER: one source, three groups, hairlines between them. It states the
- * relationships plainly, and plain wins at 390px.
+ * A phone gets a PORTRAIT canvas, taller than it is wide. A 5:2 letterbox
+ * leaves a narrow screen almost no vertical room, which forced every node into
+ * one band and made the labels collide. Height is the cheapest thing to give a
+ * graph on a phone. The canvas also labels only the heaviest nodes there, and
+ * reveals the rest on touch, because labelling a dozen at 390px is the same
+ * illegible knot as labelling all of them.
  *
- * The graph mounts only where it fits, so a phone never pays for a canvas it
- * was never going to be able to read. The ledger is also what renders on the
- * server, so the section is meaningful before any JavaScript runs.
- *
- * The old version also put four unexplained hues on a page that commits to one
- * accent. The ledger needs no colour key at all: the groups are named.
+ * The text version underneath is not a fallback layout, it is the accessible
+ * one: a canvas is invisible to assistive technology, so without it this
+ * section would say nothing at all to a screen reader.
  */
 export function Connections() {
   const t = useTranslations('about');
-  const mounted = useMounted();
-  const roomForGraph = useMediaQuery('(min-width: 1024px)');
-
-  const showGraph = mounted && roomForGraph;
+  const locale = useLocale();
   const self = graph.nodes.find((n) => n.kind === 'self');
 
   return (
@@ -54,24 +48,39 @@ export function Connections() {
         className="mb-phi-2"
       />
 
-      {showGraph ? (
-        <Reveal>
-          <div className="overflow-hidden rounded-lg border border-border bg-surface/50">
-            <div className="flex items-center justify-end border-b border-border px-6 py-3">
-              <p className="font-mono text-2xs text-text-faint">{t('graphHint')}</p>
-            </div>
-            <div className="aspect-[5/2] w-full">
-              <InteractiveGraph className="size-full" />
-            </div>
+      <Reveal>
+        <div className="overflow-hidden rounded-lg border border-border bg-surface/50">
+          <div className="flex items-center justify-end border-b border-border px-5 py-3 sm:px-6">
+            <p className="font-mono text-2xs text-text-faint">
+              <span className="hint-fine">{t('graphHint')}</span>
+              <span className="hint-coarse">{t('graphHintTouch')}</span>
+            </p>
           </div>
-        </Reveal>
-      ) : (
-        <Reveal>
+          {/*
+            PORTRAIT on a phone, wide on a desktop. A 5:2 letterbox gives a
+            narrow screen almost no vertical room, which is what forced every
+            node into the same band and made the labels collide. Height is the
+            cheapest thing to give a graph on a phone.
+          */}
+          <div className="aspect-[3/4] w-full sm:aspect-[3/2] lg:aspect-[5/2]">
+            <InteractiveGraph className="size-full" />
+          </div>
+        </div>
+      </Reveal>
+
+      {/*
+        The same relationships as text, for screen readers and for anyone
+        whose graph never renders. A canvas is invisible to assistive tech, so
+        without this the section says nothing at all to a screen reader.
+      */}
+      <div className="sr-only">
           <dl className="border-t border-border">
             {/* The source, named once at the top rather than repeated per row. */}
             <div className="flex items-baseline gap-4 border-b border-border py-5">
               <dt className="label w-24 shrink-0 text-accent">{t('legendSelf')}</dt>
-              <dd className="text-lg text-text">{self?.label ?? 'Rashid'}</dd>
+              <dd className="text-lg text-text">
+                {(locale === 'ar' ? self?.labelAr : self?.label) ?? 'Rashid'}
+              </dd>
             </div>
 
             {groups.map(({ kind, key }) => {
@@ -94,7 +103,8 @@ export function Connections() {
                       <span key={n.id}>
                         {i > 0 && <span className="text-text-faint"> · </span>}
                         <span className={(n.weight ?? 1) >= 2 ? 'text-text' : undefined}>
-                          {n.label}
+                          {/* Proper names stay Latin in both languages. */}
+                          {locale === 'ar' ? (n.labelAr ?? n.label) : n.label}
                         </span>
                       </span>
                     ))}
@@ -102,9 +112,8 @@ export function Connections() {
                 </div>
               );
             })}
-          </dl>
-        </Reveal>
-      )}
+        </dl>
+      </div>
     </FlowBranch>
   );
 }
