@@ -3,21 +3,17 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * Guards the one rule the whole design rests on.
+ * Guards two rules that are invisible in code review.
  *
- * The site is built on the falaj — Oman's gravity-fed irrigation network: one
- * source, a spine, branches out to everyone who needs the water. That idea
- * shapes the rail down every page, the way sections branch off it, and the
- * network in the hero.
+ * 1. NO ABANDONED CONCEPT LANGUAGE. This site went through a falaj-themed
+ *    direction before landing on the museum. That direction is gone, and the
+ *    copy must not still carry its vocabulary — a visitor reading an About
+ *    page that explains a metaphor the site no longer uses is being told a
+ *    story about a website that does not exist. Nothing breaks when stale
+ *    concept copy survives a redesign, which is exactly why it needs a test.
  *
- * The channel is now rendered literally — a 3D falaj you travel down as you
- * scroll — so the idea is unmistakably VISIBLE. What stays controlled is the
- * NAMING: the word appears in exactly one place, the colophon on /about.
- * Visitors should experience the system first and learn what it is second.
- *
- * This test exists because that rule is invisible in code review — nothing
- * breaks if someone drops "falaj" into a headline, it just quietly turns the
- * design into a theme. So it fails the build instead.
+ * 2. ONE ACCENT, LOCKED. A second hue creeping into a badge or a CTA is the
+ *    fastest way to make a restrained palette look accidental.
  */
 
 const ROOT = join(__dirname, '..');
@@ -38,15 +34,16 @@ function filesUnder(dir: string, exts: string[]): string[] {
   return out;
 }
 
-describe('the concept stays invisible', () => {
-  it('names the falaj only in the colophon', () => {
+describe('no stale concept language', () => {
+  it('carries no language from the retired concept', () => {
     const offenders: string[] = [];
 
-    // User-facing copy: the translation catalogues and the content layer.
+    // All user-facing copy. Nothing is exempt any more: the concept it came
+    // from is retired, so the vocabulary should appear nowhere at all.
     const copy = [
       ...filesUnder(join(ROOT, 'messages'), ['.json']),
       ...filesUnder(join(ROOT, 'content'), ['.ts']),
-    ].filter((f) => !f.endsWith('colophon.ts'));
+    ];
 
     for (const file of copy) {
       if (MOTIF.test(readFileSync(file, 'utf8'))) {

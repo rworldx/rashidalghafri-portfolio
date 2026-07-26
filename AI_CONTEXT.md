@@ -68,16 +68,16 @@ interface that still carries a visitor onward.
   over-reached-for default there is. The accent is a true engineered azure
   (h242/244), moved off the violet-leaning cobalt that sits in "AI glow"
   territory. Verified against WCAG; body clears AAA in both themes.
-- **The flow line** (`components/flow/FlowRail` + `FlowBranch`) survives from
-  the previous concept as the gallery's datum line. **Geometry contract:** rail
+- **The flow line** (`components/flow/FlowRail` + `FlowBranch`) is the
+  gallery's datum line and a real reading-progress indicator. **Geometry contract:** rail
   at `start-5 / sm:8 / lg:12`, `Container` inline-start padding exactly double
   (`ps-10 / sm:16 / lg:24`). Change one, change all three.
 - **Measured outcomes are never animated.** Counting "Top 30" spends a second
   asserting "Top 29". `AnimatedCounter` survives only in `Interests`, whose
   figures are explicitly personal. **Never animate a number that is a
   credential.**
-- **Home is a sequence, not a menu.** Hero → Manifesto → Gallery → ThroughLine
-  → Marquee → About → Contact. Seven sections, seven different layout families.
+- **Home is a sequence, not a menu.** Hero → Manifesto → Keynote deck →
+  ThroughLine → Marquee → About → Contact. Seven sections, seven different layout families.
 - **Cards are the lazy answer.** Ledgers and editorial rows, not grids of
   identical boxes.
 - **Section openers are restrained.** Keep eyebrow count at or under
@@ -88,6 +88,22 @@ interface that still carries a visitor onward.
 - **Motion.** Strong ease-out; springs for pointer-driven things;
   `transform`/`opacity` only. Scroll state comes from Framer's `useScroll` —
   **a `scroll` event listener is banned.**
+
+### Two things that will bite you
+
+- **Reading tokens on a theme change.** Never key a token read on
+  next-themes' `resolvedTheme`. `ThemeProvider` is an ancestor and React
+  flushes child effects BEFORE parent effects, so a consumer reads
+  `getComputedStyle` while `<html>` still carries the OLD theme class and
+  caches stale values — this shipped once as a hero that stayed dark in light
+  mode. Use `hooks/useThemeTokens`, which watches the class attribute with a
+  MutationObserver.
+- **Arabic is not Latin with different glyphs.** It is cursive, so
+  `letter-spacing` pulls the joins apart and words fall to pieces; it has no
+  uppercase, so `text-transform` is a no-op that leaves fake labels; and Geist
+  Mono has no Arabic glyphs, so anything mono fell back to a per-machine system
+  font. All three are handled under `html[lang='ar']` in globals.css. Latin
+  runs marked `.force-ltr` keep the mono face and their tracking.
 
 ## Layering (dependency direction, no upward imports)
 
@@ -121,18 +137,12 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 - `src/components/ui/PortraitCard.tsx` — the About headshot: 3D tilt-on-pointer
   card with an accent glow and caption; falls back to a monogram if
   `site.portrait` (default `/images/portrait.jpg`) is missing.
-- `src/components/three/` — the hero's 3D network (`FlowNetwork`): Rashid's real
-  graph laid out by BFS depth, with light pulses that always travel *outward*
-  from the source. It is data, not decoration. **Deliberately vanilla
-  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`.** Next 15
-  runs React 19 internals in the client bundle, and R3F v8's `react-reconciler`
-  reads React 18's `ReactCurrentOwner` → `undefined` → crash. Do not reintroduce
-  R3F unless you also move to React 19 + R3F v9. `FlowNetwork` builds the
-  scene once and exposes a `setColors` API the theme effect calls; `HeroBackground`
-  gates it (reduced-motion / WebGL / viewport-pause) and wraps it in an
-  `ErrorBoundary` that falls back to the static graph. The static fallback and
-  the WebGL version are the same picture, so both draw every node in the accent
-  when `ambient` — an unlabelled diagram must not use colour it cannot explain.
+- `src/components/three/LiquidBackdrop.tsx` — the gallery's light: a
+  domain-warped fbm shader on one full-screen quad. **Deliberately vanilla
+  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`** — Next 15
+  ships React 19 internals and R3F v8's reconciler reads React 18's
+  `ReactCurrentOwner` -> `undefined` -> crash.
+
 - `src/components/flow/` — the signature. `FlowRail` (page spine, scroll-driven)
   and `FlowBranch` (section wrapper: spur + node). Every section on every page
   is a `FlowBranch`; sections no longer render `<section>` + `<Container>`

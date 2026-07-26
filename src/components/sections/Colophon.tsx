@@ -8,20 +8,12 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FlowBranch } from '@/components/flow/FlowBranch';
 
 /**
- * The only place the site explains itself.
+ * The colophon — the only place the site explains how it is made.
  *
- * Everything else on this site is built on one idea — the falaj, Oman's
- * gravity-fed irrigation network: a single source, channels branching out to
- * everyone who needs the water, nothing wasted. It shapes the spine running
- * down every page, the way sections branch off it rather than stack on it, and
- * the network in the hero.
- *
- * It is stated HERE and nowhere else, on purpose. A visitor should feel that
- * the site is unusually connected long before they are told why; a concept a
- * portfolio announces in its hero is decoration, and one a visitor discovers on
- * the about page is architecture. There are no canals, no water textures and no
- * cultural motifs anywhere in the visual language — the idea is in the
- * engineering, which is the only place it belongs.
+ * Deliberately the LAST thing on the About page and nowhere else. A note about
+ * craft is a reward for someone who read to the end, not an argument to open
+ * with; a site that leads with an explanation of its own design is asking to
+ * be admired rather than read.
  */
 export function Colophon() {
   const t = useTranslations('colophon');

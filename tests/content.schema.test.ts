@@ -211,13 +211,4 @@ describe('content/colophon', () => {
     expect(colophon.body.length).toBeGreaterThan(0);
     for (const p of colophon.body) expect(() => localized.parse(p)).not.toThrow();
   });
-
-  /**
-   * The site's organising idea is explained here and NOWHERE else — it has to
-   * survive on structure everywhere else, or it is decoration. This asserts the
-   * explanation still exists; the "nowhere else" half is enforced below.
-   */
-  it('is where the concept is named', () => {
-    expect(colophon.body.some((p) => /falaj/i.test(p.en))).toBe(true);
-  });
 });
