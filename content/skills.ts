@@ -96,5 +96,5 @@ export const skills: SkillGroup[] = [
  */
 export const learning = {
   en: 'Want to learn next: AI agents and agentic workflows, automation with n8n, iOS apps with Swift and Xcode, and deeper design work in Figma',
-  ar: 'ما أريد تعلّمه بعد ذلك: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي، والأتمتة عبر n8n، وتطبيقات iOS بلغة Swift وبيئة Xcode، وتعميق العمل التصميمي في فيغما',
+  ar: 'ما أنوي تعلّمه بعد ذلك: وكلاء الذكاء الاصطناعي وأتمتة سير العمل عبر n8n، وتطوير تطبيقات iOS بلغة Swift على Xcode، والتوسّع أكثر في التصميم عبر Figma',
 };

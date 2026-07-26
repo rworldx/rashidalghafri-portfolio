@@ -24,38 +24,38 @@ export interface ProofPoint {
  */
 export const proof: ProofPoint[] = [
   {
-    value: { en: 'Top 30', ar: 'أفضل ٣٠' },
+    value: { en: 'Top 30', ar: 'ضمن أفضل 30' },
     label: {
       en: 'of 738 national STEM projects',
-      ar: 'من ٧٣٨ مشروعًا وطنيًا في العلوم والتقنية',
+      ar: 'من بين 738 مشروعًا علميًا على مستوى السلطنة',
     },
     detail: {
       en: 'London International Youth Science Forum — national finals, Muscat, 2026',
-      ar: 'منتدى لندن الدولي لعلوم الشباب — التصفيات الوطنية، مسقط، ٢٠٢٦',
+      ar: 'منتدى لندن الدولي لعلوم الشباب، التصفيات الوطنية بمسقط، 2026',
     },
   },
   {
-    value: { en: '3.96', ar: '٣٫٩٦' },
-    label: { en: 'CGPA out of 4.00', ar: 'المعدل التراكمي من ٤٫٠٠' },
+    value: { en: '3.96', ar: '3.96' },
+    label: { en: 'CGPA out of 4.00', ar: 'المعدل التراكمي من 4.00' },
     detail: {
       en: 'BSc Software Engineering, First-Class Distinction · College Honour Roll, every semester',
-      ar: 'بكالوريوس هندسة البرمجيات، امتياز مع مرتبة الشرف الأولى · لوحة شرف الكلية في جميع الفصول',
+      ar: 'بكالوريوس هندسة برمجيات بامتياز مع مرتبة الشرف الأولى، وعلى لوحة شرف الكلية في كل فصل دراسي',
     },
   },
   {
-    value: { en: '95%', ar: '٩٥٪' },
-    label: { en: 'said the AI assistant helped', ar: 'قالوا إن المساعد الذكي ساعدهم' },
+    value: { en: '95%', ar: '95%' },
+    label: { en: 'said the AI assistant helped', ar: 'قالوا إن المساعد الذكي حسّن طريقة مذاكرتهم' },
     detail: {
       en: 'StudyNest, validated in a 44-student pilot — 86% reported high satisfaction',
-      ar: 'ستدي نست، جرى التحقق منها مع ٤٤ طالبًا — ٨٦٪ أبدوا رضًا عاليًا',
+      ar: 'StudyNest، بعد تجربة شارك فيها 44 طالبًا، أبدى 86% منهم رضًا عاليًا',
     },
   },
   {
-    value: { en: '2nd', ar: 'الثاني' },
-    label: { en: 'of 20+ teams', ar: 'من أكثر من ٢٠ فريقًا' },
+    value: { en: '2nd', ar: 'المركز الثاني' },
+    label: { en: 'of 20+ teams', ar: 'بين أكثر من 20 فريقًا' },
     detail: {
       en: 'EnerGrid, Riyada Promising Student Projects Camp — cash prize, 2025',
-      ar: 'إنرغريد، ملتقى المشاريع الطلابية الواعدة من ريادة — جائزة مالية، ٢٠٢٥',
+      ar: 'EnerGrid، ملتقى المشاريع الطلابية الواعدة من ريادة، بجائزة مالية، 2025',
     },
   },
 ];

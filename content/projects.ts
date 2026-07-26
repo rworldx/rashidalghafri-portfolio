@@ -189,15 +189,15 @@ export const projects: Project[] = [
     role: 'Design & Front-End',
     summary: {
       en: 'The site you are reading. A bilingual, accessible portfolio staged as a gallery, with a WebGL backdrop and a full fallback for anyone who cannot run it.',
-      ar: 'الموقع الذي تقرأه الآن. معرض ثنائي اللغة يراعي الوصولية، بخلفية WebGL وبديل كامل لمن لا يستطيع تشغيلها.',
+      ar: 'الموقع الذي تتصفّحه الآن. معرض أعمال بلغتين، مبني ليكون سهل الوصول للجميع، بخلفية ثلاثية الأبعاد ونسخة كاملة بديلة لمن لا يعمل جهازه بها.',
     },
     problem: {
       en: 'A portfolio has to do two jobs at once. A recruiter needs the record in seconds. A design-led team needs proof the person can actually build an interface. Most portfolios pick one and lose the other.',
-      ar: 'على الموقع الشخصي أن يؤدي مهمتين معًا. يحتاج المسؤول عن التوظيف إلى السجل في ثوانٍ. ويحتاج فريق التصميم إلى دليل على القدرة على بناء واجهة فعلًا. ومعظم المواقع تختار واحدة وتخسر الأخرى.',
+      ar: 'موقع الأعمال الشخصي مطالب بأمرين في وقت واحد. من يوظّف يريد أن يرى السجل خلال ثوانٍ، وفريق التصميم يريد دليلًا على أن صاحبه يجيد بناء الواجهات فعلًا. وأغلب المواقع تنجح في أحدهما وتفرّط في الآخر.',
     },
     solution: {
       en: 'The verified record sits above the first project, so it is readable in about five seconds. The craft argument is the site itself: a scroll-driven WebGL backdrop, a coverflow deck, real Arabic typography, and a design system where contrast is measured rather than assumed.',
-      ar: 'يأتي السجل الموثّق قبل أول مشروع، فيُقرأ في نحو خمس ثوانٍ. أما الدليل على الحرفة فهو الموقع نفسه: خلفية WebGL تتحرك مع التمرير، وشريط أعمال ثلاثي الأبعاد، وطباعة عربية حقيقية، ونظام تصميم يُقاس فيه التباين بدل افتراضه.',
+      ar: 'وضعت السجل الموثّق قبل أول مشروع ليُقرأ في خمس ثوانٍ. أما الدليل على الإتقان فهو الموقع ذاته: خلفية تتفاعل مع التمرير، وشريط أعمال بعمق ثلاثي الأبعاد، ونصّ عربي مضبوط بخط عربي أصيل، ونظام ألوان يُقاس فيه التباين ولا يُفترض.',
     },
     liveUrl: 'https://rashidalghafri.com',
     repoUrl: 'https://github.com/rworldx/rashidalghafri-portfolio',
@@ -219,19 +219,19 @@ export const projects: Project[] = [
     highlights: [
       {
         en: 'Bilingual English and Arabic with full RTL. Arabic is set in Thmanyah with no letter spacing and no small caps, because Arabic joins its letters and both habits break the joins.',
-        ar: 'ثنائي اللغة بالعربية والإنجليزية مع دعم كامل للاتجاه من اليمين. والعربية بخط «ثمانية» بلا تباعد بين الحروف وبلا محاكاة للأحرف الكبيرة، لأن العربية تصل حروفها وكلتا العادتين تفصلانها.',
+        ar: 'الموقع بلغتين، العربية والإنجليزية، مع دعم كامل للكتابة من اليمين إلى اليسار. والعربية بخط «ثمانية» من دون تباعد بين الحروف، حفاظًا على اتصال الحرف العربي.',
       },
       {
         en: 'A WebGL backdrop written as a shader rather than shipped as video, so it weighs almost nothing and recolours itself per theme.',
-        ar: 'خلفية WebGL مكتوبة كـ shader بدل شحنها كفيديو، فلا تكاد تزن شيئًا وتعيد تلوين نفسها مع كل سمة.',
+        ar: 'الخلفية المتحركة مرسومة برمجيًا لا مسجّلة كفيديو، فحجمها لا يكاد يُذكر وتتبدّل ألوانها تلقائيًا مع الوضع الفاتح والداكن.',
       },
       {
         en: 'Every text and background pair is measured against WCAG before shipping. Body text clears AAA in both themes.',
-        ar: 'كل زوج من النص والخلفية مقيس وفق WCAG قبل النشر. ونص المتن يتجاوز مستوى AAA في السمتين.',
+        ar: 'قِست التباين بين كل نص وخلفيته وفق معايير WCAG قبل النشر، ونص المتن يتجاوز أعلى مستوياتها في الوضعين.',
       },
       {
         en: 'Reduced motion turns off WebGL entirely and leaves nothing hidden. Reduced transparency and high contrast each get a real surface instead of a blurred one.',
-        ar: 'وضع تقليل الحركة يوقف WebGL تمامًا ولا يُخفي شيئًا. ويحصل وضعا تقليل الشفافية والتباين العالي على سطح حقيقي بدل سطح ضبابي.',
+        ar: 'عند تفعيل تقليل الحركة تتوقف الرسوم ثلاثية الأبعاد تمامًا من دون أن يختفي أي محتوى. وعند تقليل الشفافية أو رفع التباين تتحول الأسطح الضبابية إلى أسطح صريحة واضحة.',
       },
     ],
     cover: '/images/projects/portfolio.png',
@@ -248,11 +248,11 @@ export const projects: Project[] = [
         body: [
           {
             en: 'I kept looking at exhibition design rather than at other portfolios. A gallery gives one work a wall and lets you walk up to it. Nothing on that wall competes with the picture. Apple keynotes do the same thing with a stage and one idea at a time.',
-            ar: 'كنت أنظر إلى تصميم المعارض بدل النظر إلى مواقع أخرى. يمنح المعرض العمل الواحد جدارًا كاملًا ويترك لك أن تقترب منه. ولا شيء على ذلك الجدار ينافس الصورة. وتفعل عروض «آبل» الشيء نفسه بمسرح وفكرة واحدة في كل مرة.',
+            ar: 'كنت أستلهم من تصميم المعارض الفنية أكثر مما أستلهم من مواقع الأعمال. المعرض يخصّص للعمل الواحد جدارًا كاملًا، ويتيح لك أن تقترب منه على مهل، ولا يزاحمه شيء على ذلك الجدار. وعروض آبل تسير على المبدأ نفسه: مسرح واحد وفكرة واحدة في كل لحظة.',
           },
           {
             en: 'So the site is a room. One work at a time, and as little interface as I could get away with. If the work is worth looking at, you should not have to look past a wrapper to see it.',
-            ar: 'فجاء الموقع غرفةً. عمل واحد في كل مرة، وأقلّ ما استطعت من الواجهة. وإن كان العمل يستحقّ النظر، فلا ينبغي أن تنظر من خلف غلاف لتراه.',
+            ar: 'فبنيت الموقع على هيئة قاعة عرض: عمل واحد في كل مرة، وأقلّ قدر ممكن من عناصر الواجهة. فإن كان العمل يستحق أن يُرى، فلا ينبغي لشيء أن يحجبه.',
           },
         ],
       },
@@ -261,11 +261,11 @@ export const projects: Project[] = [
         body: [
           {
             en: 'Headings run large and upright in the system face. One word in a headline turns italic when it carries the weight of the line. I tried setting every heading in italic first. A whole page of it reads as costume, so the italic went back to one word.',
-            ar: 'تأتي العناوين كبيرة ومنتصبة بخط النظام. وتميل كلمة واحدة في العنوان حين تحمل ثقل السطر. جرّبت أولًا أن أضبط كل عنوان بالمائل. وصفحة كاملة منه تبدو كزيّ تنكّري، فعاد المائل إلى كلمة واحدة.',
+            ar: 'العناوين كبيرة ومنتصبة بخط النظام، وتُمال كلمة واحدة فقط حين تحمل معنى السطر كله. جرّبت في البداية إمالة كل العناوين، فبدت الصفحة متكلّفة، فأعدت الإمالة إلى كلمة واحدة.',
           },
           {
             en: 'Arabic uses Thmanyah everywhere, with no letter spacing and no small caps. Arabic joins its letters. Both of those habits come from Latin and they pull the joins apart.',
-            ar: 'والعربية بخط «ثمانية» في كل مكان، بلا تباعد بين الحروف وبلا محاكاة للأحرف الكبيرة. فالعربية تصل حروفها. وكلتا العادتين لاتينية الأصل، وتفصلان ما ينبغي أن يتّصل.',
+            ar: 'والعربية بخط «ثمانية» في الموقع كله، من دون تباعد بين الحروف ولا محاكاة للأحرف الكبيرة. فالحرف العربي متّصل بطبيعته، وهاتان عادتان لاتينيتان تقطعان اتصاله.',
           },
         ],
       },
@@ -274,7 +274,7 @@ export const projects: Project[] = [
         body: [
           {
             en: 'One accent colour. Contrast measured, not guessed. No animation you did not start by scrolling. Anyone whose device or settings would rather skip the moving parts gets a full version without them, and nothing stays hidden in that version.',
-            ar: 'لون مميّز واحد. وتباين مقيس لا مُخمّن. ولا حركة لم تبدأها أنت بتمريرك. ومن لا يريد جهازه أو إعداداته تشغيل الأجزاء المتحرّكة يحصل على نسخة كاملة بدونها، ولا يبقى فيها شيء مخفيًّا.',
+            ar: 'لون واحد مميّز، وتباين مقيس لا مُقدَّر بالحدس، ولا حركة تبدأ من تلقاء نفسها دون أن تحرّك الصفحة. ومن كان جهازه أو إعداداته لا تناسبها الحركة، يحصل على نسخة كاملة ساكنة لا ينقصها شيء.',
           },
         ],
       },

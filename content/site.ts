@@ -18,7 +18,7 @@ export const site: SiteContent = {
    */
   tagline: {
     en: 'Software Engineering graduate, First-Class Distinction. I build real-time, AI-driven systems that connect people to what they need — concept to launch.',
-    ar: 'خريج هندسة برمجيات بامتياز مع مرتبة الشرف الأولى. أبني أنظمة فورية مدعومة بالذكاء الاصطناعي توصل الناس إلى ما يحتاجونه — من الفكرة إلى الإطلاق.',
+    ar: 'مهندس برمجيات، تخرّجت بامتياز مع مرتبة الشرف الأولى. أبني أنظمة تعمل لحظيًا وتستعين بالذكاء الاصطناعي، وأتابعها من الفكرة حتى الإطلاق.',
   },
   /**
    * The availability line. Specific beats vague: "available for opportunities"
@@ -28,7 +28,7 @@ export const site: SiteContent = {
    */
   status: {
     en: 'available now · Oman, GCC & remote',
-    ar: 'متاح الآن · عُمان والخليج وعن بُعد',
+    ar: 'متاح للعمل الآن · عُمان والخليج وعن بُعد',
   },
   location: {
     en: 'Oman',
