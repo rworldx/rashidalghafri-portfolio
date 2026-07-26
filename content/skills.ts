@@ -24,7 +24,6 @@ export const skills: SkillGroup[] = [
       'Gemini API',
       'Prompt Engineering',
       'Multimodal AI',
-      'Agentic workflows (n8n)',
     ],
   },
   {
@@ -84,8 +83,18 @@ export const skills: SkillGroup[] = [
   },
 ];
 
-/** Sub-note for the Skills section footer. */
-export const exploring = {
-  en: 'Currently exploring: AI agents, agentic workflows & automation (n8n) · deepening design in Figma',
-  ar: 'أستكشف حاليًا: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي والأتمتة (n8n) · وتعميق التصميم في فيغما',
+/**
+ * Sub-note for the Skills section footer.
+ *
+ * This is a WANT-TO-LEARN list, not a doing-it-now list, and the wording says
+ * so. The two are different claims, and a reader deciding whether to hire
+ * someone has to be able to tell them apart.
+ *
+ * Anything Rashid cannot do yet belongs here and NOT in the skills list above.
+ * n8n and Swift/Xcode sit here for that reason. Figma is the one overlap and
+ * it is a real one: he uses it already, and wants to go further with it.
+ */
+export const learning = {
+  en: 'Want to learn next: AI agents and agentic workflows, automation with n8n, iOS apps with Swift and Xcode, and deeper design work in Figma',
+  ar: 'ما أريد تعلّمه بعد ذلك: وكلاء الذكاء الاصطناعي وسير العمل الوكيلي، والأتمتة عبر n8n، وتطبيقات iOS بلغة Swift وبيئة Xcode، وتعميق العمل التصميمي في فيغما',
 };

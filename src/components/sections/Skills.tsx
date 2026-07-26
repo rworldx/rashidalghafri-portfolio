@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { skills, exploring } from '@content/skills';
+import { skills, learning } from '@content/skills';
 import { pick } from '@/lib/localized';
 import { Reveal } from '@/components/motion/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -53,7 +53,7 @@ export function Skills() {
 
       <Reveal delay={0.08}>
         <p className="measure mt-8 text-sm text-text-muted">
-          {pick(exploring, locale)}
+          {pick(learning, locale)}
         </p>
       </Reveal>
     </FlowBranch>

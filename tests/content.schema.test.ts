@@ -11,6 +11,7 @@ import { journey } from '@content/journey';
 import { travels, schooling } from '@content/personal';
 import { interests, aboutStory } from '@content/about';
 import { proof } from '@content/proof';
+import { learning } from '@content/skills';
 import { colophon } from '@content/colophon';
 
 /**
@@ -210,5 +211,25 @@ describe('content/colophon', () => {
   it('is fully bilingual', () => {
     expect(colophon.body.length).toBeGreaterThan(0);
     for (const p of colophon.body) expect(() => localized.parse(p)).not.toThrow();
+  });
+});
+
+describe('content/skills', () => {
+  /**
+   * A skills list is a claim about what Rashid can do today. The learning note
+   * is a claim about what he wants to pick up next. Anything he cannot do yet
+   * must not appear in both, or the site quietly overstates him to a recruiter.
+   *
+   * Figma is the deliberate exception: he uses it already and wants to go
+   * deeper, so it is honest in both places.
+   */
+  it('does not claim a skill it also says it wants to learn', () => {
+    const claimed = skills.flatMap((group) => group.items.map((i) => i.toLowerCase()));
+    const wantsToLearn = ['n8n', 'swift', 'xcode'];
+
+    for (const topic of wantsToLearn) {
+      expect(learning.en.toLowerCase()).toContain(topic);
+      expect(claimed.some((skill) => skill.includes(topic))).toBe(false);
+    }
   });
 });

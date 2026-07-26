@@ -174,6 +174,77 @@ export const projects: Project[] = [
     ],
   },
   {
+    /**
+     * The site you are standing in.
+     *
+     * A portfolio listing itself reads as padding only when there is nothing
+     * to say about it. Here the artefact is in front of the reader while they
+     * read the claims, so every one of them is checkable on the spot, which is
+     * the opposite of padding. Every fact below is true of this repository.
+     */
+    slug: 'portfolio',
+    featured: false,
+    title: 'This portfolio',
+    year: 2026,
+    role: 'Design & Front-End',
+    summary: {
+      en: 'The site you are reading. A bilingual, accessible portfolio staged as a gallery, with a WebGL backdrop and a full fallback for anyone who cannot run it.',
+      ar: 'الموقع الذي تقرأه الآن. معرض ثنائي اللغة يراعي الوصولية، بخلفية WebGL وبديل كامل لمن لا يستطيع تشغيلها.',
+    },
+    problem: {
+      en: 'A portfolio has to do two jobs at once. A recruiter needs the record in seconds. A design-led team needs proof the person can actually build an interface. Most portfolios pick one and lose the other.',
+      ar: 'على الموقع الشخصي أن يؤدي مهمتين معًا. يحتاج المسؤول عن التوظيف إلى السجل في ثوانٍ. ويحتاج فريق التصميم إلى دليل على القدرة على بناء واجهة فعلًا. ومعظم المواقع تختار واحدة وتخسر الأخرى.',
+    },
+    solution: {
+      en: 'The verified record sits above the first project, so it is readable in about five seconds. The craft argument is the site itself: a scroll-driven WebGL backdrop, a coverflow deck, real Arabic typography, and a design system where contrast is measured rather than assumed.',
+      ar: 'يأتي السجل الموثّق قبل أول مشروع، فيُقرأ في نحو خمس ثوانٍ. أما الدليل على الحرفة فهو الموقع نفسه: خلفية WebGL تتحرك مع التمرير، وشريط أعمال ثلاثي الأبعاد، وطباعة عربية حقيقية، ونظام تصميم يُقاس فيه التباين بدل افتراضه.',
+    },
+    liveUrl: 'https://rashidalghafri.com',
+    repoUrl: 'https://github.com/rworldx/rashidalghafri-portfolio',
+    stack: [
+      'Next.js 15',
+      'TypeScript',
+      'Tailwind CSS',
+      'Three.js',
+      'Framer Motion',
+      'next-intl',
+      'Vitest',
+      'Vercel',
+    ],
+    stats: [
+      { label: { en: 'Locales, with RTL', ar: 'لغتان مع اتجاه معكوس' }, value: '2' },
+      { label: { en: 'Contrast target', ar: 'مستوى التباين' }, value: 'WCAG AA' },
+      { label: { en: 'Static pages', ar: 'صفحات ثابتة' }, value: '24' },
+    ],
+    highlights: [
+      {
+        en: 'Bilingual English and Arabic with full RTL. Arabic is set in Thmanyah with no letter spacing and no small caps, because Arabic joins its letters and both habits break the joins.',
+        ar: 'ثنائي اللغة بالعربية والإنجليزية مع دعم كامل للاتجاه من اليمين. والعربية بخط «ثمانية» بلا تباعد بين الحروف وبلا محاكاة للأحرف الكبيرة، لأن العربية تصل حروفها وكلتا العادتين تفصلانها.',
+      },
+      {
+        en: 'A WebGL backdrop written as a shader rather than shipped as video, so it weighs almost nothing and recolours itself per theme.',
+        ar: 'خلفية WebGL مكتوبة كـ shader بدل شحنها كفيديو، فلا تكاد تزن شيئًا وتعيد تلوين نفسها مع كل سمة.',
+      },
+      {
+        en: 'Every text and background pair is measured against WCAG before shipping. Body text clears AAA in both themes.',
+        ar: 'كل زوج من النص والخلفية مقيس وفق WCAG قبل النشر. ونص المتن يتجاوز مستوى AAA في السمتين.',
+      },
+      {
+        en: 'Reduced motion turns off WebGL entirely and leaves nothing hidden. Reduced transparency and high contrast each get a real surface instead of a blurred one.',
+        ar: 'وضع تقليل الحركة يوقف WebGL تمامًا ولا يُخفي شيئًا. ويحصل وضعا تقليل الشفافية والتباين العالي على سطح حقيقي بدل سطح ضبابي.',
+      },
+    ],
+    gallery: [],
+    links: [
+      { label: 'Live', href: 'https://rashidalghafri.com', external: true },
+      {
+        label: 'Source',
+        href: 'https://github.com/rworldx/rashidalghafri-portfolio',
+        external: true,
+      },
+    ],
+  },
+  {
     slug: 'ieee-buc-website',
     featured: false,
     title: 'IEEE BUC Student Branch Website',
