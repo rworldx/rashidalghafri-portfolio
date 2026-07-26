@@ -30,104 +30,64 @@ Motion. Static-first: every public page is SSG; the only server code is
    Sections compose from `ui/`, `motion/`, `graph/`, `layout/`, `lib/`,
    `content/`, `types/`.
 
-## Design language — "Flow"
+## Design language — "The Museum"
 
-The visual system, and the reasoning that would otherwise get re-litigated.
+The site is staged as a gallery: one room, one work at a time, and the least
+interface that still carries a visitor onward.
 
-**The organising idea — Flow. Systems. Connection.** The site is built on the
-falaj, Oman's gravity-fed irrigation network: one source, a spine, branches out
-to everyone who needs the water. It is rendered **literally** — `FalajJourney`
-is a pinned section where the camera travels down a real 3D channel as you
-scroll, and each branch it passes feeds one project.
-
-The thesis is stated openly by `Manifesto` (three words at poster scale, lit one
-at a time by scroll). What stays controlled is the NAMING: the word "falaj"
-appears in exactly one place, the colophon at the end of `/about`, so a visitor
-experiences the system first and learns what it is second.
-`tests/concept.test.ts` fails the build if the word leaks into any other copy.
-
-**HOME IS A SEQUENCE, NOT A MENU.** Hero (poster + portrait) → Manifesto
-(kinetic type) → Journey (pinned 3D) → ThroughLine (the receipts) → Marquee →
-Projects → About → Contact. Eight sections, eight different layout families.
-Two sections sharing a layout is what makes a portfolio read as a template.
-
-- **The centrepiece: `three/FalajFlythrough`.** A deep-cut stone channel with
-  running water, branch forks, and light motes, travelled by a scroll-driven
-  camera. Three things are load-bearing and easy to break:
-  **(1)** the walls are 4.4 tall on purpose — a shallow channel leaves the top
-  two-thirds of a portrait phone as empty void;
-  **(2)** the camera is orientation-aware — `fov` in Three is VERTICAL, so a
-  tall viewport collapses the horizontal field and needs a widened (clamped)
-  fov plus a lower, more level camera;
-  **(3)** blending follows the theme — additive glow over a near-white
-  background saturates to white and the water vanishes, so light mode uses
-  normal blending.
-  Stone comes from dedicated `--falaj-*` tokens, NOT the surface ramp; reusing
-  `--surface-2` rendered the whole scene near-black on near-black.
-- **The signature: the flow line.** `components/flow/FlowRail` draws one
-  hairline down the inline-start gutter of every page; the part above the
-  reader is live (accent), the rest dormant. `FlowBranch` wraps each section
-  and draws a spur back to the rail ending in a node that wakes as the reader
-  passes. It is allowed to exist because it carries information — real reading
-  progress, plus the fact that every section descends from one source.
-  **Geometry contract:** rail at `start-5 / sm:8 / lg:12`, `Container`
-  inline-start padding is exactly double (`ps-10 / sm:16 / lg:24`), spur spans
-  the gap. Change one, change all three.
-- **Palette strategy: cool mineral neutrals, exactly one accent.** Two moves
-  away from the previous design, both deliberate: the field went from *warm*
-  paper (hue 92) to **cool** (hue 232/242) because a cream/sand background is
-  the most over-reached-for AI default there is; and the accent moved from a
-  violet-leaning cobalt (h262) to a **true engineered azure** (h242/244),
-  because h262 sits on the edge of the "AI blue/purple glow" everyone ships.
-  One accent per view — do not introduce a second hue for a badge or a CTA.
-  Every pair was verified with a WCAG pass (body clears AAA in both themes).
-  The one sanctioned exception is the *labelled* About graph, which needs
-  categorical colour because it has a key.
-- **The field.** `body::before` is a single fixed gradient layer and
-  `body::after` is the grain. Fixed means the compositor never repaints them on
-  scroll. Never move either onto a scrolling container.
-- **Type: display and body are different grotesques.** Display is **Archivo**
-  on its `wdth` axis, set NARROWED (88–96, tighter as it grows) so headlines
-  read as engineered and a long name holds one line. Body is Host Grotesk.
-  Archivo was chosen over the more characterful Bricolage Grotesque for one
-  hard reason: **Bricolage ships no italic**, and emphasis inside a headline
-  must be the same family's own italic cut (`.em-italic` / `<Emphasise>`),
-  never a second family injected for effect. Geist Mono is the only other
-  contrast axis, reserved for metadata, codes and figures. Arabic swaps to
-  Thmanyah Sans / Serif Display, takes **no italic**, and must reset
-  `font-variation-settings` (it is not a variable-width face).
-- **The signature face.** `Nothing You Could Do` appears exactly **once** on the
-  whole site: the signature closing the About story, English only. Arabic gets
-  Aref Ruqaa, a real Arabic hand. Using either anywhere else turns a signature
-  into decoration.
-- **Scale is golden-ratio derived.** Type steps at √φ (1.272) and φ (1.618);
-  spacing tokens `phi`…`phi-5`; asymmetric layouts split `1.618fr 1fr`.
-- **Shape system (one rule, no exceptions).** Interactive controls → full pill.
-  Surfaces and media → `rounded-lg` (22px), `rounded-xl` (30px) when large.
-  Inputs → `rounded-sm` (10px).
-- **Press feedback.** Every pressable element scales to `0.97` on `:active` over
-  120ms. Feedback lands on press, not on release.
-- **Motion.** Strong ease-out (`ease-out` = `cubic-bezier(.23,1,.32,1)`); springs
-  for anything a pointer touches; `transform`/`opacity` only. Scroll state comes
-  from Framer's `useScroll` — **a `scroll` event listener is banned.**
-- **Measured outcomes are never animated.** Count-ups are gone from the proof
-  ledger, the featured stats and the case-study stats: counting "Top 30" spends
-  a second rendering "Top 29", and these are checkable claims about a rank, a
-  grade and a pilot. `AnimatedCounter` survives only in `Interests`, whose
-  figures are explicitly personal and soft. The rule: **never animate a number
-  that is a credential.**
-- **Section openers are restrained.** A small tracked label above _every_ section
-  is the most-repeated generated-design tell there is, so `SectionHeading`
-  renders `label` only where it names a genuine shift in genre. Keep the count
-  at or under `ceil(sections / 3)` per page. The short hairline that used to sit
-  above every headline is gone — the branch spur says the same thing better.
-- **Cards are the lazy answer.** Skills, awards, experience, certifications, the
-  proof ledger and interests are hairline ledgers and editorial rows, not grids
-  of identical boxes. Reach for `Card` only where elevation communicates real
-  hierarchy.
-- **Project imagery.** `ProjectMedia` prefers a real screenshot; with no `cover`
-  it falls back to `ProjectSignature`, a deterministic mark whose geometry is
-  derived from the project's own data. Never ship a grey placeholder box.
+- **Two display voices, and they mean different things.** **Bodoni Moda italic**
+  (`.serif-display` / `.serif-2`) is the MUSEUM voice — the name, the statement
+  wall, exhibit titles, the credential row, the wall-label figures. **Archivo**
+  narrowed (`.display-*`) is the STRUCTURAL voice for everything else. Serif is
+  normally the wrong reflex; it is justified here because the aesthetic family
+  is genuinely gallery/catalogue. Bodoni was picked over Instrument Serif and
+  Fraunces specifically because those two are the default display serifs of
+  every generated page on the web right now. Arabic takes neither — it keeps
+  Thmanyah Serif Display and has no italic.
+- **Liquid glass** (`.glass`, `.glass-strong`). Floating chrome over a moving
+  backdrop. The masked 1.4px gradient ring is the whole trick — blur alone
+  reads as a grey box. Two weights only, never stacked, and `.glass-strong` is
+  reserved for the ONE primary action per view. Tinted per theme: on a light
+  background a white scrim is invisible, so light mode tints toward ink.
+  `prefers-reduced-transparency` and `prefers-contrast: more` both turn it into
+  a real opaque surface with a real border — not a slightly-less-blurry pane.
+- **`three/LiquidBackdrop`** is the gallery's light: a domain-warped fbm shader
+  on a single full-screen quad. Deliberately a SHADER, not video — the
+  references all use footage, but that means someone else's CDN, megabytes
+  before the hero settles, and a dependency that breaks when the file moves.
+  Cost is pure fill-rate, so the pixel-ratio cap is the performance lever.
+- **`motion/BlurText`** — word-by-word blur-in for display type. CSS, not
+  Framer, because it is the LCP element. NOTE: the animation uses
+  `animation-fill-mode: both`; `backwards` alone lets every word animate in and
+  then vanish back to its `opacity: 0` base rule.
+- **Documentary case studies.** `Project.chapters` replaces problem/solution
+  where it exists. Chapters are unevenly filled ON PURPOSE — never invent a
+  beat to complete the arc. Projects without chapters keep the two-part form.
+- **Palette strategy: cool mineral neutrals, exactly one accent.** The field is
+  COOL (hue 232/242), never warm paper — a cream background is the most
+  over-reached-for default there is. The accent is a true engineered azure
+  (h242/244), moved off the violet-leaning cobalt that sits in "AI glow"
+  territory. Verified against WCAG; body clears AAA in both themes.
+- **The flow line** (`components/flow/FlowRail` + `FlowBranch`) survives from
+  the previous concept as the gallery's datum line. **Geometry contract:** rail
+  at `start-5 / sm:8 / lg:12`, `Container` inline-start padding exactly double
+  (`ps-10 / sm:16 / lg:24`). Change one, change all three.
+- **Measured outcomes are never animated.** Counting "Top 30" spends a second
+  asserting "Top 29". `AnimatedCounter` survives only in `Interests`, whose
+  figures are explicitly personal. **Never animate a number that is a
+  credential.**
+- **Home is a sequence, not a menu.** Hero → Manifesto → Gallery → ThroughLine
+  → Marquee → About → Contact. Seven sections, seven different layout families.
+- **Cards are the lazy answer.** Ledgers and editorial rows, not grids of
+  identical boxes.
+- **Section openers are restrained.** Keep eyebrow count at or under
+  `ceil(sections / 3)` per page.
+- **Shape system.** Interactive → full pill. Surfaces/media → `rounded-lg`
+  (22px), `rounded-xl` (30px) when large. Inputs → `rounded-sm` (10px).
+- **Press feedback.** Everything pressable scales to `0.97` on `:active`.
+- **Motion.** Strong ease-out; springs for pointer-driven things;
+  `transform`/`opacity` only. Scroll state comes from Framer's `useScroll` —
+  **a `scroll` event listener is banned.**
 
 ## Layering (dependency direction, no upward imports)
 

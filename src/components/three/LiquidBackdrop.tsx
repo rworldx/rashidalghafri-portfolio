@@ -1,0 +1,264 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+
+export interface BackdropColors {
+  base: string;
+  sheen: string;
+  accent: string;
+}
+
+interface Props {
+  colors: BackdropColors;
+  paused: boolean;
+  /** Drives exposure only — the palette itself comes from the tokens. */
+  isDark: boolean;
+}
+
+/**
+ * The gallery's light source: a slow, liquid-metal form turning behind the
+ * exhibit.
+ *
+ * Deliberately a SHADER, not a video. The references this is answering all use
+ * full-bleed footage, but a video means shipping someone else's asset from
+ * someone else's CDN, a multi-megabyte download before the hero can settle, and
+ * a hard dependency that breaks the day the file moves. Two triangles and a
+ * fragment shader give the same slow chrome-and-light feel, weigh nothing,
+ * resolve instantly, and re-colour themselves per theme.
+ *
+ * The whole thing renders on a single full-screen quad — no geometry, no
+ * lights, no camera movement — so cost is purely fill-rate and scales with the
+ * pixel-ratio cap rather than with scene complexity.
+ *
+ * Vanilla Three.js, NOT @react-three/fiber: Next 15 ships React 19 internals
+ * and R3F v8's reconciler reads React 18's `ReactCurrentOwner`, which is
+ * `undefined` there and crashes.
+ */
+
+const vertexShader = /* glsl */ `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = vec4(position, 1.0);
+  }
+`;
+
+const fragmentShader = /* glsl */ `
+  precision highp float;
+
+  uniform float uTime;
+  uniform vec2  uResolution;
+  uniform vec3  uBase;
+  uniform vec3  uSheen;
+  uniform vec3  uAccent;
+  uniform float uExposure;
+  uniform vec2  uPointer;
+
+  varying vec2 vUv;
+
+  // -- value noise + fbm -----------------------------------------------------
+  vec2 hash2(vec2 p) {
+    p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+    return fract(sin(p) * 43758.5453) * 2.0 - 1.0;
+  }
+
+  float noise(vec2 p) {
+    vec2 i = floor(p), f = fract(p);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(
+      mix(dot(hash2(i + vec2(0.0, 0.0)), f - vec2(0.0, 0.0)),
+          dot(hash2(i + vec2(1.0, 0.0)), f - vec2(1.0, 0.0)), u.x),
+      mix(dot(hash2(i + vec2(0.0, 1.0)), f - vec2(0.0, 1.0)),
+          dot(hash2(i + vec2(1.0, 1.0)), f - vec2(1.0, 1.0)), u.x), u.y);
+  }
+
+  float fbm(vec2 p) {
+    float v = 0.0, a = 0.5;
+    for (int i = 0; i < 5; i++) {
+      v += a * noise(p);
+      p *= 2.02;
+      a *= 0.5;
+    }
+    return v;
+  }
+
+  void main() {
+    // Aspect-corrected, origin-centred.
+    vec2 uv = (vUv - 0.5) * vec2(uResolution.x / uResolution.y, 1.0);
+
+    float t = uTime * 0.055;
+
+    // Domain warping: noise sampled through noise. This is what turns flat
+    // gradient bands into something that reads as a poured, folding material
+    // rather than a blurred mesh gradient.
+    vec2 q = vec2(fbm(uv * 1.6 + vec2(0.0, t)), fbm(uv * 1.6 + vec2(5.2, 1.3 - t)));
+    vec2 r = vec2(
+      fbm(uv * 1.9 + 3.4 * q + vec2(1.7, 9.2) + 0.35 * t),
+      fbm(uv * 1.9 + 3.4 * q + vec2(8.3, 2.8) - 0.28 * t)
+    );
+    float f = fbm(uv * 1.7 + 3.2 * r);
+
+    // Remap into a tight band so the material has real light and shadow
+    // instead of sitting in the mid-tones the way raw fbm does.
+    float shade = smoothstep(-0.35, 0.55, f);
+
+    // A soft key light that drifts with the pointer — the surface should feel
+    // lit from somewhere, and follow the viewer a little.
+    vec2 lightPos = uPointer * 0.35;
+    float d = length(uv - lightPos);
+    float key = exp(-d * d * 2.1);
+
+    // Specular banding along the warp gradient: the chrome highlight.
+    float band = pow(abs(sin(f * 3.14159 + t * 1.6)), 8.0);
+
+    vec3 col = mix(uBase, uSheen, shade);
+    col = mix(col, uAccent, band * 0.55 * (0.35 + key));
+    col += uSheen * key * 0.28;
+
+    // Vignette keeps the corners from competing with the type in front.
+    float vig = smoothstep(1.25, 0.25, length(uv));
+    col *= mix(0.55, 1.0, vig);
+
+    col *= uExposure;
+
+    // Ordered-ish dither. An 8-bit gradient this smooth bands visibly on wide
+    // displays, and a touch of noise is far cheaper than more colour depth.
+    float dither = (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
+    col += dither;
+
+    gl_FragColor = vec4(col, 1.0);
+  }
+`;
+
+/** Phones pay for every fragment; cap the ratio harder there. */
+function smallViewport(): boolean {
+  return typeof window !== 'undefined' && window.innerWidth < 640;
+}
+
+export default function LiquidBackdrop({ colors, paused, isDark }: Props) {
+  const mountRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(paused);
+  const colorsRef = useRef(colors);
+  const darkRef = useRef(isDark);
+  const apiRef = useRef<{
+    setColors: (c: BackdropColors) => void;
+    setExposure: (dark: boolean) => void;
+  } | null>(null);
+
+  pausedRef.current = paused;
+  colorsRef.current = colors;
+  darkRef.current = isDark;
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    const c = colorsRef.current;
+    const scene = new THREE.Scene();
+    // A full-screen quad needs no perspective at all; the vertex shader writes
+    // clip space directly.
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
+    } catch {
+      return; // Parent's ErrorBoundary / static fallback covers this.
+    }
+    // Fill-rate bound, so the pixel ratio cap matters far more here than
+    // anywhere else on the site.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, smallViewport() ? 1.25 : 1.75));
+    mount.appendChild(renderer.domElement);
+
+    const material = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      depthTest: false,
+      depthWrite: false,
+      uniforms: {
+        uTime: { value: 0 },
+        uResolution: { value: new THREE.Vector2(1, 1) },
+        uBase: { value: new THREE.Color(c.base) },
+        uSheen: { value: new THREE.Color(c.sheen) },
+        uAccent: { value: new THREE.Color(c.accent) },
+        uExposure: { value: darkRef.current ? 1.0 : 1.12 },
+        uPointer: { value: new THREE.Vector2(0, 0) },
+      },
+    });
+    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+    quad.frustumCulled = false;
+    scene.add(quad);
+
+    apiRef.current = {
+      setColors: (next) => {
+        material.uniforms.uBase?.value.set(next.base);
+        material.uniforms.uSheen?.value.set(next.sheen);
+        material.uniforms.uAccent?.value.set(next.accent);
+      },
+      setExposure: (dark) => {
+        if (material.uniforms.uExposure) material.uniforms.uExposure.value = dark ? 1.0 : 1.12;
+      },
+    };
+
+    // Pointer only nudges a target; the loop eases toward it, so the light
+    // glides rather than snapping to a fast cursor.
+    const target = new THREE.Vector2(0, 0);
+    const onPointerMove = (e: PointerEvent) => {
+      target.set((e.clientX / window.innerWidth) * 2 - 1, -((e.clientY / window.innerHeight) * 2 - 1));
+    };
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    const resize = () => {
+      const { clientWidth: w, clientHeight: h } = mount;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      material.uniforms.uResolution?.value.set(w, h);
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(mount);
+
+    let raf = 0;
+    let drawnOnce = false;
+    const clock = new THREE.Clock();
+    const eased = new THREE.Vector2(0, 0);
+
+    const tick = () => {
+      raf = requestAnimationFrame(tick);
+      // Always paint one frame, even if mounted paused — otherwise the canvas
+      // stays blank and is indistinguishable from a broken scene.
+      if (pausedRef.current && drawnOnce) return;
+      drawnOnce = true;
+
+      if (material.uniforms.uTime) material.uniforms.uTime.value = clock.getElapsedTime();
+      eased.lerp(target, 0.04);
+      material.uniforms.uPointer?.value.copy(eased);
+      renderer.render(scene, camera);
+    };
+    tick();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener('pointermove', onPointerMove);
+      apiRef.current = null;
+      quad.geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+      if (renderer.domElement.parentNode === mount) {
+        mount.removeChild(renderer.domElement);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    apiRef.current?.setColors(colors);
+  }, [colors]);
+
+  useEffect(() => {
+    apiRef.current?.setExposure(isDark);
+  }, [isDark]);
+
+  return <div ref={mountRef} className="size-full" aria-hidden />;
+}

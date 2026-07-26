@@ -140,10 +140,65 @@ export default async function CaseStudyPage({
 
         <div className="mt-phi-3 grid gap-phi-2 lg:grid-cols-[1.618fr_1fr] lg:gap-phi-3">
           <div className="space-y-phi-2">
-            <Prose title={t('problem')}>{pick(project.problem, locale)}</Prose>
-            <Prose title={t('solution')}>{pick(project.solution, locale)}</Prose>
+            {/*
+              THE DOCUMENTARY.
 
-            {project.highlights && (
+              When a project has chapters, they replace the problem/solution
+              pair entirely rather than sitting under it — running both means
+              saying the same thing twice, once badly. A case study that only
+              states a problem and a solution describes an outcome; chapters
+              show the reasoning, which is the thing people actually hire for.
+
+              Projects without chapters keep the original two-part form, since
+              a thin story told honestly beats a padded one.
+            */}
+            {project.chapters && project.chapters.length > 0 ? (
+              <ol className="space-y-phi-3">
+                {project.chapters.map((chapter, i) => (
+                  <li key={i}>
+                    <Reveal>
+                      <p className="label mb-4 text-text-faint">
+                        <span className="force-ltr">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        {' / '}
+                        {String(project.chapters?.length ?? 0).padStart(2, '0')}
+                      </p>
+                      <h2 className="serif-2 text-text">{pick(chapter.title, locale)}</h2>
+                      <div className="measure mt-phi space-y-4">
+                        {chapter.body.map((paragraph, pIdx) => (
+                          <p key={pIdx} className="text-lg text-text-muted">
+                            {pick(paragraph, locale)}
+                          </p>
+                        ))}
+                      </div>
+
+                      {chapter.facts && chapter.facts.length > 0 && (
+                        <dl className="mt-phi flex flex-wrap gap-x-phi-2 gap-y-4 border-t border-border pt-5">
+                          {chapter.facts.map((fact) => (
+                            <div key={fact.label.en} className="flex flex-col-reverse">
+                              <dt className="mt-1 text-xs text-text-muted">
+                                {pick(fact.label, locale)}
+                              </dt>
+                              <dd className="tnum font-mono text-xl text-accent">
+                                {fact.value}
+                              </dd>
+                            </div>
+                          ))}
+                        </dl>
+                      )}
+                    </Reveal>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <>
+                <Prose title={t('problem')}>{pick(project.problem, locale)}</Prose>
+                <Prose title={t('solution')}>{pick(project.solution, locale)}</Prose>
+              </>
+            )}
+
+            {project.highlights && !project.chapters && (
               <Reveal>
                 <h2 className="display-3 text-text">{t('highlights')}</h2>
                 <ul className="measure mt-phi space-y-4">

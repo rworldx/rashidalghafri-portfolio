@@ -15,16 +15,16 @@ import type { Localized } from '@/types/common';
 export const colophon: { body: Localized[] } = {
   body: [
     {
-      en: 'A falaj is a channel that carries water out of the mountains and shares it out across a village — one source, a spine, and branches to everyone who needs it. Oman has been running them for about five thousand years, and a good one still moves water across kilometres on gravity alone. It is engineering built to distribute something fairly, and to keep doing it long after the person who cut the channel is gone.',
-      ar: 'الفلج قناة تنقل الماء من الجبال وتوزّعه على القرية — منبع واحد، وقناة رئيسية، وفروع تصل إلى كل من يحتاجه. تُشغّل عُمان هذه الأنظمة منذ نحو خمسة آلاف عام، وما يزال الفلج الجيد ينقل الماء لكيلومترات بالجاذبية وحدها. إنها هندسة صُممت لتوزيع شيء ما بعدالة، ولتستمر في ذلك بعد رحيل من شقّ القناة بزمن طويل.',
+      en: 'This site is staged as a gallery. One room at a time, one work at a time, and as little interface as I could get away with — the argument being that if the work is worth looking at, it should not have to compete with the thing it is displayed in.',
+      ar: 'هذا الموقع مُقام كصالة عرض. غرفة واحدة في كل مرة، وعمل واحد في كل مرة، وأقل قدر ممكن من الواجهة — والحجّة أن العمل إن كان يستحق النظر، فلا ينبغي أن ينافسه ما يُعرض فيه.',
     },
     {
-      en: 'That is the shape of this site. A single line runs down the left of every page; sections branch off it instead of stacking on top of each other, and the line fills as you read. The network in the header is not an ornament either — it is drawn from the same data as the rest of the site, and the light always travels outward, away from the source.',
-      ar: 'وهذا هو شكل هذا الموقع. خطٌّ واحد يمتدّ على يمين كل صفحة، وتتفرّع الأقسام عنه بدل أن تتراكم فوق بعضها، ويمتلئ الخط كلما تابعتَ القراءة. والشبكة في المقدّمة ليست زخرفة أيضًا؛ فهي مرسومة من البيانات نفسها التي يقوم عليها الموقع، والضوء فيها يسير دائمًا إلى الخارج، بعيدًا عن المنبع.',
+      en: 'The line down the side is the one thing carried over from an earlier version of this site, and it came from the falaj — the gravity-fed channels that have shared water across Oman for about five thousand years. One source, a spine, branches to everyone who needs it. It is a good description of engineering and a better one of this page, so it stayed.',
+      ar: 'الخط الممتدّ على الجانب هو الشيء الوحيد الباقي من نسخة سابقة من هذا الموقع، وقد جاء من الفلج — تلك القنوات التي تنقل الماء بالجاذبية وتتقاسمه في عُمان منذ نحو خمسة آلاف عام. منبع واحد، وقناة رئيسية، وفروع تصل إلى كل محتاج. إنه وصف جيّد للهندسة، وأفضل لهذه الصفحة، لذلك بقي.',
     },
     {
-      en: 'It is the honest shape for the work, too. Every project here moves something to someone who could not reach it easily on their own — study partners, live consumption data, a branch’s activity. I did not set out to build the same thing four times; it is just what I keep finding worth building.',
-      ar: 'وهو الشكل الصادق للعمل كذلك. كل مشروع هنا ينقل شيئًا إلى من كان يصعب عليه الوصول إليه بمفرده — شركاء دراسة، أو بيانات استهلاك لحظية، أو أنشطة فرعٍ طلابي. لم أقصد أن أبني الشيء نفسه أربع مرات، لكنه ببساطة ما أجده جديرًا بالبناء في كل مرة.',
+      en: 'Everything else is deliberate and boring: one accent colour, verified contrast, no animation that a reader did not ask for by scrolling, and a full fallback for anyone whose machine or settings would rather not run the moving parts. Built with Next.js and Three.js, in English and Arabic.',
+      ar: 'وكل ما عدا ذلك متعمَّد وهادئ: لون واحد مميّز، وتباين مُتحقَّق منه، ولا حركة لم يطلبها القارئ بتمريره، وبديل كامل لمن لا يرغب جهازه أو إعداداته في تشغيل الأجزاء المتحرّكة. بُني بـ Next.js وThree.js، بالعربية والإنجليزية.',
     },
   ],
 };

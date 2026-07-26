@@ -12,6 +12,16 @@ export interface ProjectThumb {
   kind: 'screenshot' | 'logo';
 }
 
+/** One beat of a case-study narrative. */
+export interface ProjectChapter {
+  /** Short label: "The problem", "What I built", "What happened". */
+  title: Localized;
+  /** One or two paragraphs. Prose, not bullets. */
+  body: Localized[];
+  /** Optional hard numbers that belong to this beat specifically. */
+  facts?: { label: Localized; value: string }[];
+}
+
 export interface Project {
   /** URL slug, used for /projects/[slug]. */
   slug: string;
@@ -32,6 +42,16 @@ export interface Project {
   stats?: Stat[];
   /** Case-study key features (each a short localized line). */
   highlights?: Localized[];
+  /**
+   * The documentary. A case study that says only "problem" and "solution"
+   * describes an outcome; chapters show the thinking, which is what people
+   * actually hire for.
+   *
+   * Optional and unevenly filled ON PURPOSE — a project with two honest
+   * chapters is worth more than one padded out to seven. Never invent a
+   * chapter to complete the arc.
+   */
+  chapters?: ProjectChapter[];
   /**
    * Cover image path under /public. Optional: when a project has no real
    * screenshot yet, ProjectMedia renders the generated signature instead of

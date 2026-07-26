@@ -76,6 +76,81 @@ export const projects: Project[] = [
         ar: 'جرى التحقّق منها في تجربة مع ٤٤ طالبًا: ٨٦٪ أبدوا رضًا عاليًا و٩٥٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },
     ],
+    /**
+     * The documentary. Every claim here is traceable to the CV or the pilot —
+     * nothing about the process has been invented to round out the arc. Where
+     * a beat is missing (early sketches, the things that failed), it is simply
+     * absent rather than filled in.
+     */
+    chapters: [
+      {
+        title: { en: 'The problem', ar: 'المشكلة' },
+        body: [
+          {
+            en: 'Remote learning left students working alone. There was no reliable way to find someone studying the same subject at the same level, no shared space to actually work together once you had, and no help at the moment you got stuck — which is the only moment help matters.',
+            ar: 'ترك التعلّم عن بُعد الطلاب يعملون بمفردهم. لم تكن هناك طريقة موثوقة لإيجاد شخص يدرس المادة نفسها بالمستوى نفسه، ولا مساحة مشتركة للعمل معًا بعد إيجاده، ولا مساعدة في لحظة التعثّر — وهي اللحظة الوحيدة التي تنفع فيها المساعدة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Matching, not searching', ar: 'مطابقة لا بحث' },
+        body: [
+          {
+            en: 'A search box would have put the work back on the student. Instead the platform scores compatibility across four axes — subject, study style, availability and academic level — and returns a ranked list. Ranking matters more than filtering: a filter tells you who is eligible, a score tells you who is worth messaging first.',
+            ar: 'كان مربّع البحث سيعيد العبء إلى الطالب. بدلًا من ذلك تحسب المنصّة درجة التوافق عبر أربعة محاور — المادة، وأسلوب الدراسة، والتوافر، والمستوى الأكاديمي — وتعيد قائمة مرتّبة. الترتيب أهم من التصفية: التصفية تخبرك بمن يستوفي الشروط، والدرجة تخبرك بمن يستحق أن تراسله أولًا.',
+          },
+        ],
+        facts: [{ label: { en: 'Ranked results in', ar: 'نتائج مرتّبة خلال' }, value: '< 1s' }],
+      },
+      {
+        title: { en: 'A room, not a chat box', ar: 'غرفة لا صندوق محادثة' },
+        body: [
+          {
+            en: 'Matching two people accomplishes nothing if they then have nowhere to go. The real-time layer carries live chat, voice and video rooms with screen sharing, and scheduled sessions — with host, co-host, participant and viewer roles, because a study room with no roles becomes unusable the moment it has more than four people in it.',
+            ar: 'لا قيمة لمطابقة شخصين إن لم يكن لديهما مكان يذهبان إليه. تحمل الطبقة اللحظية محادثة مباشرة، وغرفًا صوتية ومرئية مع مشاركة الشاشة، وجلسات مجدولة — بأدوار المضيف والمساعد والمشارك والمشاهد، لأن غرفة الدراسة بلا أدوار تصبح غير صالحة للاستخدام فور تجاوزها أربعة أشخاص.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Realtime events', ar: 'أحداث لحظية' }, value: '100+' },
+          { label: { en: 'REST endpoints', ar: 'نقاط نهاية REST' }, value: '100+' },
+        ],
+      },
+      {
+        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة عند التعثّر' },
+        body: [
+          {
+            en: 'A Gemini-powered assistant reads the material a student is actually holding — documents and images, not just typed questions — answers by text or voice, and turns a syllabus into a study plan or a set of flashcards. It exists because the gap was never information; it was information at the right moment.',
+            ar: 'مساعد مدعوم بـ Gemini يقرأ المادة التي بين يدي الطالب فعلًا — مستندات وصور، لا أسئلة مكتوبة فحسب — ويجيب نصًّا أو صوتًا، ويحوّل المقرّر إلى خطة مراجعة أو مجموعة بطاقات تعليمية. وُجد لأن الفجوة لم تكن في المعلومة يومًا، بل في وصولها في اللحظة الصحيحة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Built to be trusted', ar: 'مبنيّ ليكون موثوقًا' },
+        body: [
+          {
+            en: 'Student accounts hold timetables, coursework and a face on a video call, so the security work was not optional: JWT auth with refresh-token rotation, role-based access control, two-factor authentication and email verification — plus 125 passing tests across 20 data models.',
+            ar: 'تحتوي حسابات الطلاب على جداولهم وأعمالهم ووجوههم في مكالمة مرئية، لذا لم يكن العمل الأمني اختياريًا: مصادقة JWT مع تدوير رموز التحديث، وتحكّم بالوصول حسب الأدوار، وتحقّق بخطوتين، وتأكيد بريد — إضافة إلى ١٢٥ اختبارًا ناجحًا عبر ٢٠ نموذج بيانات.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Passing tests', ar: 'اختبارات ناجحة' }, value: '125' },
+          { label: { en: 'Data models', ar: 'نماذج بيانات' }, value: '20' },
+        ],
+      },
+      {
+        title: { en: 'What happened', ar: 'ما الذي حدث' },
+        body: [
+          {
+            en: 'Forty-four students used it. 86% reported high satisfaction and 95% said the AI assistant improved how they study. The project was graded Distinction as a senior capstone and selected among the top 30 of 738 STEM projects nationally at the London International Youth Science Forum finals in Muscat.',
+            ar: 'استخدمها أربعة وأربعون طالبًا. أبدى ٨٦٪ رضًا عاليًا، وقال ٩٥٪ إن المساعد الذكي حسّن طريقة دراستهم. ونال المشروع تقدير امتياز كمشروع تخرّج، واختير ضمن أفضل ٣٠ من ٧٣٨ مشروعًا وطنيًا في نهائيات منتدى لندن الدولي لعلوم الشباب بمسقط.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Pilot students', ar: 'طلاب التجربة' }, value: '44' },
+          { label: { en: 'High satisfaction', ar: 'رضا عالٍ' }, value: '86%' },
+        ],
+      },
+    ],
     // The mark leads everywhere — grid, feature block and case study. The
     // landing-page capture read as an unrecognisable smudge at any small size.
     // Themed pair: the logo has a baked-in background, so one file cannot

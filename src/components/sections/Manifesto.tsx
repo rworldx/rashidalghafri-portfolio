@@ -7,9 +7,10 @@ import { Container } from '@/components/layout/Container';
 import { cn } from '@/lib/cn';
 
 /**
- * FLOW. SYSTEMS. CONNECTION.
+ * FLOW. SYSTEMS. CONNECTION. — the statement wall.
  *
- * The site's thesis, said once, at full volume. Three words at display scale
+ * The site's thesis, said once, at full volume, in the museum's own voice
+ * (the italic didone) rather than the structural grotesque. Three words at display scale
  * that light one at a time as the reader scrolls past — the reader's own
  * scrolling is the animation, so the motion is theirs rather than a loop
  * playing at them.
@@ -87,7 +88,7 @@ function Word({
         <div className="flex flex-wrap items-baseline gap-x-phi gap-y-2">
           <h2
             className={cn(
-              'display-1 text-text',
+              'serif-display text-text',
               // The full stop is part of the statement, not punctuation the
               // headline happens to end with.
               'after:text-accent after:content-["."]',

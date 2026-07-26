@@ -1,10 +1,9 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { Manifesto } from '@/components/sections/Manifesto';
-import { FalajJourney } from '@/components/sections/FalajJourney';
+import { Gallery } from '@/components/sections/Gallery';
 import { ThroughLine } from '@/components/sections/ThroughLine';
 import { StackMarquee } from '@/components/sections/StackMarquee';
-import { ProjectsGrid } from '@/components/sections/ProjectsGrid';
 import { AboutTeaser } from '@/components/sections/AboutTeaser';
 import { ContactCta } from '@/components/sections/ContactCta';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -20,22 +19,20 @@ export async function generateMetadata({
 }
 
 /**
- * Home — one cinematic scroll, staged.
+ * Home — THE MUSEUM. One room, then the collection.
  *
  * The order is an argument, not a menu:
  *
- *   Hero        who, at poster scale, with a face
- *   Manifesto   the thesis, three words, said once at full volume
- *   Journey     the pinned 3D channel — travel the system, meet the work
+ *   Hero        the entrance hall: liquid light, the name as an exhibition title
+ *   Manifesto   the statement wall — three words, lit one at a time by scroll
+ *   Gallery     the collection: one work per room, never a grid of tiles
  *   ThroughLine the receipts, before anyone has to take the work on trust
  *   Marquee     the stack, scanned rather than read
- *   Projects    the rest of the work
- *   About       the person behind it
+ *   About       the person who made it
  *   Contact     the one action
  *
- * Every section is a different layout family on purpose — poster, kinetic
- * type, pinned 3D, ledger, marquee, grid, prose, band. A page where eight
- * sections share two layouts is what makes a portfolio read as a template.
+ * Seven sections, seven different layout families. Two sections sharing a
+ * layout is what makes a portfolio read as a template.
  */
 export default async function HomePage({
   params,
@@ -50,11 +47,9 @@ export default async function HomePage({
       <JsonLd />
       <Hero />
       <Manifesto />
-      <FalajJourney />
+      <Gallery />
       <ThroughLine />
       <StackMarquee />
-      {/* The journey already featured the flagship; the grid shows the rest. */}
-      <ProjectsGrid excludeSlug="studynest" />
       <AboutTeaser />
       <ContactCta />
     </>

@@ -1,5 +1,6 @@
 import {
   Archivo,
+  Bodoni_Moda,
   Host_Grotesk,
   Geist_Mono,
   Nothing_You_Could_Do,
@@ -12,7 +13,19 @@ import localFont from 'next/font/local';
  * Each face exposes a CSS variable consumed by tailwind.config.ts.
  *
  * Roles:
- *  - display : Archivo, on its `wdth` axis. Headlines only. Set slightly
+ *  - serif   : Bodoni Moda, ITALIC. The museum voice — used for the gallery
+ *    headline, exhibit titles and the credential row, and nowhere else.
+ *
+ *    Serif is normally the wrong reflex ("creative brief = serif" is the most
+ *    over-fired instinct there is), so it needs a reason. Here it has one: the
+ *    site is staged as a gallery, and a high-contrast didone is the actual
+ *    typographic language of exhibition walls and catalogue plates. Bodoni was
+ *    chosen over Instrument Serif and Fraunces specifically because those two
+ *    are the default display serifs of every generated page on the web right
+ *    now; Bodoni's thin-to-thick contrast is sharper and reads as curated
+ *    rather than trendy.
+ *
+ *  - display : Archivo, on its `wdth` axis. Structural headlines. Set slightly
  *    NARROWED (wdth ~92) rather than at default width — a narrowed grotesque
  *    reads as engineered and lets a long name hold a single line at large
  *    sizes, which is what the Flow layout needs. Archivo was chosen over the
@@ -36,6 +49,13 @@ import localFont from 'next/font/local';
  *    self-hosted from src/fonts/thmanyah. Gives the Arabic side its own
  *    editorial voice instead of a neutral fallback.
  */
+
+export const fontSerif = Bodoni_Moda({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+  display: 'swap',
+});
 
 export const fontDisplay = Archivo({
   subsets: ['latin'],
@@ -116,6 +136,7 @@ export const fontDisplayAr = localFont({
 
 /** All font variables, joined for the <html> className. */
 export const fontVariables = [
+  fontSerif.variable,
   fontDisplay.variable,
   fontSans.variable,
   fontMono.variable,

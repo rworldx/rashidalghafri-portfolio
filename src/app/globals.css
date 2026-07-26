@@ -77,6 +77,22 @@
     --falaj-stone: oklch(0.795 0.009 232);
     --falaj-stone-deep: oklch(0.688 0.012 232);
 
+    /*
+     * ---- Liquid glass ----
+     * On a LIGHT background a white scrim is invisible, so the fill tints
+     * toward ink and the bevel is drawn in white for the top-light. Copying
+     * the usual rgba(255,255,255,0.01) recipe straight from a dark reference
+     * produces a pane you cannot see at all in light mode.
+     */
+    /* The backdrop shader's own palette — deep enough to carry white type. */
+    --backdrop-base: oklch(0.905 0.012 244);
+    --backdrop-sheen: oklch(0.985 0.006 244);
+
+    --glass-fill: oklch(0.28 0.02 245 / 0.045);
+    --glass-inset: oklch(1 0 0 / 0.7);
+    --glass-edge: oklch(1 0 0 / 0.85);
+    --glass-edge-mid: oklch(0.28 0.02 245 / 0.12);
+
     /* ---- Radius: ONE system. Interactive = pill, surfaces = 16/22px ---- */
     --radius-xs: 6px;
     --radius-sm: 10px;
@@ -125,6 +141,14 @@
     /* Lit stone still has to separate from a 0.158 background. */
     --falaj-stone: oklch(0.352 0.016 242);
     --falaj-stone-deep: oklch(0.246 0.014 242);
+
+    --backdrop-base: oklch(0.135 0.018 250);
+    --backdrop-sheen: oklch(0.365 0.055 248);
+
+    --glass-fill: oklch(1 0 0 / 0.045);
+    --glass-inset: oklch(1 0 0 / 0.14);
+    --glass-edge: oklch(1 0 0 / 0.5);
+    --glass-edge-mid: oklch(1 0 0 / 0.16);
 
     /*
      * Dark mode is a single flat colour, by request. The atmosphere layer is
@@ -335,6 +359,52 @@
     .reveal {
       transform: none;
       transition: opacity 0.2s ease;
+    }
+  }
+
+  /**
+   * Word-by-word blur-in. Pairs with motion/BlurText.tsx.
+   *
+   * Three steps, not two. A word that goes straight from blurred to sharp
+   * reads as a crossfade; passing through a half-lit, slightly-overshot
+   * middle frame is what makes it feel like it comes into focus.
+   */
+  @keyframes blur-word {
+    0% {
+      filter: blur(11px);
+      opacity: 0;
+      transform: translate3d(0, 46px, 0);
+    }
+    50% {
+      filter: blur(5px);
+      opacity: 0.5;
+      transform: translate3d(0, -5px, 0);
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .blur-word {
+    opacity: 0;
+  }
+  .blur-word[data-shown] {
+    /*
+     * `both`, not `backwards`. `backwards` only holds the FIRST keyframe during
+     * the delay; once the run finishes the element snaps back to its base rule,
+     * which here is `opacity: 0` — so the whole headline animated in and then
+     * vanished. `both` holds the last frame too.
+     */
+    animation: blur-word 0.78s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blur-word {
+      opacity: 1;
+    }
+    .blur-word[data-shown] {
+      animation: none;
     }
   }
 
@@ -649,6 +719,120 @@
     }
   }
 
+  /**
+   * ── THE MUSEUM VOICE ─────────────────────────────────────────────────────
+   *
+   * Bodoni Moda, italic, for the gallery headline and exhibit titles. A didone
+   * at display size needs three things the grotesque scale does not:
+   *  - much TIGHTER tracking, because high-contrast serifs set loose at size;
+   *  - TIGHT leading, since the x-height is small relative to the cap;
+   *  - real descender clearance, because the italic descenders are long.
+   */
+  .serif-display {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.7rem, 1.1rem + 8.6vw, 7.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+    /* The italic's descenders clip against tight leading without this. */
+    padding-block-end: 0.08em;
+  }
+  .serif-2 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 1.1rem + 3.1vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    padding-block-end: 0.06em;
+  }
+  /* Arabic has no italic and no didone. It keeps the Thmanyah display voice. */
+  html[lang='ar'] .serif-display,
+  html[lang='ar'] .serif-2 {
+    font-family: var(--font-display-ar), var(--font-sans-ar), sans-serif;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  /**
+   * ── LIQUID GLASS ─────────────────────────────────────────────────────────
+   *
+   * Floating chrome over a moving backdrop. The edge is the whole trick: a
+   * masked 1.4px gradient ring, bright at top and bottom and absent through
+   * the middle, which reads as light catching a real bevel rather than as a
+   * flat stroke. Without it, backdrop-blur alone just looks like a grey box.
+   *
+   * Two weights only, and they mean different things:
+   *   .glass         chrome and containers (nav, chips, exhibit cards)
+   *   .glass-strong  the ONE primary action per view
+   * Never stack one on the other — a light translucent surface on top of
+   * another light translucent surface destroys legibility.
+   *
+   * Tinted per theme, not hardcoded white: on a light background a white
+   * scrim is invisible, so light mode tints toward ink instead.
+   */
+  .glass,
+  .glass-strong {
+    position: relative;
+    overflow: hidden;
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    border: none;
+    box-shadow: inset 0 1px 1px var(--glass-inset);
+  }
+  .glass {
+    --glass-blur: 14px;
+  }
+  .glass-strong {
+    --glass-blur: 42px;
+    box-shadow:
+      0 8px 28px -12px oklch(0 0 0 / 0.35),
+      inset 0 1px 1px var(--glass-inset);
+  }
+  .glass::before,
+  .glass-strong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      var(--glass-edge) 0%,
+      var(--glass-edge-mid) 22%,
+      transparent 42%,
+      transparent 58%,
+      var(--glass-edge-mid) 78%,
+      var(--glass-edge) 100%
+    );
+    /* Both spellings: WebKit needs the prefix, everyone else needs the
+       standard property, and shipping only one silently drops the bevel. */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /*
+   * Vibrancy: text over a translucent surface needs more weight and a touch
+   * more tracking than the same text on a solid one, or it dissolves into
+   * whatever is moving underneath.
+   */
+  .on-glass {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
   /* Surface: the one raised-panel treatment. Concentric radii, hairline edge. */
   .panel {
     background: color-mix(in oklab, var(--surface) 88%, transparent);
@@ -697,6 +881,38 @@
   }
   .panel {
     background: var(--surface);
+  }
+  /*
+   * Glass becomes a real surface with a real border. Keeping the blur and
+   * just raising opacity would still be a translucent panel, which is exactly
+   * what this preference asks us not to ship.
+   */
+  .glass,
+  .glass-strong {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+  .glass::before,
+  .glass-strong::before {
+    display: none;
+  }
+}
+
+/* High contrast: near-solid surfaces with a defined edge. */
+@media (prefers-contrast: more) {
+  .glass,
+  .glass-strong {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid var(--border-strong);
+  }
+  .glass::before,
+  .glass-strong::before {
+    display: none;
   }
 }
 

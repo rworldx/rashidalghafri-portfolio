@@ -44,7 +44,8 @@
   "hero": {
     "index": "01 / portfolio",
     "viewWork": "View work",
-    "downloadCv": "Download CV"
+    "downloadCv": "Download CV",
+    "creditsLabel": "Recognised by"
   },
   "throughLine": {
     "title": "Every system here moves something to someone who needed it.",
@@ -58,6 +59,12 @@
     "systemsBody": "I do not build screens, I build the thing behind them — 100+ endpoints, 100+ realtime events, 20 data models, and the tests that keep them honest.",
     "connection": "Connection",
     "connectionBody": "Every project here exists because somebody could not reach something on their own. That is the whole job, and it is the only brief I care about."
+  },
+  "gallery": {
+    "title": "Selected work, one room at a time",
+    "upright": "Selected work,",
+    "open": "Open the case study",
+    "viewAll": "See every project"
   },
   "journeySection": {
     "eyebrow": "The channel",
