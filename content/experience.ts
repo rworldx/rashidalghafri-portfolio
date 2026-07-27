@@ -14,8 +14,8 @@ export const experience: ExperienceItem[] = [
     period: 'Oct 2022 – Jul 2026',
     bullets: [
       {
-        en: 'CGPA 3.96 / 4.00 — First-Class Distinction · College Honour List, every semester since the Foundation year · consistent Dean’s List.',
-        ar: 'المعدل التراكمي 3.96 من 4.00 — امتياز مع مرتبة الشرف الأولى · قائمة شرف الكلية في كل فصل منذ السنة التأسيسية · وقائمة العميد باستمرار.',
+        en: 'CGPA 3.96 / 4.00 — First-Class Distinction · College Honour List, every semester since the Foundation year.',
+        ar: 'المعدل التراكمي 3.96 من 4.00 — امتياز مع مرتبة الشرف الأولى · قائمة شرف الكلية في كل فصل منذ السنة التأسيسية.',
       },
       {
         en: 'Senior Capstone: StudyNest — AI-powered collaborative study platform, graded Distinction.',
