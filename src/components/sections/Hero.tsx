@@ -51,6 +51,12 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const [canRender3D, setCanRender3D] = useState(false);
   const [paused, setPaused] = useState(false);
+  /**
+   * Set when the shader measures itself as too expensive for this device.
+   * Budget tablets could stutter the whole browser from the hero alone, so
+   * the effect stands down and the CSS wash takes over.
+   */
+  const [gpuTooSlow, setGpuTooSlow] = useState(false);
 
   const name = pick(site.displayName, locale);
   // The given name stays upright against the italic family name. Emphasis is
@@ -88,7 +94,7 @@ export function Hero() {
    * The wash holds still in that mode, so the room stays lit either way. What
    * changed is that the fallback is no longer a dead flat panel.
    */
-  const showBackdrop = mounted && !reduced && canRender3D && colors;
+  const showBackdrop = mounted && !reduced && canRender3D && colors && !gpuTooSlow;
 
   return (
     <section
@@ -107,6 +113,7 @@ export function Hero() {
               colors={colors}
               paused={paused}
               isDark={resolvedTheme === 'dark'}
+              onTooSlow={() => setGpuTooSlow(true)}
             />
           </ErrorBoundary>
         ) : (
