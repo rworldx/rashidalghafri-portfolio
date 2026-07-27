@@ -357,6 +357,43 @@
   }
 
   /**
+   * The backdrop's fallback light: a slow CSS gradient drift.
+   *
+   * WebGL is not a given. Windows laptops with older Intel drivers have it
+   * blocklisted in Chrome often enough to matter, and those visitors were
+   * getting a dead flat panel while everyone else got a moving one. Two large
+   * radial gradients drifting against each other need no GPU feature at all
+   * and read as the same kind of light.
+   *
+   * Under reduced motion the drift stops. The room stays lit either way.
+   */
+  @keyframes wash-drift {
+    0% {
+      transform: translate3d(-3%, -2%, 0) scale(1.08);
+    }
+    50% {
+      transform: translate3d(3%, 2%, 0) scale(1.14);
+    }
+    100% {
+      transform: translate3d(-3%, -2%, 0) scale(1.08);
+    }
+  }
+  .wash {
+    position: absolute;
+    inset: -12%;
+    background:
+      radial-gradient(60% 55% at 25% 30%, var(--backdrop-sheen), transparent 70%),
+      radial-gradient(55% 50% at 75% 65%, var(--accent-soft), transparent 72%),
+      radial-gradient(85% 75% at 50% 50%, var(--backdrop-base), transparent 82%);
+    animation: wash-drift 34s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wash {
+      animation: none;
+    }
+  }
+
+  /**
    * Scroll-reveal. Paired with components/motion/Reveal.tsx, which only
    * toggles `data-shown` from an IntersectionObserver — the animation itself
    * is pure CSS, so a revealed block is never waiting on a JS bundle to become
@@ -374,9 +411,21 @@
     transform: none;
   }
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    /*
+     * VISIBLE, unconditionally. Not a faster fade, no fade at all.
+     *
+     * The reveal starts at `opacity: 0` and waits for an IntersectionObserver
+     * to mark it shown. Any element the observer misses stays invisible
+     * forever, and under reduced motion that is a guaranteed content loss for
+     * no benefit: the animation being waited on has already been cancelled.
+     * So reduced motion skips the mechanism entirely rather than speeding it
+     * up. Measured seven permanently blank blocks before this.
+     */
+    .reveal,
+    .reveal[data-shown] {
+      opacity: 1;
       transform: none;
-      transition: opacity 0.2s ease;
+      transition: none;
     }
   }
 
@@ -729,11 +778,23 @@
     animation-play-state: paused;
   }
   @media (prefers-reduced-motion: reduce) {
+    /*
+     * Static, and WRAPPED rather than clipped.
+     *
+     * This used to stay a single overflowing row that happened to be
+     * scrollable, so with animations off it read as a broken strip with most
+     * of the stack hidden past the edge. Wrapping shows every item at once,
+     * which is what the band was for.
+     */
     .marquee {
       animation: none;
-      /* Static, and scrollable by hand so the content is still reachable. */
       width: 100%;
-      overflow-x: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* The duplicate track exists only to make the loop seamless. */
+    .marquee > [aria-hidden='true'] {
+      display: none;
     }
   }
 

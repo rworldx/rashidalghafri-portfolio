@@ -253,12 +253,25 @@ export function KeynoteSlides() {
                   width: cardWidth,
                   marginLeft: -cardWidth / 2,
                   marginTop: -cardWidth / 1.6 / 2,
-                  transform: reduced
-                    ? 'none'
-                    : `translate3d(${offset * step * dir}px, 0, ${-distance * 170}px) rotateY(${-offset * dir * 30}deg) scale(${1 - distance * 0.1})`,
-                  opacity: hidden ? 0 : reduced ? (isActive ? 1 : 0) : 1 - distance * 0.25,
+                  /*
+                   * REDUCED MOTION REMOVES MOVEMENT, NOT CONTENT.
+                   *
+                   * This used to collapse to `transform: none` with the
+                   * neighbours at `opacity: 0`, so anyone with animations
+                   * switched off saw a single card and no deck at all. That
+                   * is a large share of Windows laptops, where Accessibility
+                   * to Visual effects to Animation effects is commonly off,
+                   * and Android with "remove animations".
+                   *
+                   * The layout is now identical in both modes. What reduced
+                   * motion changes is that cards CUT to their new position
+                   * instead of gliding, which is the actual request: no
+                   * movement across the screen.
+                   */
+                  transform: `translate3d(${offset * step * dir}px, 0, ${-distance * 170}px) rotateY(${-offset * dir * 30}deg) scale(${1 - distance * 0.1})`,
+                  opacity: hidden ? 0 : 1 - distance * 0.25,
                   transition: reduced
-                    ? 'opacity 200ms linear'
+                    ? 'none'
                     : 'transform 620ms cubic-bezier(0.23, 1, 0.32, 1), opacity 620ms cubic-bezier(0.23, 1, 0.32, 1)',
                   zIndex: count - distance,
                   transformStyle: 'preserve-3d',

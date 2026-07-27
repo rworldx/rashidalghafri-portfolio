@@ -83,6 +83,11 @@ export function Hero() {
     return () => io.disconnect();
   }, []);
 
+  /*
+   * The shader is skipped under reduced motion, and the CSS wash takes over.
+   * The wash holds still in that mode, so the room stays lit either way. What
+   * changed is that the fallback is no longer a dead flat panel.
+   */
   const showBackdrop = mounted && !reduced && canRender3D && colors;
 
   return (
@@ -208,12 +213,20 @@ function readBackdropColors(): BackdropColors {
   };
 }
 
-/** No WebGL, or reduced motion: a still wash, so the room is still lit. */
+/**
+ * The fallback light, for anyone without WebGL.
+ *
+ * It DRIFTS. WebGL is blocklisted often enough on Windows laptops with older
+ * Intel drivers that a static wash meant a whole class of visitor never saw
+ * the room move at all. A pair of large CSS gradients drifting against each
+ * other costs nothing, needs no GPU feature, and reads as the same light.
+ *
+ * The drift stops under reduced motion (see `.wash` in globals.css).
+ */
 function StillWash() {
   return (
-    <div
-      aria-hidden
-      className="size-full bg-[radial-gradient(120%_90%_at_20%_10%,var(--accent-soft),transparent_60%),radial-gradient(100%_80%_at_85%_25%,var(--surface-2),transparent_65%)]"
-    />
+    <div aria-hidden className="relative size-full overflow-hidden">
+      <div className="wash" />
+    </div>
   );
 }
