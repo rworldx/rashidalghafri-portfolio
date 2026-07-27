@@ -195,15 +195,20 @@ export function Hero() {
         </dl>
       </Container>
 
-      {/* The credential row — a gallery's list of lenders, set in the same hand. */}
+      {/*
+        The credential row. Shown on EVERY screen.
+        It used to be `hidden sm:flex`, which dropped the five organisations
+        that recognised the work on exactly the devices most people arrive on.
+        Phones get it smaller and wrapped rather than not at all.
+      */}
       <Container
         className={cn(
-          'hero-in relative mt-phi-3 hidden items-baseline gap-x-phi-2 gap-y-3 sm:flex sm:flex-wrap',
+          'hero-in relative mt-phi-2 flex flex-wrap items-baseline gap-x-5 gap-y-2 sm:mt-phi-3 sm:gap-x-phi-2 sm:gap-y-3',
         )}
       >
-        <span className="label text-text-faint">{t('creditsLabel')}</span>
+        <span className="label w-full text-text-faint sm:w-auto">{t('creditsLabel')}</span>
         {['LIYSF', 'IEEE', 'Riyada', 'Omantel', 'Injaz'].map((n) => (
-          <span key={n} className="museum-2 text-xl text-text-muted sm:text-2xl">
+          <span key={n} className="museum-2 text-base text-text-muted sm:text-2xl">
             {n}
           </span>
         ))}

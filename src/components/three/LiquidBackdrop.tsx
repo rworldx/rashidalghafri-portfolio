@@ -207,6 +207,19 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
     const lowPower = isLowPower();
     let renderScale = lowPower ? 0.5 : Math.min(window.devicePixelRatio, 1.5);
     renderer.setPixelRatio(renderScale);
+    /*
+     * The canvas must be stretched by CSS, not by its pixel dimensions.
+     *
+     * `setSize(w, h, false)` deliberately leaves the element's CSS size alone
+     * so the drawing buffer can differ from the displayed size, which is the
+     * whole point of rendering at half scale. Without an explicit CSS size the
+     * canvas lays out at its ATTRIBUTE width instead: at ratio 1 that happened
+     * to match the container, but the moment the ratio dropped to 0.5 for
+     * performance the backdrop covered exactly half the screen.
+     */
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.display = 'block';
     mount.appendChild(renderer.domElement);
 
     const material = new THREE.ShaderMaterial({
@@ -265,8 +278,10 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
     /*
      * THROTTLED, and self-downgrading.
      *
-     * The animation drifts over tens of seconds, so 60fps buys nothing a
-     * viewer can perceive. Painting at 30 halves the GPU load outright.
+     * The frame cap is for WEAK HARDWARE ONLY. The animation drifts over tens
+     * of seconds, so 30fps is visually identical there and halves the GPU
+     * load. A machine that can afford 60 keeps 60: there is no reason to
+     * spend someone else's headroom.
      *
      * The measured part matters more. Device sniffing only guesses; this
      * watches actual frame cost and reacts. If frames stay expensive the
@@ -275,7 +290,7 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
      * honest outcome for hardware that cannot afford this effect. A hero that
      * stutters the whole browser is worse than a hero without a shader.
      */
-    const FRAME_MS = 1000 / 30;
+    const FRAME_MS = lowPower ? 1000 / 30 : 1000 / 60;
     let lastFrame = 0;
     let slowFrames = 0;
     let downgraded = false;
