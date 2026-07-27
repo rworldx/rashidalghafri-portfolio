@@ -15,7 +15,6 @@ import { interests } from '@content/about';
 import { personalStats } from '@content/personal';
 import { pick } from '@/lib/localized';
 import { Reveal } from '@/components/motion/Reveal';
-import { AnimatedCounter } from '@/components/motion/AnimatedCounter';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FlowBranch } from '@/components/flow/FlowBranch';
 
@@ -80,8 +79,18 @@ export function Interests() {
             <div key={s.label.en}>
               <dt className="sr-only">{pick(s.label, locale)}</dt>
               <dd>
+                {/*
+                  Rendered plainly, not counted up.
+
+                  The count-up froze at its starting value on phones, so these
+                  read "0" and "0+" there while desktop showed the real
+                  figures. A number that can display zero is worse than a
+                  number that does not move: it states something false. Same
+                  rule as the credential figures, which stopped animating for
+                  exactly this reason.
+                */}
                 <span className="tnum force-ltr block font-mono text-2xl text-text">
-                  <AnimatedCounter value={s.value} />
+                  {s.value}
                 </span>
                 <span className="mt-1 block text-sm text-text-muted">
                   {pick(s.label, locale)}

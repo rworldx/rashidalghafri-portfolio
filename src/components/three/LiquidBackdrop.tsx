@@ -147,23 +147,31 @@ function buildFragment(octaves: number, precision: 'highp' | 'mediump'): string 
 `;
 }
 
+/** Phones pay for every fragment; cap the ratio harder there. */
+function smallViewport(): boolean {
+  return typeof window !== 'undefined' && window.innerWidth < 640;
+}
+
 /**
- * A rough guess at how much GPU there is to spend.
+ * Only degrade on POSITIVE evidence of weak hardware.
  *
- * Deliberately conservative: a touch device with few cores is very likely a
- * budget tablet or phone, and the cost of guessing "low" on a capable machine
- * is a slightly softer gradient nobody will notice. The cost of guessing
- * "high" on a cheap iPad is a stuttering browser.
+ * This used to treat any coarse pointer as low power, which quietly demoted
+ * every phone and tablet including capable ones: a modern iPhone was getting
+ * three octaves at half resolution when it can comfortably afford five at
+ * full. Touch is not a proxy for slow.
  *
- * The measured downgrade in the render loop is the real safety net; this only
- * decides where to start.
+ * An unknown device is assumed capable. That is the safe default here because
+ * the render loop MEASURES its own frame cost and downgrades what actually
+ * turns out to be slow, which is the only reliable signal. Guessing is just
+ * the starting point.
  */
 function isLowPower(): boolean {
-  if (typeof window === 'undefined') return true;
-  const coarse = window.matchMedia?.('(pointer: coarse)').matches ?? false;
-  const cores = navigator.hardwareConcurrency ?? 4;
-  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
-  return coarse || cores <= 4 || memory <= 4;
+  if (typeof window === 'undefined') return false;
+  const cores = navigator.hardwareConcurrency;
+  if (typeof cores === 'number' && cores <= 4) return true;
+  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+  if (typeof memory === 'number' && memory <= 2) return true;
+  return false;
 }
 
 export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Props) {
@@ -205,7 +213,9 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
      * visible, and it quarters the work.
      */
     const lowPower = isLowPower();
-    let renderScale = lowPower ? 0.5 : Math.min(window.devicePixelRatio, 1.5);
+    let renderScale = lowPower
+      ? 0.5
+      : Math.min(window.devicePixelRatio, smallViewport() ? 1.25 : 1.75);
     renderer.setPixelRatio(renderScale);
     /*
      * The canvas must be stretched by CSS, not by its pixel dimensions.
