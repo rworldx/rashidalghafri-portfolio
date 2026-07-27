@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useLocale } from 'next-intl';
@@ -25,6 +25,7 @@ export function PortraitCard() {
   const reduced = useReducedMotion();
   const [imgOk, setImgOk] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
+  const holdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -32,24 +33,78 @@ export function PortraitCard() {
   const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [6.5, -6.5]), spring);
   const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-6.5, 6.5]), spring);
 
+  /**
+   * Runs for a FINGER as well as a mouse.
+   *
+   * This used to bail on anything that was not a mouse, so the tilt simply did
+   * not exist on a phone — pressing a corner did nothing at all. Touch has no
+   * hover, so the equivalent gesture is a press: the card leans toward wherever
+   * it was pressed and springs back on release.
+   *
+   * Nothing here calls `preventDefault`, so a drag that turns out to be a
+   * scroll still scrolls. The browser claims the gesture and fires
+   * `pointercancel`, which resets the tilt — see `release`.
+   */
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (reduced || e.pointerType !== 'mouse') return;
+    if (reduced) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);
   };
+  const clearHold = () => {
+    if (holdRef.current) clearTimeout(holdRef.current);
+    holdRef.current = null;
+  };
   const reset = () => {
+    clearHold();
     mx.set(0);
     my.set(0);
   };
+  /**
+   * A mouse keeps the tilt while the cursor is still over the card, so lifting
+   * a button means nothing to it. A finger has no such resting state: letting
+   * go IS the end of the gesture.
+   *
+   * But it cannot snap back immediately. A tap is a press and a release in the
+   * same instant, so resetting on release told the spring to return before it
+   * had travelled anywhere — the card was technically responding to touch and
+   * still looked completely dead. Holding the lean briefly is what makes a tap
+   * legible as a tap; the spring gets time to swing out and be seen.
+   */
+  const release = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'mouse') return;
+    clearHold();
+    holdRef.current = setTimeout(reset, 650);
+  };
+  /**
+   * `pointerleave` is not the mouse-only event it looks like.
+   *
+   * A touch pointer stops existing the moment the finger lifts, so the browser
+   * fires `pointerleave` immediately after `pointerup`. Resetting straight from
+   * here therefore cancelled the hold above within the same instant, and a tap
+   * still rendered as nothing — a press-and-hold worked while an ordinary tap
+   * did not. Only a real cursor leaving a real element resets on the spot.
+   */
+  const leave = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'mouse') reset();
+    else release(e);
+  };
+
+  // Nothing should be left running if the section scrolls away and unmounts.
+  useEffect(() => clearHold, []);
 
   return (
     <div
       className="relative [perspective:1200px]"
       ref={ref}
+      // `pointerdown` matters for touch: a tap on a corner may never produce a
+      // `pointermove`, and without this the press would go unnoticed.
+      onPointerDown={onMove}
       onPointerMove={onMove}
-      onPointerLeave={reset}
+      onPointerUp={release}
+      onPointerCancel={release}
+      onPointerLeave={leave}
     >
       {/* Ambient accent behind the card, giving it somewhere to sit. */}
       <div

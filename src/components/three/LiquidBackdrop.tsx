@@ -290,8 +290,13 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
      *
      * The frame cap is for WEAK HARDWARE ONLY. The animation drifts over tens
      * of seconds, so 30fps is visually identical there and halves the GPU
-     * load. A machine that can afford 60 keeps 60: there is no reason to
-     * spend someone else's headroom.
+     * load.
+     *
+     * Capable hardware is NOT capped — it runs at the display's own rate, as
+     * it always did. A 60fps ceiling would have quietly halved the frame rate
+     * on a 120Hz ProMotion screen. The drift speed comes from a clock rather
+     * than a frame count, so the motion looked the same either way, but it was
+     * still a change to devices that never needed one.
      *
      * The measured part matters more. Device sniffing only guesses; this
      * watches actual frame cost and reacts. If frames stay expensive the
@@ -300,7 +305,7 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
      * honest outcome for hardware that cannot afford this effect. A hero that
      * stutters the whole browser is worse than a hero without a shader.
      */
-    const FRAME_MS = lowPower ? 1000 / 30 : 1000 / 60;
+    const FRAME_MS = lowPower ? 1000 / 30 : 0;
     let lastFrame = 0;
     let slowFrames = 0;
     let downgraded = false;
