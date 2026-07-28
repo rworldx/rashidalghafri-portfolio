@@ -13,16 +13,16 @@ export const projects: Project[] = [
     year: 2026,
     role: 'Founder · Full-Stack Engineer',
     summary: {
-      en: 'An AI-powered collaborative study platform that tackles student isolation in remote learning through partner matching and a real-time workspace.',
-      ar: 'منصة دراسة تعاونية مدعومة بالذكاء الاصطناعي تعالج عزلة الطلاب في التعلّم عن بُعد عبر مطابقة شركاء الدراسة ومساحة عمل لحظية.',
+      en: 'An AI-powered collaborative study platform. Students find a study partner and work with them in a real-time space instead of studying alone.',
+      ar: 'منصة دراسة تعاونية مدعومة بالذكاء الاصطناعي. يجد الطالب فيها شريكًا للمذاكرة ومساحة عمل لحظية بدل الدراسة بمفرده.',
     },
     problem: {
-      en: 'Remote learning leaves students isolated: no easy way to find compatible study partners, no shared space to actually work together, and no contextual help when they get stuck.',
-      ar: 'يترك التعلّم عن بُعد الطلاب معزولين: لا توجد طريقة سهلة لإيجاد شركاء دراسة متوافقين، ولا مساحة مشتركة للعمل معًا فعليًا، ولا مساعدة سياقية عند التعثّر.',
+      en: 'Remote learning leaves students isolated. They have no easy way to find a compatible study partner, no shared space to work together, and no help at the moment they get stuck.',
+      ar: 'يترك التعلّم عن بُعد الطلاب معزولين. لا توجد طريقة سهلة لإيجاد شريك دراسة متوافق، ولا مساحة مشتركة للعمل معًا، ولا مساعدة في لحظة التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform: a weighted matching engine ranks compatible partners across the whole profile (subjects, academic level, study style, availability, country, institution, age, interests and experience) in under a second; a low-latency real-time layer powers chat, voice and video study rooms with screen sharing; and a Google Gemini-powered study assistant analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
-      ar: 'منصة متكاملة: محرّك مطابقة مرجّح يرتّب الشركاء المتوافقين عبر الملف الشخصي كاملًا (المواد، والمستوى الأكاديمي، وأسلوب الدراسة، والتوافر، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات) في أقل من ثانية؛ وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة؛ ومساعد دراسة مدعوم بـ Google Gemini يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط المراجعة والبطاقات التعليمية.',
+      en: 'An end-to-end platform. A weighted matching engine ranks compatible partners across the whole profile (subjects, academic level, study style, availability, country, institution, age, interests and experience) in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers by text or voice, and builds study plans and flashcards.',
+      ar: 'منصة متكاملة. محرّك مطابقة مرجّح يرتّب الشركاء المتوافقين عبر الملف الشخصي كاملًا (المواد، والمستوى الأكاديمي، وأسلوب الدراسة، والتوافر، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات) في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -52,15 +52,15 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        en: 'Weighted matching engine — scores partners on subjects, academic level, study style, availability, country, institution, age, interests and experience, and returns ranked recommendations in under a second. Subject overlap carries the most weight at 35%, then academic level at 20%.',
-        ar: 'محرّك مطابقة مرجّح — يقيس التوافق حسب المواد والمستوى الأكاديمي وأسلوب الدراسة والتوافر والبلد والجامعة والعمر والاهتمامات والخبرات، ويعيد توصيات مرتّبة في أقل من ثانية. وتطابق المواد هو الأثقل وزنًا بنسبة ٣٥٪، يليه المستوى الأكاديمي بـ ٢٠٪.',
+        en: 'Weighted matching engine. Scores partners on subjects, academic level, study style, availability, country, institution, age, interests and experience, then returns ranked recommendations in under a second. Subject overlap carries the most weight at 35%, then academic level at 20%.',
+        ar: 'محرّك مطابقة مرجّح. يقيس التوافق حسب المواد والمستوى الأكاديمي وأسلوب الدراسة والتوافر والبلد والجامعة والعمر والاهتمامات والخبرات، ثم يعيد توصيات مرتّبة في أقل من ثانية. وتطابق المواد هو الأثقل وزنًا بنسبة ٣٥٪، يليه المستوى الأكاديمي بـ ٢٠٪.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
         ar: 'طبقة تعاون لحظية (Socket.IO + WebRTC): محادثة مباشرة، وغرف دراسة صوتية ومرئية مع مشاركة الشاشة، وجدولة الجلسات.',
       },
       {
-        en: 'Multimodal study assistant (Google Gemini API) that analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
+        en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers by text or voice, and builds study plans and flashcards.',
         ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API) يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط مراجعة وبطاقات تعليمية.',
       },
       {
@@ -68,8 +68,8 @@ export const projects: Project[] = [
         ar: 'مؤمّن بمصادقة JWT وتدوير رموز التحديث والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك / مشاهد) والتحقّق بخطوتين وتأكيد البريد.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 125 passing tests — bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من ١٠٠ نقطة نهاية REST، وأكثر من ١٠٠ حدث لحظي، و٢٠ نموذج بيانات، و١٢٥ اختبارًا ناجحًا — ثنائية اللغة (إنجليزي/عربي)، خمسة سمات، تطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 125 passing tests. Bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من ١٠٠ نقطة نهاية REST، وأكثر من ١٠٠ حدث لحظي، و٢٠ نموذج بيانات، و١٢٥ اختبارًا ناجحًا. ثنائية اللغة (إنجليزي/عربي)، وخمسة سمات، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -91,7 +91,7 @@ export const projects: Project[] = [
             ar: 'بدأت الفكرة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا، وكنت أبحث عن طالب يدرس المقررات نفسها، وفي المستوى نفسه، ويشارك أسلوبًا مشابهًا في الدراسة. كانت تطبيقات التواصل موجودة بكثرة، لكنها لم تساعدني في الوصول إلى الشخص المناسب.',
           },
           {
-            en: 'Remote learning left students working alone. There was no reliable way to find someone studying the same subject at the same level, no shared space to actually work together once you had, and no help at the moment you got stuck — which is the only moment help matters.',
+            en: 'After the remote learning period, many students ended up studying alone. Nothing brought together the three things they needed: finding a suitable study partner, a space to work with them, and help the moment a problem came up while studying. Those are the moments a student needs support.',
             ar: 'بعد فترة التعلّم عن بُعد أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك وسيلة تجمع بين ثلاثة أمور أساسية: العثور على زميل مناسب للدراسة، وتوفير مساحة للعمل معه، والحصول على المساعدة فور مواجهة صعوبة أثناء المذاكرة. وهذه هي اللحظة التي يحتاج فيها الطالب إلى الدعم فعلًا.',
           },
         ],
@@ -100,12 +100,12 @@ export const projects: Project[] = [
         title: { en: 'Three days to a working version', ar: 'ثلاثة أيام حتى أول نسخة' },
         body: [
           {
-            en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose, so I could build the project calmly instead of under the pressure of a full semester.',
+            en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose, to build the project calmly instead of under the pressure of a full semester.',
             ar: 'بدأت العمل على StudyNest في يونيو 2025 أثناء الدورة الصيفية، قبل اختبارات منتصف الفصل بأسبوع. ورغم أن مشروع التخرج كان لا يزال بعيدًا، قررت البدء مبكرًا حتى أتمكن من تطويره بهدوء، بدلًا من إنجازه تحت ضغط الدراسة.',
           },
           {
-            en: 'I wrote down three ideas, picked one, and had a working prototype three days later. I have been improving the same build ever since.',
-            ar: 'كتبت ثلاث أفكار، ثم اخترت واحدة، وبعد ثلاثة أيام فقط أصبحت لدي نسخة أولية تعمل. ومنذ ذلك الوقت وأنا أواصل تطوير المشروع وتحسينه باستمرار.',
+            en: 'I wrote down three ideas, picked one, and had a working prototype three days later. I kept building on the same prototype for a full year, up to the final capstone evaluation. I presented the work there for the Information Technology Department, and entered the project into the London International Youth Science Forum.',
+            ar: 'كتبت ثلاث أفكار، ثم اخترت واحدة، وبعد ثلاثة أيام فقط أصبحت لدي نسخة أولية تعمل. وواصلت العمل على المشروع سنة كاملة حتى عرضته في التقييم النهائي لمشروع التخرج، حيث مثّلت قسم تقنية المعلومات، وشاركت به في منتدى لندن الدولي لعلوم الشباب.',
           },
         ],
         facts: [
@@ -122,7 +122,7 @@ export const projects: Project[] = [
           },
           {
             en: 'Neither one helps a student find people to study with, or work alongside them once found. StudyNest completes those platforms and adds the social, collaborative side they leave out.',
-            ar: 'لكنها لا تساعد الطالب في العثور على زملاء يدرسون معه أو التعاون معهم. وهنا يأتي دور StudyNest؛ فهو يكمل هذه المنصات ويضيف الجانب الاجتماعي والتعاوني الذي تفتقده.',
+            ar: 'لكنها لا تساعد الطالب في العثور على زملاء يدرسون معه أو التعاون معهم. وهنا يأتي دور StudyNest. فهو يكمل هذه المنصات ويضيف الجانب الاجتماعي والتعاوني الذي تفتقده.',
           },
         ],
       },
@@ -190,7 +190,7 @@ export const projects: Project[] = [
             ar: 'يتعامل النظام مع بيانات شخصية ودراسية مهمة، لذلك كان الاهتمام بالأمان جزءًا أساسيًا من المشروع.',
           },
           {
-            en: 'That covers JWT sign-in with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
+            en: 'The work covers JWT sign-in with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
             ar: 'يشمل ذلك تسجيل الدخول باستخدام JWT مع تدوير رموز التحديث، والتحكم في الصلاحيات حسب الأدوار، والمصادقة الثنائية، وتأكيد البريد الإلكتروني، بالإضافة إلى 125 اختبارًا ناجحًا تغطي 20 نموذجًا للبيانات.',
           },
           {
