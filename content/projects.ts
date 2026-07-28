@@ -21,8 +21,8 @@ export const projects: Project[] = [
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين: لا توجد طريقة سهلة لإيجاد شركاء دراسة متوافقين، ولا مساحة مشتركة للعمل معًا فعليًا، ولا مساعدة سياقية عند التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform: an algorithmic, multi-factor matching engine ranks compatible partners (subjects, study style, availability, academic level) in under a second; a low-latency real-time layer powers chat, voice and video study rooms with screen sharing; and a Google Gemini-powered study assistant analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
-      ar: 'منصة متكاملة: محرّك مطابقة خوارزمي متعدّد العوامل يرتّب الشركاء المتوافقين (المواد، أسلوب الدراسة، التوافر، المستوى الأكاديمي) في أقل من ثانية؛ وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة؛ ومساعد دراسة مدعوم بـ Google Gemini يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط المراجعة والبطاقات التعليمية.',
+      en: 'An end-to-end platform: a weighted matching engine ranks compatible partners across the whole profile (subjects, academic level, study style, availability, country, institution, age, interests and experience) in under a second; a low-latency real-time layer powers chat, voice and video study rooms with screen sharing; and a Google Gemini-powered study assistant analyses documents and images, answers by text or voice, and generates study plans and flashcards.',
+      ar: 'منصة متكاملة: محرّك مطابقة مرجّح يرتّب الشركاء المتوافقين عبر الملف الشخصي كاملًا (المواد، والمستوى الأكاديمي، وأسلوب الدراسة، والتوافر، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات) في أقل من ثانية؛ وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة؛ ومساعد دراسة مدعوم بـ Google Gemini يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط المراجعة والبطاقات التعليمية.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -52,8 +52,8 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        en: 'Algorithmic, multi-factor matching engine — pairs partners on subjects, study style, availability and academic level, returning ranked recommendations in under a second.',
-        ar: 'محرّك مطابقة خوارزمي متعدّد العوامل — يوائم الشركاء حسب المواد وأسلوب الدراسة والتوافر والمستوى الأكاديمي، ويعيد توصيات مرتّبة في أقل من ثانية.',
+        en: 'Weighted matching engine — scores partners on subjects, academic level, study style, availability, country, institution, age, interests and experience, and returns ranked recommendations in under a second. Subject overlap carries the most weight at 35%, then academic level at 20%.',
+        ar: 'محرّك مطابقة مرجّح — يقيس التوافق حسب المواد والمستوى الأكاديمي وأسلوب الدراسة والتوافر والبلد والجامعة والعمر والاهتمامات والخبرات، ويعيد توصيات مرتّبة في أقل من ثانية. وتطابق المواد هو الأثقل وزنًا بنسبة ٣٥٪، يليه المستوى الأكاديمي بـ ٢٠٪.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
@@ -88,69 +88,97 @@ export const projects: Project[] = [
         body: [
           {
             en: 'The idea began in my first weeks at university. I knew nobody. I wanted someone taking the same subjects, in the same year, who studied the way I did. Apps for messaging people were everywhere. None of them helped me find the right people.',
-            ar: 'بدأت القصة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا. كنت أريد زميلًا في المواد نفسها، وفي السنة نفسها، وبأسلوب دراسة قريب من أسلوبي. تطبيقات المراسلة كانت في كل مكان. لم يساعدني أيٌّ منها على إيجاد الأشخاص المناسبين.',
+            ar: 'بدأت الفكرة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا، وكنت أبحث عن طالب يدرس المقررات نفسها، وفي المستوى نفسه، ويشارك أسلوبًا مشابهًا في الدراسة. كانت تطبيقات التواصل موجودة بكثرة، لكنها لم تساعدني في الوصول إلى الشخص المناسب.',
           },
           {
             en: 'Remote learning left students working alone. There was no reliable way to find someone studying the same subject at the same level, no shared space to actually work together once you had, and no help at the moment you got stuck — which is the only moment help matters.',
-            ar: 'ترك التعلّم عن بُعد الطلاب يعملون بمفردهم. لم تكن هناك طريقة موثوقة لإيجاد شخص يدرس المادة نفسها بالمستوى نفسه، ولا مساحة مشتركة للعمل معًا بعد إيجاده، ولا مساعدة في لحظة التعثّر — وهي اللحظة الوحيدة التي تنفع فيها المساعدة.',
+            ar: 'بعد فترة التعلّم عن بُعد أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك وسيلة تجمع بين ثلاثة أمور أساسية: العثور على زميل مناسب للدراسة، وتوفير مساحة للعمل معه، والحصول على المساعدة فور مواجهة صعوبة أثناء المذاكرة. وهذه هي اللحظة التي يحتاج فيها الطالب إلى الدعم فعلًا.',
           },
         ],
       },
       {
-        title: { en: 'Three days to a working version', ar: 'ثلاثة أيام حتى نسخة تعمل' },
+        title: { en: 'Three days to a working version', ar: 'ثلاثة أيام حتى أول نسخة' },
         body: [
           {
-            en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose. Running the project alongside a full semester would have meant building the project badly. I wrote down three ideas, picked one, and had a working prototype three days later. I have been improving the same build ever since.',
-            ar: 'بدأت في يونيو 2025، أثناء دورة صيفية، قبل اختبارات منتصف الفصل بأسبوع. لم يكن موعد مشروع التخرّج قد حان، وأمامه أشهر. بدأت مبكرًا عن قصد. تأجيله ليزاحم فصلًا كاملًا من المواد كان يعني إنجازه على عجل. كتبت ثلاث أفكار، واخترت واحدة، وبعد ثلاثة أيام كانت لديّ نسخة تعمل. وما زلت أطوّر النسخة نفسها إلى اليوم.',
+            en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose, so I could build the project calmly instead of under the pressure of a full semester.',
+            ar: 'بدأت العمل على StudyNest في يونيو 2025 أثناء الدورة الصيفية، قبل اختبارات منتصف الفصل بأسبوع. ورغم أن مشروع التخرج كان لا يزال بعيدًا، قررت البدء مبكرًا حتى أتمكن من تطويره بهدوء، بدلًا من إنجازه تحت ضغط الدراسة.',
+          },
+          {
+            en: 'I wrote down three ideas, picked one, and had a working prototype three days later. I have been improving the same build ever since.',
+            ar: 'كتبت ثلاث أفكار، ثم اخترت واحدة، وبعد ثلاثة أيام فقط أصبحت لدي نسخة أولية تعمل. ومنذ ذلك الوقت وأنا أواصل تطوير المشروع وتحسينه باستمرار.',
           },
         ],
         facts: [
           { label: { en: 'First prototype', ar: 'أول نسخة عاملة' }, value: '3 days' },
-          { label: { en: 'Started', ar: 'البداية' }, value: 'Jun 2025' },
+          { label: { en: 'Started', ar: 'بداية المشروع' }, value: 'Jun 2025' },
         ],
       },
       {
         title: { en: 'Not another LMS', ar: 'ليست نظام إدارة تعلّم آخر' },
         body: [
           {
-            en: 'Moodle and Google Classroom were never the competition. They manage courses and deliver content well. Neither one helps a student find people to study with. StudyNest sits beside them and covers what they leave out.',
-            ar: 'لم تكن Moodle ولا Google Classroom منافسًا يومًا. فهما يديران المقرّرات ويوصلان المحتوى، ويجيدان ذلك. لكن أيًّا منهما لا يساعد الطالب على إيجاد من يذاكر معه. تقف StudyNest إلى جانبهما وتغطّي ما يتركانه.',
+            en: 'Moodle and Google Classroom were never the competition. They manage courses and organise teaching material, and they do the job well.',
+            ar: 'لم يكن هدفي منافسة Moodle أو Google Classroom، فهذه المنصات تؤدي دورها في إدارة المقررات وتنظيم المحتوى التعليمي.',
+          },
+          {
+            en: 'Neither one helps a student find people to study with, or work alongside them once found. StudyNest completes those platforms and adds the social, collaborative side they leave out.',
+            ar: 'لكنها لا تساعد الطالب في العثور على زملاء يدرسون معه أو التعاون معهم. وهنا يأتي دور StudyNest؛ فهو يكمل هذه المنصات ويضيف الجانب الاجتماعي والتعاوني الذي تفتقده.',
           },
         ],
       },
       {
-        title: { en: 'Matching, not searching', ar: 'مطابقة لا بحث' },
+        title: { en: 'Matching, not searching', ar: 'المطابقة بدلًا من البحث' },
         body: [
           {
-            en: 'A search box would have put the work back on the student. Instead the platform scores compatibility across four axes — subject, study style, availability and academic level — and returns a ranked list. Ranking matters more than filtering: a filter tells you who is eligible, a score tells you who is worth messaging first.',
-            ar: 'كان مربّع البحث سيعيد العبء إلى الطالب. بدلًا من ذلك تحسب المنصّة درجة التوافق عبر أربعة محاور — المادة، وأسلوب الدراسة، والتوافر، والمستوى الأكاديمي — وتعيد قائمة مرتّبة. الترتيب أهم من التصفية: التصفية تخبرك بمن يستوفي الشروط، والدرجة تخبرك بمن يستحق أن تراسله أولًا.',
+            en: 'I did not want to leave a student searching through hundreds of profiles.',
+            ar: 'لم أرد أن أضع على الطالب عبء البحث بين مئات المستخدمين.',
+          },
+          {
+            en: 'The engine scores compatibility across the profile: subjects, academic level, study style, free time, country, institution, age, interests and experience. It then returns a list ordered by best fit. The weights are not equal. Subject overlap carries 35%, academic level 20%, and study style and schedule 15% each.',
+            ar: 'لذلك يعتمد النظام على خوارزمية تقيس مدى التوافق بين الطلاب وفق عدة معايير: المواد الدراسية، والمستوى الأكاديمي، وأسلوب الدراسة، وأوقات التفرغ، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات. ثم يعرض قائمة مرتبة بحسب أفضل تطابق. والأوزان ليست متساوية، فتطابق المواد يأخذ ٣٥٪، والمستوى الأكاديمي ٢٠٪، وأسلوب الدراسة وأوقات التفرغ ١٥٪ لكل منهما.',
+          },
+          {
+            en: 'A search tells you who meets the conditions. The ranking tells you who is worth starting with.',
+            ar: 'فالبحث يخبرك بمن يطابق الشروط، أما الترتيب فيرشدك إلى الشخص الذي يستحق أن تبدأ معه أولًا.',
           },
         ],
-        facts: [{ label: { en: 'Ranked results in', ar: 'نتائج مرتّبة خلال' }, value: '< 1s' }],
+        facts: [{ label: { en: 'Ranked results in', ar: 'زمن إظهار النتائج' }, value: '< 1s' }],
       },
       {
-        title: { en: 'A room, not a chat box', ar: 'غرفة لا صندوق محادثة' },
+        title: { en: 'A room, not a chat box', ar: 'غرفة دراسة متكاملة، لا مجرد محادثة' },
         body: [
           {
-            en: 'Matching two people accomplishes nothing if they then have nowhere to go. The real-time layer carries live chat, voice and video rooms with screen sharing, and scheduled sessions — with host, co-host, participant and viewer roles, because a study room with no roles becomes unusable the moment it has more than four people in it.',
-            ar: 'لا قيمة لمطابقة شخصين إن لم يكن لديهما مكان يذهبان إليه. تحمل الطبقة اللحظية محادثة مباشرة، وغرفًا صوتية ومرئية مع مشاركة الشاشة، وجلسات مجدولة — بأدوار المضيف والمساعد والمشارك والمشاهد، لأن غرفة الدراسة بلا أدوار تصبح غير صالحة للاستخدام فور تجاوزها أربعة أشخاص.',
+            en: 'Finding a study partner is not enough on its own, so the platform gives students a space to study in directly.',
+            ar: 'العثور على شريك دراسة لا يكفي، لذلك وفرت المنصة مساحة يمكن للطلاب الدراسة فيها مباشرة.',
           },
           {
-            en: 'Most of the time went into the parts nobody sees. When a host closes their laptop, the room passes to the co-host who joined first, then to the earliest participant. The room ends only when everyone has left. Clients send a heartbeat every fifteen seconds. Anyone who drops gets thirty seconds to reconnect into the same state instead of rejoining as a stranger. You notice none of this when the room works.',
-            ar: 'أكثر الوقت ذهب إلى ما لا يراه أحد. حين يغلق المضيف حاسوبه، تنتقل الغرفة إلى المساعد الأسبق دخولًا، ثم إلى أوّل المشاركين. ولا تُغلق الغرفة إلا حين تخلو. يرسل كل مشارك نبضة كل خمس عشرة ثانية. ومن ينقطع أمامه ثلاثون ثانية ليعود إلى الحالة نفسها بدل أن يدخل كأنه غريب. لا تلاحظ شيئًا من هذا حين يعمل.',
+            en: 'Rooms carry live chat, voice and video calls, and screen sharing, alongside scheduled study sessions. They support host, co-host, participant and viewer roles, so a room stays orderly when a lot of people are in it.',
+            ar: 'تشمل الغرف محادثات فورية، ومكالمات صوتية ومرئية، ومشاركة الشاشة، بالإضافة إلى جلسات دراسية مجدولة. كما تدعم أدوارًا مختلفة مثل المضيف، والمضيف المساعد، والمشارك، والمشاهد، حتى تبقى الغرفة منظمة عند وجود عدد كبير من المستخدمين.',
+          },
+          {
+            en: 'Most of the work went into the details nobody notices. When the host leaves, control passes automatically to the co-host, then to the first participant who joined. Clients send a connection signal every 15 seconds, and anyone who drops gets 30 seconds to return to the same session without losing their state or starting again.',
+            ar: 'أما الجزء الأكبر من العمل فكان في التفاصيل التي لا يلاحظها المستخدم. فإذا غادر المضيف تنتقل إدارة الغرفة تلقائيًا إلى المضيف المساعد، ثم إلى أول مشارك انضم للجلسة. كما ترسل التطبيقات إشارة اتصال كل 15 ثانية، ويُمنح المستخدم الذي ينقطع اتصالُه 30 ثانية للعودة إلى الجلسة نفسها دون أن يفقد حالته أو يبدأ من جديد.',
           },
         ],
         facts: [
-          { label: { en: 'Realtime events', ar: 'أحداث لحظية' }, value: '100+' },
-          { label: { en: 'REST endpoints', ar: 'نقاط نهاية REST' }, value: '100+' },
+          { label: { en: 'Realtime events', ar: 'الأحداث الفورية' }, value: '100+' },
+          { label: { en: 'REST endpoints', ar: 'واجهات REST' }, value: '100+' },
         ],
       },
       {
-        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة عند التعثّر' },
+        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة وقت الحاجة' },
         body: [
           {
-            en: 'A Gemini-powered assistant reads the material a student is actually holding — documents and images, not just typed questions — answers by text or voice, and turns a syllabus into a study plan or a set of flashcards. It exists because the gap was never information; it was information at the right moment.',
-            ar: 'مساعد مدعوم بـ Gemini يقرأ المادة التي بين يدي الطالب فعلًا — مستندات وصور، لا أسئلة مكتوبة فحسب — ويجيب نصًّا أو صوتًا، ويحوّل المقرّر إلى خطة مراجعة أو مجموعة بطاقات تعليمية. وُجد لأن الفجوة لم تكن في المعلومة يومًا، بل في وصولها في اللحظة الصحيحة.',
+            en: 'StudyNest includes a Gemini-powered assistant. It answers typed questions, and it also reads the files and images a student uploads, explains what is in them, and replies by text or voice.',
+            ar: 'يتضمن StudyNest مساعدًا ذكيًا يعتمد على Gemini، لا يجيب عن الأسئلة النصية فقط، بل يستطيع قراءة الملفات والصور التي يرفعها الطالب، ثم يشرح محتواها ويجيب عنها كتابةً أو صوتًا.',
+          },
+          {
+            en: 'It also turns a course syllabus into an organised study plan, or into flashcards for revision.',
+            ar: 'كما يساعد في تحويل المقرر الدراسي إلى خطة مذاكرة منظمة أو بطاقات تعليمية للمراجعة.',
+          },
+          {
+            en: 'The aim was never to supply more information. The aim was to deliver the right information at the moment a student needs it.',
+            ar: 'الفكرة لم تكن توفير المزيد من المعلومات، بل إيصال المعلومة المناسبة في اللحظة التي يحتاجها الطالب.',
           },
         ],
       },
@@ -158,12 +186,16 @@ export const projects: Project[] = [
         title: { en: 'Built to be trusted', ar: 'مبنيّ ليكون موثوقًا' },
         body: [
           {
-            en: 'Student accounts hold timetables, coursework and a face on a video call, so the security work was not optional: JWT auth with refresh-token rotation, role-based access control, two-factor authentication and email verification — plus 125 passing tests across 20 data models.',
-            ar: 'تحتوي حسابات الطلاب على جداولهم وأعمالهم ووجوههم في مكالمة مرئية، لذا لم يكن العمل الأمني اختياريًا: مصادقة JWT مع تدوير رموز التحديث، وتحكّم بالوصول حسب الأدوار، وتحقّق بخطوتين، وتأكيد بريد — إضافة إلى ١٢٥ اختبارًا ناجحًا عبر ٢٠ نموذج بيانات.',
+            en: 'The system handles personal and academic data, so security was a core part of the project rather than an afterthought.',
+            ar: 'يتعامل النظام مع بيانات شخصية ودراسية مهمة، لذلك كان الاهتمام بالأمان جزءًا أساسيًا من المشروع.',
           },
           {
-            en: 'The details decide whether students trust the platform. An access token lives fifteen minutes. A refresh token lives seven days. A stolen token dies fast. I never hard-delete an account. I mark the record instead, and the uniqueness indexes skip marked records, so a student who leaves keeps the right to come back on the same email.',
-            ar: 'الثقة تُكسب أو تُفقد في التفاصيل. رمز الوصول يعيش خمس عشرة دقيقة. ورمز التحديث سبعة أيام. الرمز المسروق يموت سريعًا. ولا أحذف أي حساب حذفًا نهائيًا. أُعلّم السجل وأستثنيه من فهارس التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه.',
+            en: 'That covers JWT sign-in with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
+            ar: 'يشمل ذلك تسجيل الدخول باستخدام JWT مع تدوير رموز التحديث، والتحكم في الصلاحيات حسب الأدوار، والمصادقة الثنائية، وتأكيد البريد الإلكتروني، بالإضافة إلى 125 اختبارًا ناجحًا تغطي 20 نموذجًا للبيانات.',
+          },
+          {
+            en: 'An access token lives fifteen minutes and a refresh token seven days, so a stolen one dies fast. Accounts are never removed outright either. They are disabled logically, which lets a student come back later on the same email without losing their data.',
+            ar: 'ويعيش رمز الوصول خمس عشرة دقيقة، ورمز التحديث سبعة أيام، فلا يبقى الرمز المسروق صالحًا طويلًا. كما صُممت آلية إدارة الحسابات بحيث لا تُحذف الحسابات نهائيًا، وإنما تُعطَّل منطقيًا، مما يسمح للمستخدم بالعودة لاحقًا باستخدام البريد الإلكتروني نفسه دون فقدان بياناته.',
           },
         ],
         facts: [
@@ -172,16 +204,24 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'What happened', ar: 'ما الذي حدث' },
+        title: { en: 'What happened', ar: 'النتائج' },
         body: [
           {
-            en: 'Forty-four students used it. 86% reported high satisfaction and 95% said the AI assistant improved how they study. The project was graded Distinction as a senior capstone and selected among the top 30 of 738 STEM projects nationally at the London International Youth Science Forum finals in Muscat.',
-            ar: 'استخدمها أربعة وأربعون طالبًا. أبدى ٨٦٪ رضًا عاليًا، وقال ٩٥٪ إن المساعد الذكي حسّن طريقة دراستهم. ونال المشروع تقدير امتياز كمشروع تخرّج، واختير ضمن أفضل ٣٠ من ٧٣٨ مشروعًا وطنيًا في نهائيات منتدى لندن الدولي لعلوم الشباب بمسقط.',
+            en: 'Forty-four students used the platform during the pilot.',
+            ar: 'استُخدمت المنصة من قبل 44 طالبًا خلال المرحلة التجريبية.',
+          },
+          {
+            en: 'The surveys showed 86% were satisfied with the experience, while 95% said the AI assistant improved how they study.',
+            ar: 'وأظهرت الاستبيانات أن 86٪ من المستخدمين كانوا راضين عن تجربتهم، بينما ذكر 95٪ أن المساعد الذكي ساعدهم على تحسين طريقة المذاكرة.',
+          },
+          {
+            en: 'The project was graded Distinction as a senior capstone, and selected among the top 30 of 738 projects nationally at the London International Youth Science Forum finals held in Muscat.',
+            ar: 'كما حصل المشروع على تقدير امتياز كمشروع تخرج، واختير ضمن أفضل 30 مشروعًا من أصل 738 مشروعًا على مستوى السلطنة، في نهائيات منتدى لندن الدولي لعلوم الشباب التي أُقيمت في مسقط.',
           },
         ],
         facts: [
-          { label: { en: 'Pilot students', ar: 'طلاب التجربة' }, value: '44' },
-          { label: { en: 'High satisfaction', ar: 'رضا عالٍ' }, value: '86%' },
+          { label: { en: 'Pilot students', ar: 'طلاب المرحلة التجريبية' }, value: '44' },
+          { label: { en: 'High satisfaction', ar: 'نسبة الرضا' }, value: '86%' },
         ],
       },
     ],
