@@ -14,7 +14,7 @@ export const projects: Project[] = [
     role: 'Founder · Full-Stack Engineer',
     summary: {
       en: 'A full-stack study partner matching and collaboration platform. Students find compatible partners, share notes, join live study sessions, video-call each other, and get AI study assistance.',
-      ar: 'منصة متكاملة لمطابقة شركاء الدراسة والتعاون بينهم. يجد الطلاب فيها شركاء متوافقين، ويتبادلون الملاحظات، وينضمون إلى جلسات دراسية مباشرة، ويتواصلون بالفيديو، ويحصلون على مساعدة ذكية في المذاكرة.',
+      ar: 'منصة متكاملة لمطابقة شركاء الدراسة والتعاون بينهم. تساعد StudyNest الطلاب على العثور على شركاء دراسة متوافقين، وتوفر لهم مساحة للتعاون عبر تبادل الملاحظات، والانضمام إلى جلسات دراسية مباشرة، والتواصل بالصوت والصورة، والاستفادة من مساعد ذكي يدعم عملية المذاكرة.',
     },
     problem: {
       en: 'Remote learning leaves students isolated. They have no easy way to find a compatible study partner, no shared space to work together, and no help at the moment they get stuck.',
@@ -43,12 +43,12 @@ export const projects: Project[] = [
     ],
     stats: [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
-      { label: { en: 'Realtime events', ar: 'أحداث لحظية' }, value: '100+' },
-      { label: { en: 'Data models', ar: 'نماذج بيانات' }, value: '20' },
-      { label: { en: 'Passing tests', ar: 'اختبارات ناجحة' }, value: '125' },
+      { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
+      { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '125' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
-      { label: { en: 'Pilot satisfaction', ar: 'رضا التجربة' }, value: '86%' },
-      { label: { en: 'AI improved study', ar: 'حسّن الدراسة' }, value: '95%' },
+      { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
+      { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
     ],
     highlights: [
       {
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       },
       {
         en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers by text or voice, and builds study plans and flashcards.',
-        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API) يحلّل المستندات والصور، ويجيب نصًّا أو صوتًا، ويولّد خطط مراجعة وبطاقات تعليمية.',
+        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
       },
       {
         en: 'Secured with JWT auth, refresh-token rotation, role-based room controls (host / co-host / participant / viewer), 2FA and email verification.',
@@ -88,11 +88,11 @@ export const projects: Project[] = [
         body: [
           {
             en: 'The idea began in my first weeks at university. I knew nobody. I wanted someone taking the same subjects, in the same year, who studied the way I did. Apps for messaging people were everywhere. None of them helped me find the right people.',
-            ar: 'بدأت الفكرة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا، وكنت أبحث عن طالب يدرس المقررات نفسها، وفي المستوى نفسه، ويشارك أسلوبًا مشابهًا في الدراسة. كانت تطبيقات التواصل موجودة بكثرة، لكنها لم تساعدني في الوصول إلى الشخص المناسب.',
+            ar: 'بدأت الفكرة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا، وكنت أبحث عن طالب يدرس المقررات نفسها، وفي المستوى نفسه، ويتبع أسلوبًا قريبًا من أسلوبي في الدراسة. كانت تطبيقات التواصل منتشرة، لكنها لم تساعدني في العثور على الشخص المناسب.',
           },
           {
             en: 'After the remote learning period, many students ended up studying alone. Nothing brought together the three things they needed: finding a suitable study partner, a space to work with them, and help the moment a problem came up while studying. Those are the moments a student needs support.',
-            ar: 'بعد فترة التعلّم عن بُعد أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك وسيلة تجمع بين ثلاثة أمور أساسية: العثور على زميل مناسب للدراسة، وتوفير مساحة للعمل معه، والحصول على المساعدة فور مواجهة صعوبة أثناء المذاكرة. وهذه هي اللحظة التي يحتاج فيها الطالب إلى الدعم فعلًا.',
+            ar: 'ومع انتشار التعلّم عن بُعد، أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك منصة تجمع بين العثور على شريك دراسة مناسب، وتوفير مساحة للتعاون، وتقديم المساعدة عند مواجهة صعوبة أثناء المذاكرة. وهي اللحظة التي يكون فيها الدعم أكثر قيمة.',
           },
         ],
       },
@@ -101,11 +101,11 @@ export const projects: Project[] = [
         body: [
           {
             en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose, to build the project calmly instead of under the pressure of a full semester.',
-            ar: 'بدأت العمل على StudyNest في يونيو 2025 أثناء الدورة الصيفية، قبل اختبارات منتصف الفصل بأسبوع. ورغم أن مشروع التخرج كان لا يزال بعيدًا، قررت البدء مبكرًا حتى أتمكن من تطويره بهدوء، بدلًا من إنجازه تحت ضغط الدراسة.',
+            ar: 'بدأت العمل على StudyNest في يونيو 2025 خلال الدورة الصيفية، قبل اختبارات منتصف الفصل بأسبوع. ورغم أن موعد مشروع التخرج كان لا يزال بعيدًا، قررت البدء مبكرًا حتى أتمكن من تطويره بهدوء، بدلًا من تنفيذه تحت ضغط الدراسة.',
           },
           {
             en: 'I wrote down three ideas, picked one, and had a working prototype three days later. I kept building on the same prototype for a full year, up to the final capstone evaluation. I presented the work there for the Information Technology Department, and entered the project into the London International Youth Science Forum.',
-            ar: 'كتبت ثلاث أفكار، ثم اخترت واحدة، وبعد ثلاثة أيام فقط أصبحت لدي نسخة أولية تعمل. وواصلت العمل على المشروع سنة كاملة حتى عرضته في التقييم النهائي لمشروع التخرج، حيث مثّلت قسم تقنية المعلومات، وشاركت به في منتدى لندن الدولي لعلوم الشباب.',
+            ar: 'دوّنت ثلاث أفكار، ثم اخترت واحدة، وبعد ثلاثة أيام فقط أصبحت لدي نسخة أولية تعمل. ومنذ ذلك الحين واصلت تطوير المشروع لمدة عام كامل، حتى عرضته في التقييم النهائي لمشروع التخرج، ممثلًا قسم تقنية المعلومات، ثم شاركت به في منتدى لندن الدولي لعلوم الشباب.',
           },
         ],
         facts: [
@@ -114,15 +114,15 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'Not another LMS', ar: 'ليست نظام إدارة تعلّم آخر' },
+        title: { en: 'Not another LMS', ar: 'ليست منصة لإدارة التعلّم' },
         body: [
           {
             en: 'Moodle and Google Classroom were never the competition. They manage courses and organise teaching material, and they do the job well.',
-            ar: 'لم يكن هدفي منافسة Moodle أو Google Classroom، فهذه المنصات تؤدي دورها في إدارة المقررات وتنظيم المحتوى التعليمي.',
+            ar: 'لم يكن هدفي منافسة Moodle أو Google Classroom، فهذه المنصات تؤدي دورها بكفاءة في إدارة المقررات وتنظيم المحتوى التعليمي.',
           },
           {
             en: 'Neither one helps a student find people to study with, or work alongside them once found. StudyNest completes those platforms and adds the social, collaborative side they leave out.',
-            ar: 'لكنها لا تساعد الطالب في العثور على زملاء يدرسون معه أو التعاون معهم. وهنا يأتي دور StudyNest. فهو يكمل هذه المنصات ويضيف الجانب الاجتماعي والتعاوني الذي تفتقده.',
+            ar: 'لكنها لا تساعد الطالب على العثور على زملاء للدراسة أو بناء مجموعات تعاونية. وهنا يأتي دور StudyNest. فهو يكمل ما تقدمه تلك المنصات، ويضيف الجانب الاجتماعي والتعاوني الذي تفتقده.',
           },
         ],
       },
@@ -131,54 +131,54 @@ export const projects: Project[] = [
         body: [
           {
             en: 'I did not want to leave a student searching through hundreds of profiles.',
-            ar: 'لم أرد أن أضع على الطالب عبء البحث بين مئات المستخدمين.',
+            ar: 'لم أرد أن أحمّل الطالب عبء البحث بين مئات المستخدمين.',
           },
           {
-            en: 'The engine scores compatibility across the profile: subjects, academic level, study style, free time, country, institution, age, interests and experience. It then returns a list ordered by best fit. The weights are not equal. Subject overlap carries 35%, academic level 20%, and study style and schedule 15% each.',
-            ar: 'لذلك يعتمد النظام على خوارزمية تقيس مدى التوافق بين الطلاب وفق عدة معايير: المواد الدراسية، والمستوى الأكاديمي، وأسلوب الدراسة، وأوقات التفرغ، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات. ثم يعرض قائمة مرتبة بحسب أفضل تطابق. والأوزان ليست متساوية، فتطابق المواد يأخذ ٣٥٪، والمستوى الأكاديمي ٢٠٪، وأسلوب الدراسة وأوقات التفرغ ١٥٪ لكل منهما.',
+            en: 'The engine scores compatibility across the profile: subjects, academic level, study style, free time, university, country, age, interests and past experience. The list comes back ordered by best fit. The weights are not equal. Subjects carry 35% of the match score, academic level 20%, and study style and free time 15% each.',
+            ar: 'لذلك تعتمد المنصة على خوارزمية تقيس مدى التوافق بين الطلاب وفق مجموعة من المعايير، تشمل المقررات الدراسية، والمستوى الأكاديمي، وأسلوب الدراسة، وأوقات التفرغ، والجامعة، والدولة، والعمر، والاهتمامات، والخبرات السابقة.',
           },
           {
             en: 'A search tells you who meets the conditions. The ranking tells you who is worth starting with.',
-            ar: 'فالبحث يخبرك بمن يطابق الشروط، أما الترتيب فيرشدك إلى الشخص الذي يستحق أن تبدأ معه أولًا.',
+            ar: 'فالمرشحات تخبرك بمن يستوفي الشروط، أما نظام الترتيب فيقترح عليك الشخص الأكثر ملاءمة لتبدأ معه.',
           },
         ],
-        facts: [{ label: { en: 'Ranked results in', ar: 'زمن إظهار النتائج' }, value: '< 1s' }],
+        facts: [{ label: { en: 'Ranked results in', ar: 'زمن المطابقة' }, value: '< 1s' }],
       },
       {
         title: { en: 'A room, not a chat box', ar: 'غرفة دراسة متكاملة، لا مجرد محادثة' },
         body: [
           {
             en: 'Finding a study partner is not enough on its own, so the platform gives students a space to study in directly.',
-            ar: 'العثور على شريك دراسة لا يكفي، لذلك وفرت المنصة مساحة يمكن للطلاب الدراسة فيها مباشرة.',
+            ar: 'العثور على شريك دراسة لا يكفي، لذلك توفر المنصة مساحة متكاملة يمكن للطلاب الدراسة فيها معًا.',
           },
           {
-            en: 'Rooms carry live chat, voice and video calls, and screen sharing, alongside scheduled study sessions. They support host, co-host, participant and viewer roles, so a room stays orderly when a lot of people are in it.',
-            ar: 'تشمل الغرف محادثات فورية، ومكالمات صوتية ومرئية، ومشاركة الشاشة، بالإضافة إلى جلسات دراسية مجدولة. كما تدعم أدوارًا مختلفة مثل المضيف، والمضيف المساعد، والمشارك، والمشاهد، حتى تبقى الغرفة منظمة عند وجود عدد كبير من المستخدمين.',
+            en: 'Rooms carry live chat, voice and video calls, screen sharing, and scheduled study sessions. They support host, co-host, participant and viewer roles, which keeps a session orderly as the number of people grows.',
+            ar: 'تشمل الغرف محادثات فورية، ومكالمات صوتية ومرئية، ومشاركة الشاشة، وجلسات دراسية مجدولة. كما تدعم أدوارًا مختلفة، مثل المضيف، والمضيف المساعد، والمشارك، والمشاهد، للحفاظ على تنظيم الجلسات مع ازدياد عدد المشاركين.',
           },
           {
             en: 'Most of the work went into the details nobody notices. When the host leaves, control passes automatically to the co-host, then to the first participant who joined. Clients send a connection signal every 15 seconds, and anyone who drops gets 30 seconds to return to the same session without losing their state or starting again.',
-            ar: 'أما الجزء الأكبر من العمل فكان في التفاصيل التي لا يلاحظها المستخدم. فإذا غادر المضيف تنتقل إدارة الغرفة تلقائيًا إلى المضيف المساعد، ثم إلى أول مشارك انضم للجلسة. كما ترسل التطبيقات إشارة اتصال كل 15 ثانية، ويُمنح المستخدم الذي ينقطع اتصالُه 30 ثانية للعودة إلى الجلسة نفسها دون أن يفقد حالته أو يبدأ من جديد.',
+            ar: 'أما الجزء الأكبر من العمل فكان في التفاصيل التي لا يلاحظها المستخدم. فإذا غادر المضيف، تنتقل إدارة الجلسة تلقائيًا إلى المضيف المساعد، ثم إلى أول مشارك انضم إليها. وترسل التطبيقات نبضة اتصال كل 15 ثانية، ويُمنح المستخدم الذي ينقطع اتصالُه مهلة 30 ثانية للعودة إلى الجلسة بالحالة نفسها، دون الحاجة إلى البدء من جديد.',
           },
         ],
         facts: [
-          { label: { en: 'Realtime events', ar: 'الأحداث الفورية' }, value: '100+' },
-          { label: { en: 'REST endpoints', ar: 'واجهات REST' }, value: '100+' },
+          { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
+          { label: { en: 'REST endpoints', ar: 'نقاط نهاية REST' }, value: '100+' },
         ],
       },
       {
-        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة وقت الحاجة' },
+        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة عند الحاجة' },
         body: [
           {
-            en: 'StudyNest includes a Gemini-powered assistant. It answers typed questions, and it also reads the files and images a student uploads, explains what is in them, and replies by text or voice.',
-            ar: 'يتضمن StudyNest مساعدًا ذكيًا يعتمد على Gemini، لا يجيب عن الأسئلة النصية فقط، بل يستطيع قراءة الملفات والصور التي يرفعها الطالب، ثم يشرح محتواها ويجيب عنها كتابةً أو صوتًا.',
+            en: 'StudyNest includes a Gemini-powered assistant. The assistant answers typed questions, reads the documents and images a student uploads, explains the contents, and replies by text or voice.',
+            ar: 'يتضمن StudyNest مساعدًا ذكيًا يعتمد على Gemini. يجيب عن الأسئلة النصية، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ثم يشرح محتواها ويجيب عنها كتابةً أو صوتًا.',
           },
           {
-            en: 'It also turns a course syllabus into an organised study plan, or into flashcards for revision.',
-            ar: 'كما يساعد في تحويل المقرر الدراسي إلى خطة مذاكرة منظمة أو بطاقات تعليمية للمراجعة.',
+            en: 'The assistant also turns a course syllabus into an organised study plan, or into flashcards for revision.',
+            ar: 'كما يمكنه تحويل المقرر الدراسي إلى خطة مذاكرة منظمة أو بطاقات تعليمية تساعد على المراجعة.',
           },
           {
-            en: 'The aim was never to supply more information. The aim was to deliver the right information at the moment a student needs it.',
-            ar: 'الفكرة لم تكن توفير المزيد من المعلومات، بل إيصال المعلومة المناسبة في اللحظة التي يحتاجها الطالب.',
+            en: 'The information was always available. What was missing was reaching the right information at the right time.',
+            ar: 'المعلومات كانت متوفرة دائمًا. الناقص كان الوصول إلى المعلومة المناسبة في الوقت المناسب.',
           },
         ],
       },
@@ -187,20 +187,20 @@ export const projects: Project[] = [
         body: [
           {
             en: 'The system handles personal and academic data, so security was a core part of the project rather than an afterthought.',
-            ar: 'يتعامل النظام مع بيانات شخصية ودراسية مهمة، لذلك كان الاهتمام بالأمان جزءًا أساسيًا من المشروع.',
+            ar: 'يتعامل النظام مع بيانات شخصية ودراسية حساسة، لذلك كان الاهتمام بالأمان جزءًا أساسيًا من عملية التطوير.',
           },
           {
-            en: 'The work covers JWT sign-in with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
-            ar: 'يشمل ذلك تسجيل الدخول باستخدام JWT مع تدوير رموز التحديث، والتحكم في الصلاحيات حسب الأدوار، والمصادقة الثنائية، وتأكيد البريد الإلكتروني، بالإضافة إلى 125 اختبارًا ناجحًا تغطي 20 نموذجًا للبيانات.',
+            en: 'The work covers JWT authentication with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
+            ar: 'يشمل ذلك المصادقة باستخدام JWT مع تدوير رموز التحديث، والتحكم في الصلاحيات وفق الأدوار، والمصادقة الثنائية، وتأكيد البريد الإلكتروني، بالإضافة إلى 125 اختبارًا ناجحًا تغطي 20 نموذجًا للبيانات.',
           },
           {
-            en: 'An access token lives fifteen minutes and a refresh token seven days, so a stolen one dies fast. Accounts are never removed outright either. They are disabled logically, which lets a student come back later on the same email without losing their data.',
-            ar: 'ويعيش رمز الوصول خمس عشرة دقيقة، ورمز التحديث سبعة أيام، فلا يبقى الرمز المسروق صالحًا طويلًا. كما صُممت آلية إدارة الحسابات بحيث لا تُحذف الحسابات نهائيًا، وإنما تُعطَّل منطقيًا، مما يسمح للمستخدم بالعودة لاحقًا باستخدام البريد الإلكتروني نفسه دون فقدان بياناته.',
+            en: 'An access token lives 15 minutes and a refresh token seven days, which limits the damage a stolen token does. The platform disables accounts logically instead of deleting them, so a student returns later on the same email without losing their data.',
+            ar: 'ويبلغ عمر رمز الوصول 15 دقيقة، بينما يبقى رمز التحديث صالحًا لمدة سبعة أيام، مما يحد من مخاطر إساءة استخدام الرموز المسروقة. كما تعتمد المنصة الحذف المنطقي للحسابات بدلًا من حذفها نهائيًا، بحيث يستطيع المستخدم العودة لاحقًا باستخدام البريد الإلكتروني نفسه دون فقدان بياناته.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'اختبارات ناجحة' }, value: '125' },
-          { label: { en: 'Data models', ar: 'نماذج بيانات' }, value: '20' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '125' },
+          { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
         ],
       },
       {
@@ -208,15 +208,15 @@ export const projects: Project[] = [
         body: [
           {
             en: 'Forty-four students used the platform during the pilot.',
-            ar: 'استُخدمت المنصة من قبل 44 طالبًا خلال المرحلة التجريبية.',
+            ar: 'شارك 44 طالبًا في المرحلة التجريبية للمنصة.',
           },
           {
             en: 'The surveys showed 86% were satisfied with the experience, while 95% said the AI assistant improved how they study.',
-            ar: 'وأظهرت الاستبيانات أن 86٪ من المستخدمين كانوا راضين عن تجربتهم، بينما ذكر 95٪ أن المساعد الذكي ساعدهم على تحسين طريقة المذاكرة.',
+            ar: 'وأظهرت نتائج الاستبيانات أن 86٪ من المشاركين كانوا راضين عن تجربتهم، فيما أفاد 95٪ منهم بأن المساعد الذكي ساعدهم على تحسين أسلوب المذاكرة.',
           },
           {
             en: 'The project was graded Distinction as a senior capstone, and selected among the top 30 of 738 projects nationally at the London International Youth Science Forum finals held in Muscat.',
-            ar: 'كما حصل المشروع على تقدير امتياز كمشروع تخرج، واختير ضمن أفضل 30 مشروعًا من أصل 738 مشروعًا على مستوى السلطنة، في نهائيات منتدى لندن الدولي لعلوم الشباب التي أُقيمت في مسقط.',
+            ar: 'وحصل المشروع على تقدير امتياز بوصفه مشروع التخرج، كما اختير ضمن أفضل 30 مشروعًا من أصل 738 مشروعًا على مستوى سلطنة عُمان، وتأهل للمشاركة في نهائيات منتدى لندن الدولي لعلوم الشباب التي أُقيمت في مسقط.',
           },
         ],
         facts: [
