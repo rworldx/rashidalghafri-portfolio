@@ -87,8 +87,34 @@ export const projects: Project[] = [
         title: { en: 'The problem', ar: 'المشكلة' },
         body: [
           {
+            en: 'The idea began in my first weeks at university. I knew nobody. I wanted someone taking the same subjects, in the same year, who studied the way I did. Apps for messaging people were everywhere. None of them helped me find the right people.',
+            ar: 'بدأت القصة في أسابيعي الأولى بالجامعة. لم أكن أعرف أحدًا. كنت أريد زميلًا في المواد نفسها، وفي السنة نفسها، وبأسلوب دراسة قريب من أسلوبي. تطبيقات المراسلة كانت في كل مكان. لم يساعدني أيٌّ منها على إيجاد الأشخاص المناسبين.',
+          },
+          {
             en: 'Remote learning left students working alone. There was no reliable way to find someone studying the same subject at the same level, no shared space to actually work together once you had, and no help at the moment you got stuck — which is the only moment help matters.',
             ar: 'ترك التعلّم عن بُعد الطلاب يعملون بمفردهم. لم تكن هناك طريقة موثوقة لإيجاد شخص يدرس المادة نفسها بالمستوى نفسه، ولا مساحة مشتركة للعمل معًا بعد إيجاده، ولا مساعدة في لحظة التعثّر — وهي اللحظة الوحيدة التي تنفع فيها المساعدة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Three days to a working version', ar: 'ثلاثة أيام حتى نسخة تعمل' },
+        body: [
+          {
+            en: 'I started in June 2025, during a summer course, a week before midterms. The capstone was not due to begin for months. I started early on purpose. Running the project alongside a full semester would have meant building the project badly. I wrote down three ideas, picked one, and had a working prototype three days later. I have been improving the same build ever since.',
+            ar: 'بدأت في يونيو 2025، أثناء دورة صيفية، قبل اختبارات منتصف الفصل بأسبوع. لم يكن موعد مشروع التخرّج قد حان، وأمامه أشهر. بدأت مبكرًا عن قصد. تأجيله ليزاحم فصلًا كاملًا من المواد كان يعني إنجازه على عجل. كتبت ثلاث أفكار، واخترت واحدة، وبعد ثلاثة أيام كانت لديّ نسخة تعمل. وما زلت أطوّر النسخة نفسها إلى اليوم.',
+          },
+        ],
+        facts: [
+          { label: { en: 'First prototype', ar: 'أول نسخة عاملة' }, value: '3 days' },
+          { label: { en: 'Started', ar: 'البداية' }, value: 'Jun 2025' },
+        ],
+      },
+      {
+        title: { en: 'Not another LMS', ar: 'ليست نظام إدارة تعلّم آخر' },
+        body: [
+          {
+            en: 'Moodle and Google Classroom were never the competition. They manage courses and deliver content well. Neither one helps a student find people to study with. StudyNest sits beside them and covers what they leave out.',
+            ar: 'لم تكن Moodle ولا Google Classroom منافسًا يومًا. فهما يديران المقرّرات ويوصلان المحتوى، ويجيدان ذلك. لكن أيًّا منهما لا يساعد الطالب على إيجاد من يذاكر معه. تقف StudyNest إلى جانبهما وتغطّي ما يتركانه.',
           },
         ],
       },
@@ -108,6 +134,10 @@ export const projects: Project[] = [
           {
             en: 'Matching two people accomplishes nothing if they then have nowhere to go. The real-time layer carries live chat, voice and video rooms with screen sharing, and scheduled sessions — with host, co-host, participant and viewer roles, because a study room with no roles becomes unusable the moment it has more than four people in it.',
             ar: 'لا قيمة لمطابقة شخصين إن لم يكن لديهما مكان يذهبان إليه. تحمل الطبقة اللحظية محادثة مباشرة، وغرفًا صوتية ومرئية مع مشاركة الشاشة، وجلسات مجدولة — بأدوار المضيف والمساعد والمشارك والمشاهد، لأن غرفة الدراسة بلا أدوار تصبح غير صالحة للاستخدام فور تجاوزها أربعة أشخاص.',
+          },
+          {
+            en: 'Most of the time went into the parts nobody sees. When a host closes their laptop, the room passes to the co-host who joined first, then to the earliest participant. The room ends only when everyone has left. Clients send a heartbeat every fifteen seconds. Anyone who drops gets thirty seconds to reconnect into the same state instead of rejoining as a stranger. You notice none of this when the room works.',
+            ar: 'أكثر الوقت ذهب إلى ما لا يراه أحد. حين يغلق المضيف حاسوبه، تنتقل الغرفة إلى المساعد الأسبق دخولًا، ثم إلى أوّل المشاركين. ولا تُغلق الغرفة إلا حين تخلو. يرسل كل مشارك نبضة كل خمس عشرة ثانية. ومن ينقطع أمامه ثلاثون ثانية ليعود إلى الحالة نفسها بدل أن يدخل كأنه غريب. لا تلاحظ شيئًا من هذا حين يعمل.',
           },
         ],
         facts: [
@@ -130,6 +160,10 @@ export const projects: Project[] = [
           {
             en: 'Student accounts hold timetables, coursework and a face on a video call, so the security work was not optional: JWT auth with refresh-token rotation, role-based access control, two-factor authentication and email verification — plus 125 passing tests across 20 data models.',
             ar: 'تحتوي حسابات الطلاب على جداولهم وأعمالهم ووجوههم في مكالمة مرئية، لذا لم يكن العمل الأمني اختياريًا: مصادقة JWT مع تدوير رموز التحديث، وتحكّم بالوصول حسب الأدوار، وتحقّق بخطوتين، وتأكيد بريد — إضافة إلى ١٢٥ اختبارًا ناجحًا عبر ٢٠ نموذج بيانات.',
+          },
+          {
+            en: 'The details decide whether students trust the platform. An access token lives fifteen minutes. A refresh token lives seven days. A stolen token dies fast. I never hard-delete an account. I mark the record instead, and the uniqueness indexes skip marked records, so a student who leaves keeps the right to come back on the same email.',
+            ar: 'الثقة تُكسب أو تُفقد في التفاصيل. رمز الوصول يعيش خمس عشرة دقيقة. ورمز التحديث سبعة أيام. الرمز المسروق يموت سريعًا. ولا أحذف أي حساب حذفًا نهائيًا. أُعلّم السجل وأستثنيه من فهارس التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه.',
           },
         ],
         facts: [
