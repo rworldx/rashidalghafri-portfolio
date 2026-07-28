@@ -13,8 +13,8 @@ export const projects: Project[] = [
     year: 2026,
     role: 'Founder · Full-Stack Engineer',
     summary: {
-      en: 'An AI-powered collaborative study platform. Students find a study partner and work with them in a real-time space instead of studying alone.',
-      ar: 'منصة دراسة تعاونية مدعومة بالذكاء الاصطناعي. يجد الطالب فيها شريكًا للمذاكرة ومساحة عمل لحظية بدل الدراسة بمفرده.',
+      en: 'A full-stack study partner matching and collaboration platform. Students find compatible partners, share notes, join live study sessions, video-call each other, and get AI study assistance.',
+      ar: 'منصة متكاملة لمطابقة شركاء الدراسة والتعاون بينهم. يجد الطلاب فيها شركاء متوافقين، ويتبادلون الملاحظات، وينضمون إلى جلسات دراسية مباشرة، ويتواصلون بالفيديو، ويحصلون على مساعدة ذكية في المذاكرة.',
     },
     problem: {
       en: 'Remote learning leaves students isolated. They have no easy way to find a compatible study partner, no shared space to work together, and no help at the moment they get stuck.',
