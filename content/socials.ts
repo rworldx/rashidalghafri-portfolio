@@ -17,6 +17,9 @@ export const socials: SocialLink[] = [
   {
     id: 'email',
     label: 'Email',
-    href: 'mailto:rr.abadi44@gmail.com',
+    // Written out rather than read from `site.email`, because site.ts imports
+    // THIS file — deriving it here makes the two modules circular and the
+    // build dies collecting /resume. Keep the two in step by hand.
+    href: 'mailto:rashidalghafri.dev@gmail.com',
   },
 ];

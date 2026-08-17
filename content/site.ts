@@ -34,7 +34,7 @@ export const site: SiteContent = {
     en: 'Oman',
     ar: 'عُمان',
   },
-  email: 'rr.abadi44@gmail.com',
+  email: 'rashidalghafri.dev@gmail.com',
   phone: '+968 9484 6461',
   cvPath: '/resume/Rashid_Al_Ghafri_CV.pdf',
   portrait: '/images/portrait.jpg',
