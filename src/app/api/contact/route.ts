@@ -79,13 +79,33 @@ export async function POST(req: Request) {
     });
 
     if (!res.ok) {
+      /*
+       * TEMPORARY DIAGNOSTIC — remove once the sender is settled.
+       *
+       * Resend explains every rejection in the response body, and this branch
+       * used to throw that body away, so a sandbox-sender restriction, a dead
+       * API key and a malformed payload all surfaced as the same "Send failed".
+       * The visitor still gets the generic message; the reason goes to the
+       * server log where only Rashid sees it.
+       */
+      const detail = await res.text().catch(() => '<body unreadable>');
+      console.error('[contact] Resend rejected the send', {
+        status: res.status,
+        statusText: res.statusText,
+        body: detail.slice(0, 1000),
+        sentFrom: 'onboarding@resend.dev',
+        sentTo: to,
+      });
       return json(
         { success: false, error: { code: 'PROVIDER', message: 'Send failed' } },
         502,
       );
     }
     return json({ success: true, message: 'Sent' }, 200);
-  } catch {
+  } catch (err) {
+    // Was a bare `catch {}`, which discarded DNS failures, timeouts and
+    // aborted requests without a trace.
+    console.error('[contact] Resend request threw', err);
     return json(
       { success: false, error: { code: 'PROVIDER', message: 'Send failed' } },
       502,
