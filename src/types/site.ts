@@ -17,6 +17,8 @@ export interface SiteContent {
   status: Localized;
   location: Localized;
   email: string;
+  /** ISO date, YYYY-MM-DD. The age on the site is computed from this. */
+  birthDate: string;
   /** International format, e.g. "+968 9484 6461". */
   phone: string;
   /** Path to the downloadable CV under /public. */

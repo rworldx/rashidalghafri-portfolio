@@ -1,10 +1,15 @@
 import type { Interest } from '@/types/common';
 import type { Localized } from '@/types/common';
+import { site } from './site';
+import { ageFrom } from '@/lib/age';
+
+// Computed, never written. See ageFrom for why.
+const age = ageFrom(site.birthDate);
 
 /** Short About-section intro. */
 export const aboutIntro: Localized = {
-  en: `I am Rashid. I am 21, from Ibri in Oman, and I finished a Software Engineering degree with First-Class Distinction. My path here was not a straight line. Nothing about me is more honest than that.`,
-  ar: `أنا راشد، من ولاية عبري في عُمان، وعمري 21 عامًا. تخرّجت مهندس برمجيات بامتياز مع مرتبة الشرف الأولى. طريقي إلى هنا لم يكن مستقيمًا، ولعل هذا أصدق ما يُقال عني.`,
+  en: `I am Rashid. I am ${age}, from Ibri in Oman, and I finished a Software Engineering degree with First-Class Distinction. My path here was not a straight line. Nothing about me is more honest than that.`,
+  ar: `أنا راشد، من ولاية عبري في عُمان، وعمري ${age} عامًا. تخرّجت مهندس برمجيات بامتياز مع مرتبة الشرف الأولى. طريقي إلى هنا لم يكن مستقيمًا، ولعل هذا أصدق ما يُقال عني.`,
 };
 
 /** Full origin story — rendered as flowing paragraphs on the About page. */

@@ -35,6 +35,7 @@ export const site: SiteContent = {
     ar: 'عُمان',
   },
   email: 'rashidalghafri.dev@gmail.com',
+  birthDate: '2004-09-03',
   phone: '+968 9484 6461',
   cvPath: '/resume/Rashid_Al_Ghafri_CV.pdf',
   portrait: '/images/portrait.jpg',
