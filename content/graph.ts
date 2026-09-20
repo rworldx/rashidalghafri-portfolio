@@ -28,6 +28,7 @@ export const graph: GraphData = {
 
     // ---- Projects, newest work included ----
     { id: 'studynest', label: 'StudyNest', kind: 'project', weight: 3 },
+    { id: 'the-thread', label: 'The Thread', kind: 'project', weight: 2 },
     { id: 'energrid', label: 'EnerGrid', kind: 'project', weight: 2 },
     { id: 'ieee-site', label: 'IEEE BUC site', kind: 'project', weight: 2 },
     { id: 'portfolio', label: 'Portfolio', labelAr: 'هذا الموقع', kind: 'project', weight: 1 },
@@ -40,6 +41,8 @@ export const graph: GraphData = {
     { id: 'realtime', label: 'Real-time', labelAr: 'الأنظمة اللحظية', kind: 'skill', weight: 2 },
     { id: 'security', label: 'Security', labelAr: 'الأمان', kind: 'skill', weight: 1 },
     { id: 'iot', label: 'IoT', labelAr: 'إنترنت الأشياء', kind: 'skill', weight: 1 },
+    // Two shipped bilingual sites make this a strand, not a footnote.
+    { id: 'i18n', label: 'Arabic & RTL', labelAr: 'العربية والاتجاه', kind: 'skill', weight: 2 },
 
     // ---- What it earned ----
     { id: 'liysf', label: 'LIYSF top 30', labelAr: 'LIYSF أفضل 30', kind: 'recognition', weight: 3 },
@@ -59,6 +62,7 @@ export const graph: GraphData = {
   edges: [
     // Rashid to the work.
     { source: 'rashid', target: 'studynest' },
+    { source: 'rashid', target: 'the-thread' },
     { source: 'rashid', target: 'energrid' },
     { source: 'rashid', target: 'ieee-site' },
     { source: 'rashid', target: 'portfolio' },
@@ -75,6 +79,15 @@ export const graph: GraphData = {
     { source: 'studynest', target: 'security' },
     { source: 'studynest', target: 'liysf' },
     { source: 'studynest', target: 'distinction' },
+
+    // The Thread: a static site whose whole difficulty is data modelling and
+    // frontend craft, shipped in two scripts.
+    { source: 'the-thread', target: 'frontend' },
+    { source: 'the-thread', target: 'i18n' },
+
+    // StudyNest and this site are bilingual too.
+    { source: 'studynest', target: 'i18n' },
+    { source: 'portfolio', target: 'i18n' },
 
     // EnerGrid took the Riyada prize.
     { source: 'energrid', target: 'riyada' },

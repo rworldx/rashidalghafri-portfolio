@@ -249,6 +249,176 @@ export const projects: Project[] = [
   },
   {
     /**
+     * A solo build, August 2026. Independent fan project with no affiliation
+     * to Marvel, Disney, Sony or Fox, and the copy says so wherever the
+     * project appears. Every number below is checked against the repository
+     * on 2026-09-20, not rounded.
+     */
+    slug: 'the-thread',
+    featured: false,
+    title: 'The Thread',
+    year: 2026,
+    role: 'Solo build · Design & Engineering',
+    summary: {
+      en: 'A Marvel watch-order site built as a dependency resolver. Name one title and the site computes the shortest honest watch path across eight universes and 216 films and series. 699 characters, 1,893 static pages, English and Arabic. Independent fan project, not affiliated with Marvel or Disney.',
+      ar: 'موقع لترتيب مشاهدة أعمال مارفل، مبني كمحلّل تبعيات. تختار عملًا واحدًا، فيحسب الموقع أقصر مسار مشاهدة يوصلك إليه عبر ثمانية أكوان و216 فيلمًا ومسلسلًا. 699 شخصية، و1,893 صفحة ثابتة، بالعربية والإنجليزية. مشروع مستقل من محبّي مارفل، ولا يرتبط بمارفل أو ديزني.',
+    },
+    problem: {
+      en: 'Every Marvel watch guide is one flat list serving two different people. The newcomer wants a starting point under 200 hours. The returning viewer wants to watch one thing tonight and needs to know what comes before. Both share one screen, and neither is served well. Film rights make the canon harder still: Fox made the X-Men, Sony makes Spider-Man, Netflix made the Defenders, and most guides pretend none of this exists.',
+      ar: 'كل أدلة مشاهدة مارفل قائمة واحدة مسطّحة تخدم شخصين مختلفين. المبتدئ يريد نقطة بداية لا تتجاوز 200 ساعة. والمشاهد العائد يريد أن يشاهد عملًا واحدًا الليلة ويحتاج أن يعرف ما الذي يسبقه. كلاهما يتشاركان شاشة واحدة، ولا أحد منهما يجد ما يريد. وتزيد حقوق الإنتاج الأمر تعقيدًا: فوكس أنتجت إكس-من، وسوني تنتج سبايدر-مان، ونتفليكس أنتجت المدافعين، ومعظم الأدلة تتجاهل هذا كله.',
+    },
+    solution: {
+      en: 'Two front doors. The newcomer gets a short essentials spine, priced in hours. The returning viewer types a title and gets the computed watch path. Underneath, 216 titles form a graph where every prerequisite is an edge, and every order on the site is derived from the graph. Nothing is typed by hand. Universes are modelled as rights-holders, so a cross-universe detour like No Way Home pulling in five Sony films is a real edge with an editor\'s note attached. The whole site is 1,893 prerendered pages making zero API calls in production.',
+      ar: 'بابان أماميان. المبتدئ يحصل على عمود فقري مختصر من الأعمال الأساسية، محسوبًا بالساعات. والمشاهد العائد يكتب اسم العمل فيحصل على مسار المشاهدة المحسوب. وتحت ذلك يشكّل 216 عملًا رسمًا بيانيًا كل شرط مسبق فيه حافة، وكل ترتيب في الموقع مشتق من هذا الرسم، ولا شيء مكتوب يدويًا. والأكوان ممثّلة بوصفها مالكي حقوق، فالانعطافة بين كونين، كما في No Way Home الذي يستدعي خمسة أفلام من سوني، حافة حقيقية معها ملاحظة من المحرّر. الموقع كله 1,893 صفحة مولّدة مسبقًا، ولا يجري أي استدعاء لواجهات برمجية في الإنتاج.',
+    },
+    liveUrl: 'https://the-thread-marvel.vercel.app',
+    repoUrl: 'https://github.com/rworldx/the-thread',
+    stack: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS v4',
+      'next-intl',
+      'zod',
+      'Vitest',
+      'Playwright',
+      'Vercel',
+    ],
+    stats: [
+      { label: { en: 'Titles', ar: 'الأعمال' }, value: '216' },
+      { label: { en: 'Characters', ar: 'الشخصيات' }, value: '699' },
+      { label: { en: 'Static pages', ar: 'الصفحات الثابتة' }, value: '1,893' },
+      { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '320' },
+      { label: { en: 'Runtime API calls', ar: 'استدعاءات API وقت التشغيل' }, value: '0' },
+      { label: { en: 'Commits', ar: 'الإيداعات' }, value: '240' },
+    ],
+    highlights: [
+      {
+        en: 'Path to any title. One route computes the watch path for both kinds of visitor. The MCU is treated as one continuous saga, so an MCU target seeds every MCU title behind the target. Everywhere else the path is the strict dependency closure.',
+        ar: 'مسار إلى أي عمل. مسار واحد يحسب ترتيب المشاهدة للزائرين معًا. يُعامل الكون السينمائي كملحمة واحدة متصلة، فأي عمل منه يستدعي كل ما سبقه فيه. وفي بقية الأكوان يكون المسار هو إغلاق التبعيات الصارم.',
+      },
+      {
+        en: 'Eight universes side by side, each with a release order, a curated story order and a whole-thread view.',
+        ar: 'ثمانية أكوان جنبًا إلى جنب، لكل منها ترتيب الإصدار، وترتيب قصصي منتقى، وعرض للخيط كاملًا.',
+      },
+      {
+        en: '699 characters. Appearances are computed from cast credits, never hand-listed, and the Strongest sort is derived from ten power tiers with no rank column anywhere in the data.',
+        ar: '699 شخصية. ظهور كل شخصية محسوب من قوائم طاقم التمثيل لا مكتوب يدويًا، وفرز الأقوى مشتق من عشر طبقات قوة دون عمود ترتيب في البيانات.',
+      },
+      {
+        en: 'A spoiler shield on every title. The safe one-liner shows by default, and the full context is fetched only on tap, never hidden in the DOM.',
+        ar: 'درع ضد الحرق على كل عمل. يظهر السطر الآمن افتراضيًا، ولا يُجلب السياق الكامل إلا عند النقر، ولا يُخفى في الصفحة أبدًا.',
+      },
+      {
+        en: 'English and Arabic with full RTL and self-hosted Thmanyah type. The Arabic renders on every page and is awaiting editorial review.',
+        ar: 'عربية وإنجليزية مع اتجاه كامل من اليمين إلى اليسار وخط ثمانية مستضاف محليًا. العربية تعمل في كل صفحة، وهي بانتظار المراجعة التحريرية.',
+      },
+      {
+        en: 'Zero billed image requests. Posters come from TMDB at a width written into the URL, so a full crawl costs nothing on Vercel.',
+        ar: 'صفر طلبات صور مدفوعة. الملصقات تأتي من TMDB بعرض مكتوب في الرابط، فالزحف الكامل على الموقع لا يكلّف شيئًا على Vercel.',
+      },
+    ],
+    chapters: [
+      {
+        title: { en: 'Two doors', ar: 'بابان' },
+        body: [
+          {
+            en: 'Watch-order lists already exist. Each one makes a newcomer and a returning viewer share a single page, and the page serves neither. The Thread gives each their own door. The newcomer gets a short essentials spine priced in hours. The returning viewer types a title and gets the path. The whole product follows from refusing to make those two people share a screen.',
+            ar: 'قوائم ترتيب المشاهدة موجودة أصلًا. كل واحدة منها تجعل المبتدئ والمشاهد العائد يتشاركان صفحة واحدة، ولا تخدم الصفحة أيًّا منهما. يمنح The Thread كلًّا منهما بابه الخاص. المبتدئ يحصل على عمود فقري مختصر من الأعمال الأساسية محسوبًا بالساعات. والعائد يكتب اسم العمل فيحصل على المسار. المنتج كله ينبع من رفض إجبار هذين الشخصين على تشارك شاشة واحدة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Order is derived, never written', ar: 'الترتيب مشتق، لا مكتوب' },
+        body: [
+          {
+            en: 'Every title is a node and every prerequisite is an edge. Release order, the essentials spine, each universe\'s story order and the path to any title all fall out of one graph. There is no hand-maintained list anywhere in the repository. Three kinds of ordering data stay separate because they mean different things: a hard dependency, a soft recommendation, and a curated reading order inside one universe, which is not a dependency and must never be stored as one.',
+            ar: 'كل عمل عقدة، وكل شرط مسبق حافة. ترتيب الإصدار، والعمود الفقري الأساسي، والترتيب القصصي لكل كون، والمسار إلى أي عمل، كلها تنبثق من رسم بياني واحد. لا توجد قائمة مكتوبة يدويًا في أي مكان من المستودع. وتبقى ثلاثة أنواع من بيانات الترتيب منفصلة لأن معانيها مختلفة: تبعية صارمة، وتوصية مرنة، وترتيب قراءة منتقى داخل كون واحد، وهذا الأخير ليس تبعية ويجب ألا يُخزَّن كأنه تبعية.',
+          },
+          {
+            en: 'The corpus is TypeScript validated by zod, and the build fails on a dozen cross-node rules. A dependency cycle is reported as a path, not a boolean. An essential title depending on a non-essential one fails. A cross-universe detour with no editor\'s note fails. A missing runtime fails loudly instead of shipping as a confident wrong number.',
+            ar: 'المحتوى مكتوب بـ TypeScript ويتحقق منه zod، ويفشل البناء عند خرق أيٍّ من اثنتي عشرة قاعدة تربط العقد ببعضها. الدورة في التبعيات تُعرض كمسار لا كقيمة منطقية. العمل الأساسي الذي يعتمد على عمل غير أساسي يُفشل البناء. والانعطافة بين كونين بلا ملاحظة من المحرّر تُفشله. والمدة الناقصة تُفشله بصوت عالٍ بدل أن تُنشر رقمًا خاطئًا بثقة.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Titles in the graph', ar: 'أعمال في الرسم' }, value: '216' },
+          { label: { en: 'Universes', ar: 'الأكوان' }, value: '8' },
+        ],
+      },
+      {
+        title: { en: 'Appearances are a join, not a list', ar: 'الظهور ناتج ربط، لا قائمة' },
+        body: [
+          {
+            en: 'A character is in a title when the cast credits for the title name them. Nothing is typed twice, because the second copy of a fact rots. The matcher works on aliases and handles how credits are written in practice, such as Logan / Wolverine or Ted (Man-Thing). Whole segments are compared, never substrings. An earlier substring match put Vision in every title crediting the word Television. Two escape hatches exist, one for real uncredited appearances and one for a credit using the character\'s word for somebody else, and the second throws at build time the moment the exception stops being needed.',
+            ar: 'تظهر الشخصية في عمل ما حين تذكرها قوائم طاقم التمثيل لذلك العمل. لا شيء يُكتب مرتين، لأن النسخة الثانية من أي حقيقة تتعفّن مع الوقت. يعمل المطابق على الأسماء البديلة ويتعامل مع الطريقة الفعلية لكتابة القوائم، مثل Logan / Wolverine أو Ted (Man-Thing). تُقارن المقاطع كاملة، لا أجزاءً منها. مطابقة جزئية سابقة وضعت Vision في كل عمل ورد فيه لفظ Television. يوجد مخرجان فقط، أحدهما للظهور الحقيقي غير المذكور في القوائم، والآخر لقائمة تستخدم اسم الشخصية لشخص آخر، والثاني يرمي خطأ عند البناء فور أن يصبح الاستثناء غير ضروري.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Characters', ar: 'الشخصيات' }, value: '699' },
+          { label: { en: 'Episodes', ar: 'الحلقات' }, value: '2,193' },
+        ],
+      },
+      {
+        title: { en: 'A ranking with no rank column', ar: 'ترتيب قوة بلا عمود ترتيب' },
+        body: [
+          {
+            en: 'All 699 characters sort by strength, and there is no powerRank field. The order is derived from species, mutant class, affiliation and each character\'s own power bullets, scored by a small vocabulary engine, with a hand-ordered head per tier where sources agree. Inserting a character never renumbers anyone. The lesson written into the code, more than once, is this: a bad rank is almost always a thin record or a word the scorer misreads, not a ranking bug. The tier documents are generated from the same definition, so they cannot disagree with the site.',
+            ar: 'تُفرز الشخصيات الـ699 كلها حسب القوة، ولا يوجد حقل اسمه powerRank. الترتيب مشتق من النوع، وفئة المتحوّل، والانتماء، ونقاط القوة الخاصة بكل شخصية، ويُحسب بمحرّك مفردات صغير، مع رأس مرتّب يدويًا لكل طبقة حيث تتفق المصادر. إضافة شخصية لا تعيد ترقيم أحد. والدرس المكتوب في الشيفرة أكثر من مرة هو: الترتيب السيئ يكون في الغالب سجلًّا ناقصًا أو كلمة يسيء المحرّك قراءتها، لا خطأً في الترتيب نفسه. ووثائق الطبقات تُولَّد من التعريف نفسه، فلا تستطيع أن تخالف الموقع.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Images at zero cost', ar: 'صور بلا تكلفة' },
+        body: [
+          {
+            en: '216 posters plus 699 portraits plus galleries used up Vercel\'s free image-optimisation quota. Past the quota the optimiser errors instead of degrading, so the deployed site lost most of its images while localhost looked perfect. The fix took Vercel out of the image path entirely. TMDB serves posters at a width written into the URL. One host of eighteen refuses hotlinking and goes through a free proxy. Everything else is used directly. A full crawl now makes zero billed requests.',
+            ar: 'استنفدت 216 ملصقًا و699 صورة شخصية والمعارض حصة Vercel المجانية لتحسين الصور. وبعد تجاوز الحصة يُخطئ المحسّن بدل أن يتراجع بهدوء، فخسر الموقع المنشور معظم صوره بينما بدا كل شيء سليمًا على الجهاز المحلي. أخرج الحل Vercel من مسار الصور كليًّا. يقدّم TMDB الملصقات بعرض مكتوب في الرابط. ومضيف واحد من ثمانية عشر يرفض الربط المباشر فيمرّ عبر وسيط مجاني. وكل ما عداه يُستخدم مباشرة. الزحف الكامل الآن لا يُنتج أي طلب مدفوع.',
+          },
+        ],
+        facts: [{ label: { en: 'Billed image requests', ar: 'طلبات صور مدفوعة' }, value: '0' }],
+      },
+      {
+        title: { en: 'Arabic done properly', ar: 'عربية صحيحة، لا مترجمة' },
+        body: [
+          {
+            en: 'Full RTL layout with a self-hosted Arabic display face and body face. Western numerals by decision, because those are what GCC streaming and banking interfaces use. One test guards a fact most codebases learn the hard way: JavaScript\'s \\b and \\w are ASCII-only and fail open on Arabic text, which silently broke a season-label regex. Approximation is written with the Arabic word, not a tilde, because the tilde is bidi-neutral and lands on the wrong side of a Latin numeral inside an RTL paragraph.',
+            ar: 'تخطيط كامل من اليمين إلى اليسار مع خط عربي للعناوين وآخر للنصوص، مستضافين محليًّا. الأرقام غربية عن قصد، لأنها ما تستخدمه واجهات البث والبنوك في الخليج. ويحرس اختبار واحد حقيقةً تتعلمها معظم المشاريع بالطريقة الصعبة: \\b و\\w في JavaScript يعملان على حروف ASCII فقط ويفشلان بصمت مع النص العربي، وهو ما كسر تعبيرًا نمطيًّا لتسمية المواسم دون أن ينتبه أحد. والتقريب يُكتب بالكلمة العربية لا بعلامة ~، لأن العلامة محايدة الاتجاه وتقع في الجهة الخطأ من الرقم اللاتيني داخل فقرة عربية.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Tests named after the bug they caught', ar: 'اختبارات باسم الخطأ الذي كشفته' },
+        body: [
+          {
+            en: 'The suite is documented by failure, not by coverage. A render test caught 130 pages rendering empty behind a green build. An end-to-end test caught the CSP blocking every script. A contrast test disproved the design brief\'s own claim about the brand red on dark: 4.04 to 1, not 4.5. A screenshot matrix of widths, themes and routes caught dark mode unrendered for four commits, and an Arabic runtime reading as 44 hours instead of 1h 44m.',
+            ar: 'المجموعة موثّقة بالإخفاقات التي كشفتها، لا بنسبة التغطية. اختبار عرض كشف 130 صفحة تُعرض فارغة خلف بناء ناجح. واختبار شامل كشف أن سياسة أمان المحتوى تحجب كل السكربتات. واختبار تباين دحض ادّعاء موجز التصميم نفسه عن الأحمر على الخلفية الداكنة: 4.04 إلى 1، لا 4.5. ومصفوفة لقطات شاشة عبر العروض والسمات والمسارات كشفت أن الوضع الداكن لم يُعرض طوال أربعة إيداعات، وأن مدة عربية قُرئت 44 ساعة بدل ساعة و44 دقيقة.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '320' },
+          { label: { en: 'Browser tests', ar: 'اختبارات المتصفح' }, value: '55' },
+        ],
+      },
+    ],
+    // Real product captures from the live site, 1800px, dark is the site's
+    // own default. Both themes ship because the homepage wall reads as a
+    // cinema on black and a contact sheet on white, and a cover should show
+    // the site the way most visitors meet it.
+    cover: '/images/projects/the-thread-light.jpg',
+    coverDark: '/images/projects/the-thread-dark.jpg',
+    coverKind: 'screenshot',
+    gallery: [
+      '/images/projects/the-thread-path.jpg',
+      '/images/projects/the-thread-characters.jpg',
+      '/images/projects/the-thread-ar.jpg',
+    ],
+    links: [
+      { label: 'Live site', href: 'https://the-thread-marvel.vercel.app', external: true },
+      { label: 'Source', href: 'https://github.com/rworldx/the-thread', external: true },
+    ],
+  },
+  {
+    /**
      * The site you are standing in.
      *
      * A portfolio listing itself reads as padding only when there is nothing
