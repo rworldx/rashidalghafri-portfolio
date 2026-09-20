@@ -249,7 +249,7 @@ export const projects: Project[] = [
   },
   {
     /**
-     * A solo build, August 2026. Independent fan project with no affiliation
+     * A solo build, 9 to 26 August 2026. Independent fan project with no affiliation
      * to Marvel, Disney, Sony or Fox, and the copy says so wherever the
      * project appears. Every number below is checked against the repository
      * on 2026-09-20, not rounded.
@@ -268,8 +268,8 @@ export const projects: Project[] = [
       ar: 'كل أدلة مشاهدة مارفل قائمة واحدة مسطّحة تخدم شخصين مختلفين. المبتدئ يريد نقطة بداية لا تتجاوز 200 ساعة. والمشاهد العائد يريد أن يشاهد عملًا واحدًا الليلة ويحتاج أن يعرف ما الذي يسبقه. كلاهما يتشاركان شاشة واحدة، ولا أحد منهما يجد ما يريد. وتزيد حقوق الإنتاج الأمر تعقيدًا: فوكس أنتجت إكس-من، وسوني تنتج سبايدر-مان، ونتفليكس أنتجت المدافعين، ومعظم الأدلة تتجاهل هذا كله.',
     },
     solution: {
-      en: 'Two front doors. The newcomer gets a short essentials spine, priced in hours. The returning viewer types a title and gets the computed watch path. Underneath, 216 titles form a graph where every prerequisite is an edge, and every order on the site is derived from the graph. Nothing is typed by hand. Universes are modelled as rights-holders, so a cross-universe detour like No Way Home pulling in five Sony films is a real edge with an editor\'s note attached. The whole site is 1,893 prerendered pages making zero API calls in production.',
-      ar: 'بابان أماميان. المبتدئ يحصل على عمود فقري مختصر من الأعمال الأساسية، محسوبًا بالساعات. والمشاهد العائد يكتب اسم العمل فيحصل على مسار المشاهدة المحسوب. وتحت ذلك يشكّل 216 عملًا رسمًا بيانيًا كل شرط مسبق فيه حافة، وكل ترتيب في الموقع مشتق من هذا الرسم، ولا شيء مكتوب يدويًا. والأكوان ممثّلة بوصفها مالكي حقوق، فالانعطافة بين كونين، كما في No Way Home الذي يستدعي خمسة أفلام من سوني، حافة حقيقية معها ملاحظة من المحرّر. الموقع كله 1,893 صفحة مولّدة مسبقًا، ولا يجري أي استدعاء لواجهات برمجية في الإنتاج.',
+      en: 'Two front doors. The newcomer gets the Infinity Saga as a spine: 23 films, about 50 hours. The returning viewer types a title and gets the computed watch path. Underneath, 216 titles form a graph where every prerequisite is an edge, and every order on the site is derived from the graph. Nothing is typed by hand. Universes are modelled as rights-holders, so a cross-universe detour like No Way Home pulling in five Sony films is a real edge with an editor\'s note attached. The whole site is 1,893 prerendered pages making zero API calls in production.',
+      ar: 'بابان أماميان. المبتدئ يحصل على ملحمة اللانهاية عمودًا فقريًا: 23 فيلمًا في نحو 50 ساعة. والمشاهد العائد يكتب اسم العمل فيحصل على مسار المشاهدة المحسوب. وتحت ذلك يشكّل 216 عملًا رسمًا بيانيًا كل شرط مسبق فيه حافة، وكل ترتيب في الموقع مشتق من هذا الرسم، ولا شيء مكتوب يدويًا. والأكوان ممثّلة بوصفها مالكي حقوق، فالانعطافة بين كونين، كما في No Way Home الذي يستدعي خمسة أفلام من سوني، حافة حقيقية معها ملاحظة من المحرّر. الموقع كله 1,893 صفحة مولّدة مسبقًا، ولا يجري أي استدعاء لواجهات برمجية في الإنتاج.',
     },
     liveUrl: 'https://the-thread-marvel.vercel.app',
     repoUrl: 'https://github.com/rworldx/the-thread',
@@ -288,7 +288,7 @@ export const projects: Project[] = [
       { label: { en: 'Titles', ar: 'الأعمال' }, value: '216' },
       { label: { en: 'Characters', ar: 'الشخصيات' }, value: '699' },
       { label: { en: 'Static pages', ar: 'الصفحات الثابتة' }, value: '1,893' },
-      { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '320' },
+      { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '321' },
       { label: { en: 'Runtime API calls', ar: 'استدعاءات API وقت التشغيل' }, value: '0' },
       { label: { en: 'Commits', ar: 'الإيداعات' }, value: '240' },
     ],
@@ -323,9 +323,13 @@ export const projects: Project[] = [
         title: { en: 'Two doors', ar: 'بابان' },
         body: [
           {
-            en: 'Watch-order lists already exist. Each one makes a newcomer and a returning viewer share a single page, and the page serves neither. The Thread gives each their own door. The newcomer gets a short essentials spine priced in hours. The returning viewer types a title and gets the path. The whole product follows from refusing to make those two people share a screen.',
-            ar: 'قوائم ترتيب المشاهدة موجودة أصلًا. كل واحدة منها تجعل المبتدئ والمشاهد العائد يتشاركان صفحة واحدة، ولا تخدم الصفحة أيًّا منهما. يمنح The Thread كلًّا منهما بابه الخاص. المبتدئ يحصل على عمود فقري مختصر من الأعمال الأساسية محسوبًا بالساعات. والعائد يكتب اسم العمل فيحصل على المسار. المنتج كله ينبع من رفض إجبار هذين الشخصين على تشارك شاشة واحدة.',
+            en: 'Watch-order lists already exist. Each one makes a newcomer and a returning viewer share a single page, and the page serves neither. The Thread gives each their own door. The newcomer gets the Infinity Saga as a spine, 23 films in about 50 hours, Iron Man through Far From Home. The returning viewer types a title and gets the path. The whole product follows from refusing to make those two people share a screen.',
+            ar: 'قوائم ترتيب المشاهدة موجودة أصلًا. كل واحدة منها تجعل المبتدئ والمشاهد العائد يتشاركان صفحة واحدة، ولا تخدم الصفحة أيًّا منهما. يمنح The Thread كلًّا منهما بابه الخاص. المبتدئ يحصل على ملحمة اللانهاية عمودًا فقريًا: 23 فيلمًا في نحو 50 ساعة، من Iron Man إلى Far From Home. والعائد يكتب اسم العمل فيحصل على المسار. المنتج كله ينبع من رفض إجبار هذين الشخصين على تشارك شاشة واحدة.',
           },
+        ],
+        facts: [
+          { label: { en: 'Films in the spine', ar: 'أفلام العمود الفقري' }, value: '23' },
+          { label: { en: 'Spine runtime, about', ar: 'مدته تقريبًا' }, value: '50h' },
         ],
       },
       {
@@ -395,7 +399,7 @@ export const projects: Project[] = [
           },
         ],
         facts: [
-          { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '320' },
+          { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '321' },
           { label: { en: 'Browser tests', ar: 'اختبارات المتصفح' }, value: '55' },
         ],
       },
