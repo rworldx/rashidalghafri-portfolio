@@ -9,6 +9,15 @@ export const contentType = 'image/png';
 /**
  * Default OG image for the whole site (PRD §11).
  *
+ * The "RA." wordmark alone, on the paper ground, in the same shapes the
+ * favicon and the Apple touch icon draw. Rashid saw the touch icon standing in
+ * as WhatsApp's preview, liked it, and asked for that to be the card.
+ *
+ * So the card carries no name and no role. The platform already prints the
+ * title and the description beside the picture, and repeating them inside it
+ * only competes with the mark. Colours are the brand tokens' resolved hex,
+ * because a generated image cannot read CSS variables.
+ *
  * Stays at the app ROOT on purpose. The locale middleware excludes
  * `opengraph-image` from its matcher (see middleware.ts), so `/opengraph-image`
  * is served directly and never rewritten. Moving this file into `[locale]`
@@ -25,52 +34,24 @@ export default function OgImage() {
         width: '100%',
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
+        alignItems: 'center',
         justifyContent: 'center',
-        padding: '80px',
-        background: '#0a0e14',
-        color: '#eceff4',
+        background: '#f6f5f1',
       }}
     >
-      {/*
-        The "RA." wordmark, the same one the favicon and the Apple touch icon
-        draw. WhatsApp and Snapchat used to show it because, with no og:image
-        to obey, they fell back to the touch icon. Naming a card without the
-        mark on it would have taken that away. It leads here instead, so the
-        icon, the tile, the navbar and the share card are one identity.
-      */}
-      <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: 56 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline' }}>
         <span
           style={{
-            color: '#eceff4',
-            fontSize: 76,
+            color: '#15171c',
+            fontSize: 300,
             fontWeight: 700,
             letterSpacing: '-0.04em',
+            fontFamily: 'sans-serif',
           }}
         >
           RA
         </span>
-        <span style={{ color: '#5b82ff', fontSize: 76, fontWeight: 700 }}>.</span>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 12,
-          color: '#5b82ff',
-          fontSize: 28,
-        }}
-      >
-        <div style={{ width: 14, height: 14, borderRadius: 99, background: '#7ce0c4' }} />
-        available for opportunities · 2026
-      </div>
-      <div
-        style={{ fontSize: 88, fontWeight: 700, marginTop: 20, letterSpacing: '-0.03em' }}
-      >
-        {siteConfig.name}
-      </div>
-      <div style={{ fontSize: 36, color: '#9aa5b8', marginTop: 12 }}>
-        Software Engineer · Full-Stack · AI
+        <span style={{ color: '#2f5bea', fontSize: 300, fontWeight: 700 }}>.</span>
       </div>
     </div>,
     size,
