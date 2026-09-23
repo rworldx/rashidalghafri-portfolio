@@ -13,6 +13,29 @@ function alternates(path: string) {
   return languages;
 }
 
+/**
+ * The shared social card, named on EVERY page.
+ *
+ * Next attaches a file-based image only to the segment that holds the file,
+ * and opengraph-image.tsx sits at the app root while every page lives under
+ * `[locale]`. Nothing inherited it, so the homepage, /about, /contact,
+ * /resume and /projects all shipped with no `og:image` at all.
+ *
+ * That silence is not neutral. WhatsApp and Snapchat honour `og:image` and
+ * nothing else, so they showed a bare link. LinkedIn and Instagram fall back
+ * to scraping the page for pictures, and took the first one in the markup:
+ * the StudyNest logo in the work deck. Naming the image here means every
+ * platform is told what to show instead of guessing.
+ */
+function ogImage() {
+  return {
+    url: `${siteConfig.url}/opengraph-image`,
+    width: 1200,
+    height: 630,
+    alt: siteConfig.ogImageAlt,
+  };
+}
+
 type MetaKey = 'home' | 'projects' | 'resume' | 'about' | 'contact';
 
 /** Per-route metadata from the `meta` message namespace + canonical/alternates. */
@@ -40,8 +63,14 @@ export async function buildMetadata(
       siteName: siteConfig.name,
       locale,
       type: 'website',
+      images: [ogImage()],
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage().url],
+    },
   };
 }
 
@@ -68,6 +97,13 @@ export function buildProjectMetadata(
       siteName: siteConfig.name,
       locale,
       type: 'article',
+      images: [{ url: `${canonical}/opengraph-image`, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${canonical}/opengraph-image`],
     },
   };
 }

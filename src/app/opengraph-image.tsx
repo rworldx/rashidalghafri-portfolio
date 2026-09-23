@@ -6,7 +6,18 @@ export const alt = siteConfig.ogImageAlt;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-/** Default OG image — on-brand ink background with name + role (PRD §11). */
+/**
+ * Default OG image for the whole site (PRD §11).
+ *
+ * Stays at the app ROOT on purpose. The locale middleware excludes
+ * `opengraph-image` from its matcher (see middleware.ts), so `/opengraph-image`
+ * is served directly and never rewritten. Moving this file into `[locale]`
+ * makes `/en/opengraph-image` redirect to a path that no longer exists.
+ *
+ * Pages must NAME this image themselves — see `ogImage()` in lib/seo.ts. A
+ * file-based image is attached only to the segment holding the file, and every
+ * page lives under `[locale]`, so nothing here reaches them automatically.
+ */
 export default function OgImage() {
   return new ImageResponse(
     <div
