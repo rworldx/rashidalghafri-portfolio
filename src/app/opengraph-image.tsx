@@ -32,6 +32,26 @@ export default function OgImage() {
         color: '#eceff4',
       }}
     >
+      {/*
+        The "RA." wordmark, the same one the favicon and the Apple touch icon
+        draw. WhatsApp and Snapchat used to show it because, with no og:image
+        to obey, they fell back to the touch icon. Naming a card without the
+        mark on it would have taken that away. It leads here instead, so the
+        icon, the tile, the navbar and the share card are one identity.
+      */}
+      <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: 56 }}>
+        <span
+          style={{
+            color: '#eceff4',
+            fontSize: 76,
+            fontWeight: 700,
+            letterSpacing: '-0.04em',
+          }}
+        >
+          RA
+        </span>
+        <span style={{ color: '#5b82ff', fontSize: 76, fontWeight: 700 }}>.</span>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -45,7 +65,7 @@ export default function OgImage() {
         available for opportunities · 2026
       </div>
       <div
-        style={{ fontSize: 96, fontWeight: 700, marginTop: 24, letterSpacing: '-0.03em' }}
+        style={{ fontSize: 88, fontWeight: 700, marginTop: 20, letterSpacing: '-0.03em' }}
       >
         {siteConfig.name}
       </div>
