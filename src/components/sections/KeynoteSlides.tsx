@@ -60,11 +60,20 @@ export function KeynoteSlides() {
   const baseId = useId();
   const isRtl = locale === 'ar';
 
-  // StudyNest leads because it is the flagship; the rest follow in order.
+  /**
+   * StudyNest leads because it is the flagship; the rest follow in order.
+   *
+   * NO CAP. This used to end in `.slice(0, 6)`, set when six was every
+   * project there was. The seventh arrived and the deck quietly stopped at
+   * six, dropping EnerGrid — the one that won a prize — off the end of the
+   * home page while the work grid still listed it. A limit that hides real
+   * work the moment the list grows is worse than a long deck, and it fails
+   * silently, which is how it survived a whole release.
+   */
   const slides: Project[] = [
     ...allProjects.filter((p) => p.featured),
     ...allProjects.filter((p) => !p.featured),
-  ].slice(0, 6);
+  ];
 
   const [index, setIndex] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
