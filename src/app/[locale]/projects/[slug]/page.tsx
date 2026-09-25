@@ -1,9 +1,11 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { projects, getProject } from '@content/projects';
+import { imageBlur } from '@content/image-blur';
 import { pick } from '@/lib/localized';
 import { buildProjectMetadata } from '@/lib/seo';
 import { Container, sectionY } from '@/components/layout/Container';
@@ -172,6 +174,25 @@ export default async function CaseStudyPage({
                           </p>
                         ))}
                       </div>
+
+                      {chapter.image && (
+                        <figure className="mt-phi overflow-hidden rounded-lg border border-border bg-surface">
+                          <Image
+                            src={chapter.image.src}
+                            alt={pick(chapter.image.alt, locale)}
+                            width={1800}
+                            height={1125}
+                            sizes="(min-width: 1024px) 60rem, 100vw"
+                            className="h-auto w-full"
+                            placeholder={
+                              imageBlur[chapter.image.src.split('/').pop() ?? '']
+                                ? 'blur'
+                                : 'empty'
+                            }
+                            blurDataURL={imageBlur[chapter.image.src.split('/').pop() ?? '']}
+                          />
+                        </figure>
+                      )}
 
                       {chapter.facts && chapter.facts.length > 0 && (
                         <dl className="mt-phi flex flex-wrap gap-x-phi-2 gap-y-4 border-t border-border pt-5">

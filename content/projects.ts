@@ -510,118 +510,101 @@ export const projects: Project[] = [
     ],
     chapters: [
       {
+        title: { en: 'The consultancy', ar: 'الشركة' },
+        body: [
+          {
+            en: 'KADI is a health and safety consultancy in Muscat. Companies call them when an inspection is coming, or when a site has grown past the point where safety fits in somebody\'s head. The work is not writing a folder of documents. The work is making safety rules hold on a real site, with real people, on a real shift.',
+            ar: 'كادي شركة استشارات في الصحة والسلامة بمسقط. تتصل بها الشركات حين يقترب موعد تفتيش، أو حين يكبر الموقع فلا تعود السلامة شيئًا يُحفظ في رأس أحدهم. والعمل ليس كتابة ملف من الوثائق، بل جعل قواعد السلامة تصمد في موقع حقيقي، مع أناس حقيقيين، في وردية حقيقية.',
+          },
+        ],
+      },
+      {
         title: { en: 'Ten seconds', ar: 'عشر ثوانٍ' },
         body: [
           {
-            en: 'The brief set the whole design. A buyer lands here from a LinkedIn post, a WhatsApp link or a tender shortlist, and inside about ten seconds has to trust the company, understand the work, and be one tap from the founder. Everything on the page serves one of those three. Anything serving none of them does not belong.',
-            ar: 'الموجز هو ما حدّد التصميم كله. يصل المشتري من منشور في لينكدإن أو رابط في واتساب أو قائمة مناقصة، وعليه خلال عشر ثوانٍ تقريبًا أن يثق بالشركة، ويفهم ما تقدّمه، ويصبح على بُعد نقرة واحدة من مؤسّسها. كل ما في الصفحة يخدم واحدًا من هذه الثلاثة، وما لا يخدم أيًّا منها لا مكان له.',
+            en: 'Before this site, KADI had only an Instagram account. A company wanting to know what KADI does had to find the account, send a WhatsApp message, and wait for the company profile to come back as a PDF. A long road for a buyer who decides in seconds.',
+            ar: 'قبل هذا الموقع لم يكن لكادي سوى حساب في إنستغرام. فالشركة التي تريد أن تعرف ما تقدّمه كادي عليها أن تجد الحساب، وترسل رسالة على واتساب، وتنتظر وصول الملف التعريفي بصيغة PDF. وهذا طريق طويل لمشترٍ يحسم أمره في ثوانٍ.',
           },
           {
-            en: 'The rule explains the absences more than the features. No content system, no blog, no carousel of testimonials. The rule also picks out which reader the engineering answers to. Of the three the site expects, one is an owner with an inspection coming, reading Arabic on a phone on a poor connection. The Arabic side is built as hard as the English because of them.',
-            ar: 'وهذه القاعدة تفسّر ما غاب أكثر مما تفسّر ما حضر. لا نظام محتوى، ولا مدوّنة، ولا شريط شهادات عملاء. وتفسّر كذلك أيّ قارئ تخدمه الهندسة. فمن بين القرّاء الثلاثة الذين يتوقّعهم الموقع، واحد صاحب منشأة أمامه تفتيش، يقرأ بالعربية على هاتفه وباتصال ضعيف. وهذا القارئ هو سبب الجهد الذي بُذل في الجانب العربي.',
-          },
-        ],
-      },
-      {
-        title: { en: 'The font was never downloading', ar: 'الخط لم يكن يُحمَّل أصلًا' },
-        body: [
-          {
-            en: 'The font stack led with the Latin face for both languages, on the reasonable-sounding grounds of a browser resolving fallbacks one glyph at a time. Browsers do. The problem was the face they resolved through first.',
-            ar: 'كانت قائمة الخطوط تبدأ بالخط اللاتيني في اللغتين معًا، استنادًا إلى فكرة تبدو سليمة: أن المتصفح يختار الخط البديل حرفًا بحرف. وهو يفعل ذلك بالفعل. لكن المشكلة في الخط الذي يمرّ عليه أولًا.',
-          },
-          {
-            en: 'The metric-adjusted fallback sits on Arial, and Arial carries a complete Arabic. So every Arabic letter found a home before the stack ever reached Thmanyah, and the licensed typeface the client pays for was never requested at all. The Arabic site had been shipping in Arial while looking approximately right, which is the worst kind of bug: nothing is broken on screen and the thing you bought is simply absent.',
-            ar: 'فالخط الاحتياطي المضبوط على المقاسات مبني على Arial، وArial يحمل عربية كاملة. فوجد كل حرف عربي مأواه قبل أن تصل القائمة إلى خط ثمانية أصلًا، ولم يُطلب الخط المرخّص الذي يدفع العميل ثمنه ولو مرة واحدة. كان الموقع العربي يُنشر بخط Arial وهو يبدو صحيحًا تقريبًا، وهذا أسوأ أنواع الأخطاء: لا شيء مكسور على الشاشة، والشيء الذي اشتريته غائب ببساطة.',
-          },
-          {
-            en: 'The Arabic stack now leads with Thmanyah and is scoped to the Arabic document, so the single Arabic character on the language toggle never drags the face onto the English page. Anything holding the Latin voice is marked as English in the markup.',
-            ar: 'صارت القائمة العربية تبدأ بخط ثمانية، ومحصورة في المستند العربي، حتى لا يجرّ الحرف العربي الوحيد في زرّ تبديل اللغة الخطَّ كله إلى الصفحة الإنجليزية. وكل ما يجب أن يبقى بالصوت اللاتيني موسوم في الشيفرة بأنه إنجليزي.',
+            en: 'And the buyer is usually on a phone. Sometimes an operations manager checking a name before adding the company to a bidder list. Sometimes an owner of a small business with an inspection on the way. Often reading Arabic, often on a weak connection. Ten seconds to decide whether this company is worth a call.',
+            ar: 'والمشتري غالبًا على هاتفه. قد يكون مدير عمليات يتحقّق من اسم قبل إدراجه في قائمة الموردين، وقد يكون صاحب منشأة صغيرة أمامه تفتيش قادم. وكثيرًا ما يقرأ بالعربية، وكثيرًا ما يكون اتصاله ضعيفًا. عشر ثوانٍ يقرّر فيها هل تستحق هذه الشركة مكالمة.',
           },
         ],
       },
       {
-        title: { en: 'The contrast suite disproved the review', ar: 'فحص التباين نقض ما أقرّته المراجعة' },
+        title: { en: 'One page, one job', ar: 'صفحة واحدة، مهمة واحدة' },
         body: [
           {
-            en: 'Colour was being checked by eye and against a token table, which is how a dark-theme form border shipped at 2.90 to 1 and a footer outline at 2.60. The suite caught both, and settled something larger: the brand\'s own leaf green is 2.85 to 1 on white and will never carry text, whatever a brand guide says.',
-            ar: 'كان فحص الألوان يجري بالعين وبجدول الرموز، وهكذا نُشر إطار حقل في الوضع الداكن بنسبة 2.90 إلى 1، وحدّ في التذييل بنسبة 2.60. وكشف الفحص الاثنين معًا. بل حسم ما هو أكبر: الأخضر في هوية العميل نسبته 2.85 إلى 1 على الأبيض، ولا يصلح لحمل نصّ مهما قال دليل الهوية.',
+            en: 'So the site is one page in each language, and every part does one of three things: build trust, explain the work, or put the visitor a tap away from the founder. A section doing none of those was left out.',
+            ar: 'فصار الموقع صفحة واحدة بكل لغة، وكل جزء فيها يؤدّي واحدًا من ثلاثة: يبني الثقة، أو يشرح العمل، أو يضع الزائر على بُعد نقرة من المؤسّس. وما لم يفعل أيًّا من ذلك حُذف.',
           },
           {
-            en: 'So the palette split in two. One green draws shapes, a darker one at 5.33 to 1 carries words, and the single green panel on the site sets its text in deep navy, because white on the green is the same 2.85 an instinct for "green panel, white text" walks straight into.',
-            ar: 'فانقسمت لوحة الألوان إلى اثنتين: أخضر يرسم الأشكال، وأغمق منه بنسبة 5.33 إلى 1 يحمل الكلمات، واللوح الأخضر الوحيد في الموقع يضع نصّه بالكحلي الغامق، لأن الأبيض على ذلك الأخضر هو النسبة 2.85 نفسها التي يقع فيها كل من يفكّر تلقائيًا في «لوح أخضر ونصّ أبيض».',
+            en: 'So there is no blog, no news feed, no wall of client logos and no page counting years in business. Each would be one more thing between a buyer and the phone. What is left is short enough to read while standing on a site.',
+            ar: 'ولهذا لا مدوّنة فيه، ولا أخبار، ولا جدار شعارات عملاء، ولا صفحة تعدّ سنوات الخبرة. كل واحد من هذه يضع حاجزًا إضافيًا بين المشتري والهاتف. وما بقي قصير بما يكفي لقراءته على الهاتف وأنت واقف في موقع.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Arabic as a first language', ar: 'العربية لغة أولى' },
+        body: [
+          {
+            en: 'The Arabic side is not the English side translated. The Arabic was written as Arabic, and the client, an Arabic speaker, read and approved every line, sending three rounds of corrections along the way. One round was about a single punctuation mark, which says how closely the client read.',
+            ar: 'الجانب العربي ليس ترجمة للجانب الإنجليزي. كُتب عربيًّا من البداية، وقرأه العميل، وهو عربي، وأقرّه سطرًا سطرًا، وأرسل في الطريق ثلاث جولات من التصحيحات. وكانت إحداها عن علامة ترقيم واحدة، وهذا وحده يقول كم كانت القراءة دقيقة.',
           },
           {
-            en: 'The suite then found its own blind spot. Raw token pairs were being asserted, which is not what a reader sees, and a note at 65% opacity over a white button slipped a violation through the gap. Pairs now flatten their opacity and are asserted as the rendered colour, and the file reads the tokens out of the stylesheet itself, so editing a hex moves the assertion too.',
-            ar: 'ثم كشف الفحص عيبًا في نفسه. كان يفحص أزواج الرموز كما هي، وهذا ليس ما يراه القارئ، فتسلّل خلل عبر ملاحظة بشفافية 65% فوق زرّ أبيض. صارت الأزواج الآن تُحسب بعد دمج الشفافية وتُفحص باللون كما يُعرض فعلًا، ويقرأ الملف الرموز من ملف الأنماط نفسه، فتغيير أي لون يحرّك الفحص معه.',
+            en: 'The Arabic also has its own typeface, licensed for the client and served from the site rather than borrowed from whatever the phone happens to have. Arabic set in a system font looks like a page nobody finished, and a safety consultancy must not look unfinished.',
+            ar: 'وله خطّه الخاص، مرخّص للعميل ومستضاف على الموقع نفسه لا مستعارًا مما يصادف وجوده في الهاتف. فالعربية بخط النظام تبدو صفحة لم يكملها أحد، وشركة استشارات في السلامة لا تحتمل أن تبدو ناقصة.',
+          },
+        ],
+        image: { src: '/images/projects/kadi-ar.jpg', alt: { en: 'The KADI homepage in Arabic, laid out right to left', ar: 'الصفحة الرئيسية لكادي بالعربية، بتخطيط من اليمين إلى اليسار' } },
+      },
+      {
+        title: { en: 'One tap to the founder', ar: 'نقرة واحدة إلى المؤسّس' },
+        body: [
+          {
+            en: 'Everything the site is for ends here. Phone, WhatsApp, email, a short form, and the company profile as a download, ready to forward to whoever signs. The form checks what is typed before sending, and if the mail service is unavailable the page says so and gives the address instead of pretending the message went through.',
+            ar: 'كل ما وُجد الموقع من أجله ينتهي هنا. هاتف، وواتساب، وبريد، ونموذج قصير، والملف التعريفي للتنزيل ليرسله المشتري إلى من يوقّع. ويتحقّق النموذج ممّا كُتب قبل الإرسال، وإن تعذّر عمل خدمة البريد قال ذلك وأعطى العنوان بدل أن يوهمك بأن الرسالة وصلت.',
+          },
+          {
+            en: 'The WhatsApp button took two attempts. The first version opened a link in a new tab, and on the client\'s own iPhone the link showed a web page instead of the chat. Now the button asks for the app first and falls back to the web only after a moment of silence. A small thing, and it decides whether the most important button on the site works on the phone the client actually carries.',
+            ar: 'أما زرّ واتساب فاحتاج محاولتين. كانت النسخة الأولى تفتح رابطًا في تبويب جديد، فظهرت على آيفون العميل نفسه صفحة ويب بدل المحادثة. صار الزرّ الآن يطلب التطبيق أولًا، ولا يلجأ إلى الويب إلا بعد لحظة صمت. تفصيل صغير يقرّر هل يعمل أهمّ زرّ في الموقع على الهاتف الذي يستخدمه العميل.',
+          },
+        ],
+        image: { src: '/images/projects/kadi-contact.jpg', alt: { en: 'The contact section: form, WhatsApp, phone and the profile download', ar: 'قسم التواصل: النموذج وواتساب والهاتف وتنزيل الملف التعريفي' } },
+      },
+      {
+        title: { en: 'What you do not see', ar: 'ما لا تراه' },
+        body: [
+          {
+            en: 'Two faults turned up which no visitor would ever have reported, because neither looked like a fault.',
+            ar: 'اكتُشف خللان ما كان زائر ليبلّغ عن أيٍّ منهما، لأن أيًّا منهما لم يكن يبدو خللًا.',
+          },
+          {
+            en: 'The first was the Arabic typeface. The page looked right, so nobody questioned the page, but the browser was quietly reaching a system font first and finding every Arabic letter needed there. The licensed face the client pays for was never fetched at all. Nothing was broken on screen. The thing bought was simply absent.',
+            ar: 'الأول كان الخطّ العربي. بدت الصفحة صحيحة فلم يشكّ أحد، بينما كان المتصفّح يصل بهدوء إلى خط النظام أولًا فيجد فيه كل حرف عربي يحتاجه. أما الخط المرخّص الذي يدفع العميل ثمنه فلم يكن يُطلب أصلًا. لا شيء مكسور على الشاشة، والشيء الذي اشتُري غائب ببساطة.',
+          },
+          {
+            en: 'The second was the green in the client\'s brand. A good green for a shape, and too pale to carry words: put text in the green and a reader with ordinary eyesight has to work. So the palette now has two greens. One draws, the other writes. The single green panel on the site sets its text in deep navy, because white on the same green fails the same test.',
+            ar: 'والثاني كان الأخضر في هوية العميل. أخضر جيّد للأشكال وفاتح أكثر من أن يحمل كلمات: ضع فيه نصًّا يجهد القارئ العادي في قراءته. فصار في اللوحة أخضران: واحد يرسم وآخر يكتب. واللوح الأخضر الوحيد في الموقع يضع نصّه بالكحلي الغامق، لأن الأبيض على ذلك الأخضر يسقط في الاختبار نفسه.',
+          },
+        ],
+        image: { src: '/images/projects/kadi-why.jpg', alt: { en: 'The one green panel on the site, its text set in deep navy', ar: 'اللوح الأخضر الوحيد في الموقع، ونصّه بالكحلي الغامق' } },
+      },
+      {
+        title: { en: 'Where it stands', ar: 'أين وصل الآن' },
+        body: [
+          {
+            en: 'The site is live at kadi-hse.om. On a desktop the English page scores full marks for speed, accessibility, good practice and search readiness, and the Arabic page one point below. Nothing on the page moves while loading, in any measurement taken.',
+            ar: 'الموقع منشور على kadi-hse.om. وعلى سطح المكتب يحصد العلامة الكاملة في السرعة وإتاحة الوصول والممارسات السليمة والجاهزية لمحركات البحث في الصفحة الإنجليزية، وأقلّ منها بنقطة في العربية. ولا يتحرّك شيء في الصفحة أثناء تحميلها في أي قياس أُخذ.',
+          },
+          {
+            en: 'The site is not finished, which is the normal condition of client work rather than a fault. Change rounds are still arriving, the most recent replacing photographs three days after the site moved to its own domain.',
+            ar: 'وليس منتهيًا، وهذه حال موقع العميل الطبيعية لا عيبًا فيه. فجولات التعديل ما زالت تصل، وآخرها استبدل صورًا بعد ثلاثة أيام من انتقال الموقع إلى نطاقه الخاص.',
           },
         ],
         facts: [
-          { label: { en: 'Contrast assertions', ar: 'فحوص التباين' }, value: '75' },
-          { label: { en: 'Brand green on white', ar: 'أخضر الهوية على الأبيض' }, value: '2.85:1' },
-        ],
-      },
-      {
-        title: { en: 'A fixed sleep hid four failures', ar: 'تأخير ثابت أخفى أربعة إخفاقات' },
-        body: [
-          {
-            en: 'Four accessibility tests failed on and off on the iPad and phone projects for weeks, and twice the evidence was destroyed by the hunt itself, because the test runner clears its results directory at the start of every run. When artefacts finally survived on a real CI machine, the message read: reveals never reached full opacity, for every element below the fold.',
-            ar: 'ظلّت أربعة اختبارات للوصولية تفشل وتنجح بالتناوب على الآيباد والهاتف أسابيع، ومرّتين أتلف البحث دليله بنفسه، لأن منصّة الاختبار تمسح مجلد النتائج مع بداية كل تشغيل. وحين نجت الملفات أخيرًا على جهاز تكامل حقيقي، كانت الرسالة أن عناصر الظهور لم تبلغ كامل وضوحها، وذلك في كل عنصر أسفل الشاشة الأولى.',
-          },
-          {
-            en: 'The audit walked the page in steps of 80% of a viewport and slept 120 milliseconds between them. Under load, 120 milliseconds is less than one rendered frame. An element might enter and leave the viewport between two observer checks, and because reveals fire once, the element stayed invisible for good. Failure came only on the slowest engine on the busiest machine, which is why the whole thing read as flakiness instead of a bug.',
-            ar: 'كان الفحص يتنقّل في الصفحة بخطوات مقدارها 80% من ارتفاع الشاشة، وينتظر 120 جزءًا من الألف من الثانية بين خطوة وأخرى. وتحت الضغط تقلّ هذه المدة عن زمن إطار واحد معروض. فقد يدخل العنصر الشاشة ويخرج منها بين فحصين متتاليين، ولأن الظهور يحدث مرة واحدة فقط، يبقى مخفيًا إلى الأبد. ولم يكن يفشل إلا على أبطأ محرّك وأكثر الأجهزة انشغالًا، ولهذا بدا تذبذبًا لا خللًا.',
-          },
-          {
-            en: 'The walk now waits for rendering instead of for time: two animation frames, then a zero-delay task, then half-viewport steps, and anything still hidden is scrolled to on its own. The record keeps the first fix too, which was wrong: polling one kind of element left six CSS animations completely uncovered.',
-            ar: 'صار التنقّل ينتظر العرض لا الزمن: إطاران متتاليان، ثم مهمة بلا تأخير، ثم خطوات بنصف ارتفاع الشاشة، وما بقي مخفيًا يُنتقل إليه وحده. ويحتفظ السجلّ بالإصلاح الأول أيضًا، وكان خاطئًا: فقد فحص نوعًا واحدًا من العناصر وترك ست حركات مكتوبة بـ CSS دون تغطية.',
-          },
-        ],
-      },
-      {
-        title: { en: 'A gate that measured the runner', ar: 'بوابة كانت تقيس الجهاز لا الموقع' },
-        body: [
-          {
-            en: 'Mobile Lighthouse assertions kept failing in CI. On code differing only in a test file, total blocking time read 250 milliseconds, then 318, then 362, then 845 across consecutive runs. The same page on an idle machine reads 10 to 30. The runner is a shared two-core machine, also hosting the server being measured, and its timings swung by nearly three times between back-to-back runs of identical code.',
-            ar: 'ظلّت فحوص لايتهاوس للهاتف تفشل في التكامل المستمر. وعلى شيفرة لا تختلف إلا في ملف اختبار، سجّل زمن الحجب الكلي 250 جزءًا من الألف من الثانية، ثم 318، ثم 362، ثم 845 في تشغيلات متتالية. والصفحة نفسها على جهاز خامل تسجّل بين 10 و30. فجهاز التشغيل حاسوب بنواتين يتشاركه غيرنا، ويستضيف في الوقت نفسه الخادم الذي يجري قياسه، وتذبذبت قراءاته نحو ثلاثة أضعاف بين تشغيلين متتاليين لشيفرة واحدة.',
-          },
-          {
-            en: 'So the signal moved instead of disappearing. The three processor-bound mobile checks became warnings, still measured and still reported. Desktop stays a hard gate. The structural mobile checks stay hard too, layout shift among them, because none of those depends on how many cores the machine has. A gate unable to tell a slower codebase from a busier neighbour is worse than no gate at all.',
-            ar: 'فنُقلت الإشارة ولم تُلغَ. صارت الفحوص الثلاثة المرتبطة بالمعالج على الهاتف تنبيهات، لكنها ما زالت تُقاس وتُسجَّل. وبقيت فحوص سطح المكتب بوابة صارمة. وبقيت كذلك الفحوص البنيوية على الهاتف، ومنها إزاحة التخطيط، لأن أيًّا منها لا يتأثر بعدد أنوية الجهاز. فالبوابة التي لا تفرّق بين شيفرة صارت أبطأ وجهاز صار أكثر انشغالًا أسوأ من غياب البوابة.',
-          },
-        ],
-      },
-      {
-        title: { en: 'Arabic written, not translated', ar: 'عربية تُكتب ولا تُترجم' },
-        body: [
-          {
-            en: 'The English is the company\'s own profile text. The Arabic is written natively in professional MSA, which is why the two sides read as two originals, not as a document and its translation. The client, a native speaker, signed the Arabic off line by line and sent three rounds of corrections, one of them about punctuation. There has been no separate editorial pass.',
-            ar: 'الإنجليزية نصّ الشركة من ملفها التعريفي. والعربية مكتوبة بلسان عربي فصيح، ولهذا يقرأ الجانبان كنصّين أصليين لا كوثيقة وترجمتها. وقد أقرّ العميل، وهو عربي، النصّ العربي سطرًا سطرًا، وأرسل ثلاث جولات من التصحيحات، إحداها عن علامات الترقيم. ولم يخضع النصّ لمراجعة تحريرية منفصلة.',
-          },
-          {
-            en: 'Three corrections sit outside the utility layer so they outrank the utilities. Letter-spacing is forced to zero, because Arabic letters join and tracking pulls the joins apart into loose shapes. Capitalisation is disabled, because Arabic has no case. And the leading opens up while the display size steps down one notch, because a tight line height, assured in the Latin face, makes consecutive Arabic lines collide.',
-            ar: 'وكان لا بدّ من ثلاثة تصحيحات خارج طبقة الأدوات لتتقدّم عليها. تباعد الحروف مضبوط على صفر، لأن الحروف العربية تتصل، والتباعد يفكّ وصلها فتتحوّل إلى أشكال متناثرة. وتحويل الحروف إلى كبيرة مُعطَّل، لأن العربية لا تعرف حالة الحرف. وفُتح تباعد الأسطر مع تخفيض حجم العناوين درجة واحدة، لأن تباعدًا ضيقًا يبدو واثقًا في الخط اللاتيني يجعل الأسطر العربية تتلامس.',
-          },
-          {
-            en: 'The cost is named, not hidden. The Arabic page scores 87 to 88 on mobile against 92 to 94 for the English, and the gap is the licensed face on the path to first paint. Three alternatives were measured and each was worse. Loading the face for both languages taxes English readers for nothing, skipping the preload measured four seconds, and letting the browser drop the face renders an Arabic reader\'s first visit in a system font, which fails the brand and not the metric.',
-            ar: 'والكلفة مذكورة لا مخفيّة. تسجّل الصفحة العربية على الهاتف بين 87 و88 مقابل 92 إلى 94 للإنجليزية، والفارق هو الخط المرخّص في طريق أول ظهور. وقيست ثلاثة بدائل فكان كل منها أسوأ: تحميله للّغتين معًا يحمّل القارئ الإنجليزي كلفة بلا مقابل، وتركه دون تحميل مسبق سجّل أربع ثوانٍ، والسماح للمتصفح بتجاوزه يعرض أول زيارة لقارئ عربي بخط النظام، وهذا فشل للهوية لا للمقياس.',
-          },
-        ],
-      },
-      {
-        title: { en: 'Thirty-eight pixels of movement', ar: 'ثمانية وثلاثون بكسلًا من الحركة' },
-        body: [
-          {
-            en: 'A client copy change lengthened the Arabic headline, and the line wrapped differently in the fallback face than in the real one. The swap moved the page 38 pixels, a layout shift of 0.0136, on a site whose whole claim is never moving. At exactly 390 pixels wide the buttons wrapped too, because the font was deciding where the line broke.',
-            ar: 'أدّى تعديل من العميل إلى إطالة العنوان العربي، فصار يلتفّ في الخط الاحتياطي على نحو يختلف عن الخط الحقيقي. وعند التبديل تحرّكت الصفحة ثمانية وثلاثين بكسلًا، بإزاحة مقدارها 0.0136، في موقع كل دعواه أنه لا يتحرّك. وعند عرض 390 بكسلًا بالضبط التفّت الأزرار أيضًا، لأن الخط هو من كان يقرّر موضع كسر السطر.',
-          },
-          {
-            en: 'The fix was a fallback face measured against the real one, weight by weight, so the two occupy the same space before and after the swap, and moving the buttons\' breakpoint off the width where the font was making the decision. Zero movement across sixteen combinations of width and language, tested with the web fonts blocked and again with them loaded.',
-            ar: 'كان الحل خطًّا احتياطيًا مقيسًا على الخط الحقيقي، وزنًا بوزن، حتى يشغل الاثنان المساحة نفسها قبل التبديل وبعده، مع نقل نقطة كسر الأزرار بعيدًا عن العرض الذي كان الخط يقرّر عنده. فلم تعد هناك أي حركة في ست عشرة تركيبة من العروض واللغات، اختُبرت مرةً والخطوط محجوبة ومرةً وهي محمّلة.',
-          },
-        ],
-        facts: [
-          { label: { en: 'Shift before', ar: 'الإزاحة قبل' }, value: '0.0136' },
-          { label: { en: 'Shift after', ar: 'الإزاحة بعد' }, value: '0' },
+          { label: { en: 'Lighthouse desktop, EN / AR', ar: 'لايتهاوس سطح المكتب، إنجليزي / عربي' }, value: '100 / 99' },
+          { label: { en: 'Layout shift', ar: 'إزاحة التخطيط' }, value: '0' },
         ],
       },
     ],
@@ -732,100 +715,115 @@ export const projects: Project[] = [
     ],
     chapters: [
       {
-        title: { en: 'The Arabic arrived unreadable', ar: 'العربية وصلت غير صالحة للقراءة' },
+        title: { en: 'The distributor', ar: 'الموزّع' },
         body: [
           {
-            en: 'The client sent two printed catalogues as one flat list of 654 lines, with an Arabic column beside the English. The Arabic column was ruined before arrival: UTF-8 read as Latin-1, with the bytes from 0x80 to 0x9F dropped on the way. In Arabic, those bytes are not decorative. They carry و and ي and ن and م and ل and ك. What was left offered nothing to repair, because the letters were gone rather than mangled.',
-            ar: 'أرسل العميل قائمتين مطبوعتين في ملف واحد من 654 سطرًا، وبجانب كل اسم إنجليزي اسمه العربي. وكان العمود العربي قد فسد قبل وصوله: قُرئ ترميز UTF-8 على أنه Latin-1، وسقطت في الطريق البايتات من 0x80 إلى 0x9F. وهذا النطاق ليس زخرفًا في العربية، فهو يحمل و وي ون وم ول وك. وما بقي لم يكن قابلًا للإصلاح، لأن الحروف سقطت ولم تتشوّه.',
-          },
-          {
-            en: 'So the Arabic names were rebuilt from the English column by rule: noun first, as Arabic wants, with the ب- prefix attached where the word needs one, and a list of overrides by hand where a rule would have produced something a buyer would not say. The catalogue also changed shape at the same time. Pack size moved from the category to the product, because the same cream in five kilos and one kilo is two things to sell, with its own stock and its own price, not one thing in two sizes.',
-            ar: 'فأُعيد بناء الأسماء العربية من العمود الإنجليزي بقواعد: الاسم أولًا كما تريد العربية، وإلحاق حرف الباء في موضعه، وقائمة استثناءات مكتوبة باليد حيث كانت القاعدة ستُخرج صياغة لا يقولها مشترٍ. وتغيّر شكل القائمة في الوقت نفسه. انتقل حجم العبوة من الفئة إلى المنتج، لأن الكريمة نفسها بخمسة كيلوغرامات وبكيلوغرام واحد شيئان يُباعان، لكل منهما مخزونه وسعره، لا شيء واحد بحجمين.',
-          },
-          {
-            en: 'No native speaker has read these names. They were composed by rule from English, which is worth saying plainly instead of leaving a reader to assume otherwise.',
-            ar: 'ولم يقرأ هذه الأسماء عربيٌّ بعد. صيغت بالقواعد من الإنجليزية، وذكر ذلك صراحةً أولى من ترك القارئ يفترض غير ذلك.',
+            en: 'Modern Supply sells the things a kitchen runs on. Chocolate, fillings, sauces, fruit purees, ice cream powders, syrups. Their customers are cafes, restaurants and hotels across Oman, and they work from five branches.',
+            ar: 'تبيع الإمداد العصري ما يقوم عليه المطبخ: الشوكولاتة والحشوات والصلصات ومهروس الفواكه ومساحيق المثلجات والشراب. وعملاؤها مقاهٍ ومطاعم وفنادق في أنحاء عُمان، وتعمل من خمسة فروع.',
           },
         ],
+      },
+      {
+        title: { en: 'A shop you had to visit', ar: 'متجر كان لا بدّ أن تزوره' },
+        body: [
+          {
+            en: 'Before this site, Modern Supply had an Instagram account and its branches. Customers saw some products on Instagram, but there was no full menu, and many products were never shown. To buy, they went to a branch in person, or searched Google Maps for a branch to find its number. There was no delivery, and no way to follow an order.',
+            ar: 'قبل هذا الموقع كان للإمداد العصري حساب في إنستغرام وفروعها. يرى العميل بعض المنتجات في إنستغرام، لكن لم تكن هناك قائمة كاملة، وكثير من المنتجات لم يُعرض قط. وليشتري كان عليه أن يذهب إلى فرع بنفسه، أو يبحث في خرائط جوجل عن فرع ليجد رقمه. ولم يكن هناك توصيل، ولا وسيلة لمتابعة طلب.',
+          },
+          {
+            en: 'For a restaurant this is not a small inconvenience. Comparing what is available means going. Checking a price means asking. And once the order is placed there is nothing to point at afterwards if the delivery arrives short.',
+            ar: 'وهذا لمطعمٍ ليس إزعاجًا صغيرًا. لا تستطيع أن تقارن المتاح دون أن تذهب، ولا أن تعرف سعرًا دون أن تسأل، وإذا طلبت فلا شيء تعود إليه بعد ذلك إن جاءت الكمية ناقصة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The shop comes to you', ar: 'المتجر يأتي إليك' },
+        body: [
+          {
+            en: 'The decision was not to move customers off the way they already buy. A cafe owner who talks to a branch on WhatsApp will keep talking to a branch on WhatsApp, and a site insisting on being the only route would simply go unused.',
+            ar: 'كان القرار ألا نُخرج العملاء من الطريقة التي يشترون بها أصلًا. فصاحب المقهى الذي يكلّم الفرع على واتساب سيبقى يفعل ذلك، والموقع الذي يصرّ على أن يكون الطريق الوحيد سيبقى بلا استخدام.',
+          },
+          {
+            en: 'So the order is written down first. The customer browses the full catalogue, fills one basket, and picks the branch. The order is saved with a tracking number, the stock is set aside, and only then does WhatsApp open with everything already typed out. The conversation still happens. What changed is where the conversation starts: from a record both sides share.',
+            ar: 'فصار الطلب يُكتب أولًا. يتصفّح العميل القائمة كاملة، ويملأ سلّة واحدة، ويختار الفرع. فيُحفظ الطلب برقم تتبّع، ويُحجز المخزون، وعندها فقط يُفتح واتساب والرسالة مكتوبة كاملة. المحادثة ما زالت تحدث. ما تغيّر أنها صارت تبدأ من سجلّ يراه الطرفان.',
+          },
+          {
+            en: 'And the customer follows the order afterwards with the order number and their phone, through pending, confirmed, being prepared, on the way, delivered.',
+            ar: 'ويستطيع العميل بعد ذلك أن يتابع طلبه برقمه ورقم هاتفه، من قيد الانتظار إلى مؤكّد إلى قيد التحضير إلى في الطريق إلى تم التسليم.',
+          },
+        ],
+        image: { src: '/images/projects/ms-track.jpg', alt: { en: 'The order tracking screen on a phone', ar: 'شاشة تتبّع الطلب على الهاتف' } },
+      },
+      {
+        title: { en: 'A catalogue that arrived broken', ar: 'قائمة وصلت تالفة' },
+        body: [
+          {
+            en: 'The client sent two printed catalogues typed into one file: 654 products, each with an English name and an Arabic name beside. The Arabic column had been damaged before arriving, saved in the wrong text encoding somewhere along the way. Whole letters were missing, including some of the most common in the language. Repair was impossible, because nothing was left to repair.',
+            ar: 'أرسل العميل قائمتين مطبوعتين مكتوبتين في ملف واحد: 654 منتجًا، لكل منها اسم إنجليزي وآخر عربي بجانبه. وكان العمود العربي قد تلف قبل أن يصل إلينا، لأنه حُفظ بترميز نصّي خاطئ في مكان ما من الطريق. سقطت حروف كاملة، منها من أكثر حروف اللغة ورودًا. ولم يكن قابلًا للإصلاح، لأنه لم يبقَ فيه ما يُصلَح.',
+          },
+          {
+            en: 'So all 654 Arabic names were rebuilt from the English, by rule, with wording corrected by hand wherever a rule produced something no buyer would say. No native speaker has read these names yet, which is worth knowing rather than assuming otherwise.',
+            ar: 'فأُعيد بناء الأسماء العربية الـ654 كلها من الإنجليزية بقواعد، مع تصحيح الصياغة يدويًّا حيث أخرجت القاعدة عبارة لا يقولها مشترٍ. ولم يقرأ هذه الأسماء عربيٌّ بعد، ومعرفة ذلك أولى من افتراض غيره.',
+          },
+          {
+            en: 'The catalogue also changed shape. The same cream in a five kilo tub and a one kilo tub is two different things to sell, each with its own price and its own stock, not one product in two sizes.',
+            ar: 'وتغيّر شكل القائمة أيضًا. فالكريمة نفسها في عبوة خمسة كيلوغرامات وعبوة كيلوغرام شيئان مختلفان يُباعان، لكل منهما سعره ومخزونه، لا منتج واحد بحجمين.',
+          },
+        ],
+        image: { src: '/images/projects/ms-catalogue.jpg', alt: { en: 'A brand catalogue with its category rail and search', ar: 'قائمة إحدى العلامات مع شريط الفئات والبحث' } },
         facts: [
-          { label: { en: 'Packs rebuilt', ar: 'عبوات أُعيد بناؤها' }, value: '654' },
+          { label: { en: 'Products rebuilt', ar: 'منتجات أُعيد بناؤها' }, value: '654' },
           { label: { en: 'Brand catalogues', ar: 'قوائم العلامات' }, value: '5' },
         ],
       },
       {
-        title: { en: 'The server sets the price', ar: 'السعر يحدّده الخادم لا المتصفّح' },
+        title: { en: 'Behind the storefront', ar: 'خلف الواجهة' },
         body: [
           {
-            en: 'The cart lives in the browser, and nothing a browser says about money is trusted. The cart carries product ids and quantities. When an order is placed the server reads the price itself, applies whichever discount has the narrowest scope, breaks a tie toward the larger cut, adds the delivery fee for the governorate, and freezes every line price onto the order so a later price change cannot rewrite what somebody already agreed to pay.',
-            ar: 'السلّة تعيش في المتصفّح، فلا يُصدَّق منها شيء يخصّ المال. تحمل معرّفات المنتجات وكمياتها. وعند تسجيل الطلب يقرأ الخادم السعر بنفسه، ويطبّق الخصم الأضيق نطاقًا، وعند التساوي يرجّح الأكبر قيمة، ويضيف رسم التوصيل للمحافظة، ثم يثبّت سعر كل سطر على الطلب حتى لا يعيد تغييرٌ لاحق في الأسعار كتابة ما وافق عليه أحدهم من قبل.',
+            en: 'Staff get one place to run everything. Orders arrive there with all the branch needs, and staff move them along, mark them paid, set the delivery company and fee, and leave a note the customer sees on the tracking page.',
+            ar: 'وللموظفين مكان واحد يديرون منه كل شيء. تصل الطلبات إليه بكل ما يحتاجه الفرع، فينقلونها بين المراحل، ويعلّمونها مدفوعة، ويحدّدون شركة التوصيل ورسومها، ويتركون ملاحظة يراها العميل في صفحة التتبّع.',
           },
           {
-            en: 'The strict reading of the rule was wrong. The route refused any order containing an unpriced line or going to a governorate with no delivery fee, which is correct arithmetic and useless in practice: the client had priced one product out of 654 and set no delivery zones. Every order would have been rejected. The fix was not to loosen the arithmetic but to admit a second kind of order. An order with no total to compute is saved as a quote request, with its tracking number and its stock taken, and the branch confirms the amount on WhatsApp.',
-            ar: 'وكانت الصيغة المتشدّدة من هذه القاعدة خاطئة. فقد كان المسار يرفض أي طلب فيه سطر غير مسعّر أو متجه إلى محافظة بلا رسم توصيل، وهذا حساب سليم وعديم النفع عمليًا: فالعميل سعّر منتجًا واحدًا من 654، ولم يحدّد أي منطقة توصيل. كان كل طلب سيُرفض. ولم يكن الحل تخفيف الحساب بل الاعتراف بنوع ثانٍ من الطلبات. فالطلب الذي يتعذّر جمع مبلغه يُحفظ طلبَ عرض سعر، برقم تتبّعه ومخزونه محجوز، ويؤكّد الفرع المبلغ على واتساب.',
-          },
-          {
-            en: 'Reading the code against the state of the client\'s data caught this, ahead of any customer. No order has been placed on the site.',
-            ar: 'واكتُشف ذلك بقراءة الشيفرة في ضوء حالة بيانات العميل، لا بوقوع عميل فيه. فلم يُسجَّل على الموقع أي طلب بعد.',
+            en: 'The same place holds the catalogue: adding a product, restocking, changing a price, running a discount on one product or a whole brand, and setting a delivery fee for each of the eleven governorates. A product with orders behind is hidden rather than deleted, because deleting would take the history along.',
+            ar: 'وفي المكان نفسه القائمة ذاتها: إضافة منتج، وإعادة تعبئة مخزونه، وتغيير سعره، وتشغيل خصم على منتج واحد أو على علامة كاملة، وتحديد رسم توصيل لكل محافظة من المحافظات الإحدى عشرة. والمنتج الذي خلفه طلبات لا يُحذف بل يُخفى، لأن حذفه سيأخذ السجلّ معه.',
           },
         ],
       },
       {
-        title: { en: 'Two orders, one last unit', ar: 'طلبان على آخر وحدة' },
+        title: { en: 'Getting money and stock right', ar: 'ضبط المال والمخزون' },
         body: [
           {
-            en: 'The first version read the stock, judged the amount sufficient, and then decremented. Two orders arriving together both read the same number, both found the number sufficient, and stock went negative. Reading and then writing is not one decision. Those are two decisions with a gap between them.',
-            ar: 'كانت النسخة الأولى تقرأ المخزون، فتجده كافيًا، ثم تخصم منه. فإذا وصل طلبان معًا قرآ الرقم نفسه، ووجداه كافيًا كلاهما، فنزل المخزون تحت الصفر. القراءة ثم الكتابة ليست قرارًا واحدًا، بل قراران بينهما فجوة.',
+            en: 'Two things had to be right before anything else, because both cost real money when they are wrong.',
+            ar: 'أمران كان لا بدّ أن يصحّا قبل غيرهما، لأن كليهما يكلّف مالًا حقيقيًّا حين يخطئ.',
           },
           {
-            en: 'Now the condition and the write are one statement: decrement where stock is still at least the quantity asked for, then count the rows touched. Under Postgres, an update waiting on another writer re-reads the blocked row and tests its condition against the new value, so of two orders for the last unit exactly one succeeds. The other rolls back whole and is told which lines fell short. Lines are taken in product-id order, so two orders sharing two products never each hold what the other needs.',
-            ar: 'أما الآن فالشرط والكتابة عبارة واحدة: اخصم حيث لا يزال المخزون لا يقلّ عن الكمية المطلوبة، ثم انظر كم سطرًا تأثّر. ففي Postgres، التحديث الذي ينتظر كاتبًا آخر يعيد قراءة السطر الذي توقّف عنده ويختبر شرطه على القيمة الجديدة، فمن طلبين على آخر وحدة ينجح واحد بالضبط. ويُلغى الآخر كاملًا مع بيان الأسطر الناقصة. وتُؤخذ الأسطر بترتيب معرّف المنتج، حتى لا يحجز طلبان يتشاركان منتجين ما يحتاجه كلٌّ منهما من الآخر.',
+            en: 'The first is the price. The basket lives in the customer\'s browser, and anything living there is editable by whoever sits in front of the screen. So the basket only ever says what was chosen and how many. When the order is placed the site looks up every price itself, applies any discount, adds the delivery fee, and writes the prices onto the order, so a later change never rewrites what somebody already agreed to pay.',
+            ar: 'الأول السعر. فالسلّة تعيش في متصفّح العميل، وكل ما يعيش هناك يستطيع الجالس أمامه تعديله. لذلك لا تقول السلّة سوى ما اختاره العميل وكم عدده. وعند تسجيل الطلب يبحث الموقع بنفسه عن كل سعر، ويطبّق أي خصم، ويضيف رسم التوصيل، ثم يكتب الأسعار على الطلب حتى لا يعيد تغييرٌ لاحق كتابة ما وافق عليه أحدهم من قبل.',
           },
           {
-            en: 'The behaviour underneath belongs to the database, not the application, and the unit tests use a fake transaction, so they prove the shape of the logic and not the guarantee below. The site has had no traffic. This is designed to be correct, not demonstrated to be.',
-            ar: 'والسلوك الذي يعتمد عليه هذا كله سلوك قاعدة البيانات لا التطبيق، واختبارات الوحدة تستخدم عملية وهمية، فهي تثبت شكل المنطق لا الضمانة التي تحته. ولم يمرّ على الموقع أي استخدام فعلي. فهذا مصمَّم ليكون صحيحًا، لا مُثبَت أنه كذلك.',
+            en: 'The second is the last item on the shelf. If two customers order the last one at the same moment, one has to be told no, and the earlier version would have quietly sold the same item twice. Now stock is taken only when stock is still there at the instant of taking, so exactly one order wins and the other is refused, with the short lines named. The site is designed for this rather than proven under real traffic. No order has been placed yet.',
+            ar: 'والثاني آخر قطعة على الرفّ. فإذا طلبها عميلان في اللحظة نفسها وجب أن يُقال لأحدهما لا، وكانت النسخة الأولى ستبيعها مرتين بصمت. أما الآن فلا يُخصم المخزون إلا إن كان موجودًا لحظة الخصم نفسها، فينجح طلب واحد بالضبط ويُرفض الآخر مع بيان الأسطر الناقصة. والموقع مصمَّم لذلك لا مُثبَت أنه يصمد له: فلم يُسجَّل عليه أي طلب بعد.',
+          },
+          {
+            en: 'A third case comes from the client\'s data rather than from code. A product with no price yet has no total to add up. Instead of refusing the order, the site saves a price request, with a tracking number, and the branch confirms the amount in the chat.',
+            ar: 'وهناك حالة ثالثة، مصدرها بيانات العميل لا الشيفرة. فالمنتج الذي لا سعر له بعد لا يمكن جمعه في فاتورة. وبدل رفض الطلب يحفظه الموقع طلبَ سعر، برقم تتبّعه، ويؤكّد الفرع المبلغ في المحادثة.',
           },
         ],
       },
       {
-        title: { en: 'What an order is holding', ar: 'ما الذي يحجزه الطلب فعلًا' },
+        title: { en: 'Where it stands', ar: 'أين وصل الآن' },
         body: [
           {
-            en: 'Cancelling an order has to give its stock back, and reinstating has to take the stock again. Deciding from the order\'s status goes wrong the moment anything unusual has happened: an order cancelled before the stock log existed holds nothing, and a status rule would hand back units never taken.',
-            ar: 'إلغاء الطلب يجب أن يعيد مخزونه، وإعادته يجب أن تأخذ المخزون من جديد. والاعتماد على حالة الطلب في هذا القرار يخطئ فور وقوع أي أمر غير معتاد: فالطلب الملغى قبل وجود سجلّ المخزون لا يحجز شيئًا، وقاعدة تعتمد على الحالة ستعيد وحدات لم تُؤخذ أصلًا.',
+            en: 'The site is live at modernsupply.om, in Arabic and English, with all 654 products loaded. What remains is the client\'s part. Prices, stock levels and product photos are entered by the company, and most of the entry has not happened yet, so most of the catalogue still reads as unavailable.',
+            ar: 'الموقع منشور على modernsupply.om، بالعربية والإنجليزية، وفيه المنتجات الـ654 كلها. وما ينتظره هو العميل. فالأسعار ومستويات المخزون وصور المنتجات تُدخلها الشركة، ومعظم ذلك لم يُنجز بعد، فما زال أكثر القائمة يظهر غير متاح.',
           },
           {
-            en: 'So the answer comes from the order\'s own movement log instead. An order holds whatever its rows say was taken, minus whatever they say was returned. Cancel returns exactly the difference, reinstate takes exactly what is missing, and both are safe to run twice. The status change is claimed with a conditional update, so when two staff press at the same moment the second is refused instead of moving stock again.',
-            ar: 'فصار الجواب يأتي من سجلّ حركة الطلب نفسه. فما يحجزه هو ما تقول أسطره إنه أخذه ناقصًا ما تقول إنه أعاده. فالإلغاء يعيد هذا المقدار بالضبط، والإعادة تأخذ الناقص بالضبط، وكلاهما آمن إن نُفّذ مرتين. أما تغيير الحالة نفسه فيُحجز بتحديث مشروط، فإذا ضغط موظفان في اللحظة نفسها رُفض الثاني بدل أن يحرّك المخزون مرة أخرى.',
-          },
-        ],
-      },
-      {
-        title: { en: 'The database that was not there', ar: 'قاعدة بيانات لم تكن موجودة' },
-        body: [
-          {
-            en: 'The site went up and most of the site worked. The home page, the brand index, about and contact were all fine. Two things returned 500: the admin, and the brand catalogue.',
-            ar: 'رُفع الموقع وعمل أكثره. الصفحة الرئيسية، ودليل العلامات، وصفحتا «عن» و«تواصل»، كلها سليمة. واثنتان فقط كانتا تُرجعان الخطأ 500: لوحة التحكّم، وصفحة قائمة العلامة.',
+            en: 'Delivery is built and covers all eleven governorates and sixty-one wilayats, but the fee for each one is set by the company and none has been set yet. Payment is cash on delivery. Card payment is not built.',
+            ar: 'والتوصيل مبنيّ ويغطّي المحافظات الإحدى عشرة والولايات الإحدى والستين كلها، لكن رسم كل منها تحدّده الشركة ولم يُحدَّد أيٌّ منها بعد. والدفع عند الاستلام. أما الدفع بالبطاقة فغير مبنيّ.',
           },
           {
-            en: 'Those were the only two pages reading the database. Everything else is prerendered at build time and never asks. The datasource was still SQLite, pointing at a gitignored file, on a filesystem the host will not write to, with no connection string set. The split between what broke and what held was the diagnosis: whatever had failed had failed about data, not about rendering.',
-            ar: 'وكانتا الصفحتين الوحيدتين اللتين تقرآن من قاعدة البيانات. أما البقية فتُولَّد وقت البناء ولا تسأل أحدًا. كان مصدر البيانات ما زال SQLite، يشير إلى ملف مستبعَد من المستودع، على نظام ملفات لا تكتب عليه الاستضافة، ودون ضبط أي نصّ اتصال. وكان الفرق بين ما تعطّل وما سلم هو التشخيص نفسه: أيًّا كان الخلل فهو في البيانات لا في العرض.',
-          },
-          {
-            en: 'The move was to Postgres, with the first migration regenerated as Postgres instead of translated, and migrations tied to the deploy. One thing stays open, and is worth saying plainly instead of dressing up: development and production share a single database, so a local reset would take the live data too. A risk being carried, not a decision.',
-            ar: 'فانتقل إلى Postgres، وأُعيد توليد أول ترحيل بلغة Postgres بدل ترجمته، ورُبطت الترحيلات بالنشر. وبقي أمر مفتوح يستحق الذكر لا التجميل: التطوير والإنتاج يتشاركان قاعدة بيانات واحدة، فإعادة تهيئة محلية ستأخذ معها بيانات الموقع الحيّ. وهذه مخاطرة محمولة لا قرار.',
-          },
-        ],
-      },
-      {
-        title: { en: 'The cart started empty every time', ar: 'السلّة تبدأ فارغة في كل مرة' },
-        body: [
-          {
-            en: 'The cart and the theme lived in React state, filled from local storage inside an effect. Effects run after the first paint, so the first thing anybody saw was an empty cart and the light theme, with the real values arriving a moment later to replace them. A second tab was worse: nothing changed there until the first was reloaded.',
-            ar: 'كانت السلّة والمظهر يعيشان في حالة React، وتُملآن من التخزين المحلي داخل أثر جانبي. والآثار الجانبية تعمل بعد أول رسم للصفحة، فكان أول ما يراه الزائر سلّةً فارغة والمظهر الفاتح، ثم تصل القيم الحقيقية بعد لحظة فتحلّ محلّها. وكان الوضع في تبويب ثانٍ أسوأ: لا يتغيّر فيه شيء حتى يُعاد تحميل الأول.',
-          },
-          {
-            en: 'Local storage became the source of truth, subscribed to directly, so the server and the first paint agree and no flag is needed to say whether the component has caught up. Syncing between tabs stopped being a feature to build and became something already working.',
-            ar: 'فصار التخزين المحلي هو المرجع، ويُشترَك فيه مباشرة، فيتّفق الخادم وأول رسم للصفحة ولا تبقى راية تقول هل لحق المكوّن أم لا. وتوقّفت المزامنة بين التبويبات عن كونها ميزة تُبنى وصارت شيئًا يعمل أصلًا.',
+            en: 'No order has been placed through the site yet, so nothing here is a claim about customers, sales or traffic. Built, and waiting for its first order.',
+            ar: 'ولم يُسجَّل عبر الموقع أي طلب بعد، فليس في هذا كله ادّعاء عن عملاء أو مبيعات أو زيارات. اكتمل بناؤه، وينتظر أول طلب.',
           },
         ],
       },

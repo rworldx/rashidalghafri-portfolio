@@ -20,6 +20,15 @@ export interface ProjectChapter {
   body: Localized[];
   /** Optional hard numbers that belong to this beat specifically. */
   facts?: { label: Localized; value: string }[];
+  /**
+   * A capture that belongs to THIS beat, shown under its text.
+   *
+   * Optional, and most chapters should not have one. A screenshot beside the
+   * paragraph that explains it is worth more than the same screenshot in a
+   * gallery at the bottom, where a reader has to guess which sentence it
+   * belongs to. A chapter with nothing worth showing simply omits it.
+   */
+  image?: { src: string; alt: Localized };
 }
 
 export interface Project {
