@@ -448,7 +448,7 @@ export const projects: Project[] = [
     },
     problem: {
       en: 'Buyers judge a health and safety consultancy on trust before price, and they judge in seconds. The buyer is an operations manager checking a bidder, or an SME owner with an inspection coming, often reading Arabic on a phone on a poor connection. A site loading slowly, or rendering Arabic in a system font, has already answered the question.',
-      ar: 'شركة الاستشارات في السلامة يُحكم عليها بالثقة قبل السعر، ويُحكم عليها في ثوانٍ. المشتري إما مدير عمليات يتحقق من مورّد قبل إدراجه، وإما صاحب منشأة صغيرة أمامه تفتيش قادم، وكثيرًا ما يقرأ بالعربية على هاتفه وباتصال ضعيف. والموقع الذي يتأخر في الظهور، أو يعرض العربية بخط النظام، يكون قد أجاب عن السؤال قبل أن يُطرح.',
+      ar: 'يُحكم على شركة استشارات السلامة بالثقة قبل السعر، ويُحكم عليها في ثوانٍ. المشتري إما مدير عمليات يتحقق من مورّد قبل إدراجه، وإما صاحب منشأة صغيرة أمامه تفتيش قادم، وكثيرًا ما يقرأ بالعربية على هاتفه وباتصال ضعيف. والموقع الذي يتأخر في الظهور، أو يعرض العربية بخط النظام، يكون قد أجاب عن السؤال قبل أن يُطرح.',
     },
     solution: {
       en: 'One page per language, seven sections, and nothing on them beyond trust, clarity and the call. The Arabic is a second original, not a translation, set in the client\'s licensed typeface with layout mirrored properly. Contact runs through a form which validates on the server, rate limits by address and refuses to fake success, alongside WhatsApp, phone and the company profile as a download. Desktop Lighthouse scores 100 on the English page and 99 on the Arabic, and layout shift measured zero on every run.',
@@ -531,11 +531,11 @@ export const projects: Project[] = [
           },
           {
             en: 'The metric-adjusted fallback sits on Arial, and Arial carries a complete Arabic. So every Arabic letter found a home before the stack ever reached Thmanyah, and the licensed typeface the client pays for was never requested at all. The Arabic site had been shipping in Arial while looking approximately right, which is the worst kind of bug: nothing is broken on screen and the thing you bought is simply absent.',
-            ar: 'فالخط الاحتياطي المضبوط على المقاسات مبني على Arial، وArial يحمل عربية كاملة. فوجد كل حرف عربي مأواه قبل أن تصل القائمة إلى ثمانية أصلًا، ولم يُطلب الخط المرخّص الذي يدفع العميل ثمنه ولو مرة واحدة. كان الموقع العربي يُنشر بخط Arial وهو يبدو صحيحًا تقريبًا، وهذا أسوأ أنواع الأخطاء: لا شيء مكسور على الشاشة، والشيء الذي اشتريته غائب ببساطة.',
+            ar: 'فالخط الاحتياطي المضبوط على المقاسات مبني على Arial، وArial يحمل عربية كاملة. فوجد كل حرف عربي مأواه قبل أن تصل القائمة إلى خط ثمانية أصلًا، ولم يُطلب الخط المرخّص الذي يدفع العميل ثمنه ولو مرة واحدة. كان الموقع العربي يُنشر بخط Arial وهو يبدو صحيحًا تقريبًا، وهذا أسوأ أنواع الأخطاء: لا شيء مكسور على الشاشة، والشيء الذي اشتريته غائب ببساطة.',
           },
           {
             en: 'The Arabic stack now leads with Thmanyah and is scoped to the Arabic document, so the single Arabic character on the language toggle never drags the face onto the English page. Anything holding the Latin voice is marked as English in the markup.',
-            ar: 'صارت القائمة العربية تبدأ بثمانية، ومحصورة في المستند العربي، حتى لا يجرّ الحرف العربي الوحيد في زرّ تبديل اللغة الخطَّ كله إلى الصفحة الإنجليزية. وكل ما يجب أن يبقى بالصوت اللاتيني موسوم في الشيفرة بأنه إنجليزي.',
+            ar: 'صارت القائمة العربية تبدأ بخط ثمانية، ومحصورة في المستند العربي، حتى لا يجرّ الحرف العربي الوحيد في زرّ تبديل اللغة الخطَّ كله إلى الصفحة الإنجليزية. وكل ما يجب أن يبقى بالصوت اللاتيني موسوم في الشيفرة بأنه إنجليزي.',
           },
         ],
       },
@@ -578,11 +578,11 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'A gate that measured the runner', ar: 'بوابة كانت تقيس الخادم لا الموقع' },
+        title: { en: 'A gate that measured the runner', ar: 'بوابة كانت تقيس الجهاز لا الموقع' },
         body: [
           {
             en: 'Mobile Lighthouse assertions kept failing in CI. On code differing only in a test file, total blocking time read 250 milliseconds, then 318, then 362, then 845 across consecutive runs. The same page on an idle machine reads 10 to 30. The runner is a shared two-core machine, also hosting the server being measured, and its timings swung by nearly three times between back-to-back runs of identical code.',
-            ar: 'ظلّت فحوص لايتهاوس للهاتف تفشل في التكامل المستمر. وعلى شيفرة لا تختلف إلا في ملف اختبار، سجّل زمن الحجب الكلي 250 جزءًا من الألف من الثانية، ثم 318، ثم 362، ثم 845 في تشغيلات متتالية. والصفحة نفسها على جهاز خامل تسجّل بين 10 و30. فالخادم جهاز بنواتين يتشاركه غيرنا، ويستضيف في الوقت نفسه الخادم الذي يجري قياسه، وتذبذبت قراءاته نحو ثلاثة أضعاف بين تشغيلين متتاليين لشيفرة واحدة.',
+            ar: 'ظلّت فحوص لايتهاوس للهاتف تفشل في التكامل المستمر. وعلى شيفرة لا تختلف إلا في ملف اختبار، سجّل زمن الحجب الكلي 250 جزءًا من الألف من الثانية، ثم 318، ثم 362، ثم 845 في تشغيلات متتالية. والصفحة نفسها على جهاز خامل تسجّل بين 10 و30. فجهاز التشغيل حاسوب بنواتين يتشاركه غيرنا، ويستضيف في الوقت نفسه الخادم الذي يجري قياسه، وتذبذبت قراءاته نحو ثلاثة أضعاف بين تشغيلين متتاليين لشيفرة واحدة.',
           },
           {
             en: 'So the signal moved instead of disappearing. The three processor-bound mobile checks became warnings, still measured and still reported. Desktop stays a hard gate. The structural mobile checks stay hard too, layout shift among them, because none of those depends on how many cores the machine has. A gate unable to tell a slower codebase from a busier neighbour is worse than no gate at all.',
