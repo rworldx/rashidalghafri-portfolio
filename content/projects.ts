@@ -320,41 +320,83 @@ export const projects: Project[] = [
     ],
     chapters: [
       {
-        title: { en: 'Two doors', ar: 'مدخلان' },
+        title: { en: 'Where do I start?', ar: 'من أين أبدأ؟' },
         body: [
           {
-            en: 'Watch-order lists already exist. Each one makes a newcomer and a returning viewer share a single page, and the page serves neither. The Thread gives each their own door. The newcomer gets the Infinity Saga as a spine, 23 films in about 50 hours, Iron Man through Far From Home. The returning viewer types a title and gets the path. The whole product follows from refusing to make those two people share a screen.',
-            ar: 'قوائم ترتيب المشاهدة كثيرة، لكنها كلها تضع المبتدئ والمشاهد المتمرّس في صفحة واحدة، فلا تريح هذا ولا ذاك. في The Thread لكل واحد منهما مدخله. المبتدئ يبدأ بملحمة اللانهاية: 23 فيلمًا في نحو 50 ساعة، من Iron Man إلى Far From Home. والمتمرّس يكتب اسم ما يريد مشاهدته فيحصل على ما يسبقه. والفكرة كلها تقوم على ألا يُجبر هذان الشخصان على شاشة واحدة.',
+            en: 'Marvel on screen is 216 films and series, made across decades by companies who each owned a different piece. Fox made the X-Men. Sony makes Spider-Man. Netflix made the Defenders. Blade came out before any of the modern run began. None were planned to sit in one order, because for most of those decades nobody expected them to meet.',
+            ar: 'عالم مارفل على الشاشة 216 فيلمًا ومسلسلًا، صُنعت على مدى عقود لدى شركات ملك كلٌّ منها جزءًا مختلفًا منه. فوكس صنعت إكس-من. وسوني تصنع سبايدر-مان. ونتفليكس صنعت المدافعين. وبليد صدر قبل أن يبدأ هذا كله. ولم يُخطَّط لأيٍّ منها أن يقف في ترتيب واحد، لأن أحدًا لم يكن يتوقّع طوال معظم تلك المدة أن تلتقي.',
           },
-        ],
-        facts: [
-          { label: { en: 'Films in the spine', ar: 'أفلام البداية' }, value: '23' },
-          { label: { en: 'Spine runtime, about', ar: 'مدتها تقريبًا' }, value: '50h' },
+          {
+            en: 'The result is a mess for anyone who only wants to watch something. Pick a title and the honest question is what has to come first, and the honest answer runs through studios and decades a viewer has no reason to know about.',
+            ar: 'والنتيجة فوضى لمن يريد أن يشاهد شيئًا فحسب. اختر أي عمل، والسؤال الصادق هو ما الذي يجب أن يسبقه، والجواب الصادق يمرّ عبر شركات وعقود لا سبب يدعو المشاهد لمعرفتها.',
+          },
         ],
       },
       {
-        title: { en: 'Order is derived, never written', ar: 'الترتيب يُحسب ولا يُكتب' },
+        title: { en: 'Every list is the same list', ar: 'كل القوائم قائمة واحدة' },
         body: [
           {
-            en: 'Every title is a node and every prerequisite is an edge. Release order, the essentials spine, each universe\'s story order and the path to any title all fall out of one graph. There is no hand-maintained list anywhere in the repository. Three kinds of ordering data stay separate because they mean different things: a hard dependency, a soft recommendation, and a curated reading order inside one universe, which is not a dependency and must never be stored as one.',
-            ar: 'كل عمل في الموقع عنصر في شبكة، وكل علاقة «شاهد هذا أولًا» رابط بين عنصرين. ترتيب العرض، وقائمة البداية، والترتيب القصصي لكل كون، والمسار إلى أي عمل، كلها تُستخرج من هذه الشبكة الواحدة. لا توجد في المشروع قائمة واحدة مكتوبة باليد. وهناك ثلاثة أنواع من العلاقات تُحفظ منفصلة لأن لكل منها معنى مختلفًا: ما يجب مشاهدته أولًا، وما يُستحسن مشاهدته أولًا، وترتيب القراءة المختار داخل الكون الواحد، وهذا الأخير ليس شرطًا ويجب ألا يُحفظ كأنه شرط.',
+            en: 'Watch-order guides exist by the dozen. Every one of them is a single flat list, and every one of them is handed to two people who want opposite things.',
+            ar: 'أدلة ترتيب المشاهدة موجودة بالعشرات. وكلها قائمة واحدة مسطّحة، وكلها تُقدَّم لشخصين يريدان أمرين متعاكسين.',
           },
           {
-            en: 'The corpus is TypeScript validated by zod, and the build fails on a dozen cross-node rules. A dependency cycle is reported as a path, not a boolean. An essential title depending on a non-essential one fails. A cross-universe detour with no editor\'s note fails. A missing runtime fails loudly instead of shipping as a confident wrong number.',
-            ar: 'المحتوى مكتوب بلغة TypeScript ويتحقق منه zod، ويتوقف البناء إذا خُرقت أي قاعدة من نحو اثنتي عشرة قاعدة تربط الأعمال ببعضها. إذا وُجدت حلقة مفرغة في العلاقات ظهر مسارها كاملًا لا مجرد إشارة إلى وجودها. وإذا اعتمد عمل أساسي على عمل غير أساسي توقف البناء. وإذا رُبط كونان دون ملاحظة تشرح السبب توقف البناء. وإذا نقصت مدة عمل توقف البناء بدل أن ينشر رقمًا خاطئًا بثقة.',
+            en: 'One has watched none of the canon and wants somewhere to begin without signing up for two hundred hours. The other has watched plenty, wants one specific thing tonight, and only needs to know what has to come first. A single list serves the first badly and the second not at all.',
+            ar: 'أحدهما لم يشاهد شيئًا ويريد نقطة يبدأ منها دون أن يلتزم بمئتي ساعة. والآخر شاهد الكثير، ويريد عملًا واحدًا الليلة، ولا يحتاج إلا أن يعرف ما الذي يسبقه. والقائمة الواحدة تخدم الأول بصعوبة ولا تخدم الثاني أبدًا.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Two doors', ar: 'بابان' },
+        body: [
+          {
+            en: 'So the site has two entrances and asks which visitor you are. Someone starting gets the Infinity Saga: 23 films, about fifty hours, Iron Man through Far From Home. Someone who already knows what they want types the title and gets the path.',
+            ar: 'فللموقع مدخلان، ويسألك أيّهما أنت. من يبدأ يحصل على ملحمة اللانهاية: 23 فيلمًا في نحو خمسين ساعة، من Iron Man إلى Far From Home. ومن يعرف ما يريد يكتب اسم العمل فيحصل على المسار إليه.',
+          },
+          {
+            en: 'The paths are not short. Doomsday works out to 93 titles. No Way Home reaches sideways into five Sony Spider-Man films, and the page says why the detour exists rather than leaving a viewer to wonder what those films are doing there.',
+            ar: 'والمسارات ليست قصيرة. فـ Doomsday يخرج في 93 عملًا. وNo Way Home يمتدّ جانبًا إلى خمسة أفلام سبايدر-مان من سوني، وتشرح الصفحة سبب هذه الانعطافة بدل أن تترك المشاهد يتساءل ما شأن تلك الأفلام هنا.',
           },
         ],
         facts: [
-          { label: { en: 'Titles in the graph', ar: 'عمل في الشبكة' }, value: '216' },
+          { label: { en: 'Films to start with', ar: 'أفلام البداية' }, value: '23' },
+          { label: { en: 'Path to Doomsday', ar: 'المسار إلى Doomsday' }, value: '93' },
+        ],
+      },
+      {
+        title: { en: 'A map, not a list', ar: 'خريطة لا قائمة' },
+        body: [
+          {
+            en: 'Nothing on the site is a written-out order. What gets stored is smaller and duller: for each title, which titles have to come first. Everything a visitor sees is worked out from one map. Release order, the beginner spine, each universe\'s own story order, the path to any single title.',
+            ar: 'لا شيء في الموقع ترتيب مكتوب. فالمحفوظ أصغر من ذلك وأقلّ إثارة: لكل عمل، ما الأعمال التي يجب أن تسبقه. وكل ما يراه الزائر مستخرج من هذه الخريطة الواحدة: ترتيب العرض، وقائمة البداية، والترتيب القصصي لكل كون، والمسار إلى أي عمل بعينه.',
+          },
+          {
+            en: 'Three kinds of link are kept apart on purpose, because they mean different things. What you must watch first. What is worth watching first. And a reading order somebody chose inside one universe, which is a recommendation and must never be stored as a requirement.',
+            ar: 'وتُحفظ ثلاثة أنواع من الروابط منفصلة عن قصد، لأن معانيها مختلفة: ما يجب أن تشاهده أولًا، وما يُستحسن أن تشاهده أولًا، وترتيب قراءة اختاره أحدهم داخل كون واحد، وهو توصية ولا يجوز أن يُحفظ كأنه شرط.',
+          },
+          {
+            en: 'The map checks itself before anything is published. If two titles each claim to come first, the build stops and prints the loop as the actual route round both, rather than saying a loop exists. A beginner title depending on a non-beginner one stops the build too, and so does a jump between universes with no note explaining the jump.',
+            ar: 'وتفحص الخريطة نفسها قبل نشر أي شيء. فإذا ادّعى عملان أن كلًّا منهما يسبق الآخر توقّف البناء وطبع الحلقة كمسار كامل يدور بينهما، لا كإشعار بوجود حلقة. ويتوقّف البناء كذلك إن اعتمد عمل من قائمة البداية على عمل خارجها، وإن وُجدت قفزة بين كونين بلا ملاحظة تشرحها.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Titles in the map', ar: 'أعمال في الخريطة' }, value: '216' },
           { label: { en: 'Universes', ar: 'الأكوان' }, value: '8' },
         ],
       },
       {
-        title: { en: 'Appearances are a join, not a list', ar: 'الظهور يُستخرج ولا يُكتب' },
+        title: { en: '699 characters, and nobody typed them in', ar: '699 شخصية لم تُدخَل يدويًا' },
         body: [
           {
-            en: 'A character is in a title when the cast credits for the title name them. Nothing is typed twice, because the second copy of a fact rots. The matcher works on aliases and handles how credits are written in practice, such as Logan / Wolverine or Ted (Man-Thing). Whole segments are compared, never substrings. An earlier substring match put Vision in every title crediting the word Television. Two escape hatches exist, one for real uncredited appearances and one for a credit using the character\'s word for somebody else, and the second throws at build time the moment the exception stops being needed.',
-            ar: 'تُعدّ الشخصية ظاهرة في عمل ما إذا ورد اسمها في قائمة ممثليه. لا يُكتب شيء مرتين، لأن النسخة الثانية من أي معلومة تتقادم مع الوقت. وأداة المطابقة تعرف الأسماء البديلة وتفهم الطريقة التي تُكتب بها القوائم فعلًا، مثل Logan / Wolverine أو Ted (Man-Thing). وتقارن الأسماء كاملة لا أجزاءً منها، بعد أن وضعت مطابقة جزئية قديمة Vision في كل عمل ورد فيه لفظ Television. ولا يوجد سوى استثناءين: أحدهما لظهور حقيقي لم يُذكر في القوائم، والآخر لاسم في القائمة يُقصد به شخص آخر، وهذا الأخير يوقف البناء تلقائيًا إذا لم يعد له داعٍ.',
+            en: 'A character counts as appearing in a title when the cast list names them. Nothing is written down twice, because the second copy of any fact goes stale the moment the first one changes.',
+            ar: 'تُعدّ الشخصية ظاهرة في عمل ما حين تذكرها قائمة ممثليه. ولا يُكتب شيء مرتين، لأن النسخة الثانية من أي معلومة تتقادم لحظة تغيّر الأولى.',
+          },
+          {
+            en: 'Cast lists are written by people, so the matching has to cope with how people write. Logan / Wolverine. Ted (Man-Thing). Whole names are compared, never fragments, after an earlier version compared fragments and quietly put Vision in every title whose credits contained the word Television.',
+            ar: 'وقوائم الممثلين يكتبها بشر، فكان على المطابقة أن تتحمّل طريقة البشر في الكتابة: Logan / Wolverine، وTed (Man-Thing). وهي تقارن الأسماء كاملة ولا تقارن أجزاءها، بعد أن قارنت نسخة سابقة الأجزاء فوضعت Vision بهدوء في كل عمل ورد في قوائمه لفظ Television.',
+          },
+          {
+            en: 'The same idea runs the strength ranking. All 699 characters sort from strongest down, and no rank is stored against any of them. The order falls out of what each record already says: species, mutant class, who they run with, and the words used to describe what they do. Adding a character renumbers nobody. When a rank looks wrong the cause is almost always a thin record or a word the scorer read the wrong way, not the ranking itself.',
+            ar: 'والفكرة نفسها تدير ترتيب القوة. تُفرز الشخصيات الـ699 من الأقوى نزولًا، ولا يُحفظ لأيٍّ منها رقم ترتيب. فالترتيب ينبثق ممّا يقوله سجلّ كل شخصية أصلًا: نوعها، ودرجة تحوّلها، ومع من تقف، والكلمات التي تصف ما تفعله. وإضافة شخصية لا تعيد ترقيم أحد. وحين يبدو ترتيب خاطئًا فالسبب في الغالب سجلّ ناقص أو كلمة قرأها المحرّك على غير وجهها، لا الترتيب نفسه.',
           },
         ],
         facts: [
@@ -363,44 +405,55 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'A ranking with no rank column', ar: 'ترتيب للقوة بلا رقم ترتيب' },
+        title: { en: 'Arabic, and what breaks in it', ar: 'العربية وما ينكسر فيها' },
         body: [
           {
-            en: 'All 699 characters sort by strength, and there is no powerRank field. The order is derived from species, mutant class, affiliation and each character\'s own power bullets, scored by a small vocabulary engine, with a hand-ordered head per tier where sources agree. Inserting a character never renumbers anyone. The lesson written into the code, more than once, is this: a bad rank is almost always a thin record or a word the scorer misreads, not a ranking bug. The tier documents are generated from the same definition, so they cannot disagree with the site.',
-            ar: 'الشخصيات الـ699 كلها مرتبة حسب القوة، ومع ذلك لا يوجد حقل يحمل رقم ترتيب أي منها. الترتيب يُحسب من نوع الشخصية، ودرجة التحوّل، والانتماء، ونقاط القوة المذكورة في وصفها، عبر محرّك صغير يفهم المفردات، مع ترتيب يدوي لرأس كل درجة حيث تتفق المصادر. إضافة شخصية جديدة لا تغيّر رقم أحد. والدرس المكتوب في الشيفرة أكثر من مرة: إذا بدا ترتيب شخصية خاطئًا فالسبب في الغالب وصف ناقص أو كلمة أساء المحرّك فهمها، لا خلل في الترتيب نفسه. ووثائق الدرجات تُولَّد من التعريف ذاته، فلا يمكن أن تختلف عمّا في الموقع.',
+            en: 'The whole site runs in Arabic as well, laid out right to left, with its own Arabic typefaces served from the site rather than borrowed from the phone. Numbers stay Western, because streaming apps and banks in the Gulf use Western numbers.',
+            ar: 'الموقع كله يعمل بالعربية أيضًا، بتخطيط من اليمين إلى اليسار، وبخطوط عربية خاصة به مستضافة عليه لا مستعارة من الهاتف. وتبقى الأرقام غربية، لأن هذا ما تستخدمه تطبيقات البثّ والبنوك في الخليج فعلًا.',
+          },
+          {
+            en: 'One fault is worth knowing about, because most codebases meet the same one late. The shorthand JavaScript offers for finding word boundaries only understands English letters. Point the shorthand at Arabic and nothing matches, no error is reported, and the wrong thing happens quietly. The pattern reading season labels had been broken for a while, and nothing had complained.',
+            ar: 'وخللٌ واحد يستحق المعرفة لأن معظم المشاريع تلتقيه متأخرة. فالاختصار الذي تقدّمه جافاسكربت لإيجاد حدود الكلمات لا يفهم إلا الحروف الإنجليزية. وجّهه إلى العربية فلا يطابق شيئًا، ولا يعلن خطأ، ويفعل الخطأ بصمت. وقد كسر النمط الذي يقرأ تسميات المواسم، ولم يشتكِ أحد.',
+          },
+          {
+            en: 'Approximate runtimes are written with the Arabic word for about rather than the tilde, because the tilde has no direction of its own and lands on the wrong side of a Latin number inside an Arabic sentence. The Arabic renders on every page and has not been read by an editor yet, so those pages are kept out of search results until someone has.',
+            ar: 'وتُكتب المدد التقريبية بكلمة «نحو» لا بعلامة ~، لأن العلامة لا اتجاه لها فتقع في الجهة الخطأ من رقم لاتيني داخل جملة عربية. والعربية تعمل في كل صفحة ولم يقرأها محرّر بعد، فتُستبعد تلك الصفحات من نتائج البحث حتى تُقرأ.',
           },
         ],
       },
       {
-        title: { en: 'Images at zero cost', ar: 'صور بلا تكلفة' },
+        title: { en: 'The bill nobody expects', ar: 'فاتورة لم يتوقّعها أحد' },
         body: [
           {
-            en: '216 posters plus 699 portraits plus galleries used up Vercel\'s free image-optimisation quota. Past the quota the optimiser errors instead of degrading, so the deployed site lost most of its images while localhost looked perfect. The fix took Vercel out of the image path entirely. TMDB serves posters at a width written into the URL. One host of eighteen refuses hotlinking and goes through a free proxy. Everything else is used directly. A full crawl now makes zero billed requests.',
-            ar: '216 ملصقًا و699 صورة شخصية ومعارض الصور استهلكت كلها حصة Vercel المجانية لمعالجة الصور. وحين تنفد الحصة لا تتراجع الخدمة بهدوء بل تعطّل الصور تمامًا، فاختفى معظمها من الموقع المنشور بينما كان كل شيء سليمًا على جهازي. كان الحل إخراج Vercel من مسار الصور نهائيًا: TMDB يقدّم الملصقات بالعرض المطلوب مكتوبًا في الرابط، ومضيف واحد من ثمانية عشر يرفض الربط المباشر فيمرّ عبر وسيط مجاني، وما عداه يُستخدم كما هو. تصفّح الموقع كاملًا الآن لا يُنتج طلبًا مدفوعًا واحدًا.',
+            en: '216 posters, 699 portraits and the galleries behind them added up to more image processing than the free allowance covers. Past the allowance the service does not quietly serve a lower quality. The service returns an error. So the published site lost most of its pictures while the copy on my own machine looked perfect, which is the worst way to find out.',
+            ar: '216 ملصقًا و699 صورة شخصية والمعارض خلفها، بلغت مجتمعةً من معالجة الصور أكثر ممّا تغطّيه الحصة المجانية. وبعد تجاوز الحصة لا تكتفي الخدمة بتقديم جودة أقلّ بهدوء، بل تُرجع خطأ. فخسر الموقع المنشور معظم صوره بينما بدت النسخة على جهازي سليمة تمامًا، وهذه أسوأ طريقة لاكتشاف الأمر.',
+          },
+          {
+            en: 'Spending less afterwards gives nothing back, so the answer was dropping the service for images altogether. The film database already serves each poster at whatever width the address asks for, so the address now asks for the right one. One picture host out of eighteen refuses to be linked to directly and goes through a free go-between. Everything else is used unchanged. Crawling the entire site now costs nothing at all.',
+            ar: 'والإنفاق الأقلّ بعد ذلك لا يعيد شيئًا، فكان الحل ألا نستخدم الخدمة للصور أصلًا. فقاعدة بيانات الأفلام تقدّم كل ملصق بالعرض المطلوب في الرابط، فصار الرابط يطلب العرض الصحيح. ومضيف صور واحد من ثمانية عشر يرفض الربط المباشر فيمرّ عبر وسيط مجاني. وما عداه يُستخدم كما هو. وزحف الموقع كاملًا الآن لا يكلّف شيئًا على الإطلاق.',
           },
         ],
         facts: [{ label: { en: 'Billed image requests', ar: 'طلبات صور مدفوعة' }, value: '0' }],
       },
       {
-        title: { en: 'Arabic done properly', ar: 'عربية تُكتب ولا تُترجم' },
+        title: { en: 'Where it stands', ar: 'أين وصل الآن' },
         body: [
           {
-            en: 'Full RTL layout with a self-hosted Arabic display face and body face. Western numerals by decision, because those are what GCC streaming and banking interfaces use. One test guards a fact most codebases learn the hard way: JavaScript\'s \\b and \\w are ASCII-only and fail open on Arabic text, which silently broke a season-label regex. Approximation is written with the Arabic word, not a tilde, because the tilde is bidi-neutral and lands on the wrong side of a Latin numeral inside an RTL paragraph.',
-            ar: 'اتجاه كامل من اليمين إلى اليسار، وخط عربي للعناوين وآخر للنصوص، كلاهما مستضاف على الموقع نفسه. والأرقام غربية عن قصد، لأنها ما تعتمده تطبيقات البث والبنوك في الخليج. ويحرس اختبار واحد حقيقة يكتشفها معظم المطوّرين متأخرين: أن \\b و\\w في JavaScript لا تفهم إلا حروف ASCII وتمرّ على النص العربي كأنه لا شيء، وهو ما أفسد تعبيرًا يسمّي المواسم دون أن يلاحظ أحد. والتقريب يُكتب بكلمة «نحو» لا بعلامة ~، لأن العلامة لا اتجاه لها فتقع في الجهة الخطأ من الرقم داخل الفقرة العربية.',
+            en: 'The site is live, and all 1,893 pages are built before anyone visits. While someone is browsing, nothing is fetched from an outside service, and no image request is billed.',
+            ar: 'الموقع منشور، وصفحاته الـ1,893 كلها مبنية قبل أن يزورها أحد. وأثناء استخدامه لا يُجلب شيء من خدمة خارجية، ولا يُحتسب أي طلب صورة.',
           },
-        ],
-      },
-      {
-        title: { en: 'Tests named after the bug they caught', ar: 'اختبارات تحمل أسماء الأخطاء التي كشفتها' },
-        body: [
           {
-            en: 'The suite is documented by failure, not by coverage. A render test caught 130 pages rendering empty behind a green build. An end-to-end test caught the CSP blocking every script. A contrast test disproved the design brief\'s own claim about the brand red on dark: 4.04 to 1, not 4.5. A screenshot matrix of widths, themes and routes caught dark mode unrendered for four commits, and an Arabic runtime reading as 44 hours instead of 1h 44m.',
-            ar: 'مجموعة الاختبارات موثّقة بما كشفته من أخطاء، لا بنسبة التغطية. اختبار عرض كشف 130 صفحة تظهر فارغة رغم نجاح البناء. واختبار شامل كشف أن سياسة أمان المحتوى تمنع كل السكربتات. واختبار تباين أثبت أن ما ادّعاه موجز التصميم عن الأحمر على الخلفية الداكنة غير صحيح: 4.04 إلى 1، لا 4.5. ومصفوفة لقطات شاشة تجمع العروض والسمات والمسارات كشفت أن الوضع الداكن لم يُعرض طوال أربعة إيداعات، وأن مدة عربية ظهرت 44 ساعة بدل ساعة و44 دقيقة.',
+            en: 'The tests are named after the faults they found rather than the code they cover. The most useful one caught 130 pages rendering completely blank behind a build reporting success, which is exactly the kind of failure nobody goes looking for.',
+            ar: 'والاختبارات تحمل أسماء الأخطاء التي وجدتها لا أسماء الشيفرة التي تغطّيها. وأنفعها كشف 130 صفحة تُعرض فارغة تمامًا خلف بناء أعلن نجاحه، وهذا بالضبط نوع الإخفاق الذي لا يبحث عنه أحد.',
+          },
+          {
+            en: 'The Arabic works everywhere and is still waiting on an editor. And this is an independent fan project, not affiliated with or endorsed by Marvel Studios, Disney, Sony or 20th Century Studios.',
+            ar: 'والعربية تعمل في كل مكان وما زالت تنتظر محرّرًا. وهذا مشروع مستقل من صنع أحد المعجبين، لا يرتبط بمارفل ستوديوز أو ديزني أو سوني أو 20th Century Studios ولا يحظى بموافقتها.',
           },
         ],
         facts: [
+          { label: { en: 'Static pages', ar: 'الصفحات الثابتة' }, value: '1,893' },
           { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '321' },
-          { label: { en: 'Browser tests', ar: 'اختبارات المتصفح' }, value: '55' },
         ],
       },
     ],
