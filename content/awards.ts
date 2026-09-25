@@ -31,8 +31,8 @@ export const awards: Award[] = [
     tag: { en: 'EnerGrid', ar: 'EnerGrid' },
     href: '/projects/energrid',
     description: {
-      en: 'Pitched EnerGrid — a smart energy-monitoring concept that tracks real-time power consumption per device to cut waste and lower household bills — placing 2nd of 20+ teams and earning a cash prize and recognition from Riyada’s Chairperson.',
-      ar: 'قدّم EnerGrid — فكرة ذكية لمراقبة الطاقة تتتبّع استهلاك كل جهاز لحظيًا لتقليل الهدر وخفض فواتير المنزل — محقّقًا المركز الثاني بين أكثر من ٢٠ فريقًا، ونال جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
+      en: 'Pitched EnerGrid, a concept designed to track real-time power consumption per device to cut waste and lower household bills, placing 2nd of 20+ teams and earning a cash prize and recognition from Riyada’s Chairperson.',
+      ar: 'قدّم EnerGrid، وهي فكرة صُمّمت لتتبّع استهلاك كل جهاز لحظيًا لتقليل الهدر وخفض فواتير المنزل، محقّقًا المركز الثاني بين أكثر من 20 فريقًا، ونال جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
     },
   },
   {

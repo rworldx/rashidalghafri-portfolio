@@ -1074,17 +1074,23 @@ export const projects: Project[] = [
     year: 2025,
     role: 'Concept & Pitch · 2nd Place, Riyada Camp',
     summary: {
-      en: 'A smart energy-monitoring concept that tracks real-time power consumption per device — so you can see what is draining your bill, cut waste, and pay only for what matters. 2nd place at Riyada’s Promising Student Projects Camp.',
-      ar: 'فكرة ذكية لمراقبة الطاقة تتتبّع استهلاك كل جهاز لحظيًا — لترى ما الذي يستنزف فاتورتك، فتقلّل الهدر وتدفع مقابل ما يهم فقط. حصلت على المركز الثاني في مخيم مشاريع الطلاب الواعدة من هيئة ريادة.',
+      en: 'A team concept for a home energy monitor, designed to read consumption device by device and show a household where the money goes instead of watching a prepaid balance fall with no explanation. My part was the website and a front-end prototype on mock data. Second of 20+ teams at Riyada\'s Promising Student Projects Camp.',
+      ar: 'فكرة فريق لجهاز يراقب كهرباء المنزل، صُمّم ليقرأ الاستهلاك جهازًا جهازًا ويُظهر للبيت أين يذهب المال، بدل مشاهدة رصيد العدّاد المسبق ينزل بلا تفسير. وكان دوري الموقع ونموذجًا أوّليًا للواجهة ببيانات تجريبية. المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة من هيئة ريادة.',
     },
     problem: {
-      en: 'Every great idea starts with a problem I lived. When I was a student renting in Buraimi, my building switched to prepaid electricity — I had to pay an estimated amount up front each month, and the balance kept running out early, forcing repeated top-ups. One evening, lying in bed watching my favourite series, the power simply cut out — and it kept happening. That is when I asked: why is there no product that continuously tracks each device’s power consumption, so you can see exactly what is draining your money, cut waste, and only run what truly matters?',
-      ar: 'فكرتنا بدأت من مشكلة عشتُها بنفسي. كنت طالبًا أسكن في سكنٍ مستأجر في البريمي، وحوّل صاحب العمارة نظام الكهرباء إلى الدفع المسبق — فصرت أدفع مبلغًا تقديريًا قبل كل شهر، وكان الرصيد ينفد بسرعة قبل نهاية الشهر فأضطر لإعادة الشحن أكثر من مرة. وفي إحدى الليالي بينما كنت ممددًا على السرير أتابع مسلسلي، انقطعت الكهرباء فجأة — وتكرّر هذا كثيرًا. حينها سألت نفسي: لماذا لا نصنع منتجًا يقيس استهلاك كل جهاز باستمرار، حتى نرى أيّ جهاز يستهلك أكثر، فنوفّر الطاقة ونقلّل الفواتير ونطفئ ما لا نحتاجه؟',
+      en: 'Our idea began with a problem I lived. When I was a student renting in Buraimi, my building switched to prepaid electricity. I paid an estimated amount up front each month, the balance kept running out early, and top-ups piled up. One evening, lying in bed watching my favourite series, the power simply cut out, and the same thing kept happening. Then came the question: why is there no product reading each device’s power continuously, so a household sees exactly what is draining the money, cuts the waste, and runs only what matters?',
+      ar: 'فكرتنا بدأت من مشكلة عشتُها بنفسي. كنت طالبًا أسكن في سكنٍ مستأجر في البريمي، وحوّل صاحب العمارة نظام الكهرباء إلى الدفع المسبق، فصرت أدفع مبلغًا تقديريًا قبل كل شهر، وكان الرصيد ينفد بسرعة قبل نهاية الشهر فأضطر لإعادة الشحن أكثر من مرة. وفي إحدى الليالي بينما كنت ممددًا على السرير أتابع مسلسلي، انقطعت الكهرباء فجأة، وتكرّر هذا كثيرًا. حينها سألت نفسي: لماذا لا نصنع منتجًا يقيس استهلاك كل جهاز باستمرار، حتى نرى أيّ جهاز يستهلك أكثر، فنوفّر الطاقة ونقلّل الفواتير ونطفئ ما لا نحتاجه؟',
     },
     solution: {
-      en: 'EnerGrid — a smart energy-monitoring system that measures real-time consumption per device and surfaces the biggest drains, so households on prepaid meters can cut waste, lower their bills, and switch off what does not matter. The concept placed 2nd of 20+ teams at Riyada’s Promising Student Projects Camp, held at Al Buraimi University College.',
-      ar: 'EnerGrid — نظام ذكي لمراقبة الطاقة يقيس الاستهلاك اللحظي لكل جهاز ويكشف أكثرها استنزافًا، ليتمكّن سكان العدّادات مسبقة الدفع من تقليل الهدر وخفض الفواتير وإطفاء ما لا يهم. حقّقت الفكرة المركز الثاني بين أكثر من ٢٠ فريقًا في مخيم مشاريع الطلاب الواعدة من هيئة ريادة، الذي أُقيم في كلية البريمي الجامعية.',
+      en: 'EnerGrid was designed to read a household\'s electricity per appliance and surface the biggest drains, so the answer to what is spending the balance sits on a screen instead of being a guess. The team carried the concept to the camp. My part was the website and a front-end prototype running on mock data. The entry placed 2nd of 20+ teams at Riyada\'s Promising Student Projects Camp, held at Al Buraimi University College.',
+      ar: 'صُمّم EnerGrid ليقرأ كهرباء المنزل لكل جهاز ويكشف أكثرها استنزافًا، ليصبح جواب «ما الذي يستهلك الرصيد» على شاشة بدل أن يكون تخمينًا. حمل الفريق الفكرة إلى المخيم، وكان دوري الموقع ونموذجًا أوّليًا للواجهة يعمل ببيانات تجريبية. وحصل المشروع على المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة من هيئة ريادة، الذي أُقيم في كلية البريمي الجامعية.',
     },
+    /*
+     * These describe the TEAM'S CONCEPT, which is what this entry presents,
+     * not a stack anybody shipped. Nothing was wired to a meter and nothing
+     * ran in a home. The rooms say so plainly, and every verb around them is
+     * "designed to" rather than "does".
+     */
     stack: ['IoT', 'Smart Energy', 'Real-time Monitoring', 'Hardware + App'],
     stats: [
       { label: { en: 'Placed', ar: 'الترتيب' }, value: '2nd' },
@@ -1092,11 +1098,11 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        en: 'Born from a real pain point — prepaid electricity that ran out unpredictably, mid-month and mid-series.',
-        ar: 'وُلدت من ألمٍ حقيقي — كهرباء مسبقة الدفع تنفد بشكل غير متوقع، في منتصف الشهر ومنتصف المسلسل.',
+        en: 'Born from a real pain point: prepaid electricity running out unpredictably, mid-month and mid-series.',
+        ar: 'وُلدت من ألمٍ حقيقي: كهرباء مسبقة الدفع تنفد بلا توقّع، في منتصف الشهر ومنتصف المسلسل.',
       },
       {
-        en: 'The concept: real-time, per-device power tracking that pinpoints the biggest energy drains.',
+        en: 'The concept: real-time, per-device power tracking, designed to pinpoint the biggest energy drains.',
         ar: 'الفكرة: تتبّع لحظي لاستهلاك كل جهاز يحدّد أكثر الأجهزة استنزافًا للطاقة.',
       },
       {
@@ -1104,8 +1110,66 @@ export const projects: Project[] = [
         ar: 'عُرضت أمام لجنة من خبراء الصناعة في مخيم مشاريع الطلاب الواعدة (ريادة × برنامج الشركات الناشئة الواعدة)، الذي أُقيم في كلية البريمي الجامعية.',
       },
       {
-        en: 'Placed 2nd of 20+ teams — earning a cash prize and recognition from Riyada’s Chairperson.',
-        ar: 'حصلت على المركز الثاني بين أكثر من ٢٠ فريقًا — ونالت جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
+        en: 'Placed 2nd of 20+ teams, earning a cash prize and recognition from Riyada’s Chairperson.',
+        ar: 'حصلت على المركز الثاني بين أكثر من 20 فريقًا، ونالت جائزة نقدية وتكريمًا من رئيس هيئة ريادة.',
+      },
+    ],
+    chapters: [
+      {
+        title: { en: 'The meter that kept running out', ar: 'العدّاد الذي كان ينفد' },
+        body: [
+          {
+            en: 'I was renting a flat in Buraimi as a student when the building moved to prepaid electricity. Paying an estimated amount up front each month became the rule, and the estimate was never right. The balance kept running out early, so I topped up again, and again.',
+            ar: 'كنت أسكن شقة مستأجرة في البريمي وأنا طالب حين حوّلت العمارة كهرباءها إلى الدفع المسبق. فصار عليّ أن أدفع مبلغًا تقديريًا في أول كل شهر، ولم يكن التقدير صحيحًا يومًا. كان الرصيد ينفد مبكرًا، فأعيد شحنه، ثم أعيده مرة أخرى.',
+          },
+          {
+            en: 'One evening I was lying in bed watching a series and the power simply went out. Then the same thing happened again. Paying in advance for something and still losing the thing without warning is a particular kind of annoying, and the annoyance is where the project started.',
+            ar: 'وفي إحدى الليالي كنت ممددًا على السرير أتابع مسلسلًا فانقطعت الكهرباء فجأة. ثم تكرّر الأمر. أن تدفع مقدّمًا ثمن شيء ثم تفقده دون إنذار نوع خاص من الإزعاج، ومن هذا الإزعاج بدأ كل شيء.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Which thing is eating the money?', ar: 'أي جهاز يأكل الفاتورة؟' },
+        body: [
+          {
+            en: 'A prepaid meter tells a household one number: how much is left. Where the rest went is never part of the answer. You watch the balance fall with no way of knowing whether the cost is the air conditioning, the water heater, or something left plugged in and forgotten a month ago.',
+            ar: 'العدّاد المسبق يخبر البيت برقم واحد: كم بقي. أما أين ذهب الباقي فلا يقوله أبدًا. ترى الرصيد ينزل ولا تعرف هل السبب المكيّف، أم سخّان الماء، أم شيء تُرك موصولًا ونُسي قبل شهر.',
+          },
+          {
+            en: 'So spending less becomes guesswork. Turn something off, wait a month, see whether the number moved. What we proposed was a reading in place of the guess: show the household what each appliance costs, and let the decision follow.',
+            ar: 'فيتحوّل ترشيد الإنفاق إلى تخمين: أطفئ شيئًا، وانتظر شهرًا، وانظر هل تغيّر الرقم. وما اقترحناه قراءةٌ تحلّ محلّ التخمين: أن يرى البيت كم يكلّفه كل جهاز، ثم يبني قراره على ذلك.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The idea, and the part I built', ar: 'الفكرة، والجزء الذي بنيته' },
+        body: [
+          {
+            en: 'What we took to the camp was a full concept: a monitor for the whole home, designed to read each appliance in real time and put the biggest drains in front of the resident, with the hardware and the app to go with them. All of the concept was designed, and none was built.',
+            ar: 'ما حملناه إلى المخيم كان فكرة كاملة: جهاز يراقب البيت كله، مُصمَّم ليقرأ كل جهاز لحظيًا ويضع أكثرها استنزافًا أمام الساكن، مع ما يلزمه من عتاد وتطبيق. كل ذلك صُمِّم، ولم يُبنَ منه شيء.',
+          },
+          {
+            en: 'My part was the website and the front-end prototype: the screens a resident would use, running on mock data. The numbers on them were invented rather than measured. No meter was read, no hardware was made, nothing ran in anyone\'s home. The judging was on the problem, the proposal and the case for both, which is what such a camp is for, and saying so is better than letting a concept sound like a product.',
+            ar: 'أما دوري فكان الموقع ونموذج الواجهة الأوّلي: الشاشات التي سيستخدمها الساكن، تعمل ببيانات تجريبية. والأرقام عليها مُفترضة لا مقيسة. لم يُقرأ عدّاد، ولم يُصنع عتاد، ولم يعمل شيء في بيت أحد. وكان التحكيم على المشكلة والمقترح والحجّة لهما، وهذا ما تقوم عليه مخيمات كهذه، وقول ذلك أولى من ترك فكرة تبدو كأنها منتج.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Where it stands', ar: 'أين وصل الآن' },
+        body: [
+          {
+            en: 'The entry placed 2nd of 20+ teams at the Promising Student Projects Camp, run by Riyada with the Oman Promising Startups Programme and held at Al Buraimi University College in 2025, with a cash prize and recognition from the Chairperson of Oman\'s SME Development Authority.',
+            ar: 'حصل المشروع على المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة، الذي نظّمته هيئة ريادة مع برنامج الشركات الناشئة الواعدة وأُقيم في كلية البريمي الجامعية سنة 2025. ورافقته جائزة نقدية وتكريم من رئيس هيئة تنمية المشاريع الصغيرة والمتوسطة.',
+          },
+          {
+            en: 'The project went no further. The prepaid meters are still in those buildings and still say nothing about where the money goes, so the problem outlasted the prototype.',
+            ar: 'ولم يمضِ أبعد من ذلك. فالعدّادات المسبقة ما زالت في تلك العمارات، وما زالت لا تقول شيئًا عن وجهة المال، فبقيت المشكلة بعد أن توقّف النموذج.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Placed', ar: 'الترتيب' }, value: '2nd' },
+          { label: { en: 'Of teams', ar: 'من بين فرق' }, value: '20+' },
+        ],
       },
     ],
     // A brand mark, not a screenshot: shown whole rather than cropped.
