@@ -649,6 +649,210 @@ export const projects: Project[] = [
   },
   {
     /**
+     * Client work. Live at modernsupply.om, with the client still entering
+     * prices and stock, so the catalogue is not yet trading.
+     *
+     * Checked against the repository, the live site and a read-only aggregate
+     * query on 25 September 2026. The aggregates counted rows and nothing
+     * else: no customer field was ever selected. The database holds zero
+     * orders today, which is why this entry claims nothing about customers,
+     * volume, revenue or traffic, and why no route that would render an order
+     * is screenshotted.
+     *
+     * The catalogue is 654 packs across FIVE brand catalogues, not seven. Two
+     * of the seven brands have no catalogue at all. The README says otherwise
+     * in places; the data wins.
+     *
+     * The repo is private, so no source link.
+     */
+    slug: 'modern-supply',
+    featured: false,
+    title: 'Modern Supply',
+    year: 2026,
+    role: 'Client work · Design & Engineering',
+    summary: {
+      en: 'A bilingual storefront and admin console for Modern Supply, an F&B ingredients distributor in Oman. Customers browse 654 packs across five brand catalogues, build one cart, and an order is saved with a tracking number before the branch picks the order up on WhatsApp. Client work, live, with the catalogue still being priced.',
+      ar: 'متجر ولوحة تحكم بلغتين لشركة الإمداد العصري، الموزّعة لمكوّنات الأغذية والمشروبات في عُمان. يتصفّح العميل 654 عبوة من خمس قوائم لعلامات مختلفة، ويجمعها في سلّة واحدة، فيُحفظ الطلب برقم تتبّع قبل أن يستلمه الفرع على واتساب. عمل لعميل، منشور، والقائمة ما زالت قيد التسعير.',
+    },
+    problem: {
+      en: 'A distributor with seven brands took orders by WhatsApp, one conversation at a time, with no catalogue for a customer to read and no record for a branch to look up afterwards. The question was never whether to replace WhatsApp. Cafes and restaurants order by message and will carry on. The question was what has to happen before the message is sent.',
+      ar: 'كانت الشركة تستقبل طلباتها عبر واتساب، محادثةً محادثة، بلا قائمة يقرؤها العميل ولا سجلّ يعود إليه الفرع بعد ذلك. ولم يكن السؤال يومًا هل نستغني عن واتساب. فالمقاهي والمطاعم تطلب بهذه الطريقة وستبقى. السؤال كان: ما الذي يجب أن يحدث قبل إرسال الرسالة.',
+    },
+    solution: {
+      en: 'The site puts a catalogue and a record in front of the message. A customer browses five brand catalogues, fills one cart across all of them, and the order reaches the database first: a tracking number, prices frozen at the moment of ordering, stock taken under a condition so two people never both take the last unit. Only then does WhatsApp open, pre-filled, to the fulfilling branch. Staff work the same order from an admin console covering status, stock, prices, discounts and delivery fees.',
+      ar: 'يضع الموقع قائمةً وسجلًّا قبل الرسالة. يتصفّح العميل خمس قوائم لعلامات مختلفة، ويملأ منها سلّة واحدة، فيُكتب الطلب في قاعدة البيانات أولًا: رقم تتبّع، وأسعار مثبّتة لحظة الطلب، ومخزون يُخصم بشرط يمنع أن يأخذ شخصان آخر وحدة معًا. وعندها فقط يُفتح واتساب برسالة جاهزة إلى الفرع الذي سينفّذ الطلب. ويتابع الموظفون الطلب نفسه من لوحة تحكّم تضبط الحالة والمخزون والأسعار والخصومات ورسوم التوصيل.',
+    },
+    liveUrl: 'https://modernsupply.om',
+    stack: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS',
+      'Prisma',
+      'PostgreSQL',
+      'zod',
+      'Vitest',
+      'Vercel',
+    ],
+    stats: [
+      { label: { en: 'Products', ar: 'العبوات' }, value: '654' },
+      { label: { en: 'Brand catalogues', ar: 'قوائم العلامات' }, value: '5' },
+      { label: { en: 'Languages', ar: 'اللغتان' }, value: '2' },
+      { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '119' },
+      {
+        label: { en: 'Governorates / wilayats', ar: 'المحافظات / الولايات' },
+        value: '11 / 61',
+      },
+    ],
+    highlights: [
+      {
+        en: 'One cart across five brand catalogues. The cart holds ids and quantities, never prices, and the server re-reads every price when the order is placed.',
+        ar: 'سلّة واحدة تجمع خمس قوائم لعلامات مختلفة. تحفظ السلّة المعرّفات والكميات فقط لا الأسعار، ويعيد الخادم قراءة كل سعر عند تسجيل الطلب.',
+      },
+      {
+        en: 'An order becomes a database row before becoming a message: a tracking number, frozen line prices, and stock taken under a condition, all inside one transaction.',
+        ar: 'الطلب سجلّ في قاعدة البيانات قبل أن يكون رسالة: رقم تتبّع، وأسعار مثبّتة لكل سطر، ومخزون يُخصم بشرط، وكل ذلك داخل عملية واحدة.',
+      },
+      {
+        en: 'An admin console over the same data: order status, payment, delivery company and fee, stock, prices, discounts scoped to a product, category, brand or everything, and a fee per governorate.',
+        ar: 'لوحة تحكّم على البيانات نفسها: حالة الطلب، والدفع، وشركة التوصيل ورسومها، والمخزون، والأسعار، وخصومات تُحدَّد لمنتج أو فئة أو علامة أو للجميع، ورسم توصيل لكل محافظة.',
+      },
+      {
+        en: 'Cash on delivery when every line is priced and the governorate has a fee. Otherwise the order is saved as a quote request, with its tracking number, and the branch confirms the total.',
+        ar: 'الدفع عند الاستلام حين تكون كل الأسطر مسعّرة وللمحافظة رسم توصيل. وإن لم يكتمل ذلك يُحفظ الطلب طلبَ عرض سعر برقم تتبّعه، ويؤكّد الفرع المبلغ.',
+      },
+      {
+        en: 'English and Arabic throughout, storefront and admin, with right-to-left layout written in logical properties rather than mirrored by hand.',
+        ar: 'بالعربية والإنجليزية في كل مكان، في المتجر ولوحة التحكّم، وباتجاه من اليمين إلى اليسار مكتوب بخصائص منطقية لا بعكسٍ يدوي.',
+      },
+      {
+        en: '119 unit tests over the parts where a mistake costs money: pricing, discounts, stock movement, order status transitions and the WhatsApp message.',
+        ar: '119 اختبار وحدة على المواضع التي يكلّف الخطأ فيها مالًا: التسعير، والخصومات، وحركة المخزون، وانتقالات حالة الطلب، ورسالة واتساب.',
+      },
+    ],
+    chapters: [
+      {
+        title: { en: 'The Arabic arrived unreadable', ar: 'العربية وصلت غير صالحة للقراءة' },
+        body: [
+          {
+            en: 'The client sent two printed catalogues as one flat list of 654 lines, with an Arabic column beside the English. The Arabic column was ruined before arrival: UTF-8 read as Latin-1, with the bytes from 0x80 to 0x9F dropped on the way. In Arabic, those bytes are not decorative. They carry و and ي and ن and م and ل and ك. What was left offered nothing to repair, because the letters were gone rather than mangled.',
+            ar: 'أرسل العميل قائمتين مطبوعتين في ملف واحد من 654 سطرًا، وبجانب كل اسم إنجليزي اسمه العربي. وكان العمود العربي قد فسد قبل وصوله: قُرئ ترميز UTF-8 على أنه Latin-1، وسقطت في الطريق البايتات من 0x80 إلى 0x9F. وهذا النطاق ليس زخرفًا في العربية، فهو يحمل و وي ون وم ول وك. وما بقي لم يكن قابلًا للإصلاح، لأن الحروف سقطت ولم تتشوّه.',
+          },
+          {
+            en: 'So the Arabic names were rebuilt from the English column by rule: noun first, as Arabic wants, with the ب- prefix attached where the word needs one, and a list of overrides by hand where a rule would have produced something a buyer would not say. The catalogue also changed shape at the same time. Pack size moved from the category to the product, because the same cream in five kilos and one kilo is two things to sell, with its own stock and its own price, not one thing in two sizes.',
+            ar: 'فأُعيد بناء الأسماء العربية من العمود الإنجليزي بقواعد: الاسم أولًا كما تريد العربية، وإلحاق حرف الباء في موضعه، وقائمة استثناءات مكتوبة باليد حيث كانت القاعدة ستُخرج صياغة لا يقولها مشترٍ. وتغيّر شكل القائمة في الوقت نفسه. انتقل حجم العبوة من الفئة إلى المنتج، لأن الكريمة نفسها بخمسة كيلوغرامات وبكيلوغرام واحد شيئان يُباعان، لكل منهما مخزونه وسعره، لا شيء واحد بحجمين.',
+          },
+          {
+            en: 'No native speaker has read these names. They were composed by rule from English, which is worth saying plainly instead of leaving a reader to assume otherwise.',
+            ar: 'ولم يقرأ هذه الأسماء عربيٌّ بعد. صيغت بالقواعد من الإنجليزية، وذكر ذلك صراحةً أولى من ترك القارئ يفترض غير ذلك.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Packs rebuilt', ar: 'عبوات أُعيد بناؤها' }, value: '654' },
+          { label: { en: 'Brand catalogues', ar: 'قوائم العلامات' }, value: '5' },
+        ],
+      },
+      {
+        title: { en: 'The server sets the price', ar: 'السعر يحدّده الخادم لا المتصفّح' },
+        body: [
+          {
+            en: 'The cart lives in the browser, and nothing a browser says about money is trusted. The cart carries product ids and quantities. When an order is placed the server reads the price itself, applies whichever discount has the narrowest scope, breaks a tie toward the larger cut, adds the delivery fee for the governorate, and freezes every line price onto the order so a later price change cannot rewrite what somebody already agreed to pay.',
+            ar: 'السلّة تعيش في المتصفّح، فلا يُصدَّق منها شيء يخصّ المال. تحمل معرّفات المنتجات وكمياتها. وعند تسجيل الطلب يقرأ الخادم السعر بنفسه، ويطبّق الخصم الأضيق نطاقًا، وعند التساوي يرجّح الأكبر قيمة، ويضيف رسم التوصيل للمحافظة، ثم يثبّت سعر كل سطر على الطلب حتى لا يعيد تغييرٌ لاحق في الأسعار كتابة ما وافق عليه أحدهم من قبل.',
+          },
+          {
+            en: 'The strict reading of the rule was wrong. The route refused any order containing an unpriced line or going to a governorate with no delivery fee, which is correct arithmetic and useless in practice: the client had priced one product out of 654 and set no delivery zones. Every order would have been rejected. The fix was not to loosen the arithmetic but to admit a second kind of order. An order with no total to compute is saved as a quote request, with its tracking number and its stock taken, and the branch confirms the amount on WhatsApp.',
+            ar: 'وكانت الصيغة المتشدّدة من هذه القاعدة خاطئة. فقد كان المسار يرفض أي طلب فيه سطر غير مسعّر أو متجه إلى محافظة بلا رسم توصيل، وهذا حساب سليم وعديم النفع عمليًا: فالعميل سعّر منتجًا واحدًا من 654، ولم يحدّد أي منطقة توصيل. كان كل طلب سيُرفض. ولم يكن الحل تخفيف الحساب بل الاعتراف بنوع ثانٍ من الطلبات. فالطلب الذي يتعذّر جمع مبلغه يُحفظ طلبَ عرض سعر، برقم تتبّعه ومخزونه محجوز، ويؤكّد الفرع المبلغ على واتساب.',
+          },
+          {
+            en: 'Reading the code against the state of the client\'s data caught this, ahead of any customer. No order has been placed on the site.',
+            ar: 'واكتُشف ذلك بقراءة الشيفرة في ضوء حالة بيانات العميل، لا بوقوع عميل فيه. فلم يُسجَّل على الموقع أي طلب بعد.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Two orders, one last unit', ar: 'طلبان على آخر وحدة' },
+        body: [
+          {
+            en: 'The first version read the stock, judged the amount sufficient, and then decremented. Two orders arriving together both read the same number, both found the number sufficient, and stock went negative. Reading and then writing is not one decision. Those are two decisions with a gap between them.',
+            ar: 'كانت النسخة الأولى تقرأ المخزون، فتجده كافيًا، ثم تخصم منه. فإذا وصل طلبان معًا قرآ الرقم نفسه، ووجداه كافيًا كلاهما، فنزل المخزون تحت الصفر. القراءة ثم الكتابة ليست قرارًا واحدًا، بل قراران بينهما فجوة.',
+          },
+          {
+            en: 'Now the condition and the write are one statement: decrement where stock is still at least the quantity asked for, then count the rows touched. Under Postgres, an update waiting on another writer re-reads the blocked row and tests its condition against the new value, so of two orders for the last unit exactly one succeeds. The other rolls back whole and is told which lines fell short. Lines are taken in product-id order, so two orders sharing two products never each hold what the other needs.',
+            ar: 'أما الآن فالشرط والكتابة عبارة واحدة: اخصم حيث لا يزال المخزون لا يقلّ عن الكمية المطلوبة، ثم انظر كم سطرًا تأثّر. ففي Postgres، التحديث الذي ينتظر كاتبًا آخر يعيد قراءة السطر الذي توقّف عنده ويختبر شرطه على القيمة الجديدة، فمن طلبين على آخر وحدة ينجح واحد بالضبط. ويُلغى الآخر كاملًا مع بيان الأسطر الناقصة. وتُؤخذ الأسطر بترتيب معرّف المنتج، حتى لا يحجز طلبان يتشاركان منتجين ما يحتاجه كلٌّ منهما من الآخر.',
+          },
+          {
+            en: 'The behaviour underneath belongs to the database, not the application, and the unit tests use a fake transaction, so they prove the shape of the logic and not the guarantee below. The site has had no traffic. This is designed to be correct, not demonstrated to be.',
+            ar: 'والسلوك الذي يعتمد عليه هذا كله سلوك قاعدة البيانات لا التطبيق، واختبارات الوحدة تستخدم عملية وهمية، فهي تثبت شكل المنطق لا الضمانة التي تحته. ولم يمرّ على الموقع أي استخدام فعلي. فهذا مصمَّم ليكون صحيحًا، لا مُثبَت أنه كذلك.',
+          },
+        ],
+      },
+      {
+        title: { en: 'What an order is holding', ar: 'ما الذي يحجزه الطلب فعلًا' },
+        body: [
+          {
+            en: 'Cancelling an order has to give its stock back, and reinstating has to take the stock again. Deciding from the order\'s status goes wrong the moment anything unusual has happened: an order cancelled before the stock log existed holds nothing, and a status rule would hand back units never taken.',
+            ar: 'إلغاء الطلب يجب أن يعيد مخزونه، وإعادته يجب أن تأخذ المخزون من جديد. والاعتماد على حالة الطلب في هذا القرار يخطئ فور وقوع أي أمر غير معتاد: فالطلب الملغى قبل وجود سجلّ المخزون لا يحجز شيئًا، وقاعدة تعتمد على الحالة ستعيد وحدات لم تُؤخذ أصلًا.',
+          },
+          {
+            en: 'So the answer comes from the order\'s own movement log instead. An order holds whatever its rows say was taken, minus whatever they say was returned. Cancel returns exactly the difference, reinstate takes exactly what is missing, and both are safe to run twice. The status change is claimed with a conditional update, so when two staff press at the same moment the second is refused instead of moving stock again.',
+            ar: 'فصار الجواب يأتي من سجلّ حركة الطلب نفسه. فما يحجزه هو ما تقول أسطره إنه أخذه ناقصًا ما تقول إنه أعاده. فالإلغاء يعيد هذا المقدار بالضبط، والإعادة تأخذ الناقص بالضبط، وكلاهما آمن إن نُفّذ مرتين. أما تغيير الحالة نفسه فيُحجز بتحديث مشروط، فإذا ضغط موظفان في اللحظة نفسها رُفض الثاني بدل أن يحرّك المخزون مرة أخرى.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The database that was not there', ar: 'قاعدة بيانات لم تكن موجودة' },
+        body: [
+          {
+            en: 'The site went up and most of the site worked. The home page, the brand index, about and contact were all fine. Two things returned 500: the admin, and the brand catalogue.',
+            ar: 'رُفع الموقع وعمل أكثره. الصفحة الرئيسية، ودليل العلامات، وصفحتا «عن» و«تواصل»، كلها سليمة. واثنتان فقط كانتا تُرجعان الخطأ 500: لوحة التحكّم، وصفحة قائمة العلامة.',
+          },
+          {
+            en: 'Those were the only two pages reading the database. Everything else is prerendered at build time and never asks. The datasource was still SQLite, pointing at a gitignored file, on a filesystem the host will not write to, with no connection string set. The split between what broke and what held was the diagnosis: whatever had failed had failed about data, not about rendering.',
+            ar: 'وكانتا الصفحتين الوحيدتين اللتين تقرآن من قاعدة البيانات. أما البقية فتُولَّد وقت البناء ولا تسأل أحدًا. كان مصدر البيانات ما زال SQLite، يشير إلى ملف مستبعَد من المستودع، على نظام ملفات لا تكتب عليه الاستضافة، ودون ضبط أي نصّ اتصال. وكان الفرق بين ما تعطّل وما سلم هو التشخيص نفسه: أيًّا كان الخلل فهو في البيانات لا في العرض.',
+          },
+          {
+            en: 'The move was to Postgres, with the first migration regenerated as Postgres instead of translated, and migrations tied to the deploy. One thing stays open, and is worth saying plainly instead of dressing up: development and production share a single database, so a local reset would take the live data too. A risk being carried, not a decision.',
+            ar: 'فانتقل إلى Postgres، وأُعيد توليد أول ترحيل بلغة Postgres بدل ترجمته، ورُبطت الترحيلات بالنشر. وبقي أمر مفتوح يستحق الذكر لا التجميل: التطوير والإنتاج يتشاركان قاعدة بيانات واحدة، فإعادة تهيئة محلية ستأخذ معها بيانات الموقع الحيّ. وهذه مخاطرة محمولة لا قرار.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The cart started empty every time', ar: 'السلّة تبدأ فارغة في كل مرة' },
+        body: [
+          {
+            en: 'The cart and the theme lived in React state, filled from local storage inside an effect. Effects run after the first paint, so the first thing anybody saw was an empty cart and the light theme, with the real values arriving a moment later to replace them. A second tab was worse: nothing changed there until the first was reloaded.',
+            ar: 'كانت السلّة والمظهر يعيشان في حالة React، وتُملآن من التخزين المحلي داخل أثر جانبي. والآثار الجانبية تعمل بعد أول رسم للصفحة، فكان أول ما يراه الزائر سلّةً فارغة والمظهر الفاتح، ثم تصل القيم الحقيقية بعد لحظة فتحلّ محلّها. وكان الوضع في تبويب ثانٍ أسوأ: لا يتغيّر فيه شيء حتى يُعاد تحميل الأول.',
+          },
+          {
+            en: 'Local storage became the source of truth, subscribed to directly, so the server and the first paint agree and no flag is needed to say whether the component has caught up. Syncing between tabs stopped being a feature to build and became something already working.',
+            ar: 'فصار التخزين المحلي هو المرجع، ويُشترَك فيه مباشرة، فيتّفق الخادم وأول رسم للصفحة ولا تبقى راية تقول هل لحق المكوّن أم لا. وتوقّفت المزامنة بين التبويبات عن كونها ميزة تُبنى وصارت شيئًا يعمل أصلًا.',
+          },
+        ],
+      },
+    ],
+    /*
+     * Captures are of the live site. Nothing here renders an order: the
+     * database holds none today, and the routes that would show one are
+     * excluded on principle rather than on today's state. The catalogue frame
+     * is cropped to the brand header, the category rail and the search, above
+     * the row of stock labels, because 653 of 654 packs read "Out of stock"
+     * until the client finishes entering stock, which misrepresents a business
+     * that is simply not finished setting up.
+     */
+    cover: '/images/projects/ms-light.jpg',
+    coverDark: '/images/projects/ms-dark.jpg',
+    coverKind: 'screenshot',
+    gallery: [
+      '/images/projects/ms-ar.jpg',
+      '/images/projects/ms-catalogue.jpg',
+      '/images/projects/ms-contact.jpg',
+      '/images/projects/ms-track.jpg',
+      '/images/projects/ms-admin.jpg',
+    ],
+    links: [{ label: 'Live site', href: 'https://modernsupply.om', external: true }],
+  },
+  {
+    /**
      * The site you are standing in.
      *
      * A portfolio listing itself reads as padding only when there is nothing
