@@ -28,7 +28,17 @@ export interface ProjectChapter {
    * gallery at the bottom, where a reader has to guess which sentence it
    * belongs to. A chapter with nothing worth showing simply omits it.
    */
-  image?: { src: string; alt: Localized };
+  image?: {
+    src: string;
+    /**
+     * Dark-theme counterpart. A capture of a light UI sits on the dark page as
+     * a lit rectangle, which is what the cover pair already solves. Both
+     * variants render and CSS hides one, so the swap happens with the theme
+     * and never after a repaint.
+     */
+    dark?: string;
+    alt: Localized;
+  };
 }
 
 export interface Project {

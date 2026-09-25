@@ -6,6 +6,9 @@ import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { projects, getProject } from '@content/projects';
 import { imageBlur } from '@content/image-blur';
+
+/** Checked-in blur placeholder for an image referenced by path. */
+const blurOf = (src: string) => imageBlur[src.split('/').pop() ?? ''];
 import { pick } from '@/lib/localized';
 import { buildProjectMetadata } from '@/lib/seo';
 import { Container, sectionY } from '@/components/layout/Container';
@@ -183,14 +186,22 @@ export default async function CaseStudyPage({
                             width={1800}
                             height={1125}
                             sizes="(min-width: 1024px) 60rem, 100vw"
-                            className="h-auto w-full"
-                            placeholder={
-                              imageBlur[chapter.image.src.split('/').pop() ?? '']
-                                ? 'blur'
-                                : 'empty'
-                            }
-                            blurDataURL={imageBlur[chapter.image.src.split('/').pop() ?? '']}
+                            className={chapter.image.dark ? 'h-auto w-full dark:hidden' : 'h-auto w-full'}
+                            placeholder={blurOf(chapter.image.src) ? 'blur' : 'empty'}
+                            blurDataURL={blurOf(chapter.image.src)}
                           />
+                          {chapter.image.dark && (
+                            <Image
+                              src={chapter.image.dark}
+                              alt={pick(chapter.image.alt, locale)}
+                              width={1800}
+                              height={1125}
+                              sizes="(min-width: 1024px) 60rem, 100vw"
+                              className="hidden h-auto w-full dark:block"
+                              placeholder={blurOf(chapter.image.dark) ? 'blur' : 'empty'}
+                              blurDataURL={blurOf(chapter.image.dark)}
+                            />
+                          )}
                         </figure>
                       )}
 

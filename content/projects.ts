@@ -556,7 +556,7 @@ export const projects: Project[] = [
             ar: 'وله خطّه الخاص، مرخّص للعميل ومستضاف على الموقع نفسه لا مستعارًا مما يصادف وجوده في الهاتف. فالعربية بخط النظام تبدو صفحة لم يكملها أحد، وشركة استشارات في السلامة لا تحتمل أن تبدو ناقصة.',
           },
         ],
-        image: { src: '/images/projects/kadi-ar.jpg', alt: { en: 'The KADI homepage in Arabic, laid out right to left', ar: 'الصفحة الرئيسية لكادي بالعربية، بتخطيط من اليمين إلى اليسار' } },
+        image: { src: '/images/projects/kadi-ar.jpg', dark: '/images/projects/kadi-ar-dark.jpg', alt: { en: 'The KADI homepage in Arabic, laid out right to left', ar: 'الصفحة الرئيسية لكادي بالعربية، بتخطيط من اليمين إلى اليسار' } },
       },
       {
         title: { en: 'One tap to the founder', ar: 'نقرة واحدة إلى المؤسّس' },
@@ -570,7 +570,7 @@ export const projects: Project[] = [
             ar: 'أما زرّ واتساب فاحتاج محاولتين. كانت النسخة الأولى تفتح رابطًا في تبويب جديد، فظهرت على آيفون العميل نفسه صفحة ويب بدل المحادثة. صار الزرّ الآن يطلب التطبيق أولًا، ولا يلجأ إلى الويب إلا بعد لحظة صمت. تفصيل صغير يقرّر هل يعمل أهمّ زرّ في الموقع على الهاتف الذي يستخدمه العميل.',
           },
         ],
-        image: { src: '/images/projects/kadi-contact.jpg', alt: { en: 'The contact section: form, WhatsApp, phone and the profile download', ar: 'قسم التواصل: النموذج وواتساب والهاتف وتنزيل الملف التعريفي' } },
+        image: { src: '/images/projects/kadi-contact.jpg', dark: '/images/projects/kadi-contact-dark.jpg', alt: { en: 'The contact section: form, WhatsApp, phone and the profile download', ar: 'قسم التواصل: النموذج وواتساب والهاتف وتنزيل الملف التعريفي' } },
       },
       {
         title: { en: 'What you do not see', ar: 'ما لا تراه' },
@@ -588,7 +588,7 @@ export const projects: Project[] = [
             ar: 'والثاني كان الأخضر في هوية العميل. أخضر جيّد للأشكال وفاتح أكثر من أن يحمل كلمات: ضع فيه نصًّا يجهد القارئ العادي في قراءته. فصار في اللوحة أخضران: واحد يرسم وآخر يكتب. واللوح الأخضر الوحيد في الموقع يضع نصّه بالكحلي الغامق، لأن الأبيض على ذلك الأخضر يسقط في الاختبار نفسه.',
           },
         ],
-        image: { src: '/images/projects/kadi-why.jpg', alt: { en: 'The one green panel on the site, its text set in deep navy', ar: 'اللوح الأخضر الوحيد في الموقع، ونصّه بالكحلي الغامق' } },
+        image: { src: '/images/projects/kadi-why.jpg', dark: '/images/projects/kadi-why-dark.jpg', alt: { en: 'The one green panel on the site, its text set in deep navy', ar: 'اللوح الأخضر الوحيد في الموقع، ونصّه بالكحلي الغامق' } },
       },
       {
         title: { en: 'Where it stands', ar: 'أين وصل الآن' },
@@ -752,7 +752,7 @@ export const projects: Project[] = [
             ar: 'ويستطيع العميل بعد ذلك أن يتابع طلبه برقمه ورقم هاتفه، من قيد الانتظار إلى مؤكّد إلى قيد التحضير إلى في الطريق إلى تم التسليم.',
           },
         ],
-        image: { src: '/images/projects/ms-track.jpg', alt: { en: 'The order tracking screen on a phone', ar: 'شاشة تتبّع الطلب على الهاتف' } },
+        image: { src: '/images/projects/ms-track.jpg', dark: '/images/projects/ms-track-dark.jpg', alt: { en: 'The order tracking screen on a phone', ar: 'شاشة تتبّع الطلب على الهاتف' } },
       },
       {
         title: { en: 'A catalogue that arrived broken', ar: 'قائمة وصلت تالفة' },
@@ -770,7 +770,7 @@ export const projects: Project[] = [
             ar: 'وتغيّر شكل القائمة أيضًا. فالكريمة نفسها في عبوة خمسة كيلوغرامات وعبوة كيلوغرام شيئان مختلفان يُباعان، لكل منهما سعره ومخزونه، لا منتج واحد بحجمين.',
           },
         ],
-        image: { src: '/images/projects/ms-catalogue.jpg', alt: { en: 'A brand catalogue with its category rail and search', ar: 'قائمة إحدى العلامات مع شريط الفئات والبحث' } },
+        image: { src: '/images/projects/ms-catalogue.jpg', dark: '/images/projects/ms-catalogue-dark.jpg', alt: { en: 'A brand catalogue with its category rail and search', ar: 'قائمة إحدى العلامات مع شريط الفئات والبحث' } },
         facts: [
           { label: { en: 'Products rebuilt', ar: 'منتجات أُعيد بناؤها' }, value: '654' },
           { label: { en: 'Brand catalogues', ar: 'قوائم العلامات' }, value: '5' },
