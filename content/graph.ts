@@ -29,6 +29,7 @@ export const graph: GraphData = {
     // ---- Projects, newest work included ----
     { id: 'studynest', label: 'StudyNest', kind: 'project', weight: 3 },
     { id: 'the-thread', label: 'The Thread', kind: 'project', weight: 2 },
+    { id: 'kadi', label: 'KADI HSE', labelAr: 'كادي', kind: 'project', weight: 2 },
     { id: 'energrid', label: 'EnerGrid', kind: 'project', weight: 2 },
     { id: 'ieee-site', label: 'IEEE BUC site', kind: 'project', weight: 2 },
     { id: 'portfolio', label: 'Portfolio', labelAr: 'هذا الموقع', kind: 'project', weight: 1 },
@@ -63,6 +64,7 @@ export const graph: GraphData = {
     // Rashid to the work.
     { source: 'rashid', target: 'studynest' },
     { source: 'rashid', target: 'the-thread' },
+    { source: 'rashid', target: 'kadi' },
     { source: 'rashid', target: 'energrid' },
     { source: 'rashid', target: 'ieee-site' },
     { source: 'rashid', target: 'portfolio' },
@@ -84,6 +86,10 @@ export const graph: GraphData = {
     // frontend craft, shipped in two scripts.
     { source: 'the-thread', target: 'frontend' },
     { source: 'the-thread', target: 'i18n' },
+
+    // KADI: the only client work here, and the second bilingual build.
+    { source: 'kadi', target: 'frontend' },
+    { source: 'kadi', target: 'i18n' },
 
     // StudyNest and this site are bilingual too.
     { source: 'studynest', target: 'i18n' },

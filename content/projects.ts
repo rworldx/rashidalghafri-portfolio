@@ -423,6 +423,232 @@ export const projects: Project[] = [
   },
   {
     /**
+     * Client work, and the only entry here that is. Live at kadi-hse.om and
+     * still receiving change rounds.
+     *
+     * Everything below is checked against the repository and the live site on
+     * 25 September 2026, not taken from its README, which is stale in five
+     * places. The client's own docs say "twelve specialised engagements"; the
+     * message catalogue holds eleven in both locales, so eleven is what this
+     * says.
+     *
+     * Three standing restrictions. The repo is PRIVATE, so no source link.
+     * The founder is not named, because an absent NDA is not permission. And
+     * delivery of the contact form is described as built, never as proven:
+     * confirming it would mean sending real mail to a real client.
+     */
+    slug: 'kadi-hse',
+    featured: false,
+    title: 'KADI HSE Consultancy',
+    year: 2026,
+    role: 'Client work · Design & Engineering',
+    summary: {
+      en: 'A bilingual English and Arabic site for KADI HSE Consultancy in Muscat. A buyer arrives from a tender shortlist or a WhatsApp link with about ten seconds to decide, so every section on the page earns its place or goes. Client work, live and still moving.',
+      ar: 'موقع ثنائي اللغة لشركة كادي للاستشارات في الصحة والسلامة والبيئة بمسقط. يصل إليه المشتري من قائمة مناقصة أو من رابط في واتساب، ولا يملك سوى عشر ثوانٍ ليقرّر، فلا يبقى في الصفحة قسم لا يخدم ذلك القرار. عمل لعميل، منشور وما زال يتطوّر.',
+    },
+    problem: {
+      en: 'Buyers judge a health and safety consultancy on trust before price, and they judge in seconds. The buyer is an operations manager checking a bidder, or an SME owner with an inspection coming, often reading Arabic on a phone on a poor connection. A site loading slowly, or rendering Arabic in a system font, has already answered the question.',
+      ar: 'شركة الاستشارات في السلامة يُحكم عليها بالثقة قبل السعر، ويُحكم عليها في ثوانٍ. المشتري إما مدير عمليات يتحقق من مورّد قبل إدراجه، وإما صاحب منشأة صغيرة أمامه تفتيش قادم، وكثيرًا ما يقرأ بالعربية على هاتفه وباتصال ضعيف. والموقع الذي يتأخر في الظهور، أو يعرض العربية بخط النظام، يكون قد أجاب عن السؤال قبل أن يُطرح.',
+    },
+    solution: {
+      en: 'One page per language, seven sections, and nothing on them beyond trust, clarity and the call. The Arabic is a second original, not a translation, set in the client\'s licensed typeface with layout mirrored properly. Contact runs through a form which validates on the server, rate limits by address and refuses to fake success, alongside WhatsApp, phone and the company profile as a download. Desktop Lighthouse scores 100 on the English page and 99 on the Arabic, and layout shift measured zero on every run.',
+      ar: 'صفحة واحدة لكل لغة، وسبعة أقسام، ولا شيء فيها لا يخدم الثقة أو الوضوح أو المكالمة. والعربية نصّ أصلي لا ترجمة، بخطّ العميل المرخّص وبتخطيط معكوس كما ينبغي. أما التواصل فيمرّ عبر نموذج يتحقق من المُدخلات على الخادم، ويحدّ من التكرار حسب العنوان، ويرفض أن يدّعي النجاح، إلى جانب واتساب والهاتف وملف الشركة للتنزيل. ويسجّل لايتهاوس على سطح المكتب 100 للصفحة الإنجليزية و99 للعربية، بينما بقيت إزاحة التخطيط صفرًا في كل قياس.',
+    },
+    liveUrl: 'https://kadi-hse.om',
+    stack: [
+      'Next.js 15',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS v4',
+      'next-intl',
+      'Framer Motion',
+      'zod',
+      'Resend',
+      'Vitest',
+      'Playwright',
+      'Vercel',
+    ],
+    stats: [
+      {
+        label: { en: 'Lighthouse desktop performance, EN / AR', ar: 'أداء لايتهاوس على سطح المكتب، إنجليزي / عربي' },
+        value: '100 / 99',
+      },
+      {
+        label: { en: 'Layout shift, every Lighthouse run', ar: 'إزاحة التخطيط في كل قياس' },
+        value: '0',
+      },
+      { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '141' },
+      { label: { en: 'Contrast assertions', ar: 'فحوص التباين' }, value: '75' },
+      { label: { en: 'Languages', ar: 'اللغتان' }, value: '2' },
+      { label: { en: 'Build window', ar: 'مدة البناء الأولى' }, value: '15 days' },
+    ],
+    highlights: [
+      {
+        en: 'Two originals, not a page and its translation. The Arabic is written natively in professional MSA and set in the client\'s licensed Thmanyah Sans, self-hosted, with the layout mirrored, not flipped.',
+        ar: 'نصّان أصليان، لا صفحة وترجمتها. العربية مكتوبة بلسان عربي فصيح، وبخط ثمانية المرخّص للعميل ومستضاف على الموقع نفسه، والتخطيط معكوس بعناية لا مقلوب.',
+      },
+      {
+        en: 'Desktop Lighthouse 100 on the English page and 99 on the Arabic, mobile 92 to 94 and 87 to 88. Layout shift measured zero across all twelve runs.',
+        ar: 'لايتهاوس على سطح المكتب 100 للصفحة الإنجليزية و99 للعربية، وعلى الهاتف من 92 إلى 94 ومن 87 إلى 88. وبقيت إزاحة التخطيط صفرًا في القياسات الاثني عشر كلها.',
+      },
+      {
+        en: 'A contact route which refuses instead of pretending: server-side validation, five requests a minute per address, a honeypot, and a same-origin check. A failed send tells the visitor so, and offers a direct address.',
+        ar: 'مسار تواصل يرفض ولا يتظاهر: تحقّق على الخادم، وخمسة طلبات في الدقيقة لكل عنوان، ومصيدة للبرامج الآلية، وفحص للمصدر. وإذا تعذّر الإرسال أخبر الزائر وأعطاه عنوانًا يراسله مباشرة.',
+      },
+      {
+        en: '141 unit tests, of which 75 assert colour contrast, plus 558 browser tests across laptop, iPad and phone: 550 passing and 8 deliberately skipped.',
+        ar: '141 اختبار وحدة، منها 75 لفحص تباين الألوان، إضافة إلى 558 اختبارًا في المتصفح على الحاسوب والآيباد والهاتف: ينجح 550 منها ويُستثنى 8 عن قصد.',
+      },
+      {
+        en: 'Three-way theme control with dark as a designed composition, not an inversion, and no flash of the wrong theme on first paint.',
+        ar: 'تحكّم ثلاثي بالمظهر، والوضع الداكن تصميم قائم بذاته لا قلب للألوان، ولا ومضة لمظهر خاطئ عند أول ظهور للصفحة.',
+      },
+      {
+        en: 'The whole page works with JavaScript off, and the site is delivered under a per-request CSP nonce with HSTS preloaded.',
+        ar: 'تعمل الصفحة كاملة مع تعطيل جافاسكربت، ويُقدَّم الموقع بسياسة أمان محتوى برمز يتغيّر مع كل طلب، مع تفعيل HSTS مسبقًا.',
+      },
+    ],
+    chapters: [
+      {
+        title: { en: 'Ten seconds', ar: 'عشر ثوانٍ' },
+        body: [
+          {
+            en: 'The brief set the whole design. A buyer lands here from a LinkedIn post, a WhatsApp link or a tender shortlist, and inside about ten seconds has to trust the company, understand the work, and be one tap from the founder. Everything on the page serves one of those three. Anything serving none of them does not belong.',
+            ar: 'الموجز هو ما حدّد التصميم كله. يصل المشتري من منشور في لينكدإن أو رابط في واتساب أو قائمة مناقصة، وعليه خلال عشر ثوانٍ تقريبًا أن يثق بالشركة، ويفهم ما تقدّمه، ويصبح على بُعد نقرة واحدة من مؤسّسها. كل ما في الصفحة يخدم واحدًا من هذه الثلاثة، وما لا يخدم أيًّا منها لا مكان له.',
+          },
+          {
+            en: 'The rule explains the absences more than the features. No content system, no blog, no carousel of testimonials. The rule also picks out which reader the engineering answers to. Of the three the site expects, one is an owner with an inspection coming, reading Arabic on a phone on a poor connection. The Arabic side is built as hard as the English because of them.',
+            ar: 'وهذه القاعدة تفسّر ما غاب أكثر مما تفسّر ما حضر. لا نظام محتوى، ولا مدوّنة، ولا شريط شهادات عملاء. وتفسّر كذلك أيّ قارئ تخدمه الهندسة. فمن بين القرّاء الثلاثة الذين يتوقّعهم الموقع، واحد صاحب منشأة أمامه تفتيش، يقرأ بالعربية على هاتفه وباتصال ضعيف. وهذا القارئ هو سبب الجهد الذي بُذل في الجانب العربي.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The font was never downloading', ar: 'الخط لم يكن يُحمَّل أصلًا' },
+        body: [
+          {
+            en: 'The font stack led with the Latin face for both languages, on the reasonable-sounding grounds of a browser resolving fallbacks one glyph at a time. Browsers do. The problem was the face they resolved through first.',
+            ar: 'كانت قائمة الخطوط تبدأ بالخط اللاتيني في اللغتين معًا، استنادًا إلى فكرة تبدو سليمة: أن المتصفح يختار الخط البديل حرفًا بحرف. وهو يفعل ذلك بالفعل. لكن المشكلة في الخط الذي يمرّ عليه أولًا.',
+          },
+          {
+            en: 'The metric-adjusted fallback sits on Arial, and Arial carries a complete Arabic. So every Arabic letter found a home before the stack ever reached Thmanyah, and the licensed typeface the client pays for was never requested at all. The Arabic site had been shipping in Arial while looking approximately right, which is the worst kind of bug: nothing is broken on screen and the thing you bought is simply absent.',
+            ar: 'فالخط الاحتياطي المضبوط على المقاسات مبني على Arial، وArial يحمل عربية كاملة. فوجد كل حرف عربي مأواه قبل أن تصل القائمة إلى ثمانية أصلًا، ولم يُطلب الخط المرخّص الذي يدفع العميل ثمنه ولو مرة واحدة. كان الموقع العربي يُنشر بخط Arial وهو يبدو صحيحًا تقريبًا، وهذا أسوأ أنواع الأخطاء: لا شيء مكسور على الشاشة، والشيء الذي اشتريته غائب ببساطة.',
+          },
+          {
+            en: 'The Arabic stack now leads with Thmanyah and is scoped to the Arabic document, so the single Arabic character on the language toggle never drags the face onto the English page. Anything holding the Latin voice is marked as English in the markup.',
+            ar: 'صارت القائمة العربية تبدأ بثمانية، ومحصورة في المستند العربي، حتى لا يجرّ الحرف العربي الوحيد في زرّ تبديل اللغة الخطَّ كله إلى الصفحة الإنجليزية. وكل ما يجب أن يبقى بالصوت اللاتيني موسوم في الشيفرة بأنه إنجليزي.',
+          },
+        ],
+      },
+      {
+        title: { en: 'The contrast suite disproved the review', ar: 'فحص التباين نقض ما أقرّته المراجعة' },
+        body: [
+          {
+            en: 'Colour was being checked by eye and against a token table, which is how a dark-theme form border shipped at 2.90 to 1 and a footer outline at 2.60. The suite caught both, and settled something larger: the brand\'s own leaf green is 2.85 to 1 on white and will never carry text, whatever a brand guide says.',
+            ar: 'كان فحص الألوان يجري بالعين وبجدول الرموز، وهكذا نُشر إطار حقل في الوضع الداكن بنسبة 2.90 إلى 1، وحدّ في التذييل بنسبة 2.60. وكشف الفحص الاثنين معًا. بل حسم ما هو أكبر: الأخضر في هوية العميل نسبته 2.85 إلى 1 على الأبيض، ولا يصلح لحمل نصّ مهما قال دليل الهوية.',
+          },
+          {
+            en: 'So the palette split in two. One green draws shapes, a darker one at 5.33 to 1 carries words, and the single green panel on the site sets its text in deep navy, because white on the green is the same 2.85 an instinct for "green panel, white text" walks straight into.',
+            ar: 'فانقسمت لوحة الألوان إلى اثنتين: أخضر يرسم الأشكال، وأغمق منه بنسبة 5.33 إلى 1 يحمل الكلمات، واللوح الأخضر الوحيد في الموقع يضع نصّه بالكحلي الغامق، لأن الأبيض على ذلك الأخضر هو النسبة 2.85 نفسها التي يقع فيها كل من يفكّر تلقائيًا في «لوح أخضر ونصّ أبيض».',
+          },
+          {
+            en: 'The suite then found its own blind spot. Raw token pairs were being asserted, which is not what a reader sees, and a note at 65% opacity over a white button slipped a violation through the gap. Pairs now flatten their opacity and are asserted as the rendered colour, and the file reads the tokens out of the stylesheet itself, so editing a hex moves the assertion too.',
+            ar: 'ثم كشف الفحص عيبًا في نفسه. كان يفحص أزواج الرموز كما هي، وهذا ليس ما يراه القارئ، فتسلّل خلل عبر ملاحظة بشفافية 65% فوق زرّ أبيض. صارت الأزواج الآن تُحسب بعد دمج الشفافية وتُفحص باللون كما يُعرض فعلًا، ويقرأ الملف الرموز من ملف الأنماط نفسه، فتغيير أي لون يحرّك الفحص معه.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Contrast assertions', ar: 'فحوص التباين' }, value: '75' },
+          { label: { en: 'Brand green on white', ar: 'أخضر الهوية على الأبيض' }, value: '2.85:1' },
+        ],
+      },
+      {
+        title: { en: 'A fixed sleep hid four failures', ar: 'تأخير ثابت أخفى أربعة إخفاقات' },
+        body: [
+          {
+            en: 'Four accessibility tests failed on and off on the iPad and phone projects for weeks, and twice the evidence was destroyed by the hunt itself, because the test runner clears its results directory at the start of every run. When artefacts finally survived on a real CI machine, the message read: reveals never reached full opacity, for every element below the fold.',
+            ar: 'ظلّت أربعة اختبارات للوصولية تفشل وتنجح بالتناوب على الآيباد والهاتف أسابيع، ومرّتين أتلف البحث دليله بنفسه، لأن منصّة الاختبار تمسح مجلد النتائج مع بداية كل تشغيل. وحين نجت الملفات أخيرًا على جهاز تكامل حقيقي، كانت الرسالة أن عناصر الظهور لم تبلغ كامل وضوحها، وذلك في كل عنصر أسفل الشاشة الأولى.',
+          },
+          {
+            en: 'The audit walked the page in steps of 80% of a viewport and slept 120 milliseconds between them. Under load, 120 milliseconds is less than one rendered frame. An element might enter and leave the viewport between two observer checks, and because reveals fire once, the element stayed invisible for good. Failure came only on the slowest engine on the busiest machine, which is why the whole thing read as flakiness instead of a bug.',
+            ar: 'كان الفحص يتنقّل في الصفحة بخطوات مقدارها 80% من ارتفاع الشاشة، وينتظر 120 جزءًا من الألف من الثانية بين خطوة وأخرى. وتحت الضغط تقلّ هذه المدة عن زمن إطار واحد معروض. فقد يدخل العنصر الشاشة ويخرج منها بين فحصين متتاليين، ولأن الظهور يحدث مرة واحدة فقط، يبقى مخفيًا إلى الأبد. ولم يكن يفشل إلا على أبطأ محرّك وأكثر الأجهزة انشغالًا، ولهذا بدا تذبذبًا لا خللًا.',
+          },
+          {
+            en: 'The walk now waits for rendering instead of for time: two animation frames, then a zero-delay task, then half-viewport steps, and anything still hidden is scrolled to on its own. The record keeps the first fix too, which was wrong: polling one kind of element left six CSS animations completely uncovered.',
+            ar: 'صار التنقّل ينتظر العرض لا الزمن: إطاران متتاليان، ثم مهمة بلا تأخير، ثم خطوات بنصف ارتفاع الشاشة، وما بقي مخفيًا يُنتقل إليه وحده. ويحتفظ السجلّ بالإصلاح الأول أيضًا، وكان خاطئًا: فقد فحص نوعًا واحدًا من العناصر وترك ست حركات مكتوبة بـ CSS دون تغطية.',
+          },
+        ],
+      },
+      {
+        title: { en: 'A gate that measured the runner', ar: 'بوابة كانت تقيس الخادم لا الموقع' },
+        body: [
+          {
+            en: 'Mobile Lighthouse assertions kept failing in CI. On code differing only in a test file, total blocking time read 250 milliseconds, then 318, then 362, then 845 across consecutive runs. The same page on an idle machine reads 10 to 30. The runner is a shared two-core machine, also hosting the server being measured, and its timings swung by nearly three times between back-to-back runs of identical code.',
+            ar: 'ظلّت فحوص لايتهاوس للهاتف تفشل في التكامل المستمر. وعلى شيفرة لا تختلف إلا في ملف اختبار، سجّل زمن الحجب الكلي 250 جزءًا من الألف من الثانية، ثم 318، ثم 362، ثم 845 في تشغيلات متتالية. والصفحة نفسها على جهاز خامل تسجّل بين 10 و30. فالخادم جهاز بنواتين يتشاركه غيرنا، ويستضيف في الوقت نفسه الخادم الذي يجري قياسه، وتذبذبت قراءاته نحو ثلاثة أضعاف بين تشغيلين متتاليين لشيفرة واحدة.',
+          },
+          {
+            en: 'So the signal moved instead of disappearing. The three processor-bound mobile checks became warnings, still measured and still reported. Desktop stays a hard gate. The structural mobile checks stay hard too, layout shift among them, because none of those depends on how many cores the machine has. A gate unable to tell a slower codebase from a busier neighbour is worse than no gate at all.',
+            ar: 'فنُقلت الإشارة ولم تُلغَ. صارت الفحوص الثلاثة المرتبطة بالمعالج على الهاتف تنبيهات، لكنها ما زالت تُقاس وتُسجَّل. وبقيت فحوص سطح المكتب بوابة صارمة. وبقيت كذلك الفحوص البنيوية على الهاتف، ومنها إزاحة التخطيط، لأن أيًّا منها لا يتأثر بعدد أنوية الجهاز. فالبوابة التي لا تفرّق بين شيفرة صارت أبطأ وجهاز صار أكثر انشغالًا أسوأ من غياب البوابة.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Arabic written, not translated', ar: 'عربية تُكتب ولا تُترجم' },
+        body: [
+          {
+            en: 'The English is the company\'s own profile text. The Arabic is written natively in professional MSA, which is why the two sides read as two originals, not as a document and its translation. The client, a native speaker, signed the Arabic off line by line and sent three rounds of corrections, one of them about punctuation. There has been no separate editorial pass.',
+            ar: 'الإنجليزية نصّ الشركة من ملفها التعريفي. والعربية مكتوبة بلسان عربي فصيح، ولهذا يقرأ الجانبان كنصّين أصليين لا كوثيقة وترجمتها. وقد أقرّ العميل، وهو عربي، النصّ العربي سطرًا سطرًا، وأرسل ثلاث جولات من التصحيحات، إحداها عن علامات الترقيم. ولم يخضع النصّ لمراجعة تحريرية منفصلة.',
+          },
+          {
+            en: 'Three corrections sit outside the utility layer so they outrank the utilities. Letter-spacing is forced to zero, because Arabic letters join and tracking pulls the joins apart into loose shapes. Capitalisation is disabled, because Arabic has no case. And the leading opens up while the display size steps down one notch, because a tight line height, assured in the Latin face, makes consecutive Arabic lines collide.',
+            ar: 'وكان لا بدّ من ثلاثة تصحيحات خارج طبقة الأدوات لتتقدّم عليها. تباعد الحروف مضبوط على صفر، لأن الحروف العربية تتصل، والتباعد يفكّ وصلها فتتحوّل إلى أشكال متناثرة. وتحويل الحروف إلى كبيرة مُعطَّل، لأن العربية لا تعرف حالة الحرف. وفُتح تباعد الأسطر مع تخفيض حجم العناوين درجة واحدة، لأن تباعدًا ضيقًا يبدو واثقًا في الخط اللاتيني يجعل الأسطر العربية تتلامس.',
+          },
+          {
+            en: 'The cost is named, not hidden. The Arabic page scores 87 to 88 on mobile against 92 to 94 for the English, and the gap is the licensed face on the path to first paint. Three alternatives were measured and each was worse. Loading the face for both languages taxes English readers for nothing, skipping the preload measured four seconds, and letting the browser drop the face renders an Arabic reader\'s first visit in a system font, which fails the brand and not the metric.',
+            ar: 'والكلفة مذكورة لا مخفيّة. تسجّل الصفحة العربية على الهاتف بين 87 و88 مقابل 92 إلى 94 للإنجليزية، والفارق هو الخط المرخّص في طريق أول ظهور. وقيست ثلاثة بدائل فكان كل منها أسوأ: تحميله للّغتين معًا يحمّل القارئ الإنجليزي كلفة بلا مقابل، وتركه دون تحميل مسبق سجّل أربع ثوانٍ، والسماح للمتصفح بتجاوزه يعرض أول زيارة لقارئ عربي بخط النظام، وهذا فشل للهوية لا للمقياس.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Thirty-eight pixels of movement', ar: 'ثمانية وثلاثون بكسلًا من الحركة' },
+        body: [
+          {
+            en: 'A client copy change lengthened the Arabic headline, and the line wrapped differently in the fallback face than in the real one. The swap moved the page 38 pixels, a layout shift of 0.0136, on a site whose whole claim is never moving. At exactly 390 pixels wide the buttons wrapped too, because the font was deciding where the line broke.',
+            ar: 'أدّى تعديل من العميل إلى إطالة العنوان العربي، فصار يلتفّ في الخط الاحتياطي على نحو يختلف عن الخط الحقيقي. وعند التبديل تحرّكت الصفحة ثمانية وثلاثين بكسلًا، بإزاحة مقدارها 0.0136، في موقع كل دعواه أنه لا يتحرّك. وعند عرض 390 بكسلًا بالضبط التفّت الأزرار أيضًا، لأن الخط هو من كان يقرّر موضع كسر السطر.',
+          },
+          {
+            en: 'The fix was a fallback face measured against the real one, weight by weight, so the two occupy the same space before and after the swap, and moving the buttons\' breakpoint off the width where the font was making the decision. Zero movement across sixteen combinations of width and language, tested with the web fonts blocked and again with them loaded.',
+            ar: 'كان الحل خطًّا احتياطيًا مقيسًا على الخط الحقيقي، وزنًا بوزن، حتى يشغل الاثنان المساحة نفسها قبل التبديل وبعده، مع نقل نقطة كسر الأزرار بعيدًا عن العرض الذي كان الخط يقرّر عنده. فلم تعد هناك أي حركة في ست عشرة تركيبة من العروض واللغات، اختُبرت مرةً والخطوط محجوبة ومرةً وهي محمّلة.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Shift before', ar: 'الإزاحة قبل' }, value: '0.0136' },
+          { label: { en: 'Shift after', ar: 'الإزاحة بعد' }, value: '0' },
+        ],
+      },
+    ],
+    /*
+     * The logo, the brand colours and the photographs are the client's and
+     * were supplied. The composition, the type system, the dark theme and the
+     * motion are not. Captures are of the live site; the contact frame has the
+     * client's phone and email blurred, and no frame carries a project
+     * photograph, because one of the four shows a third party's name and
+     * mobile number on a notice board and the carousel cross-fades, so which
+     * slide paints cannot be proven from outside.
+     */
+    cover: '/images/projects/kadi-light.jpg',
+    coverDark: '/images/projects/kadi-dark.jpg',
+    coverKind: 'screenshot',
+    gallery: [
+      '/images/projects/kadi-ar.jpg',
+      '/images/projects/kadi-ar-phone.jpg',
+      '/images/projects/kadi-why.jpg',
+      '/images/projects/kadi-services.jpg',
+      '/images/projects/kadi-services-ar.jpg',
+      '/images/projects/kadi-contact.jpg',
+    ],
+    links: [{ label: 'Live site', href: 'https://kadi-hse.om', external: true }],
+  },
+  {
+    /**
      * The site you are standing in.
      *
      * A portfolio listing itself reads as padding only when there is nothing
