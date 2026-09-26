@@ -1035,8 +1035,8 @@ export const projects: Project[] = [
       ar: 'الموقع الرسمي لفرع طلاب IEEE في كلية البريمي الجامعية، بُني في سنة تأسيس الفرع حين لم يكن له وجود على الإنترنت أصلًا. صمّمته وبنيته وحدي، وأتولّى صيانته منذ ذلك الحين بصفتي مسؤول الموقع.',
     },
     problem: {
-      en: 'A newly launched student branch needed a credible, fast official web presence to share its activities and reach its members.',
-      ar: 'احتاج فرعٌ طلابي حديث الإطلاق إلى حضور رقمي رسمي سريع وموثوق للتعريف بأنشطته والوصول إلى أعضائه.',
+      en: 'In its founding year the branch had nothing online. No website, no page, no address to give a student who asked where to find out more.',
+      ar: 'في سنة تأسيسه لم يكن للفرع وجود على الإنترنت. لا موقع، ولا صفحة، ولا عنوان يُعطى لطالب يسأل أين يعرف المزيد.',
     },
     solution: {
       en: 'A responsive site carrying what a new branch has to say for itself: its vision and mission, its events, why a student would join, and how. Built with Next.js and TypeScript, with a sitemap, a robots file and structured data so search engines find a branch nobody has heard of yet.',
@@ -1046,10 +1046,6 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/rworldx/ieee-buc-website',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     highlights: [
-      {
-        en: 'Designed, built and maintained single-handedly as the branch Webmaster.',
-        ar: 'صُمّم وبُني وتُتولّى صيانته بمفردي بصفتي مسؤول الموقع.',
-      },
       {
         en: 'Responsive across devices, built with Next.js, TypeScript, Tailwind CSS and Framer Motion.',
         ar: 'متجاوب عبر الأجهزة، مبني باستخدام Next.js وTypeScript وTailwind CSS وFramer Motion.',
@@ -1065,7 +1061,7 @@ export const projects: Project[] = [
         body: [
           {
             en: 'The branch was in its founding year, with nothing online. No website, no page, no address to give a student. A student society existing only in the room where members meet is hard to join and easy to miss.',
-            ar: 'كانت تلك سنة تأسيس الفرع، ولم يكن له وجود على الإنترنت. لا موقع، ولا صفحة، ولا عنوان يُعطى لطالب. والجمعية الطلابية التي لا توجد إلا في القاعة التي تجتمع فيها يصعب الانضمام إليها ويسهل ألا يُنتبه إليها.',
+            ar: 'كانت تلك سنة تأسيس الفرع، ولم يكن له وجود على الإنترنت. لا موقع، ولا صفحة، ولا عنوان يُعطى لطالب. والجمعية الطلابية التي لا توجد إلا في القاعة التي تجتمع فيها يصعب الانضمام إليها ويسهل أن تمرّ دون أن يلحظها أحد.',
           },
           {
             en: 'A new branch also has to prove the branch is real. A student deciding whether to sign up, a department deciding whether to back the thing, a visiting speaker checking who invited them: all of them want somewhere official to look first. The Instagram account came later, once the committee set one up. The website came first.',
@@ -1078,11 +1074,11 @@ export const projects: Project[] = [
         body: [
           {
             en: 'The branch counselor asked me to join IEEE and to take the Webmaster role. She knew my record, and knew I would build a site and then keep the site running, which is the harder half of the two.',
-            ar: 'طلبت منّي مشرفة الفرع أن أنضمّ إلى IEEE وأن أتولّى مسؤولية الموقع. كانت تعرف سجلّي، وتعرف أنني أستطيع بناء موقع ثم إبقاءه يعمل، وهذا هو النصف الأصعب من الاثنين.',
+            ar: 'طلبت منّي مشرفة الفرع أن أنضمّ إلى IEEE وأن أتولّى مسؤولية الموقع. كانت تعرف سجلّي، وتعرف أنني أستطيع بناء موقع ثم المحافظة عليه، وهذا هو الشقّ الأصعب.',
           },
           {
             en: 'I designed and built the whole thing alone. Every one of the 59 commits is mine.',
-            ar: 'صمّمت الموقع وبنيته وحدي. وكل واحد من الإيداعات التسعة والخمسين لي.',
+            ar: 'صمّمت الموقع وبنيته وحدي. وكل سطر فيه من عملي.',
           },
           {
             en: 'The site carries what a branch has to say for itself and nothing else: the vision and mission, the events run so far, why a student would join, and how to do so. Built with Next.js and TypeScript, with a sitemap, a robots file and structured data, because a branch nobody has heard of has to be findable before anyone judges the work.',
@@ -1099,7 +1095,7 @@ export const projects: Project[] = [
           },
           {
             en: 'The Information Technology Department recognised my contribution to the branch\'s official launch.',
-            ar: 'وقد كرّم قسم تقنية المعلومات إسهامي في الإطلاق الرسمي للفرع.',
+            ar: 'وقد أشاد قسم تقنية المعلومات بإسهامي في الإطلاق الرسمي للفرع.',
           },
         ],
       },
