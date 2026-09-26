@@ -164,7 +164,18 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /*
+     * Deliberately NOT `scroll-behavior: smooth`.
+     *
+     * Next 15 suppressed smooth scrolling while it moved you between routes;
+     * Next 16 does not. With it set here, opening a case study from halfway
+     * down the projects page animated the whole way back to the top — you
+     * watched the page travel instead of arriving. Route changes must be
+     * instant.
+     *
+     * The one place smoothness is wanted is the footer's back-to-top link,
+     * which now asks for it itself.
+     */
     /* Anchors clear the floating nav. */
     scroll-padding-top: 6rem;
     -webkit-tap-highlight-color: transparent;

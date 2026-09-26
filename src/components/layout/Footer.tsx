@@ -1,5 +1,6 @@
 'use client';
 
+import type { MouseEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowUp, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { site } from '@content/site';
@@ -23,6 +24,18 @@ export function Footer() {
   const t = useTranslations('footer');
   const locale = useLocale();
   const year = new Date().getFullYear();
+
+  /*
+   * The one smooth scroll on the site, asked for explicitly rather than set
+   * globally on <html> — a global rule also catches Next's route-change
+   * scroll, which must be instant. The href stays so this still works with
+   * JavaScript off, and a visitor who has asked for less motion just jumps.
+   */
+  const onBackToTop = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="bg-bg-deep/40 relative mt-phi-4 border-t border-border">
@@ -66,6 +79,7 @@ export function Footer() {
 
             <a
               href="#top"
+              onClick={onBackToTop}
               className="action inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.14em] text-text-muted transition-colors duration-quick ease-out hover:text-text"
             >
               {t('backToTop')}
