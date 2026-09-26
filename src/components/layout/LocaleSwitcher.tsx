@@ -18,7 +18,17 @@ export function LocaleSwitcher({ className }: { className?: string }) {
 
   const onSwitch = () => {
     startTransition(() => {
-      router.replace(pathname, { locale: next });
+      /*
+       * `scroll: false`, then scroll ourselves.
+       *
+       * Next 16 changed where a navigation lands. Left to its default, a
+       * switch taken from the top of the page dropped the reader about 800px
+       * down — it scrolls the changed segment into view rather than the
+       * document. Next 15 always went to the top, which is what a reader
+       * expects from a language toggle, so that is restored explicitly.
+       */
+      router.replace(pathname, { locale: next, scroll: false });
+      window.scrollTo({ top: 0, behavior: 'instant' });
     });
   };
 
