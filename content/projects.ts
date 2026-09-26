@@ -21,8 +21,8 @@ export const projects: Project[] = [
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين. لا توجد طريقة سهلة لإيجاد شريك دراسة متوافق، ولا مساحة مشتركة للعمل معًا، ولا مساعدة في لحظة التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform. A weighted matching engine ranks compatible partners across the whole profile (subjects, academic level, study style, availability, country, institution, age, interests and experience) in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers by text or voice, and builds study plans and flashcards.',
-      ar: 'منصة متكاملة. محرّك مطابقة مرجّح يرتّب الشركاء المتوافقين عبر الملف الشخصي كاملًا (المواد، والمستوى الأكاديمي، وأسلوب الدراسة، والتوافر، والبلد، والجامعة، والعمر، والاهتمامات، والخبرات) في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
+      en: 'An end-to-end platform. A weighted score ranks every other student against you on seven things, shared subjects counting most, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers by text or voice, and builds study plans and flashcards.',
+      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق سبعة أمور، أثقلها المواد المشتركة، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -45,15 +45,15 @@ export const projects: Project[] = [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
       { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '125' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '139' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
     ],
     highlights: [
       {
-        en: 'Weighted matching engine. Scores partners on subjects, academic level, study style, availability, country, institution, age, interests and experience, then returns ranked recommendations in under a second. Subject overlap carries the most weight at 35%, then academic level at 20%.',
-        ar: 'محرّك مطابقة مرجّح. يقيس التوافق حسب المواد والمستوى الأكاديمي وأسلوب الدراسة والتوافر والبلد والجامعة والعمر والاهتمامات والخبرات، ثم يعيد توصيات مرتّبة في أقل من ثانية. وتطابق المواد هو الأثقل وزنًا بنسبة ٣٥٪، يليه المستوى الأكاديمي بـ ٢٠٪.',
+        en: 'Weighted matching, computed rather than generated. Every other student is scored on seven things: shared subjects, learning style, university, location, shared interests, age and language. Shared subjects count for the most. Academic level filters who appears, and forms no part of the score.',
+        ar: 'مطابقة مرجّحة، محسوبة لا مولّدة. يُقاس كل طالب آخر وفق سبعة أمور: المواد المشتركة، وأسلوب الدراسة، والجامعة، والموقع، والاهتمامات المشتركة، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا. أما المستوى الأكاديمي فيحدّد من يظهر، ولا يدخل في الدرجة.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
@@ -68,12 +68,12 @@ export const projects: Project[] = [
         ar: 'مؤمّن بمصادقة JWT وتدوير رموز التحديث والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك / مشاهد) والتحقّق بخطوتين وتأكيد البريد.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 125 passing tests. Bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من ١٠٠ نقطة نهاية REST، وأكثر من ١٠٠ حدث لحظي، و٢٠ نموذج بيانات، و١٢٥ اختبارًا ناجحًا. ثنائية اللغة (إنجليزي/عربي)، وخمسة سمات، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 139 passing tests, 125 integration and 14 unit. Bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و20 نموذج بيانات، و139 اختبارًا ناجحًا، منها 125 تكامليًّا و14 اختبار وحدة. ثنائية اللغة (إنجليزي/عربي)، وخمسة سمات، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
-        ar: 'جرى التحقّق منها في تجربة مع ٤٤ طالبًا: ٨٦٪ أبدوا رضًا عاليًا و٩٥٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
+        ar: 'جرى التحقّق منها في تجربة مع 44 طالبًا: 86٪ أبدوا رضًا عاليًا و95٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },
     ],
     /**
@@ -127,37 +127,40 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'Matching, not searching', ar: 'المطابقة بدلًا من البحث' },
+        title: { en: 'Ranked, not filtered', ar: 'ترتيب لا تصفية' },
         body: [
           {
-            en: 'I did not want to leave a student searching through hundreds of profiles.',
-            ar: 'لم أرد أن أحمّل الطالب عبء البحث بين مئات المستخدمين.',
+            en: 'A search box would have handed the work straight back to the student. Filter by subject, filter by year, and you are left looking at a hundred names with no idea which one to message.',
+            ar: 'كان مربّع البحث سيعيد العبء إلى الطالب مباشرة. صفِّ حسب المادة، وصفِّ حسب السنة، فتجد أمامك مئة اسم دون أن تعرف أيّها تراسل.',
           },
           {
-            en: 'The engine scores compatibility across the profile: subjects, academic level, study style, free time, university, country, age, interests and past experience. The list comes back ordered by best fit. The weights are not equal. Subjects carry 35% of the match score, academic level 20%, and study style and free time 15% each.',
-            ar: 'لذلك تعتمد المنصة على خوارزمية تقيس مدى التوافق بين الطلاب وفق مجموعة من المعايير، تشمل المقررات الدراسية، والمستوى الأكاديمي، وأسلوب الدراسة، وأوقات التفرغ، والجامعة، والدولة، والعمر، والاهتمامات، والخبرات السابقة.',
+            en: 'So every other student is given a score against you, built from seven things: the subjects you share, your learning style, your university, where you are, the interests you share, your ages and your language. Shared subjects count for the most, because two people taking the same course have real work to share. Academic level decides who appears in the list at all, and deliberately counts for nothing in the score.',
+            ar: 'فيُعطى كل طالب آخر درجةً أمامك، من سبعة أمور: المواد التي تشتركان فيها، وأسلوب دراستك، وجامعتك، وأين أنت، والاهتمامات المشتركة بينكما، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا، لأن اثنين يدرسان المقرّر نفسه لديهما ما يفعلانه معًا فعلًا. أما المستوى الأكاديمي فيقرّر من يظهر في القائمة أصلًا، ولا يُحسب في الدرجة عن قصد.',
           },
           {
-            en: 'A search tells you who meets the conditions. The ranking tells you who is worth starting with.',
-            ar: 'فالمرشحات تخبرك بمن يستوفي الشروط، أما نظام الترتيب فيقترح عليك الشخص الأكثر ملاءمة لتبدأ معه.',
+            en: 'No model is involved in the number, and the reason matters more than the technique. A score has to be explainable to the student who reads one. "You share three of four subjects and you both revise the same way" is something a person acts on. A number a model produced explains nothing, two students with identical profiles might be given different scores, and nobody would be able to say why.',
+            ar: 'ولا يشارك أي نموذج ذكاء اصطناعي في هذا الرقم، والسبب أهمّ من الطريقة. فالدرجة يجب أن تكون قابلة للشرح للطالب الذي ينظر إليها. وعبارة «تشتركان في ثلاث مواد من أربع، وتراجعان بالأسلوب نفسه» شيء يستطيع الإنسان أن يبني عليه قرارًا. أما رقم يخرج من نموذج فلا يُشرح، وقد يحصل طالبان متطابقا الملف على رقمين مختلفين، ولا أحد يعرف لماذا.',
           },
         ],
-        facts: [{ label: { en: 'Ranked results in', ar: 'زمن المطابقة' }, value: '< 1s' }],
+        facts: [
+          { label: { en: 'Things scored', ar: 'أمور تُحسب' }, value: '7' },
+          { label: { en: 'Ranked results in', ar: 'نتائج مرتّبة خلال' }, value: '< 1s' },
+        ],
       },
       {
-        title: { en: 'A room, not a chat box', ar: 'غرفة دراسة متكاملة، لا مجرد محادثة' },
+        title: { en: 'Somewhere to actually work', ar: 'مكان للعمل فعلًا' },
         body: [
           {
-            en: 'Finding a study partner is not enough on its own, so the platform gives students a space to study in directly.',
-            ar: 'العثور على شريك دراسة لا يكفي، لذلك توفر المنصة مساحة متكاملة يمكن للطلاب الدراسة فيها معًا.',
+            en: 'Putting two students in touch achieves nothing while they still have nowhere to go. So the match leads into a room: live chat, voice and video, screen sharing, and sessions somebody schedules in advance.',
+            ar: 'لا يحقّق التعريف بين طالبين شيئًا إن لم يكن لديهما مكان يذهبان إليه. لذلك تقود المطابقة إلى غرفة: محادثة مباشرة، وصوت وصورة، ومشاركة شاشة، وجلسات يستطيع أحدهم جدولتها مسبقًا.',
           },
           {
-            en: 'Rooms carry live chat, voice and video calls, screen sharing, and scheduled study sessions. They support host, co-host, participant and viewer roles, which keeps a session orderly as the number of people grows.',
-            ar: 'تشمل الغرف محادثات فورية، ومكالمات صوتية ومرئية، ومشاركة الشاشة، وجلسات دراسية مجدولة. كما تدعم أدوارًا مختلفة، مثل المضيف، والمضيف المساعد، والمشارك، والمشاهد، للحفاظ على تنظيم الجلسات مع ازدياد عدد المشاركين.',
+            en: 'Rooms have a host, a co-host, participants and viewers, which is not administrative decoration. A study room stops working the moment a fifth person joins and nobody is able to mute anyone, remove anyone, or end the call. Someone needs the power to do so.',
+            ar: 'وللغرف مضيف ومضيف مساعد ومشاركون ومشاهدون، وليس هذا ترتيبًا إداريًّا للزينة. فغرفة الدراسة تتوقّف عن العمل فور انضمام شخص خامس دون أن يقدر أحد على كتم أحد، أو إخراجه، أو إنهاء المكالمة. لا بدّ أن يقدر أحد على ذلك.',
           },
           {
-            en: 'Most of the work went into the details nobody notices. When the host leaves, control passes automatically to the co-host, then to the first participant who joined. Clients send a connection signal every 15 seconds, and anyone who drops gets 30 seconds to return to the same session without losing their state or starting again.',
-            ar: 'أما الجزء الأكبر من العمل فكان في التفاصيل التي لا يلاحظها المستخدم. فإذا غادر المضيف، تنتقل إدارة الجلسة تلقائيًا إلى المضيف المساعد، ثم إلى أول مشارك انضم إليها. وترسل التطبيقات نبضة اتصال كل 15 ثانية، ويُمنح المستخدم الذي ينقطع اتصالُه مهلة 30 ثانية للعودة إلى الجلسة بالحالة نفسها، دون الحاجة إلى البدء من جديد.',
+            en: 'Most of the work went where nobody looks. When the host closes their laptop the room passes to the co-host who joined first, then to the earliest participant, and ends only when everyone has left. Every device reports in every fifteen seconds, and anyone who drops gets thirty seconds to come back into the same room rather than rejoining as a stranger.',
+            ar: 'وأكثر الجهد ذهب إلى ما لا يراه أحد. فحين يغلق المضيف حاسوبه تنتقل الغرفة إلى المساعد الأسبق دخولًا، ثم إلى أوّل المشاركين، ولا تُغلق إلا حين يخرج الجميع. ويُبلّغ كل جهاز عن نفسه كل خمس عشرة ثانية، ومن ينقطع أمامه ثلاثون ثانية ليعود إلى الغرفة نفسها بدل أن يدخل كأنه غريب.',
           },
         ],
         facts: [
@@ -166,40 +169,40 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'Help at the moment of being stuck', ar: 'المساعدة عند الحاجة' },
+        title: { en: 'Help where the student is stuck', ar: 'المساعدة حيث يتعثّر الطالب' },
         body: [
           {
-            en: 'StudyNest includes a Gemini-powered assistant. The assistant answers typed questions, reads the documents and images a student uploads, explains the contents, and replies by text or voice.',
-            ar: 'يتضمن StudyNest مساعدًا ذكيًا يعتمد على Gemini. يجيب عن الأسئلة النصية، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ثم يشرح محتواها ويجيب عنها كتابةً أو صوتًا.',
+            en: 'The study assistant is the one part of StudyNest using Gemini, and the only part which should.',
+            ar: 'مساعد الدراسة هو الجزء الوحيد في StudyNest الذي يستخدم Gemini، والوحيد الذي ينبغي أن يستخدمه.',
           },
           {
-            en: 'The assistant also turns a course syllabus into an organised study plan, or into flashcards for revision.',
-            ar: 'كما يمكنه تحويل المقرر الدراسي إلى خطة مذاكرة منظمة أو بطاقات تعليمية تساعد على المراجعة.',
+            en: 'The assistant answers typed questions, reads the documents and images a student uploads, explains the contents, and replies by text or by voice. A course outline becomes a revision plan, or a set of flashcards.',
+            ar: 'يجيب عن الأسئلة المكتوبة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها، ويردّ نصًّا أو صوتًا. ويحوّل مفردات المقرّر إلى خطة مراجعة، أو إلى بطاقات تعليمية.',
           },
           {
-            en: 'The information was always available. What was missing was reaching the right information at the right time.',
-            ar: 'المعلومات كانت متوفرة دائمًا. الناقص كان الوصول إلى المعلومة المناسبة في الوقت المناسب.',
+            en: 'Reading files rather than only questions matters because the missing thing was never information. A student stuck at eleven at night has the whole internet in front of them. What they lack is an answer about the page under their eyes, at the moment of looking.',
+            ar: 'وسبب قراءته للملفات لا للأسئلة وحدها أن الناقص لم يكن المعلومة يومًا. فالطالب المتعثّر في الحادية عشرة ليلًا أمامه الإنترنت كله. الذي ليس أمامه جواب عن الصفحة التي ينظر إليها، في اللحظة التي ينظر فيها إليها.',
           },
         ],
       },
       {
-        title: { en: 'Built to be trusted', ar: 'مبنيّ ليكون موثوقًا' },
+        title: { en: 'What a student account holds', ar: 'ما الذي يحمله حساب الطالب' },
         body: [
           {
-            en: 'The system handles personal and academic data, so security was a core part of the project rather than an afterthought.',
-            ar: 'يتعامل النظام مع بيانات شخصية ودراسية حساسة، لذلك كان الاهتمام بالأمان جزءًا أساسيًا من عملية التطوير.',
+            en: 'A timetable. Coursework. Notes nobody else was meant to read. A phone number, and a face on a video call. The list is why the security work came first rather than after launch.',
+            ar: 'جدول دراسي. وأعمال المقرّرات. وملاحظات لم يكن أحد غيره ليقرأها. ورقم هاتف، ووجه في مكالمة مرئية. هذه القائمة هي سبب تقديم العمل الأمني على غيره لا تأجيله إلى ما بعد الإطلاق.',
           },
           {
-            en: 'The work covers JWT authentication with refresh-token rotation, role-based permissions, two-factor authentication and email confirmation, alongside 125 passing tests across 20 data models.',
-            ar: 'يشمل ذلك المصادقة باستخدام JWT مع تدوير رموز التحديث، والتحكم في الصلاحيات وفق الأدوار، والمصادقة الثنائية، وتأكيد البريد الإلكتروني، بالإضافة إلى 125 اختبارًا ناجحًا تغطي 20 نموذجًا للبيانات.',
+            en: 'Signing in uses JWT with refresh-token rotation, permissions follow the role someone holds in a room, and there is two-factor authentication and email confirmation. An access token lives fifteen minutes and a refresh token seven days, so a stolen one stays useful only briefly.',
+            ar: 'تسجيل الدخول بـ JWT مع تدوير رموز التحديث، والصلاحيات تتبع دور الشخص في الغرفة، وهناك مصادقة بخطوتين وتأكيد للبريد. ويعيش رمز الوصول خمس عشرة دقيقة ورمز التحديث سبعة أيام، فلا يساوي المسروق منهما كثيرًا ولا يبقى طويلًا.',
           },
           {
-            en: 'An access token lives 15 minutes and a refresh token seven days, which limits the damage a stolen token does. The platform disables accounts logically instead of deleting them, so a student returns later on the same email without losing their data.',
-            ar: 'ويبلغ عمر رمز الوصول 15 دقيقة، بينما يبقى رمز التحديث صالحًا لمدة سبعة أيام، مما يحد من مخاطر إساءة استخدام الرموز المسروقة. كما تعتمد المنصة الحذف المنطقي للحسابات بدلًا من حذفها نهائيًا، بحيث يستطيع المستخدم العودة لاحقًا باستخدام البريد الإلكتروني نفسه دون فقدان بياناته.',
+            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 139 tests cover the parts where a mistake costs something, 125 of them end to end and 14 on the scoring itself, across 20 data models.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 139 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا، منها 125 من طرف إلى طرف و14 على حساب الدرجة نفسها، عبر 20 نموذج بيانات.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '125' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '139' },
           { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
         ],
       },
