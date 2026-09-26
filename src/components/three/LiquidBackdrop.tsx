@@ -33,8 +33,8 @@ interface Props {
  * lights, no camera movement — so cost is purely fill-rate and scales with the
  * pixel-ratio cap rather than with scene complexity.
  *
- * Vanilla Three.js, NOT @react-three/fiber: Next 15 ships React 19 internals
- * and R3F v8's reconciler reads React 18's `ReactCurrentOwner`, which is
+ * Vanilla Three.js, NOT @react-three/fiber: this app runs React 19, and R3F
+ * v8's reconciler reads React 18's `ReactCurrentOwner`, which is
  * `undefined` there and crashes.
  */
 
@@ -185,10 +185,17 @@ export default function LiquidBackdrop({ colors, paused, isDark, onTooSlow }: Pr
     setExposure: (dark: boolean) => void;
   } | null>(null);
 
-  pausedRef.current = paused;
-  colorsRef.current = colors;
-  darkRef.current = isDark;
-  onTooSlowRef.current = onTooSlow;
+  // Latest-value refs, so the imperative render loop below reads current props
+  // without being torn down and rebuilt on every change. Written in an effect
+  // rather than during render: React 19 may render a component more than once
+  // before committing, and a ref mutated in the render body can be left holding
+  // a value from a render that was thrown away.
+  useEffect(() => {
+    pausedRef.current = paused;
+    colorsRef.current = colors;
+    darkRef.current = isDark;
+    onTooSlowRef.current = onTooSlow;
+  });
 
   useEffect(() => {
     const mount = mountRef.current;

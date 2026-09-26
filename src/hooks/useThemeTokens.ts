@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * Read design tokens out of the DOM, and re-read them when the theme actually
@@ -18,13 +18,15 @@ import { useCallback, useEffect, useState } from 'react';
  * the class has genuinely been swapped and styles are recalculated, whatever
  * order the effects happened to run in. `resolvedTheme` is not consulted at
  * all here, which is the point.
+ *
+ * `read` must be a stable reference — a module-level function, or one the
+ * caller wraps in useCallback. An inline closure would re-subscribe the
+ * observer on every render. A `useCallback(read, [read])` used to sit here
+ * claiming to pin it, which it cannot do: it returns a new function exactly
+ * when `read` changes. The sole caller passes a module-level function.
  */
 export function useThemeTokens<T>(read: () => T): T | null {
   const [tokens, setTokens] = useState<T | null>(null);
-
-  // The reader is inlined by callers, so pin it — otherwise a fresh closure on
-  // every render would re-subscribe the observer on every render.
-  const stable = useCallback(read, [read]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -36,7 +38,7 @@ export function useThemeTokens<T>(read: () => T): T | null {
     // animated backdrop visibly jump on every theme click.
     let previous = '';
     const sample = () => {
-      const nextTokens = stable();
+      const nextTokens = read();
       const signature = JSON.stringify(nextTokens);
       if (signature === previous) return;
       previous = signature;
@@ -47,7 +49,7 @@ export function useThemeTokens<T>(read: () => T): T | null {
     const observer = new MutationObserver(sample);
     observer.observe(root, { attributes: true, attributeFilter: ['class', 'style'] });
     return () => observer.disconnect();
-  }, [stable]);
+  }, [read]);
 
   return tokens;
 }

@@ -934,7 +934,8 @@ export const projects: Project[] = [
     liveUrl: 'https://rashidalghafri.com',
     repoUrl: 'https://github.com/rworldx/rashidalghafri-portfolio',
     stack: [
-      'Next.js 15',
+      'Next.js 16',
+      'React 19',
       'TypeScript',
       'Tailwind CSS',
       'Three.js',

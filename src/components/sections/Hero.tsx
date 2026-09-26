@@ -67,9 +67,13 @@ export function Hero() {
   // four statistics has stopped being a hero and become a dashboard.
   const plates = proof.slice(0, 2);
 
+  // Deliberate. Probing for a WebGL context touches the DOM, so it cannot run
+  // during render or on the server without risking a hydration mismatch. The
+  // backdrop stays absent until this answers.
   useEffect(() => {
     try {
       const canvas = document.createElement('canvas');
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCanRender3D(!!(canvas.getContext('webgl2') || canvas.getContext('webgl')));
     } catch {
       setCanRender3D(false);

@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: unknown) {
     if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
+      // Development only; production reporting goes nowhere by design.
       console.error('ErrorBoundary caught:', error);
     }
   }

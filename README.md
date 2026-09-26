@@ -6,7 +6,7 @@ a signature interactive connection graph.
 
 ## Stack
 
-Next.js 15 (App Router) · TypeScript (strict) · Tailwind CSS · next-intl
+Next.js 16 (App Router) · React 19 · TypeScript (strict) · Tailwind CSS · next-intl
 (EN/AR + RTL) · next-themes (light/dark) · Framer Motion · Vitest. Deployed on
 Vercel.
 

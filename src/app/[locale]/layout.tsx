@@ -48,7 +48,7 @@ export default async function LocaleLayout({
           server and client trees (React reports it as a hydration mismatch).
         */}
         <noscript>
-          {/* eslint-disable-next-line react/no-danger */}
+          {/* Static string, no interpolation — nothing here is user input. */}
           <style
             dangerouslySetInnerHTML={{
               __html: '[data-reveal]{opacity:1!important;transform:none!important}',

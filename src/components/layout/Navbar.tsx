@@ -35,7 +35,9 @@ export function Navbar() {
     triggerRef.current?.focus();
   }, []);
 
-  // Close on route change.
+  // Close on route change. Deliberate: the sheet's open state is owned here,
+  // and a completed navigation is the external event that must close it.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setOpen(false), [pathname]);
 
   // Escape dismisses, focus stays inside the sheet, page scroll is locked.

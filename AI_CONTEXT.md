@@ -4,7 +4,7 @@ Onboarding for any agent (or future-you) working in this repo. Read this first.
 
 ## What this is
 
-Personal portfolio for Rashid Al Ghafri. Next.js 15 (App Router), TypeScript
+Personal portfolio for Rashid Al Ghafri. Next.js 16 (App Router), React 19, TypeScript
 strict, Tailwind, next-intl (en/ar + RTL), next-themes (light/dark), Framer
 Motion. Static-first: every public page is SSG; the only server code is
 `src/app/api/contact/route.ts`. Built to the PRD (v1.0).
@@ -119,8 +119,11 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
 
 - `src/i18n/routing.ts` — locales `['en','ar']`, default `en`, `as-needed`
   prefix. `hasLocale` / `isRtl` helpers live here.
-- `src/middleware.ts` — **must stay in `src/`** (project uses a `src/` dir).
-  Locale negotiation; matcher includes `/`.
+- `src/proxy.ts` — **must stay in `src/`** (project uses a `src/` dir). Next 16
+  renamed this file convention from `middleware` to `proxy`; the contract is
+  unchanged. Locale negotiation; matcher includes `/` and deliberately excludes
+  the extension-less metadata routes (`icon`, `apple-icon`, `opengraph-image`),
+  without which the favicon and the share card 404.
 - `src/app/layout.tsx` — passthrough (only `metadataBase`); the real
   `<html lang/dir>`, fonts, and providers are in `src/app/[locale]/layout.tsx`.
 - `src/lib/fonts.ts` — Host Grotesk + Geist Mono + Nothing You Could Do via
@@ -139,9 +142,9 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
   `site.portrait` (default `/images/portrait.jpg`) is missing.
 - `src/components/three/LiquidBackdrop.tsx` — the gallery's light: a
   domain-warped fbm shader on one full-screen quad. **Deliberately vanilla
-  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`** — Next 15
-  ships React 19 internals and R3F v8's reconciler reads React 18's
-  `ReactCurrentOwner` -> `undefined` -> crash.
+  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`** — the app
+  runs React 19 and R3F v8's reconciler reads React 18's `ReactCurrentOwner`
+  -> `undefined` -> crash.
 
 - `src/components/flow/` — the signature. `FlowRail` (page spine, scroll-driven)
   and `FlowBranch` (section wrapper: spur + node). Every section on every page

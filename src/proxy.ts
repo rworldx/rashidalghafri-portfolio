@@ -2,7 +2,9 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 
 /**
- * Locale negotiation + redirect (PRD §6.3). Reads Accept-Language / cookie,
+ * Locale negotiation + redirect (PRD §6.3). Next 16 renamed this file
+ * convention from `middleware` to `proxy`; the contract is unchanged, and
+ * next-intl still supplies the handler. Reads Accept-Language / cookie,
  * prefixes routes as-needed, and keeps the default locale clean.
  */
 export default createMiddleware(routing);
