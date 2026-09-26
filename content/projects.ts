@@ -1094,8 +1094,8 @@ export const projects: Project[] = [
             ar: 'أتولّى مسؤولية الموقع منذ أغسطس 2025 وما زلت أصونه. تسليم مشروع عند إطلاقه سهل. أما إبقاؤه محدَّثًا عبر سنة من الفعاليات وتغيّر اللجنة وانضمام أعضاء جدد فهو ما يقرّر هل يبقى موقع الفرع يستحقّ الزيارة.',
           },
           {
-            en: 'The Information Technology Department recognised my contribution to the branch\'s official launch.',
-            ar: 'وقد أشاد قسم تقنية المعلومات بإسهامي في الإطلاق الرسمي للفرع.',
+            en: 'The Information Technology Department awarded me a certificate for my contribution to the branch\'s official launch.',
+            ar: 'وقد كرّمني قسم تقنية المعلومات بشهادة تقدير على إسهامي في الإطلاق الرسمي للفرع.',
           },
         ],
       },
