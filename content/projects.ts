@@ -1031,16 +1031,16 @@ export const projects: Project[] = [
     year: 2026,
     role: 'Webmaster · Built & maintained',
     summary: {
-      en: 'The official website for the IEEE Student Branch at Al Buraimi University College — built and maintained as branch Webmaster.',
-      ar: 'الموقع الرسمي لفرع طلاب IEEE في كلية البريمي الجامعية — بنيتُه وأتولّى صيانته بصفتي مسؤول الموقع.',
+      en: 'The official website for the IEEE Student Branch at Al Buraimi University College, built in the branch\'s founding year, when the branch had nothing online at all. Designed and built alone, and maintained since as branch Webmaster.',
+      ar: 'الموقع الرسمي لفرع طلاب IEEE في كلية البريمي الجامعية، بُني في سنة تأسيس الفرع حين لم يكن له وجود على الإنترنت أصلًا. صمّمته وبنيته وحدي، وأتولّى صيانته منذ ذلك الحين بصفتي مسؤول الموقع.',
     },
     problem: {
       en: 'A newly launched student branch needed a credible, fast official web presence to share its activities and reach its members.',
       ar: 'احتاج فرعٌ طلابي حديث الإطلاق إلى حضور رقمي رسمي سريع وموثوق للتعريف بأنشطته والوصول إلى أعضائه.',
     },
     solution: {
-      en: 'A responsive, SEO-optimized website (sitemap, robots, and JSON-LD structured data) built with Next.js and TypeScript — designed, built and maintained single-handedly as the branch Webmaster.',
-      ar: 'موقع متجاوب ومُحسَّن لمحرّكات البحث (خريطة موقع، وملف robots، وبيانات JSON-LD المنظَّمة) بُني باستخدام Next.js وTypeScript — صمّمته وبنيته وأتولّى صيانته بمفردي بصفتي مسؤول الموقع.',
+      en: 'A responsive site carrying what a new branch has to say for itself: its vision and mission, its events, why a student would join, and how. Built with Next.js and TypeScript, with a sitemap, a robots file and structured data so search engines find a branch nobody has heard of yet.',
+      ar: 'موقع متجاوب يحمل ما يحتاج فرع جديد أن يقوله عن نفسه: رؤيته ورسالته، وفعالياته، ولماذا ينضمّ إليه الطالب، وكيف. بُني بـ Next.js وTypeScript، مع خريطة موقع وملف robots وبيانات منظَّمة حتى تجد محرّكات البحث فرعًا لم يسمع به أحد بعد.',
     },
     liveUrl: 'https://ieee-buc-website.vercel.app',
     repoUrl: 'https://github.com/rworldx/ieee-buc-website',
@@ -1057,6 +1057,51 @@ export const projects: Project[] = [
       {
         en: 'SEO-optimized: sitemap, robots, and JSON-LD structured data.',
         ar: 'مُحسَّن لمحرّكات البحث: خريطة موقع، وملف robots، وبيانات JSON-LD المنظَّمة.',
+      },
+    ],
+    chapters: [
+      {
+        title: { en: 'A branch with nowhere to point', ar: 'فرع بلا عنوان' },
+        body: [
+          {
+            en: 'The branch was in its founding year, with nothing online. No website, no page, no address to give a student. A student society existing only in the room where members meet is hard to join and easy to miss.',
+            ar: 'كانت تلك سنة تأسيس الفرع، ولم يكن له وجود على الإنترنت. لا موقع، ولا صفحة، ولا عنوان يُعطى لطالب. والجمعية الطلابية التي لا توجد إلا في القاعة التي تجتمع فيها يصعب الانضمام إليها ويسهل ألا يُنتبه إليها.',
+          },
+          {
+            en: 'A new branch also has to prove the branch is real. A student deciding whether to sign up, a department deciding whether to back the thing, a visiting speaker checking who invited them: all of them want somewhere official to look first. The Instagram account came later, once the committee set one up. The website came first.',
+            ar: 'والفرع الجديد عليه أيضًا أن يثبت أنه حقيقي. فالطالب الذي يفكّر في الانضمام، والقسم الذي يقرّر دعمه، والمتحدّث الزائر الذي يتحقّق ممّن دعاه، كلهم يريدون مكانًا رسميًّا ينظرون فيه أولًا. أما حساب إنستغرام فجاء بعد ذلك حين أنشأته اللجنة. الموقع جاء أولًا.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Chosen for the job', ar: 'اختياري للمهمّة' },
+        body: [
+          {
+            en: 'The branch counselor asked me to join IEEE and to take the Webmaster role. She knew my record, and knew I would build a site and then keep the site running, which is the harder half of the two.',
+            ar: 'طلبت منّي مشرفة الفرع أن أنضمّ إلى IEEE وأن أتولّى مسؤولية الموقع. كانت تعرف سجلّي، وتعرف أنني أستطيع بناء موقع ثم إبقاءه يعمل، وهذا هو النصف الأصعب من الاثنين.',
+          },
+          {
+            en: 'I designed and built the whole thing alone. Every one of the 59 commits is mine.',
+            ar: 'صمّمت الموقع وبنيته وحدي. وكل واحد من الإيداعات التسعة والخمسين لي.',
+          },
+          {
+            en: 'The site carries what a branch has to say for itself and nothing else: the vision and mission, the events run so far, why a student would join, and how to do so. Built with Next.js and TypeScript, with a sitemap, a robots file and structured data, because a branch nobody has heard of has to be findable before anyone judges the work.',
+            ar: 'ويحمل ما يحتاج الفرع أن يقوله عن نفسه ولا شيء غير ذلك: الرؤية والرسالة، والفعاليات التي أقامها، ولماذا ينضمّ الطالب، وكيف ينضمّ. بُني بـ Next.js وTypeScript، مع خريطة موقع وملف robots وبيانات منظَّمة، لأن الفرع الذي لم يسمع به أحد لا بدّ أن يُعثر عليه قبل أن يُحكم عليه.',
+          },
+        ],
+      },
+      {
+        title: { en: 'Still mine', ar: 'ما زال في يدي' },
+        body: [
+          {
+            en: 'I have been Webmaster since August 2025 and still maintain the site. Handing a project over at launch is easy. Keeping one current through a year of events, committee changes and new members decides whether a branch site stays worth visiting.',
+            ar: 'أتولّى مسؤولية الموقع منذ أغسطس 2025 وما زلت أصونه. تسليم مشروع عند إطلاقه سهل. أما إبقاؤه محدَّثًا عبر سنة من الفعاليات وتغيّر اللجنة وانضمام أعضاء جدد فهو ما يقرّر هل يبقى موقع الفرع يستحقّ الزيارة.',
+          },
+          {
+            en: 'The Information Technology Department recognised my contribution to the branch\'s official launch.',
+            ar: 'وقد كرّم قسم تقنية المعلومات إسهامي في الإطلاق الرسمي للفرع.',
+          },
+        ],
       },
     ],
     cover: '/images/projects/ieee-buc.png',
