@@ -83,11 +83,11 @@ export const schooling: { grades: string; name: Localized }[] = [
 /** Footnote under the schooling path. */
 export const schoolingNote: Localized = {
   en: 'Scouts (grades 5–10) · consistently among the top students.',
-  ar: 'الكشافة (الصفوف ٥–١٠) · من الطلاب المتفوّقين باستمرار.',
+  ar: 'الكشافة (الصفوف 5–10) · من الطلاب المتفوّقين باستمرار.',
 };
 
 /** Aside note for the travel log (UAE is uncounted — too frequent). */
 export const travelNote: Localized = {
   en: 'UAE — lost count somewhere past 100 visits; it’s practically a second home.',
-  ar: 'الإمارات — فقدتُ العدّ بعد أكثر من ١٠٠ زيارة؛ تكاد تكون بيتي الثاني.',
+  ar: 'الإمارات — فقدتُ العدّ بعد أكثر من 100 زيارة؛ تكاد تكون بيتي الثاني.',
 };

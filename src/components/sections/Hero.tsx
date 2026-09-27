@@ -185,7 +185,7 @@ export function Hero() {
             <div
               key={p.label.en}
               // Width is a FLOOR, not a fixed size. Arabic sets these figures
-              // as words ("أفضل ٣٠"), which wrapped and cramped a fixed plate.
+              // as words ("أفضل 30"), which wrapped and cramped a fixed plate.
               className="plate-quiet flex min-w-[13.5rem] max-w-[20rem] flex-col-reverse rounded-lg p-5"
             >
               <dt className="mt-2 text-xs text-text-muted">{pick(p.label, locale)}</dt>

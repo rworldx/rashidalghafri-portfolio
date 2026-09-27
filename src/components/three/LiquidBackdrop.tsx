@@ -33,9 +33,10 @@ interface Props {
  * lights, no camera movement — so cost is purely fill-rate and scales with the
  * pixel-ratio cap rather than with scene complexity.
  *
- * Vanilla Three.js, NOT @react-three/fiber: Next 15 ships React 19 internals
- * and R3F v8's reconciler reads React 18's `ReactCurrentOwner`, which is
- * `undefined` there and crashes.
+ * Vanilla Three.js, NOT @react-three/fiber: one full-screen quad has no scene
+ * graph, so a reconciler buys nothing. Adopting R3F would also pin this
+ * project to React 18 — R3F v8's reconciler reads `ReactCurrentOwner`, which
+ * React 19 removed.
  */
 
 const vertexShader = /* glsl */ `

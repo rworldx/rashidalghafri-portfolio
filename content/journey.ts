@@ -15,7 +15,7 @@ export const journey: TimelineEntry[] = [
     },
     detail: {
       en: 'Al Buraimi University College, Oman · Oct 2022',
-      ar: 'كلية البريمي الجامعية، عُمان · أكتوبر ٢٠٢٢',
+      ar: 'كلية البريمي الجامعية، عُمان · أكتوبر 2022',
     },
   },
   {
@@ -35,7 +35,7 @@ export const journey: TimelineEntry[] = [
     kind: 'milestone',
     title: {
       en: 'Debate Club — Helped run competitions (2022–2024)',
-      ar: 'نادي المناظرات — المساهمة في تنظيم المسابقات (٢٠٢٢–٢٠٢٤)',
+      ar: 'نادي المناظرات — المساهمة في تنظيم المسابقات (2022–2024)',
     },
     detail: {
       en: 'Supported organising and running debate competitions.',
@@ -96,7 +96,7 @@ export const journey: TimelineEntry[] = [
     },
     detail: {
       en: 'Official branch launch · Feb 2026',
-      ar: 'الإطلاق الرسمي للفرع · فبراير ٢٠٢٦',
+      ar: 'الإطلاق الرسمي للفرع · فبراير 2026',
     },
   },
   {
@@ -108,16 +108,16 @@ export const journey: TimelineEntry[] = [
     },
     detail: {
       en: 'Presented to the Dean & faculty · Apr 2026',
-      ar: 'قدّمت أمام العميد وأعضاء الهيئة · أبريل ٢٠٢٦',
+      ar: 'قدّمت أمام العميد وأعضاء الهيئة · أبريل 2026',
     },
   },
   {
     year: 2026,
     kind: 'award',
-    title: { en: 'LIYSF — National Finalist, Top 30', ar: 'LIYSF — متأهل وطني، أفضل ٣٠' },
+    title: { en: 'LIYSF — National Finalist, Top 30', ar: 'LIYSF — متأهل وطني، أفضل 30' },
     detail: {
       en: 'Top 30 of 738 STEM projects · Jun 2026',
-      ar: 'أفضل ٣٠ من ٧٣٨ مشروعًا · يونيو ٢٠٢٦',
+      ar: 'أفضل 30 من 738 مشروعًا · يونيو 2026',
     },
   },
   {
@@ -127,7 +127,19 @@ export const journey: TimelineEntry[] = [
       en: 'Graduated with First-Class Distinction · BSc Software Engineering',
       ar: 'التخرّج بامتياز مع مرتبة الشرف الأولى · بكالوريوس هندسة البرمجيات',
     },
-    detail: { en: 'studynest.dev live · Jul 2026', ar: 'studynest.dev · يوليو ٢٠٢٦' },
+    detail: { en: 'studynest.dev live · Jul 2026', ar: 'studynest.dev · يوليو 2026' },
+  },
+  {
+    year: 2026,
+    kind: 'milestone',
+    title: {
+      en: 'Trainee — Nama HSE Empowerment Programme',
+      ar: 'متدرّب — برنامج نماء لتمكين الصحة والسلامة والبيئة',
+    },
+    detail: {
+      en: 'Nama Water Services, Muscat · HSE team — incident reporting, inspections, observations and HSE dashboards in Intelex · Sep 2026',
+      ar: 'نماء لخدمات المياه، مسقط · ضمن فريق الصحة والسلامة والبيئة — الإبلاغ عن الحوادث وعمليات التفتيش وملاحظات السلامة ولوحات المتابعة في Intelex · سبتمبر 2026',
+    },
   },
   {
     year: 2026,

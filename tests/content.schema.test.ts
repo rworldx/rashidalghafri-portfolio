@@ -91,10 +91,10 @@ describe('content/awards', () => {
 describe('content/experience', () => {
   const schema = z.object({
     id: z.string(),
-    kind: z.enum(['education', 'leadership', 'activity']),
+    kind: z.enum(['education', 'training', 'leadership', 'activity']),
     title: localized,
     org: localized,
-    period: z.string(),
+    period: localized,
     order: z.number(),
     bullets: z.array(localized).optional(),
   });

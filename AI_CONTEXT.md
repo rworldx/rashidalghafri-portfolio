@@ -139,9 +139,10 @@ src/lib, src/i18n, src/config, src/hooks   cross-cutting
   `site.portrait` (default `/images/portrait.jpg`) is missing.
 - `src/components/three/LiquidBackdrop.tsx` — the gallery's light: a
   domain-warped fbm shader on one full-screen quad. **Deliberately vanilla
-  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`** — Next 15
-  ships React 19 internals and R3F v8's reconciler reads React 18's
-  `ReactCurrentOwner` -> `undefined` -> crash.
+  Three.js (imperative, in a `useEffect`), NOT `@react-three/fiber`** — one
+  full-screen quad has no scene graph, so a reconciler buys nothing. Adopting
+  R3F would also pin the project to React 18: R3F v8's reconciler reads
+  `ReactCurrentOwner`, which React 19 removed. This app runs React 18.3.1.
 
 - `src/components/flow/` — the signature. `FlowRail` (page spine, scroll-driven)
   and `FlowBranch` (section wrapper: spur + node). Every section on every page

@@ -7,13 +7,13 @@ export const awards: Award[] = [
     order: 4,
     title: {
       en: 'London International Youth Science Forum — National Finalist, Top 30',
-      ar: 'منتدى لندن الدولي للعلوم للشباب — متأهل وطني، أفضل ٣٠',
+      ar: 'منتدى لندن الدولي للعلوم للشباب — متأهل وطني، أفضل 30',
     },
     date: 'Jun 2026',
     tag: { en: 'National finalist', ar: 'متأهل وطني' },
     description: {
       en: 'Presented StudyNest at the national finals (Military Technological College, Muscat) — selected among the top 30 of 738 STEM projects nationwide.',
-      ar: 'قدّم StudyNest في النهائيات الوطنية (الكلية التقنية العسكرية، مسقط) — اختير ضمن أفضل ٣٠ من بين ٧٣٨ مشروعًا في العلوم والتقنية على مستوى البلاد.',
+      ar: 'قدّم StudyNest في النهائيات الوطنية (الكلية التقنية العسكرية، مسقط) — اختير ضمن أفضل 30 من بين 738 مشروعًا في العلوم والتقنية على مستوى البلاد.',
     },
   },
   {
