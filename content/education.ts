@@ -36,11 +36,11 @@ export const education: Education = {
   languages: [
     {
       name: { en: 'Arabic', ar: 'العربية' },
-      level: { en: 'Native (C2)', ar: 'اللغة الأم (C2)' },
+      level: { en: 'Native', ar: 'اللغة الأم' },
     },
     {
       name: { en: 'English', ar: 'الإنجليزية' },
-      level: { en: 'Upper-Intermediate (B2)', ar: 'فوق المتوسط (B2)' },
+      level: { en: 'Professional working proficiency', ar: 'إجادة مهنية' },
     },
   ],
 };
