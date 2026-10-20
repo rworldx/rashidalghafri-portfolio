@@ -1100,7 +1100,8 @@ export const projects: Project[] = [
         ],
       },
     ],
-    cover: '/images/projects/ieee-buc.png',
+    cover: '/images/projects/ieee-buc-light.png',
+    coverDark: '/images/projects/ieee-buc-dark.png',
     gallery: [],
     links: [
       { label: 'Live demo', href: 'https://ieee-buc-website.vercel.app', external: true },
