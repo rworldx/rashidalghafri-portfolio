@@ -21,15 +21,15 @@ export const projects: Project[] = [
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين. لا توجد طريقة سهلة لإيجاد شريك دراسة متوافق، ولا مساحة مشتركة للعمل معًا، ولا مساعدة في لحظة التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform. A weighted score ranks every other student against you on seven things, shared subjects counting most, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers by text or voice, and builds study plans and flashcards.',
-      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق سبعة أمور، أثقلها المواد المشتركة، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
+      en: 'An end-to-end platform. A weighted score ranks every other student against you on seven things, shared subjects counting most, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers questions typed or spoken, and turns a course outline into a study plan or flashcards.',
+      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق سبعة أمور، أثقلها المواد المشتركة، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويحوّل مفردات المقرّر إلى خطة مراجعة أو بطاقات تعليمية.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
     stack: [
-      'React 18',
+      'React 19',
+      'Next.js 16',
       'TypeScript',
-      'Vite',
       'Tailwind CSS',
       'TanStack Query',
       'Node.js',
@@ -44,32 +44,32 @@ export const projects: Project[] = [
     stats: [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
-      { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '139' },
+      { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '357' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
     ],
     highlights: [
       {
-        en: 'Weighted matching, computed rather than generated. Every other student is scored on seven things: shared subjects, learning style, university, location, shared interests, age and language. Shared subjects count for the most. Academic level filters who appears, and forms no part of the score.',
-        ar: 'مطابقة مرجّحة، محسوبة لا مولّدة. يُقاس كل طالب آخر وفق سبعة أمور: المواد المشتركة، وأسلوب الدراسة، والجامعة، والموقع، والاهتمامات المشتركة، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا. أما المستوى الأكاديمي فيحدّد من يظهر، ولا يدخل في الدرجة.',
+        en: 'Weighted matching, computed rather than generated. Every other student is scored on seven things: shared subjects, learning style, university, location, shared interests, age and language. Shared subjects count for the most. Academic level is a filter you can choose, and forms no part of the score.',
+        ar: 'مطابقة مرجّحة، محسوبة لا مولّدة. يُقاس كل طالب آخر وفق سبعة أمور: المواد المشتركة، وأسلوب الدراسة، والجامعة، والموقع، والاهتمامات المشتركة، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا. أما المستوى الأكاديمي فتصفية يختارها الطالب إن أراد، ولا يدخل في الدرجة.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
         ar: 'طبقة تعاون لحظية (Socket.IO + WebRTC): محادثة مباشرة، وغرف دراسة صوتية ومرئية مع مشاركة الشاشة، وجدولة الجلسات.',
       },
       {
-        en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers by text or voice, and builds study plans and flashcards.',
-        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب نصًّا أو صوتًا، ويبني خطط المراجعة والبطاقات التعليمية.',
+        en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers questions typed or spoken, and builds study plans and flashcards.',
+        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والبطاقات التعليمية.',
       },
       {
-        en: 'Secured with JWT auth, refresh-token rotation, role-based room controls (host / co-host / participant / viewer), 2FA and email verification.',
-        ar: 'مؤمّن بمصادقة JWT وتدوير رموز التحديث والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك / مشاهد) والتحقّق بخطوتين وتأكيد البريد.',
+        en: 'Secured with JWT sign-in (15-minute access tokens, 7-day refresh tokens checked against the database), role-based room controls (host / co-host / participant), two-step sign-in, email verification, and rate limits on every sensitive route.',
+        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث لسبعة أيام يُتحقَّق منه في قاعدة البيانات)، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، والتحقّق بخطوتين، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 20 data models and 139 passing tests, 125 integration and 14 unit. Bilingual EN/AR, five themes, an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و20 نموذج بيانات، و139 اختبارًا ناجحًا، منها 125 تكامليًّا و14 اختبار وحدة. ثنائية اللغة (إنجليزي/عربي)، وخمسة سمات، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 22 data models and 357 passing tests: 293 on the server (14 of them on the matching score) and 64 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و22 نموذج بيانات، و357 اختبارًا ناجحًا: 293 على الخادم (منها 14 على درجة المطابقة) و64 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -134,8 +134,8 @@ export const projects: Project[] = [
             ar: 'كان مربّع البحث سيعيد العبء إلى الطالب مباشرة. صفِّ حسب المادة، وصفِّ حسب السنة، فتجد أمامك مئة اسم دون أن تعرف أيّها تراسل.',
           },
           {
-            en: 'So every other student is given a score against you, built from seven things: the subjects you share, your learning style, your university, where you are, the interests you share, your ages and your language. Shared subjects count for the most, because two people taking the same course have real work to share. Academic level decides who appears in the list at all, and deliberately counts for nothing in the score.',
-            ar: 'فيُعطى كل طالب آخر درجةً أمامك، من سبعة أمور: المواد التي تشتركان فيها، وأسلوب دراستك، وجامعتك، وأين أنت، والاهتمامات المشتركة بينكما، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا، لأن اثنين يدرسان المقرّر نفسه لديهما ما يفعلانه معًا فعلًا. أما المستوى الأكاديمي فيقرّر من يظهر في القائمة أصلًا، ولا يُحسب في الدرجة عن قصد.',
+            en: 'So every other student is given a score against you, built from seven things: the subjects you share, your learning style, your university, where you are, the interests you share, your ages and your language. Shared subjects count for the most, because two people taking the same course have real work to share. Academic level is a filter you can switch on if you want it, and it deliberately counts for nothing in the score.',
+            ar: 'فيُعطى كل طالب آخر درجةً أمامك، من سبعة أمور: المواد التي تشتركان فيها، وأسلوب دراستك، وجامعتك، وأين أنت، والاهتمامات المشتركة بينكما، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا، لأن اثنين يدرسان المقرّر نفسه لديهما ما يفعلانه معًا فعلًا. أما المستوى الأكاديمي فتصفية تختارها إن أردت، ولا يُحسب في الدرجة عن قصد.',
           },
           {
             en: 'No model is involved in the number, and the reason matters more than the technique. A score has to be explainable to the student who reads one. "You share three of four subjects and you both revise the same way" is something a person acts on. A number a model produced explains nothing, two students with identical profiles might be given different scores, and nobody would be able to say why.',
@@ -155,12 +155,12 @@ export const projects: Project[] = [
             ar: 'لا يحقّق التعريف بين طالبين شيئًا إن لم يكن لديهما مكان يذهبان إليه. لذلك تقود المطابقة إلى غرفة: محادثة مباشرة، وصوت وصورة، ومشاركة شاشة، وجلسات يستطيع أحدهم جدولتها مسبقًا.',
           },
           {
-            en: 'Rooms have a host, a co-host, participants and viewers, which is not administrative decoration. A study room stops working the moment a fifth person joins and nobody is able to mute anyone, remove anyone, or end the call. Someone needs the power to do so.',
-            ar: 'وللغرف مضيف ومضيف مساعد ومشاركون ومشاهدون، وليس هذا ترتيبًا إداريًّا للزينة. فغرفة الدراسة تتوقّف عن العمل فور انضمام شخص خامس دون أن يقدر أحد على كتم أحد، أو إخراجه، أو إنهاء المكالمة. لا بدّ أن يقدر أحد على ذلك.',
+            en: 'Rooms have a host, co-hosts and participants, and that is not administrative decoration. A study room stops working the moment a fifth person joins and nobody is able to mute anyone, remove anyone, or end the call. Someone needs the power to do so.',
+            ar: 'وللغرف مضيف ومضيفون مساعدون ومشاركون، وليس هذا ترتيبًا إداريًّا للزينة. فغرفة الدراسة تتوقّف عن العمل فور انضمام شخص خامس دون أن يقدر أحد على كتم أحد، أو إخراجه، أو إنهاء المكالمة. لا بدّ أن يقدر أحد على ذلك.',
           },
           {
-            en: 'Most of the work went where nobody looks. When the host closes their laptop the room passes to the co-host who joined first, then to the earliest participant, and ends only when everyone has left. Every device reports in every fifteen seconds, and anyone who drops gets thirty seconds to come back into the same room rather than rejoining as a stranger.',
-            ar: 'وأكثر الجهد ذهب إلى ما لا يراه أحد. فحين يغلق المضيف حاسوبه تنتقل الغرفة إلى المساعد الأسبق دخولًا، ثم إلى أوّل المشاركين، ولا تُغلق إلا حين يخرج الجميع. ويُبلّغ كل جهاز عن نفسه كل خمس عشرة ثانية، ومن ينقطع أمامه ثلاثون ثانية ليعود إلى الغرفة نفسها بدل أن يدخل كأنه غريب.',
+            en: 'Most of the work went where nobody looks. When the host closes their laptop the room passes to the co-host who joined first, then to the earliest participant, and it closes only after everyone has gone. Every device reports in every fifteen seconds, and anyone who drops gets thirty seconds to come back into the same room rather than rejoining as a stranger.',
+            ar: 'وأكثر الجهد ذهب إلى ما لا يراه أحد. فحين يغلق المضيف حاسوبه تنتقل الغرفة إلى المساعد الأسبق دخولًا، ثم إلى أوّل المشاركين، ولا تُغلق إلا بعد أن يغادر الجميع. ويُبلّغ كل جهاز عن نفسه كل خمس عشرة ثانية، ومن ينقطع أمامه ثلاثون ثانية ليعود إلى الغرفة نفسها بدل أن يدخل كأنه غريب.',
           },
         ],
         facts: [
@@ -172,12 +172,12 @@ export const projects: Project[] = [
         title: { en: 'Help where the student is stuck', ar: 'المساعدة حيث يتعثّر الطالب' },
         body: [
           {
-            en: 'The study assistant is the one part of StudyNest using Gemini, and the only part which should.',
-            ar: 'مساعد الدراسة هو الجزء الوحيد في StudyNest الذي يستخدم Gemini، والوحيد الذي ينبغي أن يستخدمه.',
+            en: 'Gemini does two jobs in StudyNest: the study assistant, and reading a CV or LinkedIn export to fill in a profile. Matching never touches it.',
+            ar: 'يؤدّي Gemini مهمّتين في StudyNest: مساعد الدراسة، وقراءة السيرة الذاتية أو ملف LinkedIn لتعبئة الملف الشخصي. أما المطابقة فلا يقترب منها.',
           },
           {
-            en: 'The assistant answers typed questions, reads the documents and images a student uploads, explains the contents, and replies by text or by voice. A course outline becomes a revision plan, or a set of flashcards.',
-            ar: 'يجيب عن الأسئلة المكتوبة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها، ويردّ نصًّا أو صوتًا. ويحوّل مفردات المقرّر إلى خطة مراجعة، أو إلى بطاقات تعليمية.',
+            en: 'The assistant answers questions typed or spoken, reads the documents and images a student uploads, and explains what is in them. A course outline becomes a revision plan, or a set of flashcards.',
+            ar: 'يجيب عن الأسئلة المكتوبة أو المنطوقة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها. ويحوّل مفردات المقرّر إلى خطة مراجعة، أو إلى بطاقات تعليمية.',
           },
           {
             en: 'Reading files rather than only questions matters because the missing thing was never information. A student stuck at eleven at night has the whole internet in front of them. What they lack is an answer about the page under their eyes, at the moment of looking.',
@@ -193,17 +193,17 @@ export const projects: Project[] = [
             ar: 'جدول دراسي. وأعمال المقرّرات. وملاحظات لم يكن أحد غيره ليقرأها. ورقم هاتف، ووجه في مكالمة مرئية. هذه القائمة هي سبب تقديم العمل الأمني على غيره لا تأجيله إلى ما بعد الإطلاق.',
           },
           {
-            en: 'Signing in uses JWT with refresh-token rotation, permissions follow the role someone holds in a room, and there is two-factor authentication and email confirmation. An access token lives fifteen minutes and a refresh token seven days, so a stolen one stays useful only briefly.',
-            ar: 'تسجيل الدخول بـ JWT مع تدوير رموز التحديث، والصلاحيات تتبع دور الشخص في الغرفة، وهناك مصادقة بخطوتين وتأكيد للبريد. ويعيش رمز الوصول خمس عشرة دقيقة ورمز التحديث سبعة أيام، فلا يساوي المسروق منهما كثيرًا ولا يبقى طويلًا.',
+            en: 'Signing in uses JWT, every refresh token is checked against the database before it is honoured, permissions follow the role someone holds in a room, and there is two-step sign-in and email confirmation. An access token lives fifteen minutes and a refresh token seven days, so a stolen one stays useful only briefly.',
+            ar: 'تسجيل الدخول بـ JWT، ويُتحقَّق من كل رمز تحديث في قاعدة البيانات قبل قبوله، والصلاحيات تتبع دور الشخص في الغرفة، وهناك تسجيل دخول بخطوتين وتأكيد للبريد. ويعيش رمز الوصول خمس عشرة دقيقة ورمز التحديث سبعة أيام، فلا يساوي المسروق منهما كثيرًا ولا يبقى طويلًا.',
           },
           {
-            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 139 tests cover the parts where a mistake costs something, 125 of them end to end and 14 on the scoring itself, across 20 data models.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 139 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا، منها 125 من طرف إلى طرف و14 على حساب الدرجة نفسها، عبر 20 نموذج بيانات.',
+            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 357 tests cover the parts where a mistake costs something: 293 on the server, 14 of them on the scoring itself, and 64 on the frontend, across 22 data models.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 357 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 293 على الخادم، منها 14 على حساب الدرجة نفسها، و64 على الواجهة، عبر 22 نموذج بيانات.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '139' },
-          { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '20' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '357' },
+          { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
         ],
       },
       {
