@@ -77,7 +77,7 @@ export const projects: Project[] = [
       },
     ],
     /**
-     * The documentary. Every claim here is traceable to the CV or the pilot —
+     * The documentary. Every claim here is traceable to the CV, the pilot or the app's own code —
      * nothing about the process has been invented to round out the arc. Where
      * a beat is missing (early sketches, the things that failed), it is simply
      * absent rather than filled in.
@@ -183,6 +183,27 @@ export const projects: Project[] = [
             en: 'Reading files rather than only questions matters because the missing thing was never information. A student stuck at eleven at night has the whole internet in front of them. What they lack is an answer about the page under their eyes, at the moment of looking.',
             ar: 'وسبب قراءته للملفات لا للأسئلة وحدها أن الناقص لم يكن المعلومة يومًا. فالطالب المتعثّر في الحادية عشرة ليلًا أمامه الإنترنت كله. الذي ليس أمامه جواب عن الصفحة التي ينظر إليها، في اللحظة التي ينظر فيها إليها.',
           },
+        ],
+      },
+      {
+        title: { en: 'Four places in Oman', ar: 'أربعة أماكن من عُمان' },
+        body: [
+          {
+            en: 'StudyNest is an Omani app, so its themes are Omani too. There are four colours, and each one comes in light and dark, so nobody has to give up a colour they love to get dark mode. Pick Auto and it follows your device. The app itself stays calm and black and white; each theme changes the background and one signature colour, and even the 3D campus on the home page turns into a night campus or a daylight one to match.',
+            ar: 'StudyNest تطبيق عُماني، فجاءت سماته عُمانية أيضًا. أربعة ألوان، ولكلٍّ منها نسخة فاتحة وأخرى داكنة، فلا يضطر أحد أن يتخلّى عن لونه المفضّل ليحصل على الوضع الداكن. ومن يختار «تلقائي» تتبع السمة جهازه. يبقى التطبيق نفسه هادئًا بالأبيض والأسود، وكل سمة تغيّر الخلفية ولونًا مميّزًا واحدًا، حتى الحرم الجامعي ثلاثي الأبعاد في الصفحة الرئيسية يصير ليليًّا أو نهاريًّا بحسبها.',
+          },
+          {
+            en: 'Nest Brown is StudyNest\'s own colour, the brown of the logo and the nest in the name. Muttrah Sea takes the navy and sea blue of the Muttrah corniche in Muscat, a harbour after sunset in dark mode. Khareef Green is Dhofar in the monsoon season: white with a breath of Salalah mist in light mode, deep green in dark. Jabal Rose is the damask rose of Jebel Akhdar, the Green Mountain: rose-white by day, deep plum at night.',
+            ar: 'بنّي العش هو لون StudyNest نفسه، بنّي الشعار والعشّ الذي في الاسم. وبحر مطرح يأخذ الكحلي وأزرق البحر من كورنيش مطرح في مسقط، ويصير في الوضع الداكن ميناءً بعد الغروب. وأخضر الخريف هو ظفار في موسم الخريف: أبيض فيه نسمة من ضباب صلالة في الوضع الفاتح، وأخضر عميق في الداكن. وورد الجبل هو الورد الجبلي من الجبل الأخضر: أبيض وردي نهارًا، وأرجواني عميق ليلًا.',
+          },
+          {
+            en: 'Every one of the eight palettes is checked for contrast each time the app is built, so body text stays easy to read whichever place you choose.',
+            ar: 'وتُفحص الألوان في السمات الثماني كلها في كل مرة يُبنى فيها التطبيق، فيبقى النص سهل القراءة أيًّا كان المكان الذي تختاره.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Colours', ar: 'الألوان' }, value: '4' },
+          { label: { en: 'Themes, light and dark', ar: 'السمات، فاتحة وداكنة' }, value: '8' },
         ],
       },
       {
