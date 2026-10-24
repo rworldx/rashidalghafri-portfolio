@@ -94,6 +94,10 @@ export const projects: Project[] = [
             en: 'After the remote learning period, many students ended up studying alone. Nothing brought together the three things they needed: finding a suitable study partner, a space to work with them, and help the moment a problem came up while studying. Those are the moments a student needs support.',
             ar: 'ومع انتشار التعلّم عن بُعد، أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك منصة تجمع بين العثور على شريك دراسة مناسب، وتوفير مساحة للتعاون، وتقديم المساعدة عند مواجهة صعوبة أثناء المذاكرة. وهي اللحظة التي يكون فيها الدعم أكثر قيمة.',
           },
+          {
+            en: 'That is where the name comes from. A nest is a bird\'s home: the place it is safe, grows up, and learns to fly. StudyNest is meant to be that for students, a place they live in while they study, with the people they study with, that feels like home. The logo says it too: a small bird resting in its nest under a graduation cap.',
+            ar: 'ومن هنا جاء الاسم. فالعشّ بيت الطائر: فيه يأمن، وفيه يكبر، ومنه يتعلّم الطيران. وهكذا أردت StudyNest للطلاب: مكانًا يعيشون فيه أثناء دراستهم، مع من يدرسون معهم، ويشعرون فيه أنهم في بيتهم. والشعار يقول ذلك أيضًا: طائر صغير مستقرّ في عشّه تحت قبّعة التخرّج.',
+          },
         ],
       },
       {
