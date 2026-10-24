@@ -176,6 +176,14 @@ export const projects: Project[] = [
             ar: 'يؤدّي Gemini مهمّتين في StudyNest: مساعد الدراسة، وقراءة السيرة الذاتية أو ملف LinkedIn لتعبئة الملف الشخصي. أما المطابقة فلا يقترب منها.',
           },
           {
+            en: 'The assistant has a name: Nour, نور, which means light in Arabic. It fits a student working late, when a little light on the page is exactly what is needed, and it fits the app around it: the home page is a campus at night lit by lamps, and the theme colour is called the lamp. The name reads the same in Arabic and English, and it introduces itself as your study buddy, not a tool.',
+            ar: 'للمساعد اسم: نور. والاسم يشبه الطالب الذي يذاكر في آخر الليل، حين يكون ما يحتاجه بالضبط قليلًا من النور على الصفحة، ويشبه التطبيق من حوله أيضًا: فالصفحة الرئيسية حرم جامعي ليلي تضيئه المصابيح، واللون المميّز في كل سمة اسمه المصباح. ويُقرأ الاسم بالعربية والإنجليزية بلا تغيير، ويعرّف بنفسه رفيقًا في الدراسة لا أداة.',
+          },
+          {
+            en: 'Nour is a small character drawn in code, wearing the cap from the StudyNest logo with a lamp-coloured tassel. It blinks, its eyes follow your pointer on the welcome screen, it looks around while an answer is on the way, and it smiles when one lands. It is dark ink in light themes and white in dark ones, and it keeps still for anyone who turns motion off.',
+            ar: 'ونور شخصية صغيرة مرسومة بالكود، تلبس قبّعة التخرّج من شعار StudyNest وشرّابتها بلون المصباح. ترمش، وتتبع عيناها مؤشّرك في شاشة الترحيب، وتتلفّت ريثما يصل الجواب، وتبتسم حين يصل. لونها حبر داكن في السمات الفاتحة وأبيض في الداكنة، وتبقى ساكنة لمن أوقف الحركة في جهازه.',
+          },
+          {
             en: 'The assistant answers questions typed or spoken, reads the documents and images a student uploads, and explains what is in them. A course outline becomes a revision plan, or a set of flashcards.',
             ar: 'يجيب عن الأسئلة المكتوبة أو المنطوقة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها. ويحوّل مفردات المقرّر إلى خطة مراجعة، أو إلى بطاقات تعليمية.',
           },
