@@ -217,6 +217,14 @@ export const projects: Project[] = [
           { label: { en: 'Colours', ar: 'الألوان' }, value: '4' },
           { label: { en: 'Themes, light and dark', ar: 'السمات، فاتحة وداكنة' }, value: '8' },
         ],
+        image: {
+          src: '/images/projects/studynest-hero-light.jpg',
+          dark: '/images/projects/studynest-hero-dark.jpg',
+          alt: {
+            en: 'The StudyNest home page in Nest Brown: a 3D graduation cap over a campus of lamps, by day in light mode and by night in dark',
+            ar: 'الصفحة الرئيسية لـ StudyNest بلون بنّي العش: قبّعة تخرّج ثلاثية الأبعاد فوق حرم تضيئه المصابيح، نهارًا في الوضع الفاتح وليلًا في الداكن',
+          },
+        },
       },
       {
         title: { en: 'What a student account holds', ar: 'ما الذي يحمله حساب الطالب' },
