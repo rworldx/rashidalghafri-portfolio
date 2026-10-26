@@ -45,7 +45,7 @@ export const projects: Project[] = [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
       { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '357' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '387' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
@@ -68,8 +68,8 @@ export const projects: Project[] = [
         ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث لسبعة أيام يُتحقَّق منه في قاعدة البيانات)، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، والتحقّق بخطوتين، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 22 data models and 357 passing tests: 293 on the server (14 of them on the matching score) and 64 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و22 نموذج بيانات، و357 اختبارًا ناجحًا: 293 على الخادم (منها 14 على درجة المطابقة) و64 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 22 data models and 387 passing tests: 310 on the server (14 of them on the matching score) and 77 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و22 نموذج بيانات، و387 اختبارًا ناجحًا: 310 على الخادم (منها 14 على درجة المطابقة) و77 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -238,12 +238,12 @@ export const projects: Project[] = [
             ar: 'تسجيل الدخول بـ JWT، ويُتحقَّق من كل رمز تحديث في قاعدة البيانات قبل قبوله، والصلاحيات تتبع دور الشخص في الغرفة، وهناك تسجيل دخول بخطوتين وتأكيد للبريد. ويعيش رمز الوصول خمس عشرة دقيقة ورمز التحديث سبعة أيام، فلا يساوي المسروق منهما كثيرًا ولا يبقى طويلًا.',
           },
           {
-            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 357 tests cover the parts where a mistake costs something: 293 on the server, 14 of them on the scoring itself, and 64 on the frontend, across 22 data models.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 357 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 293 على الخادم، منها 14 على حساب الدرجة نفسها، و64 على الواجهة، عبر 22 نموذج بيانات.',
+            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 387 tests cover the parts where a mistake costs something: 310 on the server, 14 of them on the scoring itself, and 77 on the frontend, across 22 data models.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 387 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 310 على الخادم، منها 14 على حساب الدرجة نفسها، و77 على الواجهة، عبر 22 نموذج بيانات.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '357' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '387' },
           { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
         ],
       },
