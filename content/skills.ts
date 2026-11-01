@@ -15,7 +15,7 @@ export const skills: SkillGroup[] = [
   {
     id: 'backend',
     label: { en: 'Backend & Data', ar: 'الخلفية والبيانات' },
-    items: ['Node.js', 'Express.js', 'REST APIs', 'Socket.IO', 'MongoDB'],
+    items: ['Node.js', 'Express.js', 'REST APIs', 'Socket.IO', 'PostgreSQL', 'Supabase', 'MongoDB'],
   },
   {
     id: 'ai',

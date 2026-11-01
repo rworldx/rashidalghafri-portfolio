@@ -56,7 +56,7 @@
     "flow": "Shape",
     "flowBody": "Get the shape right and the system runs without you. Most of my work is invisible by design. You notice it only when something breaks.",
     "systems": "Systems",
-    "systemsBody": "I do not build screens. I build what sits behind them. 100+ endpoints, 100+ realtime events, 20 data models, and the tests to keep them honest.",
+    "systemsBody": "I do not build screens. I build what sits behind them. 200+ endpoints, 100+ realtime events, 38 database tables, and the tests to keep them honest.",
     "connection": "Connection",
     "connectionBody": "Every project here started because someone could not reach something on their own. StudyNest reached students studying alone. EnerGrid reached households paying for power they never see."
   },

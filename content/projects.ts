@@ -34,7 +34,8 @@ export const projects: Project[] = [
       'TanStack Query',
       'Node.js',
       'Express',
-      'MongoDB Atlas',
+      'PostgreSQL (Supabase)',
+      'Drizzle ORM',
       'Socket.IO',
       'WebRTC',
       'Gemini API',
@@ -42,10 +43,10 @@ export const projects: Project[] = [
       'Upstash Redis',
     ],
     stats: [
-      { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '100+' },
+      { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '200+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
-      { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '387' },
+      { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,069' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
@@ -64,12 +65,12 @@ export const projects: Project[] = [
         ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والبطاقات التعليمية.',
       },
       {
-        en: 'Secured with JWT sign-in (15-minute access tokens, 7-day refresh tokens checked against the database), role-based room controls (host / co-host / participant), two-step sign-in, email verification, and rate limits on every sensitive route.',
-        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث لسبعة أيام يُتحقَّق منه في قاعدة البيانات)، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، والتحقّق بخطوتين، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس.',
+        en: 'Secured with JWT sign-in (15-minute access tokens, refresh tokens rotated on every use with reuse detection), sign-in with Google or LinkedIn, two-step sign-in by authenticator app or email code with backup codes, role-based room controls (host / co-host / participant), email verification, rate limits on every sensitive route, and row-level security on every database table.',
+        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو LinkedIn، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
       },
       {
-        en: 'Substantial architecture: 100+ REST endpoints, 100+ real-time socket events, 22 data models and 387 passing tests: 310 on the server (14 of them on the matching score) and 77 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 100 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و22 نموذج بيانات، و387 اختبارًا ناجحًا: 310 على الخادم (منها 14 على درجة المطابقة) و77 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 38 PostgreSQL tables on Supabase through Drizzle ORM, and 1,069 passing tests: 864 on the server (14 of them on the matching score) and 205 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و38 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,069 اختبارًا ناجحًا: 864 على الخادم (منها 14 على درجة المطابقة) و205 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -169,7 +170,7 @@ export const projects: Project[] = [
         ],
         facts: [
           { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
-          { label: { en: 'REST endpoints', ar: 'نقاط نهاية REST' }, value: '100+' },
+          { label: { en: 'REST endpoints', ar: 'نقاط نهاية REST' }, value: '200+' },
         ],
       },
       {
@@ -234,17 +235,17 @@ export const projects: Project[] = [
             ar: 'جدول دراسي. وأعمال المقرّرات. وملاحظات لم يكن أحد غيره ليقرأها. ورقم هاتف، ووجه في مكالمة مرئية. هذه القائمة هي سبب تقديم العمل الأمني على غيره لا تأجيله إلى ما بعد الإطلاق.',
           },
           {
-            en: 'Signing in uses JWT, every refresh token is checked against the database before it is honoured, permissions follow the role someone holds in a room, and there is two-step sign-in and email confirmation. An access token lives fifteen minutes and a refresh token seven days, so a stolen one stays useful only briefly.',
-            ar: 'تسجيل الدخول بـ JWT، ويُتحقَّق من كل رمز تحديث في قاعدة البيانات قبل قبوله، والصلاحيات تتبع دور الشخص في الغرفة، وهناك تسجيل دخول بخطوتين وتأكيد للبريد. ويعيش رمز الوصول خمس عشرة دقيقة ورمز التحديث سبعة أيام، فلا يساوي المسروق منهما كثيرًا ولا يبقى طويلًا.',
+            en: 'Signing in uses JWT. An access token lives fifteen minutes, and a refresh token is replaced by a new one every time it is used. If an old one ever comes back, the sign-in it belongs to is ended, so a stolen token stays useful only briefly. Permissions follow the role someone holds in a room, and there is email confirmation and two-step sign-in, by an authenticator app or a code by email, with backup codes for a lost phone.',
+            ar: 'تسجيل الدخول بـ JWT. يعيش رمز الوصول خمس عشرة دقيقة، ويُستبدل رمز التحديث برمز جديد في كل مرة يُستخدم فيها. وإن عاد رمز قديم يومًا أُنهيت الجلسة التي ينتمي إليها، فلا يبقى المسروق منها نافعًا إلا وقتًا قصيرًا. والصلاحيات تتبع دور الشخص في الغرفة، وهناك تأكيد للبريد وتسجيل دخول بخطوتين، عبر تطبيق مصادقة أو رمز بالبريد، مع رموز احتياطية لمن فقد هاتفه.',
           },
           {
-            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. 387 tests cover the parts where a mistake costs something: 310 on the server, 14 of them on the scoring itself, and 77 on the frontend, across 22 data models.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ويغطّي 387 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 310 على الخادم، منها 14 على حساب الدرجة نفسها، و77 على الواجهة، عبر 22 نموذج بيانات.',
+            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 38 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,069 tests cover the parts where a mistake costs something: 864 on the server, 14 of them on the scoring itself, and 205 on the frontend.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها الثمانية والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,069 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 864 على الخادم، منها 14 على حساب الدرجة نفسها، و205 على الواجهة.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '387' },
-          { label: { en: 'Data models', ar: 'نماذج البيانات' }, value: '22' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,069' },
+          { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
         ],
       },
       {
