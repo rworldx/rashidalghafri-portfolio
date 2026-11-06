@@ -127,7 +127,10 @@ export const journey: TimelineEntry[] = [
       en: 'Graduated with First-Class Distinction · BSc Software Engineering',
       ar: 'التخرّج بامتياز مع مرتبة الشرف الأولى · بكالوريوس هندسة البرمجيات',
     },
-    detail: { en: 'studynest.dev live · Jul 2026', ar: 'studynest.dev · يوليو 2026' },
+    detail: {
+      en: 'studynest.dev live · Jul 2026',
+      ar: 'إطلاق studynest.dev · يوليو 2026',
+    },
   },
   {
     year: 2026,

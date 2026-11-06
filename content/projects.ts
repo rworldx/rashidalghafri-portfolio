@@ -21,8 +21,8 @@ export const projects: Project[] = [
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين. لا توجد طريقة سهلة لإيجاد شريك دراسة متوافق، ولا مساحة مشتركة للعمل معًا، ولا مساعدة في لحظة التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform. A weighted score ranks every other student against you on seven things, shared subjects counting most, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers questions typed or spoken, and turns a course outline into a study plan or flashcards.',
-      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق سبعة أمور، أثقلها المواد المشتركة، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويحوّل مفردات المقرّر إلى خطة مراجعة أو بطاقات تعليمية.',
+      en: 'An end-to-end platform. A weighted score ranks every other student against you on what you share, shared subjects and free time counting most, tells you why, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers questions typed or spoken, and turns a course outline into a study plan, a quiz with a score or an assignment it checks.',
+      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق ما تشتركان فيه، وأثقله المواد المشتركة وأوقات الفراغ، وتذكر لك السبب، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويحوّل مفردات المقرّر إلى خطة مراجعة، أو اختبار قصير بدرجة، أو واجب يصحّحه.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -46,31 +46,31 @@ export const projects: Project[] = [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '200+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
       { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,069' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,312' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
     ],
     highlights: [
       {
-        en: 'Weighted matching, computed rather than generated. Every other student is scored on seven things: shared subjects, learning style, university, location, shared interests, age and language. Shared subjects count for the most. Academic level is a filter you can choose, and forms no part of the score.',
-        ar: 'مطابقة مرجّحة، محسوبة لا مولّدة. يُقاس كل طالب آخر وفق سبعة أمور: المواد المشتركة، وأسلوب الدراسة، والجامعة، والموقع، والاهتمامات المشتركة، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا. أما المستوى الأكاديمي فتصفية يختارها الطالب إن أراد، ولا يدخل في الدرجة.',
+        en: 'Weighted matching, computed rather than generated. Nine factors, shared subjects and shared free time counting most, scored only on what both students filled in. Every card shows why you match, and students under 18 only see other students under 18.',
+        ar: 'مطابقة مرجّحة، محسوبة لا مولّدة. تسعة عوامل، أثقلها المواد المشتركة وأوقات الفراغ المشتركة، ولا يُحسب إلا ما أكمله الطالبان. وكل بطاقة تذكر سبب التوافق، ومن هم دون الثامنة عشرة لا يرون إلا من هم في عمرهم.',
       },
       {
         en: 'Real-time collaboration layer (Socket.IO + WebRTC): live chat, voice and video study rooms with screen sharing, and session scheduling.',
         ar: 'طبقة تعاون لحظية (Socket.IO + WebRTC): محادثة مباشرة، وغرف دراسة صوتية ومرئية مع مشاركة الشاشة، وجدولة الجلسات.',
       },
       {
-        en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers questions typed or spoken, and builds study plans and flashcards.',
-        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والبطاقات التعليمية.',
+        en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers questions typed or spoken, and builds study plans, quizzes and assignments.',
+        ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والاختبارات القصيرة والواجبات.',
       },
       {
-        en: 'Secured with JWT sign-in (15-minute access tokens, refresh tokens rotated on every use with reuse detection), sign-in with Google or LinkedIn, two-step sign-in by authenticator app or email code with backup codes, role-based room controls (host / co-host / participant), email verification, rate limits on every sensitive route, and row-level security on every database table.',
-        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو LinkedIn، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
+        en: 'Secured with JWT sign-in (15-minute access tokens, refresh tokens rotated on every use with reuse detection), sign-in with Google, Apple or LinkedIn, all linkable to one account, two-step sign-in by authenticator app or email code with backup codes, role-based room controls (host / co-host / participant), email verification, rate limits on every sensitive route, and row-level security on every database table.',
+        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو Apple أو LinkedIn، ويمكن ربطها كلها بحساب واحد، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
       },
       {
-        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 38 PostgreSQL tables on Supabase through Drizzle ORM, and 1,069 passing tests: 864 on the server (14 of them on the matching score) and 205 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و38 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,069 اختبارًا ناجحًا: 864 على الخادم (منها 14 على درجة المطابقة) و205 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 38 PostgreSQL tables on Supabase through Drizzle ORM, and 1,312 passing tests: 933 on the server (37 of them on matching) and 379 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و38 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,312 اختبارًا ناجحًا: 933 على الخادم (منها 37 على المطابقة) و379 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -96,7 +96,7 @@ export const projects: Project[] = [
             ar: 'ومع انتشار التعلّم عن بُعد، أصبح كثير من الطلاب يدرسون بمفردهم. ولم تكن هناك منصة تجمع بين العثور على شريك دراسة مناسب، وتوفير مساحة للتعاون، وتقديم المساعدة عند مواجهة صعوبة أثناء المذاكرة. وهي اللحظة التي يكون فيها الدعم أكثر قيمة.',
           },
           {
-            en: 'That is where the name comes from. A nest is a bird\'s home: the place it is safe, grows up, and learns to fly. StudyNest is meant to be that for students, a place they live in while they study, with the people they study with, that feels like home. The logo says it too: a small bird resting in its nest under a graduation cap.',
+            en: "That is where the name comes from. A nest is a bird's home: the place it is safe, grows up, and learns to fly. StudyNest is meant to be that for students, a place they live in while they study, with the people they study with, that feels like home. The logo says it too: a small bird resting in its nest under a graduation cap.",
             ar: 'ومن هنا جاء الاسم. فالعشّ بيت الطائر: فيه يأمن، وفيه يكبر، ومنه يتعلّم الطيران. وهكذا أردت StudyNest للطلاب: مكانًا يعيشون فيه أثناء دراستهم، مع من يدرسون معهم، ويشعرون فيه أنهم في بيتهم. والشعار يقول ذلك أيضًا: طائر صغير مستقرّ في عشّه تحت قبّعة التخرّج.',
           },
         ],
@@ -139,8 +139,12 @@ export const projects: Project[] = [
             ar: 'كان مربّع البحث سيعيد العبء إلى الطالب مباشرة. صفِّ حسب المادة، وصفِّ حسب السنة، فتجد أمامك مئة اسم دون أن تعرف أيّها تراسل.',
           },
           {
-            en: 'So every other student is given a score against you, built from seven things: the subjects you share, your learning style, your university, where you are, the interests you share, your ages and your language. Shared subjects count for the most, because two people taking the same course have real work to share. Academic level is a filter you can switch on if you want it, and it deliberately counts for nothing in the score.',
-            ar: 'فيُعطى كل طالب آخر درجةً أمامك، من سبعة أمور: المواد التي تشتركان فيها، وأسلوب دراستك، وجامعتك، وأين أنت، والاهتمامات المشتركة بينكما، والعمر، واللغة. والمواد المشتركة أثقلها وزنًا، لأن اثنين يدرسان المقرّر نفسه لديهما ما يفعلانه معًا فعلًا. أما المستوى الأكاديمي فتصفية تختارها إن أردت، ولا يُحسب في الدرجة عن قصد.',
+            en: 'So every other student is given a score against you, built from what you share: your subjects, the times you are both free, your school, your stage and level, how much you have studied lately, where you live, how you study, and your hobbies. Shared subjects count for the most, because two people taking the same course have real work to share, and free time comes next, because two people who are never free together cannot study together. Only what both of you filled in is compared, so an empty field never counts against anyone, and with too little to compare there is no percentage at all.',
+            ar: 'فيُعطى كل طالب آخر درجةً أمامك مما تشتركان فيه: المواد، والأوقات التي يتفرّغ فيها الطرفان، والجامعة، والمرحلة والمستوى، ومقدار المذاكرة مؤخرًا، والمكان، وأسلوب الدراسة، والهوايات. والمواد المشتركة أثقلها وزنًا، لأن اثنين يدرسان المقرّر نفسه لديهما ما يفعلانه معًا فعلًا، ثم أوقات الفراغ، لأن من لا يتفرّغان معًا لا يذاكران معًا. ولا يُقارن إلا ما أكمله الطرفان، فالحقل الفارغ لا يُحسب ضد أحد، وإن قلّ ما يُقارن فلا تظهر نسبة أصلًا.',
+          },
+          {
+            en: 'Every card shows why. What you share is ticked where the card already shows it, and a match line opens every reason behind the number. Students under 18 only see other students under 18. A private account shows strangers a card and no score. The first version, the one in the capstone paper, is still in the code and can be switched back on.',
+            ar: 'وكل بطاقة تذكر السبب: ما تشتركان فيه عليه علامة حيث تعرضه البطاقة أصلًا، وسطر المطابقة يفتح كل سبب وراء الرقم. ومن هم دون الثامنة عشرة لا يرون إلا من هم في عمرهم. والحساب الخاص يظهر للغرباء بطاقةً بلا درجة. والنسخة الأولى، التي في ورقة مشروع التخرّج، باقية في الكود ويمكن إعادتها.',
           },
           {
             en: 'No model is involved in the number, and the reason matters more than the technique. A score has to be explainable to the student who reads one. "You share three of four subjects and you both revise the same way" is something a person acts on. A number a model produced explains nothing, two students with identical profiles might be given different scores, and nobody would be able to say why.',
@@ -148,7 +152,7 @@ export const projects: Project[] = [
           },
         ],
         facts: [
-          { label: { en: 'Things scored', ar: 'أمور تُحسب' }, value: '7' },
+          { label: { en: 'Factors scored', ar: 'عوامل تُحسب' }, value: '9' },
           { label: { en: 'Ranked results in', ar: 'نتائج مرتّبة خلال' }, value: '< 1s' },
         ],
       },
@@ -174,7 +178,10 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: 'Help where the student is stuck', ar: 'المساعدة حيث يتعثّر الطالب' },
+        title: {
+          en: 'Help where the student is stuck',
+          ar: 'المساعدة حيث يتعثّر الطالب',
+        },
         body: [
           {
             en: 'Gemini does two jobs in StudyNest: the study assistant, and reading a CV or LinkedIn export to fill in a profile. Matching never touches it.',
@@ -185,12 +192,16 @@ export const projects: Project[] = [
             ar: 'للمساعد اسم: نور. وهذه مهمّته: أن يخرج بالطالب من الظلمة، من حيرة التعثّر وعدم الفهم، إلى نور المعرفة. والاسم يشبه التطبيق من حوله أيضًا: فالصفحة الرئيسية حرم جامعي ليلي تضيئه المصابيح، واللون المميّز في كل سمة اسمه المصباح. ويُقرأ الاسم بالعربية والإنجليزية بلا تغيير، ويعرّف بنفسه رفيقًا في الدراسة لا أداة.',
           },
           {
-            en: 'Nour is a small character drawn in code, wearing the cap from the StudyNest logo with a lamp-coloured tassel. It blinks, its eyes follow your pointer on the welcome screen, it looks around while an answer is on the way, and it smiles when one lands. It is dark ink in light themes and white in dark ones, and it keeps still for anyone who turns motion off.',
-            ar: 'ونور شخصية صغيرة مرسومة بالكود، تلبس قبّعة التخرّج من شعار StudyNest وشرّابتها بلون المصباح. ترمش، وتتبع عيناها مؤشّرك في شاشة الترحيب، وتتلفّت ريثما يصل الجواب، وتبتسم حين يصل. لونها حبر داكن في السمات الفاتحة وأبيض في الداكنة، وتبقى ساكنة لمن أوقف الحركة في جهازه.',
+            en: 'Nour is a small character drawn in code, wearing the cap from the StudyNest logo with a lamp-coloured tassel. It blinks, its eyes follow your pointer on the welcome screen, it looks around while an answer is on the way, and it smiles when one lands. It wears the dark shade of whichever colour the student chose, with soft skin to match, and it keeps still for anyone who turns motion off.',
+            ar: 'ونور شخصية صغيرة مرسومة بالكود، تلبس قبّعة التخرّج من شعار StudyNest وشرّابتها بلون المصباح. ترمش، وتتبع عيناها مؤشّرك في شاشة الترحيب، وتتلفّت ريثما يصل الجواب، وتبتسم حين يصل. وتلبس الدرجة الداكنة من اللون الذي اختاره الطالب، ببشرة ناعمة تناسبه، وتبقى ساكنة لمن أوقف الحركة في جهازه.',
           },
           {
-            en: 'The assistant answers questions typed or spoken, reads the documents and images a student uploads, and explains what is in them. A course outline becomes a revision plan, or a set of flashcards.',
-            ar: 'يجيب عن الأسئلة المكتوبة أو المنطوقة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها. ويحوّل مفردات المقرّر إلى خطة مراجعة، أو إلى بطاقات تعليمية.',
+            en: 'Nour has 368 looks in 16 sections, from an Omani boy in a kumma to a dragon, searchable in English or Arabic. Every look makes every face, its face follows what the student types before they send it, and every answer comes with its own expression. It floats on every page once you sign in, with moves of its own for each look, and a small Mac and Windows app lets it float over other apps while you study.',
+            ar: 'ولنور 368 مظهرًا في 16 قسمًا، من فتى عُماني بالكمّة إلى تنّين، ويمكن البحث فيها بالعربية أو الإنجليزية. وكل مظهر يصنع كل التعابير، ووجهه يتبع ما يكتبه الطالب قبل أن يرسله، وكل جواب يأتي بتعبيره. ويطفو نور في كل صفحة بعد تسجيل الدخول، ولكل مظهر حركاته، وتطبيق صغير لماك وويندوز يتركه يطفو فوق التطبيقات الأخرى أثناء المذاكرة.',
+          },
+          {
+            en: 'The assistant answers questions typed or spoken, reads the documents and images a student uploads, and explains what is in them. A course outline becomes a revision plan, a quiz with a score, or an assignment Nour then checks. Hard ideas come back as drawings: steps, cycles, timelines, concept maps. Answers stream in as they are written.',
+            ar: 'يجيب عن الأسئلة المكتوبة أو المنطوقة، ويقرأ كذلك المستندات والصور التي يرفعها الطالب، ويشرح ما فيها. وتصير مفردات المقرّر خطة مراجعة، أو اختبارًا قصيرًا بدرجة، أو واجبًا يصحّحه نور. وتعود الأفكار الصعبة رسومًا: خطوات، ودورات، وخطوطًا زمنية، وخرائط مفاهيم. وتظهر الإجابات وهي تُكتب.',
           },
           {
             en: 'Reading files rather than only questions matters because the missing thing was never information. A student stuck at eleven at night has the whole internet in front of them. What they lack is an answer about the page under their eyes, at the moment of looking.',
@@ -206,7 +217,7 @@ export const projects: Project[] = [
             ar: 'StudyNest تطبيق عُماني، فجاءت سماته عُمانية أيضًا. أربعة ألوان، ولكلٍّ منها نسخة فاتحة وأخرى داكنة، فلا يضطر أحد أن يتخلّى عن لونه المفضّل ليحصل على الوضع الداكن. ومن يختار «تلقائي» تتبع السمة جهازه. يبقى التطبيق نفسه هادئًا بالأبيض والأسود، وكل سمة تغيّر الخلفية ولونًا مميّزًا واحدًا، حتى الحرم الجامعي ثلاثي الأبعاد في الصفحة الرئيسية يصير ليليًّا أو نهاريًّا بحسبها.',
           },
           {
-            en: 'Nest Brown is StudyNest\'s own colour, the brown of the logo and the nest in the name. Muttrah Sea takes the navy and sea blue of the Muttrah corniche in Muscat, a harbour after sunset in dark mode. Khareef Green is Dhofar in the monsoon season: white with a breath of Salalah mist in light mode, deep green in dark. Jabal Rose is the damask rose of Jebel Akhdar, the Green Mountain: rose-white by day, deep plum at night.',
+            en: "Nest Brown is StudyNest's own colour, the brown of the logo and the nest in the name. Muttrah Sea takes the navy and sea blue of the Muttrah corniche in Muscat, a harbour after sunset in dark mode. Khareef Green is Dhofar in the monsoon season: white with a breath of Salalah mist in light mode, deep green in dark. Jabal Rose is the damask rose of Jebel Akhdar, the Green Mountain: rose-white by day, deep plum at night.",
             ar: 'بنّي العش هو لون StudyNest نفسه، بنّي الشعار والعشّ الذي في الاسم. وبحر مطرح يأخذ الكحلي وأزرق البحر من كورنيش مطرح في مسقط، ويصير في الوضع الداكن ميناءً بعد الغروب. وأخضر الخريف هو ظفار في موسم الخريف: أبيض فيه نسمة من ضباب صلالة في الوضع الفاتح، وأخضر عميق في الداكن. وورد الجبل هو الورد الجبلي من الجبل الأخضر: أبيض وردي نهارًا، وأرجواني عميق ليلًا.',
           },
           {
@@ -216,7 +227,10 @@ export const projects: Project[] = [
         ],
         facts: [
           { label: { en: 'Colours', ar: 'الألوان' }, value: '4' },
-          { label: { en: 'Themes, light and dark', ar: 'السمات، فاتحة وداكنة' }, value: '8' },
+          {
+            label: { en: 'Themes, light and dark', ar: 'السمات، فاتحة وداكنة' },
+            value: '8',
+          },
         ],
         image: {
           src: '/images/projects/studynest-hero-light.jpg',
@@ -239,12 +253,12 @@ export const projects: Project[] = [
             ar: 'تسجيل الدخول بـ JWT. يعيش رمز الوصول خمس عشرة دقيقة، ويُستبدل رمز التحديث برمز جديد في كل مرة يُستخدم فيها. وإن عاد رمز قديم يومًا أُنهيت الجلسة التي ينتمي إليها، فلا يبقى المسروق منها نافعًا إلا وقتًا قصيرًا. والصلاحيات تتبع دور الشخص في الغرفة، وهناك تأكيد للبريد وتسجيل دخول بخطوتين، عبر تطبيق مصادقة أو رمز بالبريد، مع رموز احتياطية لمن فقد هاتفه.',
           },
           {
-            en: 'No account is ever deleted outright. The record is marked and left out of the checks enforcing uniqueness, so a student who leaves keeps the right to come back on the same email instead of losing the address forever. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 38 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,069 tests cover the parts where a mistake costs something: 864 on the server, 14 of them on the scoring itself, and 205 on the frontend.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يُعلَّم السجل ويُستثنى من الفحوص التي تفرض التفرّد، فيحتفظ الطالب المغادر بحقّه في العودة بالبريد نفسه بدل أن يفقده إلى الأبد. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها الثمانية والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,069 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 864 على الخادم، منها 14 على حساب الدرجة نفسها، و205 على الواجهة.',
+            en: 'No account is ever deleted outright. The record stays, emptied of every personal detail, so the email and username are free again and a student who leaves can come back on the same address. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 38 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,312 tests cover the parts where a mistake costs something: 933 on the server, 37 of them on matching, and 379 on the frontend.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يبقى السجل خاليًا من كل معلومة شخصية، فيعود البريد واسم المستخدم متاحين، ويستطيع الطالب المغادر العودة بالبريد نفسه. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها الثمانية والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,312 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 933 على الخادم، منها 37 على المطابقة، و379 على الواجهة.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,069' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,312' },
           { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
         ],
       },
@@ -313,7 +327,7 @@ export const projects: Project[] = [
       ar: 'كل أدلة المشاهدة الموجودة قائمة واحدة طويلة تُقدَّم لشخصين مختلفين تمامًا: مبتدئ يريد أن يعرف من أين يبدأ دون أن يقضي 200 ساعة، ومشاهد يعرف ما يريد ويحتاج فقط أن يعرف ما الذي عليه مشاهدته قبله. القائمة الواحدة لا تناسب أيًّا منهما. ثم تأتي حقوق الإنتاج لتزيد الأمر تعقيدًا: أفلام إكس-من من فوكس، وسبايدر-مان من سوني، والمدافعون من نتفليكس، ومعظم الأدلة تتصرف كأن هذا كله غير موجود.',
     },
     solution: {
-      en: 'Two front doors. The newcomer gets the Infinity Saga as a spine: 23 films, about 50 hours. The returning viewer types a title and gets the computed watch path. Underneath, 216 titles form a graph where every prerequisite is an edge, and every order on the site is derived from the graph. Nothing is typed by hand. Universes are modelled as rights-holders, so a cross-universe detour like No Way Home pulling in five Sony films is a real edge with an editor\'s note attached. The whole site is 1,893 prerendered pages making zero API calls in production.',
+      en: "Two front doors. The newcomer gets the Infinity Saga as a spine: 23 films, about 50 hours. The returning viewer types a title and gets the computed watch path. Underneath, 216 titles form a graph where every prerequisite is an edge, and every order on the site is derived from the graph. Nothing is typed by hand. Universes are modelled as rights-holders, so a cross-universe detour like No Way Home pulling in five Sony films is a real edge with an editor's note attached. The whole site is 1,893 prerendered pages making zero API calls in production.",
       ar: 'لذلك للموقع مدخلان. المبتدئ يبدأ بملحمة اللانهاية: 23 فيلمًا في نحو 50 ساعة. والمشاهد الذي يعرف وجهته يكتب اسم العمل فيحصل على ما يسبقه بالترتيب. وخلف هذا كله 216 عملًا مرتبطة في شبكة واحدة، كل علاقة «شاهد هذا قبل ذاك» محفوظة فيها، وكل ترتيب يظهر في الموقع مستخرج من هذه الشبكة لا مكتوب باليد. والأكوان مقسّمة حسب مالك الحقوق، فحين يستدعي No Way Home خمسة أفلام من سوني يظهر ذلك علاقةً حقيقية في الشبكة ومعها ملاحظة توضّح السبب. والموقع كله 1,893 صفحة جاهزة مسبقًا، ولا يستدعي أي خدمة خارجية أثناء التصفح.',
     },
     liveUrl: 'https://the-thread-marvel.vercel.app',
@@ -411,7 +425,7 @@ export const projects: Project[] = [
         title: { en: 'A map, not a list', ar: 'خريطة لا قائمة' },
         body: [
           {
-            en: 'Nothing on the site is a written-out order. What gets stored is smaller and duller: for each title, which titles have to come first. Everything a visitor sees is worked out from one map. Release order, the beginner spine, each universe\'s own story order, the path to any single title.',
+            en: "Nothing on the site is a written-out order. What gets stored is smaller and duller: for each title, which titles have to come first. Everything a visitor sees is worked out from one map. Release order, the beginner spine, each universe's own story order, the path to any single title.",
             ar: 'لا شيء في الموقع ترتيب مكتوب. فالمحفوظ أصغر من ذلك وأقلّ إثارة: لكل عمل، ما الأعمال التي يجب أن تسبقه. وكل ما يراه الزائر مستخرج من هذه الخريطة الواحدة: ترتيب العرض، وقائمة البداية، والترتيب القصصي لكل كون، والمسار إلى أي عمل بعينه.',
           },
           {
@@ -429,7 +443,10 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: { en: '699 characters, and nobody typed them in', ar: '699 شخصية لم تُدخَل يدويًا' },
+        title: {
+          en: '699 characters, and nobody typed them in',
+          ar: '699 شخصية لم تُدخَل يدويًا',
+        },
         body: [
           {
             en: 'A character counts as appearing in a title when the cast list names them. Nothing is written down twice, because the second copy of any fact goes stale the moment the first one changes.',
@@ -478,7 +495,9 @@ export const projects: Project[] = [
             ar: 'والإنفاق الأقلّ بعد ذلك لا يعيد شيئًا، فكان الحل ألا نستخدم الخدمة للصور أصلًا. فقاعدة بيانات الأفلام تقدّم كل ملصق بالعرض المطلوب في الرابط، فصار الرابط يطلب العرض الصحيح. ومضيف صور واحد من ثمانية عشر يرفض الربط المباشر فيمرّ عبر وسيط مجاني. وما عداه يُستخدم كما هو. وزحف الموقع كاملًا الآن لا يكلّف شيئًا على الإطلاق.',
           },
         ],
-        facts: [{ label: { en: 'Billed image requests', ar: 'طلبات صور مدفوعة' }, value: '0' }],
+        facts: [
+          { label: { en: 'Billed image requests', ar: 'طلبات صور مدفوعة' }, value: '0' },
+        ],
       },
       {
         title: { en: 'Where it stands', ar: 'أين وصل الآن' },
@@ -515,7 +534,11 @@ export const projects: Project[] = [
       '/images/projects/the-thread-ar.jpg',
     ],
     links: [
-      { label: 'Live site', href: 'https://the-thread-marvel.vercel.app', external: true },
+      {
+        label: 'Live site',
+        href: 'https://the-thread-marvel.vercel.app',
+        external: true,
+      },
       { label: 'Source', href: 'https://github.com/rworldx/the-thread', external: true },
     ],
   },
@@ -549,7 +572,7 @@ export const projects: Project[] = [
       ar: 'يُحكم على شركة استشارات السلامة بالثقة قبل السعر، ويُحكم عليها في ثوانٍ. المشتري إما مدير عمليات يتحقق من مورّد قبل إدراجه، وإما صاحب منشأة صغيرة أمامه تفتيش قادم، وكثيرًا ما يقرأ بالعربية على هاتفه وباتصال ضعيف. والموقع الذي يتأخر في الظهور، أو يعرض العربية بخط النظام، يكون قد أجاب عن السؤال قبل أن يُطرح.',
     },
     solution: {
-      en: 'One page per language, seven sections, and nothing on them beyond trust, clarity and the call. The Arabic is a second original, not a translation, set in the client\'s licensed typeface with layout mirrored properly. Contact runs through a form which validates on the server, rate limits by address and refuses to fake success, alongside WhatsApp, phone and the company profile as a download. Desktop Lighthouse scores 100 on the English page and 99 on the Arabic, and layout shift measured zero on every run.',
+      en: "One page per language, seven sections, and nothing on them beyond trust, clarity and the call. The Arabic is a second original, not a translation, set in the client's licensed typeface with layout mirrored properly. Contact runs through a form which validates on the server, rate limits by address and refuses to fake success, alongside WhatsApp, phone and the company profile as a download. Desktop Lighthouse scores 100 on the English page and 99 on the Arabic, and layout shift measured zero on every run.",
       ar: 'صفحة واحدة لكل لغة، وسبعة أقسام، ولا شيء فيها لا يخدم الثقة أو الوضوح أو المكالمة. والعربية نصّ أصلي لا ترجمة، بخطّ العميل المرخّص وبتخطيط معكوس كما ينبغي. أما التواصل فيمرّ عبر نموذج يتحقق من المُدخلات على الخادم، ويحدّ من التكرار حسب العنوان، ويرفض أن يدّعي النجاح، إلى جانب واتساب والهاتف وملف الشركة للتنزيل. ويسجّل لايتهاوس على سطح المكتب 100 للصفحة الإنجليزية و99 للعربية، بينما بقيت إزاحة التخطيط صفرًا في كل قياس.',
     },
     liveUrl: 'https://kadi-hse.om',
@@ -568,11 +591,17 @@ export const projects: Project[] = [
     ],
     stats: [
       {
-        label: { en: 'Lighthouse desktop performance, EN / AR', ar: 'أداء لايتهاوس على سطح المكتب، إنجليزي / عربي' },
+        label: {
+          en: 'Lighthouse desktop performance, EN / AR',
+          ar: 'أداء لايتهاوس على سطح المكتب، إنجليزي / عربي',
+        },
         value: '100 / 99',
       },
       {
-        label: { en: 'Layout shift, every Lighthouse run', ar: 'إزاحة التخطيط في كل قياس' },
+        label: {
+          en: 'Layout shift, every Lighthouse run',
+          ar: 'إزاحة التخطيط في كل قياس',
+        },
         value: '0',
       },
       { label: { en: 'Unit tests', ar: 'اختبارات الوحدة' }, value: '141' },
@@ -582,7 +611,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        en: 'Two originals, not a page and its translation. The Arabic is written natively in professional MSA and set in the client\'s licensed Thmanyah Sans, self-hosted, with the layout mirrored, not flipped.',
+        en: "Two originals, not a page and its translation. The Arabic is written natively in professional MSA and set in the client's licensed Thmanyah Sans, self-hosted, with the layout mirrored, not flipped.",
         ar: 'نصّان أصليان، لا صفحة وترجمتها. العربية مكتوبة بلسان عربي فصيح، وبخط ثمانية المرخّص للعميل ومستضاف على الموقع نفسه، والتخطيط معكوس بعناية لا مقلوب.',
       },
       {
@@ -611,7 +640,7 @@ export const projects: Project[] = [
         title: { en: 'The consultancy', ar: 'الشركة' },
         body: [
           {
-            en: 'KADI is a health and safety consultancy in Muscat. Companies call them when an inspection is coming, or when a site has grown past the point where safety fits in somebody\'s head. The work is not writing a folder of documents. The work is making safety rules hold on a real site, with real people, on a real shift.',
+            en: "KADI is a health and safety consultancy in Muscat. Companies call them when an inspection is coming, or when a site has grown past the point where safety fits in somebody's head. The work is not writing a folder of documents. The work is making safety rules hold on a real site, with real people, on a real shift.",
             ar: 'كادي شركة استشارات في الصحة والسلامة بمسقط. تتصل بها الشركات حين يقترب موعد تفتيش، أو حين يكبر الموقع فلا تعود السلامة شيئًا يُحفظ في رأس أحدهم. والعمل ليس كتابة ملف من الوثائق، بل جعل قواعد السلامة تصمد في موقع حقيقي، مع أناس حقيقيين، في وردية حقيقية.',
           },
         ],
@@ -654,7 +683,14 @@ export const projects: Project[] = [
             ar: 'وله خطّه الخاص، مرخّص للعميل ومستضاف على الموقع نفسه لا مستعارًا مما يصادف وجوده في الهاتف. فالعربية بخط النظام تبدو صفحة لم يكملها أحد، وشركة استشارات في السلامة لا تحتمل أن تبدو ناقصة.',
           },
         ],
-        image: { src: '/images/projects/kadi-ar.jpg', dark: '/images/projects/kadi-ar-dark.jpg', alt: { en: 'The KADI homepage in Arabic, laid out right to left', ar: 'الصفحة الرئيسية لكادي بالعربية، بتخطيط من اليمين إلى اليسار' } },
+        image: {
+          src: '/images/projects/kadi-ar.jpg',
+          dark: '/images/projects/kadi-ar-dark.jpg',
+          alt: {
+            en: 'The KADI homepage in Arabic, laid out right to left',
+            ar: 'الصفحة الرئيسية لكادي بالعربية، بتخطيط من اليمين إلى اليسار',
+          },
+        },
       },
       {
         title: { en: 'One tap to the founder', ar: 'نقرة واحدة إلى المؤسّس' },
@@ -664,11 +700,18 @@ export const projects: Project[] = [
             ar: 'كل ما وُجد الموقع من أجله ينتهي هنا. هاتف، وواتساب، وبريد، ونموذج قصير، والملف التعريفي للتنزيل ليرسله المشتري إلى من يوقّع. ويتحقّق النموذج ممّا كُتب قبل الإرسال، وإن تعذّر عمل خدمة البريد قال ذلك وأعطى العنوان بدل أن يوهمك بأن الرسالة وصلت.',
           },
           {
-            en: 'The WhatsApp button took two attempts. The first version opened a link in a new tab, and on the client\'s own iPhone the link showed a web page instead of the chat. Now the button asks for the app first and falls back to the web only after a moment of silence. A small thing, and it decides whether the most important button on the site works on the phone the client actually carries.',
+            en: "The WhatsApp button took two attempts. The first version opened a link in a new tab, and on the client's own iPhone the link showed a web page instead of the chat. Now the button asks for the app first and falls back to the web only after a moment of silence. A small thing, and it decides whether the most important button on the site works on the phone the client actually carries.",
             ar: 'أما زرّ واتساب فاحتاج محاولتين. كانت النسخة الأولى تفتح رابطًا في تبويب جديد، فظهرت على آيفون العميل نفسه صفحة ويب بدل المحادثة. صار الزرّ الآن يطلب التطبيق أولًا، ولا يلجأ إلى الويب إلا بعد لحظة صمت. تفصيل صغير يقرّر هل يعمل أهمّ زرّ في الموقع على الهاتف الذي يستخدمه العميل.',
           },
         ],
-        image: { src: '/images/projects/kadi-contact.jpg', dark: '/images/projects/kadi-contact-dark.jpg', alt: { en: 'The contact section: form, WhatsApp, phone and the profile download', ar: 'قسم التواصل: النموذج وواتساب والهاتف وتنزيل الملف التعريفي' } },
+        image: {
+          src: '/images/projects/kadi-contact.jpg',
+          dark: '/images/projects/kadi-contact-dark.jpg',
+          alt: {
+            en: 'The contact section: form, WhatsApp, phone and the profile download',
+            ar: 'قسم التواصل: النموذج وواتساب والهاتف وتنزيل الملف التعريفي',
+          },
+        },
       },
       {
         title: { en: 'What you do not see', ar: 'ما لا تراه' },
@@ -682,11 +725,18 @@ export const projects: Project[] = [
             ar: 'الأول كان الخطّ العربي. بدت الصفحة صحيحة فلم يشكّ أحد، بينما كان المتصفّح يصل بهدوء إلى خط النظام أولًا فيجد فيه كل حرف عربي يحتاجه. أما الخط المرخّص الذي يدفع العميل ثمنه فلم يكن يُطلب أصلًا. لا شيء مكسور على الشاشة، والشيء الذي اشتُري غائب ببساطة.',
           },
           {
-            en: 'The second was the green in the client\'s brand. A good green for a shape, and too pale to carry words: put text in the green and a reader with ordinary eyesight has to work. So the palette now has two greens. One draws, the other writes. The single green panel on the site sets its text in deep navy, because white on the same green fails the same test.',
+            en: "The second was the green in the client's brand. A good green for a shape, and too pale to carry words: put text in the green and a reader with ordinary eyesight has to work. So the palette now has two greens. One draws, the other writes. The single green panel on the site sets its text in deep navy, because white on the same green fails the same test.",
             ar: 'والثاني كان الأخضر في هوية العميل. أخضر جيّد للأشكال وفاتح أكثر من أن يحمل كلمات: ضع فيه نصًّا يجهد القارئ العادي في قراءته. فصار في اللوحة أخضران: واحد يرسم وآخر يكتب. واللوح الأخضر الوحيد في الموقع يضع نصّه بالكحلي الغامق، لأن الأبيض على ذلك الأخضر يسقط في الاختبار نفسه.',
           },
         ],
-        image: { src: '/images/projects/kadi-why.jpg', dark: '/images/projects/kadi-why-dark.jpg', alt: { en: 'The one green panel on the site, its text set in deep navy', ar: 'اللوح الأخضر الوحيد في الموقع، ونصّه بالكحلي الغامق' } },
+        image: {
+          src: '/images/projects/kadi-why.jpg',
+          dark: '/images/projects/kadi-why-dark.jpg',
+          alt: {
+            en: 'The one green panel on the site, its text set in deep navy',
+            ar: 'اللوح الأخضر الوحيد في الموقع، ونصّه بالكحلي الغامق',
+          },
+        },
       },
       {
         title: { en: 'Where it stands', ar: 'أين وصل الآن' },
@@ -701,7 +751,13 @@ export const projects: Project[] = [
           },
         ],
         facts: [
-          { label: { en: 'Lighthouse desktop, EN / AR', ar: 'لايتهاوس سطح المكتب، إنجليزي / عربي' }, value: '100 / 99' },
+          {
+            label: {
+              en: 'Lighthouse desktop, EN / AR',
+              ar: 'لايتهاوس سطح المكتب، إنجليزي / عربي',
+            },
+            value: '100 / 99',
+          },
           { label: { en: 'Layout shift', ar: 'إزاحة التخطيط' }, value: '0' },
         ],
       },
@@ -850,7 +906,14 @@ export const projects: Project[] = [
             ar: 'ويستطيع العميل بعد ذلك أن يتابع طلبه برقمه ورقم هاتفه، من قيد الانتظار إلى مؤكّد إلى قيد التحضير إلى في الطريق إلى تم التسليم.',
           },
         ],
-        image: { src: '/images/projects/ms-track.jpg', dark: '/images/projects/ms-track-dark.jpg', alt: { en: 'The order tracking screen on a phone', ar: 'شاشة تتبّع الطلب على الهاتف' } },
+        image: {
+          src: '/images/projects/ms-track.jpg',
+          dark: '/images/projects/ms-track-dark.jpg',
+          alt: {
+            en: 'The order tracking screen on a phone',
+            ar: 'شاشة تتبّع الطلب على الهاتف',
+          },
+        },
       },
       {
         title: { en: 'A catalogue that arrived broken', ar: 'قائمة وصلت تالفة' },
@@ -868,7 +931,14 @@ export const projects: Project[] = [
             ar: 'وتغيّر شكل القائمة أيضًا. فالكريمة نفسها في عبوة خمسة كيلوغرامات وعبوة كيلوغرام شيئان مختلفان يُباعان، لكل منهما سعره ومخزونه، لا منتج واحد بحجمين.',
           },
         ],
-        image: { src: '/images/projects/ms-catalogue.jpg', dark: '/images/projects/ms-catalogue-dark.jpg', alt: { en: 'A brand catalogue with its category rail and search', ar: 'قائمة إحدى العلامات مع شريط الفئات والبحث' } },
+        image: {
+          src: '/images/projects/ms-catalogue.jpg',
+          dark: '/images/projects/ms-catalogue-dark.jpg',
+          alt: {
+            en: 'A brand catalogue with its category rail and search',
+            ar: 'قائمة إحدى العلامات مع شريط الفئات والبحث',
+          },
+        },
         facts: [
           { label: { en: 'Products rebuilt', ar: 'منتجات أُعيد بناؤها' }, value: '654' },
           { label: { en: 'Brand catalogues', ar: 'قوائم العلامات' }, value: '5' },
@@ -895,7 +965,7 @@ export const projects: Project[] = [
             ar: 'أمران كان لا بدّ أن يصحّا قبل غيرهما، لأن كليهما يكلّف مالًا حقيقيًّا حين يخطئ.',
           },
           {
-            en: 'The first is the price. The basket lives in the customer\'s browser, and anything living there is editable by whoever sits in front of the screen. So the basket only ever says what was chosen and how many. When the order is placed the site looks up every price itself, applies any discount, adds the delivery fee, and writes the prices onto the order, so a later change never rewrites what somebody already agreed to pay.',
+            en: "The first is the price. The basket lives in the customer's browser, and anything living there is editable by whoever sits in front of the screen. So the basket only ever says what was chosen and how many. When the order is placed the site looks up every price itself, applies any discount, adds the delivery fee, and writes the prices onto the order, so a later change never rewrites what somebody already agreed to pay.",
             ar: 'الأول السعر. فالسلّة تعيش في متصفّح العميل، وكل ما يعيش هناك يستطيع الجالس أمامه تعديله. لذلك لا تقول السلّة سوى ما اختاره العميل وكم عدده. وعند تسجيل الطلب يبحث الموقع بنفسه عن كل سعر، ويطبّق أي خصم، ويضيف رسم التوصيل، ثم يكتب الأسعار على الطلب حتى لا يعيد تغييرٌ لاحق كتابة ما وافق عليه أحدهم من قبل.',
           },
           {
@@ -903,7 +973,7 @@ export const projects: Project[] = [
             ar: 'والثاني آخر قطعة على الرفّ. فإذا طلبها عميلان في اللحظة نفسها وجب أن يُقال لأحدهما لا، وكانت النسخة الأولى ستبيعها مرتين بصمت. أما الآن فلا يُخصم المخزون إلا إن كان موجودًا لحظة الخصم نفسها، فينجح طلب واحد بالضبط ويُرفض الآخر مع بيان الأسطر الناقصة. والموقع مصمَّم لذلك لا مُثبَت أنه يصمد له: فلم يُسجَّل عليه أي طلب بعد.',
           },
           {
-            en: 'A third case comes from the client\'s data rather than from code. A product with no price yet has no total to add up. Instead of refusing the order, the site saves a price request, with a tracking number, and the branch confirms the amount in the chat.',
+            en: "A third case comes from the client's data rather than from code. A product with no price yet has no total to add up. Instead of refusing the order, the site saves a price request, with a tracking number, and the branch confirms the amount in the chat.",
             ar: 'وهناك حالة ثالثة، مصدرها بيانات العميل لا الشيفرة. فالمنتج الذي لا سعر له بعد لا يمكن جمعه في فاتورة. وبدل رفض الطلب يحفظه الموقع طلبَ سعر، برقم تتبّعه، ويؤكّد الفرع المبلغ في المحادثة.',
           },
         ],
@@ -912,7 +982,7 @@ export const projects: Project[] = [
         title: { en: 'Where it stands', ar: 'أين وصل الآن' },
         body: [
           {
-            en: 'The site is live at modernsupply.om, in Arabic and English, with all 654 products loaded. What remains is the client\'s part. Prices, stock levels and product photos are entered by the company, and most of the entry has not happened yet, so most of the catalogue still reads as unavailable.',
+            en: "The site is live at modernsupply.om, in Arabic and English, with all 654 products loaded. What remains is the client's part. Prices, stock levels and product photos are entered by the company, and most of the entry has not happened yet, so most of the catalogue still reads as unavailable.",
             ar: 'الموقع منشور على modernsupply.om، بالعربية والإنجليزية، وفيه المنتجات الـ654 كلها. وما ينتظره هو العميل. فالأسعار ومستويات المخزون وصور المنتجات تُدخلها الشركة، ومعظم ذلك لم يُنجز بعد، فما زال أكثر القائمة يظهر غير متاح.',
           },
           {
@@ -1073,7 +1143,7 @@ export const projects: Project[] = [
     year: 2026,
     role: 'Webmaster · Built & maintained',
     summary: {
-      en: 'The official website for the IEEE Student Branch at Al Buraimi University College, built in the branch\'s founding year, when the branch had nothing online at all. Designed and built alone, and maintained since as branch Webmaster.',
+      en: "The official website for the IEEE Student Branch at Al Buraimi University College, built in the branch's founding year, when the branch had nothing online at all. Designed and built alone, and maintained since as branch Webmaster.",
       ar: 'الموقع الرسمي لفرع طلاب IEEE في كلية البريمي الجامعية، بُني في سنة تأسيس الفرع حين لم يكن له وجود على الإنترنت أصلًا. صمّمته وبنيته وحدي، وأتولّى صيانته منذ ذلك الحين بصفتي مسؤول الموقع.',
     },
     problem: {
@@ -1136,7 +1206,7 @@ export const projects: Project[] = [
             ar: 'أتولّى مسؤولية الموقع منذ أغسطس 2025 وما زلت أصونه. تسليم مشروع عند إطلاقه سهل. أما إبقاؤه محدَّثًا عبر سنة من الفعاليات وتغيّر اللجنة وانضمام أعضاء جدد فهو ما يقرّر هل يبقى موقع الفرع يستحقّ الزيارة.',
           },
           {
-            en: 'The Information Technology Department awarded me a certificate for my contribution to the branch\'s official launch.',
+            en: "The Information Technology Department awarded me a certificate for my contribution to the branch's official launch.",
             ar: 'وقد كرّمني قسم تقنية المعلومات بشهادة تقدير على إسهامي في الإطلاق الرسمي للفرع.',
           },
         ],
@@ -1161,7 +1231,7 @@ export const projects: Project[] = [
     year: 2025,
     role: 'Concept & Pitch · 2nd Place, Riyada Camp',
     summary: {
-      en: 'A team concept for a home energy monitor, designed to read consumption device by device and show a household where the money goes instead of watching a prepaid balance fall with no explanation. My part was the website and a front-end prototype on mock data. Second of 20+ teams at Riyada\'s Promising Student Projects Camp.',
+      en: "A team concept for a home energy monitor, designed to read consumption device by device and show a household where the money goes instead of watching a prepaid balance fall with no explanation. My part was the website and a front-end prototype on mock data. Second of 20+ teams at Riyada's Promising Student Projects Camp.",
       ar: 'فكرة فريق لجهاز يراقب كهرباء المنزل، صُمّم ليقرأ الاستهلاك جهازًا جهازًا ويُظهر للبيت أين يذهب المال، بدل مشاهدة رصيد العدّاد المسبق ينزل بلا تفسير. وكان دوري الموقع ونموذجًا أوّليًا للواجهة ببيانات تجريبية. المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة من هيئة ريادة.',
     },
     problem: {
@@ -1169,7 +1239,7 @@ export const projects: Project[] = [
       ar: 'فكرتنا بدأت من مشكلة عشتُها بنفسي. كنت طالبًا أسكن في سكنٍ مستأجر في البريمي، وحوّل صاحب العمارة نظام الكهرباء إلى الدفع المسبق، فصرت أدفع مبلغًا تقديريًا قبل كل شهر، وكان الرصيد ينفد بسرعة قبل نهاية الشهر فأضطر لإعادة الشحن أكثر من مرة. وفي إحدى الليالي بينما كنت ممددًا على السرير أتابع مسلسلي، انقطعت الكهرباء فجأة، وتكرّر هذا كثيرًا. حينها سألت نفسي: لماذا لا نصنع منتجًا يقيس استهلاك كل جهاز باستمرار، حتى نرى أيّ جهاز يستهلك أكثر، فنوفّر الطاقة ونقلّل الفواتير ونطفئ ما لا نحتاجه؟',
     },
     solution: {
-      en: 'EnerGrid was designed to read a household\'s electricity per appliance and surface the biggest drains, so the answer to what is spending the balance sits on a screen instead of being a guess. The team carried the concept to the camp. My part was the website and a front-end prototype running on mock data. The entry placed 2nd of 20+ teams at Riyada\'s Promising Student Projects Camp, held at Al Buraimi University College.',
+      en: "EnerGrid was designed to read a household's electricity per appliance and surface the biggest drains, so the answer to what is spending the balance sits on a screen instead of being a guess. The team carried the concept to the camp. My part was the website and a front-end prototype running on mock data. The entry placed 2nd of 20+ teams at Riyada's Promising Student Projects Camp, held at Al Buraimi University College.",
       ar: 'صُمّم EnerGrid ليقرأ كهرباء المنزل لكل جهاز ويكشف أكثرها استنزافًا، ليصبح جواب «ما الذي يستهلك الرصيد» على شاشة بدل أن يكون تخمينًا. حمل الفريق الفكرة إلى المخيم، وكان دوري الموقع ونموذجًا أوّليًا للواجهة يعمل ببيانات تجريبية. وحصل المشروع على المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة من هيئة ريادة، الذي أُقيم في كلية البريمي الجامعية.',
     },
     /*
@@ -1236,7 +1306,7 @@ export const projects: Project[] = [
             ar: 'ما حملناه إلى المخيم كان فكرة كاملة: جهاز يراقب البيت كله، مُصمَّم ليقرأ كل جهاز لحظيًا ويضع أكثرها استنزافًا أمام الساكن، مع ما يلزمه من عتاد وتطبيق. كل ذلك صُمِّم، ولم يُبنَ منه شيء.',
           },
           {
-            en: 'My part was the website and the front-end prototype: the screens a resident would use, running on mock data. The numbers on them were invented rather than measured. No meter was read, no hardware was made, nothing ran in anyone\'s home. The judging was on the problem, the proposal and the case for both, which is what such a camp is for, and saying so is better than letting a concept sound like a product.',
+            en: "My part was the website and the front-end prototype: the screens a resident would use, running on mock data. The numbers on them were invented rather than measured. No meter was read, no hardware was made, nothing ran in anyone's home. The judging was on the problem, the proposal and the case for both, which is what such a camp is for, and saying so is better than letting a concept sound like a product.",
             ar: 'أما دوري فكان الموقع ونموذج الواجهة الأوّلي: الشاشات التي سيستخدمها الساكن، تعمل ببيانات تجريبية. والأرقام عليها مُفترضة لا مقيسة. لم يُقرأ عدّاد، ولم يُصنع عتاد، ولم يعمل شيء في بيت أحد. وكان التحكيم على المشكلة والمقترح والحجّة لهما، وهذا ما تقوم عليه مخيمات كهذه، وقول ذلك أولى من ترك فكرة تبدو كأنها منتج.',
           },
         ],
@@ -1245,7 +1315,7 @@ export const projects: Project[] = [
         title: { en: 'Where it stands', ar: 'أين وصل الآن' },
         body: [
           {
-            en: 'The entry placed 2nd of 20+ teams at the Promising Student Projects Camp, run by Riyada with the Oman Promising Startups Programme and held at Al Buraimi University College in 2025, with a cash prize and recognition from the Chairperson of Oman\'s SME Development Authority.',
+            en: "The entry placed 2nd of 20+ teams at the Promising Student Projects Camp, run by Riyada with the Oman Promising Startups Programme and held at Al Buraimi University College in 2025, with a cash prize and recognition from the Chairperson of Oman's SME Development Authority.",
             ar: 'حصل المشروع على المركز الثاني بين أكثر من 20 فريقًا في مخيم مشاريع الطلاب الواعدة، الذي نظّمته هيئة ريادة مع برنامج الشركات الناشئة الواعدة وأُقيم في كلية البريمي الجامعية سنة 2025. ورافقته جائزة نقدية وتكريم من رئيس هيئة تنمية المشاريع الصغيرة والمتوسطة.',
           },
           {
