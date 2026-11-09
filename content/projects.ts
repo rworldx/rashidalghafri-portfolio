@@ -45,8 +45,8 @@ export const projects: Project[] = [
     stats: [
       { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '200+' },
       { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
-      { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,312' },
+      { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '39' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,624' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
@@ -65,12 +65,12 @@ export const projects: Project[] = [
         ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والاختبارات القصيرة والواجبات.',
       },
       {
-        en: 'Secured with JWT sign-in (15-minute access tokens, refresh tokens rotated on every use with reuse detection), sign-in with Google, Apple or LinkedIn, all linkable to one account, two-step sign-in by authenticator app or email code with backup codes, role-based room controls (host / co-host / participant), email verification, rate limits on every sensitive route, and row-level security on every database table.',
-        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو Apple أو LinkedIn، ويمكن ربطها كلها بحساب واحد، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
+        en: 'Secured with JWT sign-in (15-minute access tokens, refresh tokens rotated on every use with reuse detection), sign-in with Google or LinkedIn, all linkable to one account, two-step sign-in by authenticator app or email code with backup codes, role-based room controls (host / co-host / participant), email verification, rate limits on every sensitive route, and row-level security on every database table.',
+        ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو LinkedIn، ويمكن ربطها كلها بحساب واحد، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
       },
       {
-        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 39 PostgreSQL tables on Supabase through Drizzle ORM, and 1,312 passing tests: 933 on the server (37 of them on matching) and 379 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و39 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,312 اختبارًا ناجحًا: 933 على الخادم (منها 37 على المطابقة) و379 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 39 PostgreSQL tables on Supabase through Drizzle ORM, and 1,624 passing tests: 1,001 on the server (37 of them on matching) and 623 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و39 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,624 اختبارًا ناجحًا: 1,001 على الخادم (منها 37 على المطابقة) و623 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -184,8 +184,8 @@ export const projects: Project[] = [
         },
         body: [
           {
-            en: 'Gemini does two jobs in StudyNest: the study assistant, and reading a CV or LinkedIn export to fill in a profile. Matching never touches it.',
-            ar: 'يؤدّي Gemini مهمّتين في StudyNest: مساعد الدراسة، وقراءة السيرة الذاتية أو ملف LinkedIn لتعبئة الملف الشخصي. أما المطابقة فلا يقترب منها.',
+            en: 'Gemini powers Nour, the study assistant, and its helpers: reading a CV or LinkedIn export to fill in a profile, choosing Nour\'s face as the student types, working on Workspace pages, and building a student\'s own Nour look. Matching never touches it.',
+            ar: 'يشغّل Gemini نور، مساعد الدراسة، وما يساعده: قراءة السيرة الذاتية أو ملف LinkedIn لتعبئة الملف الشخصي، واختيار تعبير وجه نور أثناء الكتابة، والعمل على صفحات مساحة الدراسة، وبناء شكل نور الخاص بكل طالب. أما المطابقة فلا يقترب منها.',
           },
           {
             en: 'The assistant has a name: Nour, نور, which means light in Arabic. That is its job: to guide students out of the dark, the confusion of being stuck, and into the light of understanding. It fits the app around it too: the home page is a campus at night lit by lamps, and the theme colour is called the lamp. The name reads the same in Arabic and English, and it introduces itself as your study buddy, not a tool.',
@@ -253,13 +253,13 @@ export const projects: Project[] = [
             ar: 'تسجيل الدخول بـ JWT. يعيش رمز الوصول خمس عشرة دقيقة، ويُستبدل رمز التحديث برمز جديد في كل مرة يُستخدم فيها. وإن عاد رمز قديم يومًا أُنهيت الجلسة التي ينتمي إليها، فلا يبقى المسروق منها نافعًا إلا وقتًا قصيرًا. والصلاحيات تتبع دور الشخص في الغرفة، وهناك تأكيد للبريد وتسجيل دخول بخطوتين، عبر تطبيق مصادقة أو رمز بالبريد، مع رموز احتياطية لمن فقد هاتفه.',
           },
           {
-            en: 'No account is ever deleted outright. The record stays, emptied of every personal detail, so the email and username are free again and a student who leaves can come back on the same address. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 39 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,312 tests cover the parts where a mistake costs something: 933 on the server, 37 of them on matching, and 379 on the frontend.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يبقى السجل خاليًا من كل معلومة شخصية، فيعود البريد واسم المستخدم متاحين، ويستطيع الطالب المغادر العودة بالبريد نفسه. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها التسعة والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,312 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 933 على الخادم، منها 37 على المطابقة، و379 على الواجهة.',
+            en: 'No account is ever deleted outright. The record stays, emptied of every personal detail, so the email and username are free again and a student who leaves can come back on the same address. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 39 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,624 tests cover the parts where a mistake costs something: 1,001 on the server, 37 of them on matching, and 623 on the frontend.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يبقى السجل خاليًا من كل معلومة شخصية، فيعود البريد واسم المستخدم متاحين، ويستطيع الطالب المغادر العودة بالبريد نفسه. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها التسعة والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,624 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 1,001 على الخادم، منها 37 على المطابقة، و623 على الواجهة.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,312' },
-          { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '38' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,624' },
+          { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '39' },
         ],
       },
       {
