@@ -13,16 +13,16 @@ export const projects: Project[] = [
     year: 2026,
     role: 'Founder · Full-Stack Engineer',
     summary: {
-      en: 'A full-stack study partner matching and collaboration platform. Students find compatible partners, share notes, join live study sessions, video-call each other, and get AI study assistance.',
-      ar: 'منصة متكاملة لمطابقة شركاء الدراسة والتعاون بينهم. تساعد StudyNest الطلاب على العثور على شركاء دراسة متوافقين، وتوفر لهم مساحة للتعاون عبر تبادل الملاحظات، والانضمام إلى جلسات دراسية مباشرة، والتواصل بالصوت والصورة، والاستفادة من مساعد ذكي يدعم عملية المذاكرة.',
+      en: 'A full-stack study partner matching and collaboration platform. Students find compatible partners, share notes, join live study sessions, video-call each other, write and present in a workspace of nine document kinds, and get an AI study buddy that can act in the app on their say-so.',
+      ar: 'منصة متكاملة لمطابقة شركاء الدراسة والتعاون بينهم. تساعد StudyNest الطلاب على العثور على شركاء دراسة متوافقين، وتوفر لهم مساحة للتعاون عبر تبادل الملاحظات، والانضمام إلى جلسات دراسية مباشرة، والتواصل بالصوت والصورة، والكتابة والعرض في مساحة دراسة بتسعة أنواع من المستندات، ورفيقًا ذكيًّا ينفّذ في التطبيق بإذن الطالب.',
     },
     problem: {
       en: 'Remote learning leaves students isolated. They have no easy way to find a compatible study partner, no shared space to work together, and no help at the moment they get stuck.',
       ar: 'يترك التعلّم عن بُعد الطلاب معزولين. لا توجد طريقة سهلة لإيجاد شريك دراسة متوافق، ولا مساحة مشتركة للعمل معًا، ولا مساعدة في لحظة التعثّر.',
     },
     solution: {
-      en: 'An end-to-end platform. A weighted score ranks every other student against you on what you share, shared subjects and free time counting most, tells you why, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Google Gemini-powered study assistant reads documents and images, answers questions typed or spoken, and turns a course outline into a study plan, a quiz with a score or an assignment it checks.',
-      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق ما تشتركان فيه، وأثقله المواد المشتركة وأوقات الفراغ، وتذكر لك السبب، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويحوّل مفردات المقرّر إلى خطة مراجعة، أو اختبار قصير بدرجة، أو واجب يصحّحه.',
+      en: 'An end-to-end platform. A weighted score ranks every other student against you on what you share, shared subjects and free time counting most, tells you why, and returns the list in under a second. A low-latency real-time layer runs chat, voice and video study rooms with screen sharing. A Workspace makes nine kinds of document \u2014 notebooks, typed documents, slides, spreadsheets, whiteboards, flashcards, designs and PDFs \u2014 written on together, per thing, in real time. A Google Gemini-powered study assistant reads documents and images, answers questions typed or spoken, turns a course outline into a study plan, a quiz with a score or an assignment it checks, and in Agent mode carries out almost anything the student could do themselves, as a card they confirm first.',
+      ar: 'منصة متكاملة. درجة مرجّحة ترتّب كل طالب آخر أمامك وفق ما تشتركان فيه، وأثقله المواد المشتركة وأوقات الفراغ، وتذكر لك السبب، وتعيد القائمة في أقل من ثانية. وطبقة لحظية منخفضة الكمون تشغّل المحادثة وغرف الدراسة الصوتية والمرئية مع مشاركة الشاشة. ومساحة دراسة تصنع تسعة أنواع من المستندات — دفاتر ومستندات مكتوبة وعروضًا تقديمية وجداول بيانات وسبورات وبطاقات مراجعة وتصاميم وملفات PDF — يُكتب فيها معًا، شيئًا شيئًا، في اللحظة نفسها. ومساعد دراسة مدعوم بـ Google Gemini يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويحوّل مفردات المقرّر إلى خطة مراجعة، أو اختبار قصير بدرجة، أو واجب يصحّحه، وفي وضع الوكيل ينفّذ كل ما يستطيع الطالب فعله تقريبًا، بطاقةً يؤكّدها أولًا.',
     },
     liveUrl: 'https://studynest.dev',
     repoUrl: 'https://github.com/rworldx/StudyNest-Source',
@@ -43,10 +43,10 @@ export const projects: Project[] = [
       'Upstash Redis',
     ],
     stats: [
-      { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '200+' },
-      { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '100+' },
-      { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '39' },
-      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,624' },
+      { label: { en: 'API endpoints', ar: 'نقاط نهاية API' }, value: '290+' },
+      { label: { en: 'Realtime events', ar: 'الأحداث اللحظية' }, value: '145' },
+      { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '47' },
+      { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '3,000+' },
       { label: { en: 'Match time', ar: 'زمن المطابقة' }, value: '< 1s' },
       { label: { en: 'Pilot satisfaction', ar: 'رضا المستخدمين' }, value: '86%' },
       { label: { en: 'AI improved study', ar: 'تحسّن أسلوب الدراسة' }, value: '95%' },
@@ -61,6 +61,14 @@ export const projects: Project[] = [
         ar: 'طبقة تعاون لحظية (Socket.IO + WebRTC): محادثة مباشرة، وغرف دراسة صوتية ومرئية مع مشاركة الشاشة، وجدولة الجلسات.',
       },
       {
+        en: 'A workspace of nine document kinds: notebooks, typed documents, slides, spreadsheets, whiteboards, flashcards, designs and PDFs. The spreadsheet\u2019s formula engine, its .xlsx reader and writer and its charts are written here rather than installed, because the maintained libraries were either unmaintained or GPL-licensed. Everything on a page is its own row, so two people write at once without overwriting each other, and a typed document types letter by letter with the server checking a commenter\u2019s suggestion before it passes it on.',
+        ar: 'مساحة دراسة بتسعة أنواع من المستندات: دفاتر ومستندات مكتوبة وعروض تقديمية وجداول بيانات وسبورات وبطاقات مراجعة وتصاميم وملفات PDF. ومحرّك المعادلات في جدول البيانات، وقارئ ملفات .xlsx وكاتبها، ومخططاته، كلها مكتوبة هنا لا مُركَّبة، لأن المكتبات القائمة إمّا متوقّفة أو بترخيص GPL. وكل شيء على الصفحة صفٌّ مستقل، فيكتب اثنان في وقت واحد دون أن يمحو أحدهما الآخر، والمستند المكتوب يُكتب حرفًا بحرف والخادم يقرأ اقتراح المعلّق قبل أن يمرّره.',
+      },
+      {
+        en: 'An agent with no tools of its own. What Nour can do in Agent mode \u2014 notes, the profile, sessions, partners, messages and groups, settings and privacy, a room\u2019s door and a live call\u2019s own controls, and every Workspace tool \u2014 is declared in two registries, and every step runs the owning page\u2019s own code behind its own permission gates, so a block or an account on hold refuses Nour exactly where it refuses the student. Nothing happens before Confirm, and a card showing a real thing must read it back from the server first.',
+        ar: 'وكيل بلا أدوات خاصة. فما يستطيعه نور في وضع الوكيل — الملاحظات، والملف الشخصي، والجلسات، والشركاء، والرسائل والمجموعات، والإعدادات والخصوصية، وباب الغرفة وأدوات المكالمة الجارية، وكل أدوات مساحة الدراسة — معلَن في سجلّين، وكل خطوة تنفّذها الصفحة المالكة بكودها خلف بواباتها، فالحظر أو إيقاف الحساب يرفض نور في النقطة نفسها التي يرفض فيها الطالب. ولا يحدث شيء قبل التأكيد، والبطاقة التي تعرض شيئًا حقيقيًّا تقرأه من الخادم أولًا.',
+      },
+      {
         en: 'Multimodal study assistant (Google Gemini API). Reads documents and images, answers questions typed or spoken, and builds study plans, quizzes and assignments.',
         ar: 'مساعد دراسة متعدّد الوسائط (Google Gemini API). يقرأ المستندات والصور، ويجيب عن الأسئلة المكتوبة أو المنطوقة، ويبني خطط المراجعة والاختبارات القصيرة والواجبات.',
       },
@@ -69,8 +77,8 @@ export const projects: Project[] = [
         ar: 'مؤمّن بتسجيل دخول JWT (رمز وصول لخمس عشرة دقيقة، ورمز تحديث يُستبدل عند كل استخدام مع كشف إعادة استعماله)، وتسجيل الدخول بحساب Google أو LinkedIn، ويمكن ربطها كلها بحساب واحد، والتحقّق بخطوتين عبر تطبيق مصادقة أو رمز بالبريد مع رموز احتياطية، والتحكّم بالأدوار في الغرف (مضيف / مساعد / مشارك)، وتأكيد البريد، وحدود للطلبات على كل مسار حسّاس، وأمان على مستوى الصفوف في كل جدول من جداول قاعدة البيانات.',
       },
       {
-        en: 'Substantial architecture: 200+ REST endpoints, 100+ real-time socket events, 39 PostgreSQL tables on Supabase through Drizzle ORM, and 1,624 passing tests: 1,001 on the server (37 of them on matching) and 623 on the frontend. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
-        ar: 'بنية كبيرة: أكثر من 200 نقطة نهاية REST، وأكثر من 100 حدث لحظي، و39 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، و1,624 اختبارًا ناجحًا: 1,001 على الخادم (منها 37 على المطابقة) و623 على الواجهة. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
+        en: 'Substantial architecture: 290+ REST endpoints, 145 real-time socket events, 47 PostgreSQL tables on Supabase through Drizzle ORM, and over 3,000 passing tests: 1,357 on the server across 155 suites (38 of them on matching) and 1,739 in the browser. Bilingual EN/AR, eight themes (four colours, each light and dark), an installable PWA, and an automated Cloudinary media pipeline.',
+        ar: 'بنية كبيرة: أكثر من 290 نقطة نهاية REST، و145 حدثًا لحظيًّا، و47 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، وأكثر من 3,000 اختبار ناجح: 1,357 على الخادم في 155 مجموعة (منها 38 على المطابقة) و1,739 في المتصفّح. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
@@ -178,6 +186,35 @@ export const projects: Project[] = [
         ],
       },
       {
+        title: { en: 'The work itself needed somewhere to live', ar: 'العمل نفسه احتاج مكانًا يسكنه' },
+        body: [
+          {
+            en: 'Two students in a room still had nothing in front of them. They were sharing a screen of somebody else\u2019s app: a PDF in a viewer that could not be written on, a document in a tab that only one of them could edit. The call was ours and the work was somewhere else.',
+            ar: 'كان الطالبان في الغرفة بلا شيء أمامهما. يشاركان شاشة تطبيق شخص آخر: ملف PDF في عارض لا يُكتب عليه، ومستند في تبويب لا يعدّله إلا أحدهما. المكالمة لنا والعمل في مكان آخر.',
+          },
+          {
+            en: 'So the Workspace was built, and not as a file viewer. It makes nine kinds of document, each one tap from its home: a notebook on eight papers, a typed document, slides, a spreadsheet, an endless whiteboard, a flashcard deck, a design, a PDF, and a quick note on the paper you used last. Word, PowerPoint and Excel files open here, and a photo of a paper page becomes a clean PDF.',
+            ar: 'فبُنيت مساحة الدراسة، لا عارض ملفات. تصنع تسعة أنواع من المستندات، كل نوع بلمسة واحدة من صفحتها: دفترًا على ثمانية أوراق، ومستندًا مكتوبًا، وعرضًا تقديميًّا، وجدول بيانات، وسبورة بلا حدود، ومجموعة بطاقات مراجعة، وتصميمًا، وملف PDF، وملاحظة سريعة على الورق المستخدم آخر مرة. وتُفتح فيها ملفات Word وPowerPoint وExcel، وتصير صورة الورقة ملف PDF نظيفًا.',
+          },
+          {
+            en: 'The hard parts were the ones that had to be written rather than installed. The spreadsheet\u2019s formula engine is mine: the one maintained MIT parser had not been published since 2023 and the capable library is GPL-3.0, which cannot go in this app, so there is a tokenizer, a precedence parser, an evaluator and a dependency graph, and a cell that reads itself answers #CYCLE! instead of hanging the tab. The .xlsx reader and writer are hand-rolled over JSZip, because the usual package has been frozen since 2022 with an unfixed advisory in exactly the crafted-file path an import uses. Charts are drawn by hand in SVG so their colours are tokens that work in all eight themes, and the build refuses a palette whose series come closer than a measurable distance apart under protanopia, deuteranopia or tritanopia.',
+            ar: 'وأصعب ما فيها ما كان يجب كتابته لا تركيبه. محرّك المعادلات في جدول البيانات من كتابتي: فالمحلّل الوحيد برخصة MIT لم يُنشر منذ 2023، والمكتبة القادرة برخصة GPL-3.0 ولا تصلح لهذا التطبيق؛ فصار فيه مُجزِّئ ومحلّل أولويات ومُقيِّم ورسم تبعيات، والخلية التي تقرأ نفسها تجيب #CYCLE! بدل أن تُعلّق التبويب. وقارئ ملفات .xlsx وكاتبها مكتوبان بخط اليد على JSZip، لأن الحزمة المعتادة مجمّدة منذ 2022 وفيها ثغرة بلا إصلاح في المسار نفسه الذي يستخدمه الاستيراد. والمخططات مرسومة بالـ SVG يدويًّا لتكون ألوانها رموزًا تعمل في السمات الثماني كلها، ويرفض البناء مجموعة ألوان تتقارب سلاسلها أكثر من مسافة مقيسة تحت عمى الأحمر والأخضر والأزرق.',
+          },
+          {
+            en: 'Writing together was the other one. Everything on a page \u2014 a stroke, a box, a shape, a sticky note, a cell \u2014 is its own row, so two people writing at once never overwrite each other\u2019s whole page. A typed document goes further and types letter by letter with named carets, and because a commenter may suggest changes without being able to make them, the server reads a commenter\u2019s change before passing it on: the words with every insertion left out must come out unchanged, and a suggestion may only be withdrawn by whoever made it. Refusing a change is safer than trusting it, so a change resting on pieces the server has not got is refused rather than quietly applied later.',
+            ar: 'والكتابة معًا هي الصعبة الأخرى. كل شيء على الصفحة — خطّ، أو مربّع، أو شكل، أو ملاحظة لاصقة، أو خلية — صفٌّ مستقل، فلا يمحو من يكتبان في وقت واحد صفحة أحدهما الأخرى. والمستند المكتوب يذهب أبعد: يُكتب حرفًا بحرف ومؤشّر كل شخص باسمه. ولأن المعلّق قد يقترح تعديلًا دون أن يملك تنفيذه، يقرأ الخادم تعديل المعلّق قبل أن يمرّره: النصّ بعد استبعاد كل إضافة يجب أن يخرج كما هو، ولا يسحب الاقتراح إلا صاحبه. ورفض التعديل أسلم من الثقة به، فالتعديل المتّكئ على أجزاء لم تصل الخادم يُرفض بدل أن يُطبّق بهدوء لاحقًا.',
+          },
+          {
+            en: 'A document is the student\u2019s own on their device until they save it to their account, so the home says plainly which of theirs are kept safe and which could be lost, and moves them all in one tap. In a study room, one document can be opened to everyone there for exactly as long as they are in the room: the permission is worked out from who is in the room at that moment and never stored, so leaving takes it away with nothing to clean up, and a document with a password is refused outright, because a password exists to be typed.',
+            ar: 'والمستند للطالب على جهازه حتى يحفظه في حسابه، فتذكر الصفحة بوضوح ما هو محفوظ وما يمكن أن يُفقد، وتنقلها كلها بلمسة واحدة. وفي غرفة المذاكرة يُفتح مستند واحد لكل من فيها، طوال وجودهم فيها بالضبط: فالصلاحية تُحسب من الموجودين في الغرفة في تلك اللحظة ولا تُخزَّن، فالمغادرة تأخذها معها دون شيء يُنظَّف، والمستند الذي عليه كلمة مرور يُرفض أصلًا، فكلمة المرور إنما وُضعت لتُكتب.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Kinds of document', ar: 'أنواع المستندات' }, value: '9' },
+          { label: { en: 'Formula engine', ar: 'محرّك المعادلات' }, value: 'written here' },
+        ],
+      },
+      {
         title: {
           en: 'Help where the student is stuck',
           ar: 'المساعدة حيث يتعثّر الطالب',
@@ -207,6 +244,31 @@ export const projects: Project[] = [
             en: 'Reading files rather than only questions matters because the missing thing was never information. A student stuck at eleven at night has the whole internet in front of them. What they lack is an answer about the page under their eyes, at the moment of looking.',
             ar: 'وسبب قراءته للملفات لا للأسئلة وحدها أن الناقص لم يكن المعلومة يومًا. فالطالب المتعثّر في الحادية عشرة ليلًا أمامه الإنترنت كله. الذي ليس أمامه جواب عن الصفحة التي ينظر إليها، في اللحظة التي ينظر فيها إليها.',
           },
+        ],
+      },
+      {
+        title: { en: 'An assistant that does, not only says', ar: 'مساعد يفعل لا يقول فقط' },
+        body: [
+          {
+            en: 'An assistant that only explains leaves the student holding the work. It tells them which switch to find, then they go and find it. So Nour has two modes, and the switch sits under the message box. Chat mode talks and can do nothing. Agent mode reaches almost everything the student can reach themselves: their notes and comments, their profile, study sessions, partners, messages and group chats, Study Focus, their settings and privacy switches, the door of a study room and their own controls in a live call, and any document in the Workspace.',
+            ar: 'المساعد الذي يشرح فقط يترك العمل في يد الطالب: يدلّه على المفتاح ثم يذهب هو ليجده. فصار لنور وضعان، ومفتاحهما تحت مربّع الرسالة. وضع المحادثة يتحدّث ولا يفعل شيئًا. ووضع الوكيل يصل إلى كل ما يصل إليه الطالب تقريبًا: ملاحظاته وتعليقاته، وملفه الشخصي، وجلسات المذاكرة، والشركاء، والرسائل والمجموعات، والتركيز، وإعداداته ومفاتيح خصوصيته، وباب غرفة المذاكرة وأدواته في مكالمة جارية، وأي مستند في مساحة الدراسة.',
+          },
+          {
+            en: 'The design rule that made it safe is that Nour has no tools of its own and makes no request of its own. What it can do is written in two registries, one for the app and one for the Workspace, and each entry names its arguments, the page that runs it, the control it points at, whether somebody else will see it, whether it loses anything, and one sentence for Nour\u2019s own rules. Nour answers with a block the app turns into cards; the runner is the owning page\u2019s own code behind its own permission gates. So an unverified email, an account on hold or a block refuses Nour at exactly the point it refuses the student \u2014 not because the assistant was taught the rules, but because it never had a path around them.',
+            ar: 'والقاعدة التي جعلت ذلك آمنًا أن نور لا يملك أدوات خاصة ولا يرسل طلبًا خاصًا. فما يستطيعه مكتوب في سجلّين، أحدهما للتطبيق والآخر لمساحة الدراسة، وكل مُدخَل يذكر وسائطه، والصفحة التي تنفّذه، والزرّ الذي يشير إليه، وهل يراه غيره، وهل يُفقد شيئًا، وسطرًا واحدًا لقواعد نور. ويجيب نور بكتلة يحوّلها التطبيق إلى بطاقات، والذي ينفّذ هو كود الصفحة المالكة نفسه خلف بواباتها. فالبريد غير المؤكّد، والحساب الموقوف، والحظر، كلها ترفض نور في النقطة نفسها التي ترفض فيها الطالب — لا لأن المساعد عُلِّم القواعد، بل لأنه لم يكن له طريق حولها أبدًا.',
+          },
+          {
+            en: 'Nothing happens until the student taps Confirm, and a card is not allowed to describe something it has not read: a step that acts on a real thing has that thing fetched from StudyNest and shown on the card, and Confirm stays off when it cannot be opened. A step other people will see asks with its own button, one that loses something asks with a red one. Then the student can watch Nour fly to each control and type on the page, or turn that off and have the same steps finish at once.',
+            ar: 'ولا يحدث شيء قبل أن يضغط الطالب «تأكيد»، ولا يُسمح لبطاقة أن تصف شيئًا لم تقرأه: فالخطوة التي تعمل على شيء حقيقي يُجلب ذلك الشيء من StudyNest ويُعرض على البطاقة، ويبقى «تأكيد» مطفأً إن لم يمكن فتحه. والخطوة التي يراها الآخرون تستأذن بزرّها الخاص، والتي تُفقد شيئًا بزرّ أحمر. ثم يستطيع الطالب أن يشاهد نور وهو يطير إلى كل زرّ ويكتب على الصفحة، أو يوقف ذلك فتُنفَّذ الخطوات نفسها دفعة واحدة.',
+          },
+          {
+            en: 'A few things are refused on purpose, and Nour names them instead of trying: the password and how someone signs in, two-step sign-in, the username, the photo and cover, deleting the account. Two of them are not policy but physics. Joining a call and turning a camera or microphone on can only answer to a real tap, because a browser asks for the camera in its own chrome and nothing on the page can see or answer that. Nour\u2019s tap is a drawing. It was the sharpest thing the work taught me about building an agent: the limit worth writing down is not what you decided to withhold, it is what the platform will never hand over.',
+            ar: 'وبعض الأمور مرفوضة عن قصد، ويذكرها نور بدل أن يحاولها: كلمة المرور وطريقة الدخول، والدخول بخطوتين، واسم المستخدم، والصورة والغلاف، وحذف الحساب. واثنان منها ليسا سياسةً بل طبيعةَ المنصّة: فالانضمام إلى مكالمة وتشغيل الكاميرا أو الميكروفون لا يجيبان إلا لمسةً حقيقية، لأن المتصفّح يسأل عن الكاميرا في واجهته هو، ولا شيء في الصفحة يرى ذلك السؤال أو يجيبه. ولمسة نور رسمٌ. وهذا أحدّ ما علّمني العمل عن بناء وكيل: الحدّ الذي يستحقّ التدوين ليس ما قرّرت منعه، بل ما لن تسلّمه المنصّة أبدًا.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Registries, not tools', ar: 'سجلّات لا أدوات' }, value: '2' },
+          { label: { en: 'Acts before Confirm', ar: 'ما يُنفّذ قبل التأكيد' }, value: 'none' },
         ],
       },
       {
@@ -242,6 +304,31 @@ export const projects: Project[] = [
         },
       },
       {
+        title: { en: 'A room to study alone in', ar: 'غرفة للمذاكرة وحدك' },
+        body: [
+          {
+            en: 'The matching and the rooms both assume somebody else is awake. Most studying is not like that, and the thing students already used for it was a study-with-me livestream: a stranger\u2019s desk, a timer, rain on a window, somebody there without being there. That is a real need and it was being met by a video of a person who did not know they were being watched.',
+            ar: 'المطابقة والغرف كلتاهما تفترض أن أحدًا آخر مستيقظ. وأكثر المذاكرة ليست كذلك، والذي كان الطلاب يستعملونه لها فعلًا بثّ «ذاكر معي»: مكتب شخص غريب، ومؤقت، ومطر على نافذة، وحضورٌ بلا حضور. وهذه حاجة حقيقية كان يسدّها فيديو لشخص لا يعرف أن أحدًا يشاهده.',
+          },
+          {
+            en: 'So Study Focus is that, built in. A timer set on hours, minutes and seconds wheels like a phone\u2019s clock, or a stopwatch; fifty minutes of work and ten of rest when the session is long enough to need it; Nour at a desk beside you, reading with a page turn, writing, typing, sipping a coffee whose steam rises, its lamp lit while you focus and out at the break, and a book appearing on its shelf for every block you finish.',
+            ar: 'فصارت صفحة التركيز هي ذلك، مبنيّةً في التطبيق. مؤقت يُضبط بعجلات الساعات والدقائق والثواني كساعة الهاتف، أو ساعة إيقاف؛ وخمسون دقيقة عمل وعشر راحة إن طالت الجلسة حتى تحتاجها؛ ونور على مكتب بجانبك، يقرأ وتُقلب صفحته، ويكتب، ويطبع، ويشرب قهوةً يتصاعد بخارها، ومصباحه مضاء وأنت تركّز ومنطفئ في الاستراحة، وكتاب يظهر على رفّه مع كل فترة تُتمّها.',
+          },
+          {
+            en: 'The window beside the desk is sixteen views \u2014 an Omani village, Muttrah\u2019s corniche, the Khareef in Dhofar, the roses of Jebel Akhdar, then desert, forest, the sea, under the sea, space \u2014 each drawn in code rather than photographed, in three art styles, lit by your own clock from sunrise to midnight, with the weather you pick falling past the glass. Or your own picture. The ambient sounds are made in the browser from nothing, there are fourteen live radio stations, and your own music plays from Spotify, SoundCloud or files that never leave the device.',
+            ar: 'والنافذة بجانب المكتب ستة عشر منظرًا — قرية عمانية، وكورنيش مطرح، وخريف ظفار، وورد الجبل الأخضر، ثم الصحراء والغابة والبحر وما تحت البحر والفضاء — كلها مرسومة بالكود لا مصوّرة، بثلاثة أساليب فنية، تضيئها ساعتك من الشروق إلى منتصف الليل، ويتساقط الطقس الذي تختاره خلف الزجاج. أو صورتك الخاصة. والأصوات الهادئة تُصنع في المتصفّح من لا شيء، وفيه أربع عشرة محطة راديو مباشرة، وموسيقاك تُشغَّل من Spotify أو SoundCloud أو ملفات لا تترك الجهاز.',
+          },
+          {
+            en: 'Two small things took the most care, because they are what makes it usable rather than pretty. The screen stays on while a session runs, so a phone propped against a book does not go dark every thirty seconds. And once the student has tapped once to start the sound, the mix leaves through a hidden audio element and the page asks the browser to treat it as playback, so the rain keeps going with the phone locked and the lock screen shows the session and the minutes left \u2014 which is the difference between an ambience feature and one a student actually studies to.',
+            ar: 'وأمران صغيران أخذا أكثر العناية، لأنهما ما يجعلها صالحة للاستعمال لا جميلة فقط. تبقى الشاشة مضاءة أثناء الجلسة، فلا يُظلم هاتف مسنود على كتاب كل ثلاثين ثانية. وبعد لمسة واحدة من الطالب لبدء الصوت، يخرج المزيج من عنصر صوت مخفيّ وتطلب الصفحة من المتصفّح أن يعامله معاملة التشغيل، فيستمرّ المطر والشاشة مقفلة وتعرض شاشة القفل الجلسة والدقائق الباقية — وهذا هو الفرق بين ميزة أصوات وميزة يذاكر الطالب عليها فعلًا.',
+          },
+        ],
+        facts: [
+          { label: { en: 'Views out of the window', ar: 'مناظر من النافذة' }, value: '16' },
+          { label: { en: 'Live radio stations', ar: 'محطات راديو مباشرة' }, value: '14' },
+        ],
+      },
+      {
         title: { en: 'What a student account holds', ar: 'ما الذي يحمله حساب الطالب' },
         body: [
           {
@@ -253,12 +340,12 @@ export const projects: Project[] = [
             ar: 'تسجيل الدخول بـ JWT. يعيش رمز الوصول خمس عشرة دقيقة، ويُستبدل رمز التحديث برمز جديد في كل مرة يُستخدم فيها. وإن عاد رمز قديم يومًا أُنهيت الجلسة التي ينتمي إليها، فلا يبقى المسروق منها نافعًا إلا وقتًا قصيرًا. والصلاحيات تتبع دور الشخص في الغرفة، وهناك تأكيد للبريد وتسجيل دخول بخطوتين، عبر تطبيق مصادقة أو رمز بالبريد، مع رموز احتياطية لمن فقد هاتفه.',
           },
           {
-            en: 'No account is ever deleted outright. The record stays, emptied of every personal detail, so the email and username are free again and a student who leaves can come back on the same address. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 39 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. 1,624 tests cover the parts where a mistake costs something: 1,001 on the server, 37 of them on matching, and 623 on the frontend.',
-            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يبقى السجل خاليًا من كل معلومة شخصية، فيعود البريد واسم المستخدم متاحين، ويستطيع الطالب المغادر العودة بالبريد نفسه. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها التسعة والثلاثين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي 1,624 اختبارًا المواضع التي يكلّف الخطأ فيها شيئًا: 1,001 على الخادم، منها 37 على المطابقة، و623 على الواجهة.',
+            en: 'No account is ever deleted outright. The record stays, emptied of every personal detail, so the email and username are free again and a student who leaves can come back on the same address. Since November 2026 the data lives in PostgreSQL on Supabase, moved from MongoDB with every record copied and checked. Every one of its 47 tables has row-level security, and it is backed up every night, encrypted, and restored as a test before the copy is kept. More than 3,000 tests cover the parts where a mistake costs something: 1,357 on the server across 155 suites, 38 of them on matching, and 1,739 in the browser.',
+            ar: 'ولا يُحذف أي حساب حذفًا نهائيًّا. يبقى السجل خاليًا من كل معلومة شخصية، فيعود البريد واسم المستخدم متاحين، ويستطيع الطالب المغادر العودة بالبريد نفسه. ومنذ نوفمبر 2026 تعيش البيانات في PostgreSQL على Supabase، بعد نقلها من MongoDB بنسخ كل سجل والتحقّق منه. ولكل جدول من جداولها السبعة والأربعين أمان على مستوى الصفوف، وتُنسخ احتياطيًّا كل ليلة، مشفّرة، وتُستعاد تجربةً قبل الاحتفاظ بالنسخة. ويغطّي أكثر من 3,000 اختبار المواضع التي يكلّف الخطأ فيها شيئًا: 1,357 على الخادم في 155 مجموعة، منها 38 على المطابقة، و1,739 في المتصفّح.',
           },
         ],
         facts: [
-          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '1,624' },
+          { label: { en: 'Passing tests', ar: 'الاختبارات الناجحة' }, value: '3,000+' },
           { label: { en: 'Postgres tables', ar: 'جداول Postgres' }, value: '39' },
         ],
       },
