@@ -46,8 +46,8 @@ export const proof: ProofPoint[] = [
     value: { en: '95%', ar: '95%' },
     label: { en: 'said the AI assistant helped', ar: 'قالوا إن المساعد الذكي حسّن طريقة مذاكرتهم' },
     detail: {
-      en: 'StudyNest, validated in a 44-student pilot — 86% reported high satisfaction',
-      ar: 'StudyNest، بعد تجربة شارك فيها 44 طالبًا، أبدى 86% منهم رضًا عاليًا',
+      en: 'StudyNest, validated in a 22-user trial — 86% reported high satisfaction',
+      ar: 'StudyNest، بعد تجربة شارك فيها 22 مستخدمًا، أبدى 86% منهم رضًا عاليًا',
     },
   },
   {

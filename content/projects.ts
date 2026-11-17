@@ -85,8 +85,8 @@ export const projects: Project[] = [
         ar: 'ورقة بحثية عن StudyNest قُدّمت في مؤتمر AMICT 2026، المؤتمر الدولي الثالث للتقدّم في ذكاء الآلة وتقنيات الأمن السيبراني، في لابوان، ماليزيا (نوفمبر 2026).',
       },
       {
-        en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
-        ar: 'جرى التحقّق منها في تجربة مع 44 طالبًا: 86٪ أبدوا رضًا عاليًا و95٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
+        en: 'Validated in a 44-student survey and a 22-user trial: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
+        ar: 'جرى التحقّق منها باستبيان شارك فيه 44 طالبًا وتجربة استخدام مع 22 مستخدمًا: 86٪ أبدوا رضًا عاليًا و95٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },
     ],
     /**
@@ -378,12 +378,12 @@ export const projects: Project[] = [
         title: { en: 'What happened', ar: 'النتائج' },
         body: [
           {
-            en: 'Forty-four students used the platform during the pilot.',
-            ar: 'شارك 44 طالبًا في المرحلة التجريبية للمنصة.',
+            en: 'Forty-four students answered the pre-trial survey on how they study, and twenty-two then trialled the platform.',
+            ar: 'أجاب 44 طالبًا عن استبيان ما قبل التجربة حول طريقة دراستهم، ثم جرّب المنصةَ 22 مستخدمًا.',
           },
           {
-            en: 'The surveys showed 86% were satisfied with the experience, while 95% said the AI assistant improved how they study.',
-            ar: 'وأظهرت نتائج الاستبيانات أن 86٪ من المشاركين كانوا راضين عن تجربتهم، فيما أفاد 95٪ منهم بأن المساعد الذكي ساعدهم على تحسين أسلوب المذاكرة.',
+            en: 'The post-trial survey showed 86% were satisfied with the experience, while 95% said the AI assistant improved how they study.',
+            ar: 'وأظهر استبيان ما بعد التجربة أن 86٪ من المشاركين كانوا راضين عن تجربتهم، فيما أفاد 95٪ منهم بأن المساعد الذكي ساعدهم على تحسين أسلوب المذاكرة.',
           },
           {
             en: 'The project was graded Distinction as a senior capstone, and selected among the top 30 of 738 projects nationally at the London International Youth Science Forum finals held in Muscat.',
@@ -391,7 +391,7 @@ export const projects: Project[] = [
           },
         ],
         facts: [
-          { label: { en: 'Pilot students', ar: 'طلاب المرحلة التجريبية' }, value: '44' },
+          { label: { en: 'Trial users', ar: 'مستخدمو التجربة' }, value: '22' },
           { label: { en: 'High satisfaction', ar: 'نسبة الرضا' }, value: '86%' },
         ],
       },
