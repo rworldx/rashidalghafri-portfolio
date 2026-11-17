@@ -146,6 +146,18 @@ export const journey: TimelineEntry[] = [
   },
   {
     year: 2026,
+    kind: 'award',
+    title: {
+      en: 'Research paper presented at AMICT 2026',
+      ar: 'ورقة بحثية في مؤتمر AMICT 2026',
+    },
+    detail: {
+      en: 'StudyNest · Labuan, Malaysia · Nov 2026',
+      ar: 'StudyNest · لابوان، ماليزيا · نوفمبر 2026',
+    },
+  },
+  {
+    year: 2026,
     kind: 'goal',
     future: true,
     title: { en: 'Working toward studying abroad', ar: 'أعمل على الدراسة في الخارج' },

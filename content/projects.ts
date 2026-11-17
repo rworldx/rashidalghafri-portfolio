@@ -81,6 +81,10 @@ export const projects: Project[] = [
         ar: 'بنية كبيرة: أكثر من 290 نقطة نهاية REST، و145 حدثًا لحظيًّا، و47 جدولًا في PostgreSQL على Supabase عبر Drizzle ORM، وأكثر من 3,000 اختبار ناجح: 1,357 على الخادم في 155 مجموعة (منها 38 على المطابقة) و1,739 في المتصفّح. ثنائية اللغة (إنجليزي/عربي)، وثماني سمات (أربعة ألوان، لكلٍّ منها فاتح وداكن)، وتطبيق ويب قابل للتثبيت (PWA)، وخط معالجة وسائط آلي عبر Cloudinary.',
       },
       {
+        en: 'Research paper on StudyNest presented at AMICT 2026, the 3rd International Conference on Advances in Machine Intelligence and Cybersecurity Technologies, in Labuan, Malaysia (November 2026).',
+        ar: 'ورقة بحثية عن StudyNest قُدّمت في مؤتمر AMICT 2026، المؤتمر الدولي الثالث للتقدّم في ذكاء الآلة وتقنيات الأمن السيبراني، في لابوان، ماليزيا (نوفمبر 2026).',
+      },
+      {
         en: 'Validated in a 44-student pilot: 86% reported high satisfaction and 95% said the AI assistant improved how they study.',
         ar: 'جرى التحقّق منها في تجربة مع 44 طالبًا: 86٪ أبدوا رضًا عاليًا و95٪ قالوا إن المساعد الذكي حسّن طريقة دراستهم.',
       },

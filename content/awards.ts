@@ -3,6 +3,25 @@ import type { Award, Certification } from '@/types/award';
 /** Honours & achievements (from the CV). Sorted by `order` desc in the UI. */
 export const awards: Award[] = [
   {
+    id: 'amict-2026',
+    order: 5,
+    title: {
+      en: 'Research paper presented at AMICT 2026',
+      ar: 'ورقة بحثية قُدّمت في مؤتمر AMICT 2026',
+    },
+    org: {
+      en: '3rd International Conference on Advances in Machine Intelligence and Cybersecurity Technologies · Labuan, Malaysia',
+      ar: 'المؤتمر الدولي الثالث للتقدّم في ذكاء الآلة وتقنيات الأمن السيبراني · لابوان، ماليزيا',
+    },
+    date: 'Nov 2026',
+    tag: { en: 'Author', ar: 'مؤلّف' },
+    href: '/projects/studynest',
+    description: {
+      en: '"StudyNest: An AI-Powered Academic Collaboration and Study Partner Matching Platform." Author. Presented the paper online at the conference on 13 November 2026.',
+      ar: '«StudyNest: منصة مدعومة بالذكاء الاصطناعي للتعاون الأكاديمي ومطابقة شركاء الدراسة». مؤلّف. قدّمت الورقة عن بُعد في المؤتمر يوم 13 نوفمبر 2026.',
+    },
+  },
+  {
     id: 'liysf-2026',
     order: 4,
     title: {
